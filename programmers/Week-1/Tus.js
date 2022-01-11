@@ -1,14 +1,17 @@
-//001. 선언과 할당
-// var name = "진일";
-// var name = "철수";
+//003. 배열의 선언과 할당
+// let fruits = [];
+// fruits.push("사과");
+// fruits.push("바나나");
+// fruits.push("파인애플");
+
+// console.log(fruits);
 
 //004. 배열의 기능
 
 // let fruits = ["사과", "바나나", "파인애플"];
 // let newFruits = [];
 
-// fruits.pop();
-// newFruits.push("파인애플");
+// newFruits.push(fruits[fruits.length -1]);
 
 // console.log(fruits);
 // console.log(newFruits);
