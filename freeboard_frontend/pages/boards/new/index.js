@@ -1,0 +1,128 @@
+import {useState} from 'react'
+
+import {
+    Wrapper,
+    Titile,
+    ErrorMassage,
+    WrapperProfile,
+    WrapperWriter,
+    WrapperPassword,
+    WriterContent, 
+    PasswordContent,
+    Label,
+    WrapperName,
+    Name, 
+    NameContent, 
+    Content,
+    ContentInContent,
+    Address,
+    WrapperAddress,
+    AddressNumber,
+    AddressSearch,
+    AddressDetail1,
+    AddressDetail2,
+    Youtube,
+    YoutubeLink,
+    Picture,
+    PictureDetail,
+    WrapperSetting,
+    WrapperPicture,
+    MainSetting,
+    MainSettingSelect,
+    MainSettingFont,
+    RegisterBtn
+} from '../../../styles/emotion'
+
+
+export default function EmotionPage() {
+
+    const [WriterInput, setWriterInput] = useState("")
+    const [PasswordInput, setPasswordInput] = useState("")
+    const [PostInput, setPostInput] = useState("")
+    const [ContentInput, setContentInput] = useState("")
+
+    const [WriterInputError, setWriterInputError] = useState("")
+    const [PasswordInputError, setPasswordInputError] = useState("")
+    const [PostInputError, setPostInputError] = useState("")
+    const [ContentInputError, setContentInputError] = useState("")
+
+    function WriterInputCheck(event) {
+        setWriterInput(event.target.value)
+    }
+    function PasswordInputCheck(event) {
+        setPasswordInput(event.target.value)
+    }
+    function PostInputCheck(event) {
+        setPostInput(event.target.value)
+    }
+    function ContentInputCheck(event) {
+        setContentInput(event.target.value)
+    }
+
+    function InputCheckError() {
+        if (WriterInput !== "" && PasswordInput !== "" && PostInput !== "" && ContentInput !== "") {
+            alert("게시물을 등록했습니다.")
+        }
+        if (WriterInput === "") {
+            setWriterInputError("작성자를 입력해주세요.")
+        }
+        if (PasswordInput === "") {
+            setPasswordInputError("비밀번호를 입력해주세요.")
+        }
+        if (PostInput === "") {
+            setPostInputError("제목을 입력해주세요.")
+        }
+        if (ContentInput === "") {
+            setContentInputError("내용을 입력해 주세요.")
+        }
+    }
+    
+  return (
+    <Wrapper>
+      <Titile>게시물 등록</Titile>
+      <WrapperProfile>
+        <WrapperWriter>
+            <Label>작성자</Label>
+            <WriterContent type="text" onChange={WriterInputCheck} placeholder="이름을 적어주세요." />
+            <ErrorMassage>{WriterInputError}</ErrorMassage>
+        </WrapperWriter>
+        <WrapperPassword>
+            <Label>비밀번호</Label>
+            <PasswordContent type="password" onChange={PasswordInputCheck} placeholder="비밀번호를 입력해주세요." />
+            <ErrorMassage>{PasswordInputError}</ErrorMassage>
+        </WrapperPassword> 
+      </WrapperProfile>
+      <Name>제목</Name>
+        <WrapperName>
+          <NameContent type="text" onChange={PostInputCheck} placeholder="제목을 적어주세요." />
+          <ErrorMassage>{PostInputError}</ErrorMassage>
+        </WrapperName>
+      <Content>내용</Content>
+      <ContentInContent type="textarea" onChange={ContentInputCheck} placeholder="내용을 입력해 주세요." />
+      <ErrorMassage>{ContentInputError}</ErrorMassage>
+      <Address>주소</Address>
+      <WrapperAddress>
+        <AddressNumber type="text" placeholder="07250" />
+        <AddressSearch>우편번호 검색</AddressSearch>
+      </WrapperAddress>
+      <AddressDetail1 type="text" />
+      <AddressDetail2 type="text" />
+      <Youtube>유튜브</Youtube>
+      <YoutubeLink type="text" placeholder="링크를 복사해주세요." />
+      <Picture>사진 첨부</Picture>
+      <WrapperPicture>
+        <PictureDetail>+ Upload</PictureDetail>
+        <PictureDetail>+ Upload</PictureDetail>
+        <PictureDetail>+ Upload</PictureDetail>
+      </WrapperPicture>
+      <MainSetting>메인 설정</MainSetting>
+      <WrapperSetting>
+        <MainSettingSelect type="radio" name="select" />
+        <MainSettingFont>유튜브</MainSettingFont>
+        <MainSettingSelect type="radio" name="select" />
+        <MainSettingFont>사진</MainSettingFont>
+      </WrapperSetting>
+      <RegisterBtn onClick={InputCheckError}>등록하기</RegisterBtn>
+    </Wrapper>
+  );
+}
