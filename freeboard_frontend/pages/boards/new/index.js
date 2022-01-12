@@ -76,14 +76,18 @@ export default function EmotionPage() {
             setContentInputError("내용을 입력해 주세요.")
         }
     }
-    
+    // onchange 안쪽 부분의 함수가 바인딩한다는 뜻, 이러한 것을 이벤트 핸들러함수 라고함
+    // if("") === false
+    // if("djdks") === true 문자열의 유무에 따라 참거짓 만들기 가능
+    // focus 로 빈 문자열 발생시 문제되는 부분으로 포커싱하도록 구현할 예정.
+    // 비밀번호 몇자리 이상 체크 구현..?
   return (
     <Wrapper>
       <Titile>게시물 등록</Titile>
       <WrapperProfile>
         <WrapperWriter>
             <Label>작성자</Label>
-            <WriterContent type="text" onChange={WriterInputCheck} placeholder="이름을 적어주세요." />
+            <WriterContent type="text" onChange={WriterInputCheck}placeholder="이름을 적어주세요." />
             <ErrorMassage>{WriterInputError}</ErrorMassage>
         </WrapperWriter>
         <WrapperPassword>

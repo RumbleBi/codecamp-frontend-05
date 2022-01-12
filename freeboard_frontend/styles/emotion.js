@@ -1,13 +1,5 @@
 import styled from '@emotion/styled'
 
-// export const Body = styled.div`
-//     box-sizing: border-box;
-//     margin: 0px;
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-// `
-
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -127,15 +119,15 @@ export const WrapperAddress = styled.div`
 `
 
 export const AddressNumber = styled.input`
-width: 70px;
-height: 40px;
-padding-left: 15px;
+    width: 70px;
+    height: 40px;
+    padding-left: 15px;
 `
 
 export const AddressSearch = styled.button`
-width: 100px;
-height: 40px;
-margin-left: 10px;
+    width: 100px;
+    height: 40px;
+    margin-left: 10px;
 `
 
 export const AddressDetail1 = styled.input`
@@ -200,7 +192,6 @@ export const MainSettingSelect = styled.input`
 `
 
 export const MainSettingFont = styled.div`
-
     color: #FFD400;
 `
 
