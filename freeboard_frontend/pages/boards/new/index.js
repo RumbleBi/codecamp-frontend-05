@@ -1,5 +1,5 @@
-import {useState} from 'react'
-
+import { useState } from 'react'
+import { useMutation, gql } from '@apollo/client';
 import {
     Wrapper,
     Titile,
@@ -33,6 +33,16 @@ import {
     RegisterBtn
 } from '../../../styles/emotion'
 
+const CREATE_BOARD = gql`
+  mutation createBoard($writer: String, $title: String, $contents: String) {
+    createBoard(writer: $writer, title: $title, contents: $contents) {
+      _id
+      number
+      message
+    }
+  }
+`
+
 
 export default function EmotionPage() {
 
@@ -59,23 +69,38 @@ export default function EmotionPage() {
         setContentInput(event.target.value)
     }
 
-    function InputCheckError() {
-        if (WriterInput !== "" && PasswordInput !== "" && PostInput !== "" && ContentInput !== "") {
-            alert("게시물을 등록했습니다.")
+    const [createBoard] = useMutation(CREATE_BOARD);
+
+    const submitData = async() => {
+      await createBoard({
+        variables: {
+          writer: WriterInput,
+          title: PostInput,
+          contents: ContentInput
         }
-        if (WriterInput === "") {
-            setWriterInputError("작성자를 입력해주세요.")
-        }
-        if (PasswordInput === "") {
-            setPasswordInputError("비밀번호를 입력해주세요.")
-        }
-        if (PostInput === "") {
-            setPostInputError("제목을 입력해주세요.")
-        }
-        if (ContentInput === "") {
-            setContentInputError("내용을 입력해 주세요.")
-        }
+      })
     }
+    
+    function InputCheckError() {
+
+      submitData();
+
+      if (WriterInput !== "" && PasswordInput !== "" && PostInput !== "" && ContentInput !== "") {
+          alert("게시물을 등록했습니다.")
+      }
+      if (WriterInput === "") {
+          setWriterInputError("작성자를 입력해주세요.")
+      }
+      if (PasswordInput === "") {
+          setPasswordInputError("비밀번호를 입력해주세요.")
+      }
+      if (PostInput === "") {
+          setPostInputError("제목을 입력해주세요.")
+      }
+      if (ContentInput === "") {
+          setContentInputError("내용을 입력해 주세요.")
+      }
+  }
     // onchange 안쪽 부분의 함수가 바인딩한다는 뜻, 이러한 것을 이벤트 핸들러함수 라고함
     // if("") === false
     // if("djdks") === true 문자열의 유무에 따라 참거짓 만들기 가능

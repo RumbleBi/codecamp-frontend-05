@@ -2,14 +2,21 @@ import {useState} from 'react'
 
 export default function count() {
     const [Hello, setHello] = useState("안녕하세요")
-    const [Wellcom, setWellcom] = useState("반갑습니다")
-
-
-    function ChangeWord() {
-        
-
+    
+    function StateChangeWord() {
+        setHello("반갑습니다")
     }
+
+    function LetChangeWord() {
+        let Hello2 = document.getElementById("LetChange").innerText
+        Hello2 = "반갑습니다"
+        
+    }
+
     return (
-        <button onClick={ChangeWord}>{Hello}</button>
+        <div>
+            <button onClick={StateChangeWord}>{Hello}</button>
+            <button id ="LetChange" onClick={LetChangeWord}>안녕하세요</button>
+        </div>
     )
 }
