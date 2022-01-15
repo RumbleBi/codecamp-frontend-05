@@ -155,3 +155,6 @@ export default function EmotionPage() {
     </Wrapper>
   );
 }
+
+
+//금요일 라우팅 [aaa] 여기에 여러 페이지가 되도록하는데 new폴더가 아니면 다른 입력값을 넣으면 [aaa]안의 js파일로 들어간다.
