@@ -35,7 +35,7 @@ export default function GraphqlMutationProduct() {
         }
       })
       console.log(result.data.createProduct._id)
-      router.push(`/05-02-routed/${result.data.createProduct._id}`)
+      router.push(`/quiz/05-02-routed/${result.data.createProduct._id}`)
     } catch (error) {
       console.log(error.message)
     } //finally {
