@@ -18,7 +18,6 @@ export default function EmotionPage() {
             <IdText></IdText>
             <Password>비밀번호</Password>
             <PasswordText></PasswordText>
-            <img src="/images/lotto.png" />
         </div>
     )
 }
