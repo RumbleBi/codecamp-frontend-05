@@ -1,5 +1,9 @@
 import {useState} from 'react'
-import {Text} from '../02-04-state-signup/emotion'
+import styled from '@emotion/styled'
+
+export const Text = styled.div`
+    color: red;
+`
 export default function StateSignup() {
 
     const [email, setEmail] = useState('')

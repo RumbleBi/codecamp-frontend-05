@@ -1,6 +1,6 @@
-import { useMutation,gql } from "@apollo/client";
+import { useMutation, gql } from "@apollo/client";
 import axios from "axios";
-import { useState} from "react";
+import { useState } from "react";
 
 const CREATE_BOARD = gql`
   mutation {
@@ -10,7 +10,7 @@ const CREATE_BOARD = gql`
       message
     }
   }
-`
+`;
 
 export default function GraphqlMutation() {
   const [aaa, setAaa] = useState("");
@@ -18,10 +18,10 @@ export default function GraphqlMutation() {
 
   const zzz = async () => {
     //const result = await axios.get("https://koreanjson.com/posts/1")
-    const result = await qqq()
-    console.log(result)
-    console.log(result.data.createBoard.message)
-    setAaa(result.data.createBoard.message)
+    const result = await qqq();
+    console.log(result);
+    console.log(result.data.createBoard.message);
+    setAaa(result.data.createBoard.message);
     // console.log(result.data.title);
     // setAaa(result.data.title);
   };

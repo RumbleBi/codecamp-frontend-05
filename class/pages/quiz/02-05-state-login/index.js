@@ -1,7 +1,3 @@
-// 1) 아이콘 등 모든 그림은 제플린과 동일하게 만들어 주세요.
-// 2) state, setState, useState를 사용하여 이메일과 비밀번호가 빈칸인지 검증하고, 빈칸이라면 그림과 같은 메시지를 나타나게 만들어 주세요.
-// 3) 이메일은 @가 포함되어있는지, 비밀번호는 8자리가 넘는지 확인해 주세요
-// 4) 맨 윗줄의 와이파이, 배터리 등은 만들지 않습니다.
 import styled from "@emotion/styled";
 import { useState } from "react"
 
