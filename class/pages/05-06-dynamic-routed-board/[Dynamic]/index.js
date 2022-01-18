@@ -13,7 +13,7 @@ const FETCH_BOARD = gql`
 
 export default function DynamicRoutedPage() {
   const router = useRouter();
-
+  router.push();
   const { data } = useQuery(FETCH_BOARD, {
     variables: { number: Number(router.query.Dynamic) },
   });

@@ -7,8 +7,7 @@ export default function DynamicRoutedPage() {
   const router = useRouter();
 
   const { data } = useQuery(FETCH_BOARD, {
-    variables: { number: Number(router.query.Dynamic) },
+    variables: { boardId: router.query.Dynamic },
   });
-  console.log(data);
   return <DynamicRoutedPageUI data={data} />;
 }
