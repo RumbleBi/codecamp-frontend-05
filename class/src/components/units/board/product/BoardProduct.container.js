@@ -1,8 +1,19 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { CREATE_PRODUCT, UPDATE_PRODUCT } from "./BoardProduct.queries";
-import { useMutation } from "@apollo/client";
+import { useMutation, gql } from "@apollo/client";
 import BoardsProductUI from "./BoardProduct.presenter";
+
+const FETCH_PRODUCT = gql`
+  query fetchProduct($productId: ID) {
+    fetchProduct(productId: $productId) {
+      seller
+      name
+      detail
+      price
+    }
+  }
+`;
 
 export default function BoardsProduct(props) {
   const router = useRouter();
@@ -55,7 +66,8 @@ export default function BoardsProduct(props) {
         },
       },
     });
-    router.push(`/quiz/08-01-BoardProduct/${router.query.number}`);
+    router.push(`/quiz/08-01-BoardProduct/${result.data.createProduct.number}`);
+    //{result.data.createProduct.number}
     //여기가 문제인가 result부분으로 수정하자..
   };
 
