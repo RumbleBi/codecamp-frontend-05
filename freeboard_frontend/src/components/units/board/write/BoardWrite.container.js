@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import BoardWriteUI from "./BoardWrite.presenter";
-import { CREATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
 
-export default function BoardWrite() {
+export default function BoardWrite(props) {
   const router = useRouter();
   const [createBoard] = useMutation(CREATE_BOARD);
+  const [updateBoard] = useMutation(UPDATE_BOARD);
 
   const [isActive, setIsActive] = useState(false);
 
@@ -110,8 +111,27 @@ export default function BoardWrite() {
         });
         router.push(`/boards/${result.data.createBoard._id}`);
       } catch (error) {
-        console.log(error.message);
+        alert(error.message);
       }
+    }
+  };
+
+  const onClickUpdate = async () => {
+    try {
+      await updateBoard({
+        variables: {
+          boardId: router.query.dynamic,
+          password: passwordInput,
+          updateBoardInput: {
+            title: postInput,
+            contents: contentInput,
+          },
+        },
+      });
+      alert("수정이 완료되었습니다.");
+      router.push(`/boards/${router.query.dynamic}`);
+    } catch (error) {
+      alert(error.message);
     }
   };
   // onchange 안쪽 부분의 함수가 바인딩한다는 뜻, 이러한 것을 이벤트 핸들러함수 라고함
@@ -130,7 +150,10 @@ export default function BoardWrite() {
       ContentInputCheck={ContentInputCheck}
       contentInputError={contentInputError}
       onClickSubmit={onClickSubmit}
+      onClickUpdate={onClickUpdate}
       isActive={isActive}
+      data={props.data}
+      isEdit={props.isEdit}
     />
   );
 }

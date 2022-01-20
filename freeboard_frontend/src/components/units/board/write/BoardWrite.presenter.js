@@ -3,40 +3,44 @@ import * as S from "./BoardWrite.styles";
 export default function BoardWriteUI(props) {
   return (
     <S.Wrapper>
-      <S.Title>게시물 등록</S.Title>
+      <S.Title>{props.isEdit ? "게시판수정" : "게시판등록"}</S.Title>
       <S.WrapperProfile>
         <S.WrapperWriter>
-          <S.Label>작성자</S.Label>
+          <S.Label>작성자 </S.Label>
           <S.WriterContent
             type="text"
             onChange={props.WriterInputCheck}
+            defaultValue={props.data?.fetchBoard.writer}
             placeholder="이름을 적어주세요."
           />
-          <ErrorMassage>{props.writerInputError}</ErrorMassage>
+          <S.ErrorMassage>{props.writerInputError}</S.ErrorMassage>
         </S.WrapperWriter>
         <S.WrapperPassword>
-          <S.Label>비밀번호</S.Label>
+          <S.Label>비밀번호 </S.Label>
           <S.PasswordContent
             type="password"
             onChange={props.PasswordInputCheck}
+            //password는 다른 방식으로 일치하는지 만들어줘야할듯
             placeholder="비밀번호를 입력해주세요."
           />
           <S.ErrorMassage>{props.passwordInputError}</S.ErrorMassage>
         </S.WrapperPassword>
       </S.WrapperProfile>
-      <S.Name>제목</S.Name>
+      <S.Name>제목 </S.Name>
       <S.WrapperName>
         <S.NameContent
           type="text"
           onChange={props.PostInputCheck}
+          defaultValue={props.data?.fetchBoard.title}
           placeholder="제목을 적어주세요."
         />
         <S.ErrorMassage>{props.postInputError}</S.ErrorMassage>
       </S.WrapperName>
-      <S.Content>내용</S.Content>
+      <S.Content>내용 </S.Content>
       <S.ContentInContent
         type="textarea"
         onChange={props.ContentInputCheck}
+        defaultValue={props.data?.fetchBoard.contents}
         placeholder="내용을 입력해 주세요."
       />
       <S.ErrorMassage>{props.contentInputError}</S.ErrorMassage>
@@ -62,8 +66,11 @@ export default function BoardWriteUI(props) {
         <S.MainSettingSelect type="radio" name="select" />
         <S.MainSettingFont>사진</S.MainSettingFont>
       </S.WrapperSetting>
-      <S.RegisterBtn onClick={props.onClickSubmit} isActive={props.isActive}>
-        등록하기
+      <S.RegisterBtn
+        onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
+        isActive={props.isActive}
+      >
+        {props.isEdit ? "수정하기" : "등록하기"}
       </S.RegisterBtn>
     </S.Wrapper>
   );

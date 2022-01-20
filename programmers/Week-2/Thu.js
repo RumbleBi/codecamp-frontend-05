@@ -23,3 +23,12 @@
 
 //     return answer;
 // }
+
+// 다른 풀이
+// function solution(x, n) {
+//   const answer = new Array(n).fill(1).map((num, i) => {
+//     return x * (num + i);
+//   });
+
+//   return answer;
+// }

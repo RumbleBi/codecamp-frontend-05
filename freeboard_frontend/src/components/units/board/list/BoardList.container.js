@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardListUI from "./BoardList.presenter";
@@ -11,7 +10,7 @@ export default function BoardList() {
     router.push("/boards/new");
   }
   function onClickMoveBoardDetail(event) {
-    router.push("/boards" + event.target.id);
+    router.push(`/boards/${event.target.id}`);
   }
 
   return (

@@ -1,3 +1,4 @@
+import { getDate } from "../../../../commons/libraries/utils";
 import * as S from "./BoardList.styles";
 
 export default function BoardListUI(props) {
@@ -16,7 +17,7 @@ export default function BoardListUI(props) {
             {el.title}
           </S.ListIndex>
           <S.ListIndex>{el.writer}</S.ListIndex>
-          <S.ListIndex>{el.createdAt}</S.ListIndex>
+          <S.ListIndex>{getDate(el.createdAt)}</S.ListIndex>
         </S.ListWrapperBody>
       ))}
       <S.BoardCreate onClick={props.onClickMoveBoardWrite}>
