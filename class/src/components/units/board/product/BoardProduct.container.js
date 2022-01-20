@@ -55,7 +55,8 @@ export default function BoardsProduct(props) {
         },
       },
     });
-    router.push(`/quiz/08-01-BoardProduct/${router.query.data}`);
+    router.push(`/quiz/08-01-BoardProduct/${router.query.number}`);
+    //여기가 문제인가 result부분으로 수정하자..
   };
 
   return (
