@@ -15,7 +15,7 @@ const FETCH_BOARD = gql`
 export default function BoardDetailPage() {
   const router = useRouter();
   const { data } = useQuery(FETCH_BOARD, {
-    variables: { boardId: router.query._id },
-  });
+    variables: { boardId: router.query.dynamic },
+  }); //._id
   return <BoardDetail isEdit={true} data={data} />;
 }
