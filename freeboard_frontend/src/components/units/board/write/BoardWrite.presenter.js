@@ -10,8 +10,8 @@ export default function BoardWriteUI(props) {
           <S.WriterContent
             type="text"
             onChange={props.WriterInputCheck}
-            defaultValue={props.data?.fetchBoard.writer}
             placeholder="이름을 적어주세요."
+            defaultValue={props.data?.fetchBoard.writer}
           />
           <S.ErrorMassage>{props.writerInputError}</S.ErrorMassage>
         </S.WrapperWriter>
@@ -31,8 +31,8 @@ export default function BoardWriteUI(props) {
         <S.NameContent
           type="text"
           onChange={props.PostInputCheck}
-          defaultValue={props.data?.fetchBoard.title}
           placeholder="제목을 적어주세요."
+          defaultValue={props.data?.fetchBoard.title}
         />
         <S.ErrorMassage>{props.postInputError}</S.ErrorMassage>
       </S.WrapperName>
@@ -40,8 +40,8 @@ export default function BoardWriteUI(props) {
       <S.ContentInContent
         type="textarea"
         onChange={props.ContentInputCheck}
-        defaultValue={props.data?.fetchBoard.contents}
         placeholder="내용을 입력해 주세요."
+        defaultValue={props.data?.fetchBoard.contents}
       />
       <S.ErrorMassage>{props.contentInputError}</S.ErrorMassage>
       <S.Address>주소</S.Address>

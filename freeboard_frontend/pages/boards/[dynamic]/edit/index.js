@@ -1,4 +1,4 @@
-import BoardDetail from "../../../../src/components/units/board/write/BoardWrite.container";
+import BoardWrite from "../../../../src/components/units/board/write/BoardWrite.container";
 import { useQuery, gql } from "@apollo/client";
 import { useRouter } from "next/router";
 
@@ -17,5 +17,5 @@ export default function BoardDetailPage() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.dynamic },
   }); //._id
-  return <BoardDetail isEdit={true} data={data} />;
+  return <BoardWrite isEdit={true} data={data} />;
 }

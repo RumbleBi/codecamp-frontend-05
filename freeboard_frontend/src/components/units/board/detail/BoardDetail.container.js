@@ -28,7 +28,7 @@ export default function BoardDetail() {
         variables: { boardId: String(router.query.dynamic) },
       });
       alert(`삭제가 되었습니다.`);
-      router.push("/boards");
+      router.push("/boards/");
     } catch (error) {
       alert(error.message);
     }
