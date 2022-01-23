@@ -16,6 +16,6 @@ export default function BoardDetailPage() {
   const router = useRouter();
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.dynamic },
-  }); //._id
+  });
   return <BoardWrite isEdit={true} data={data} />;
 }

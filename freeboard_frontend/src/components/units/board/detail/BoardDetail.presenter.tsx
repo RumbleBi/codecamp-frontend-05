@@ -1,6 +1,7 @@
 import * as S from "./BoardDetail.styles";
 import { getDate } from "../../../../commons/libraries/utils";
-export default function BoardDetailUI(props) {
+import { IBoardDetailUIProps } from "./BoardDetail.types";
+export default function BoardDetailUI(props: IBoardDetailUIProps) {
   return (
     <S.Page>
       <S.Wrapper>
@@ -17,23 +18,20 @@ export default function BoardDetailUI(props) {
           {/* <S.HeaderIcon2 src=""></S.HeaderIcon2> */}
         </S.Header>
         <S.Body>
-          <S.BodyTitle>
-          {props.data?.fetchBoard?.title}
-          </S.BodyTitle>
-          <S.BodyContents>
-          {props.data?.fetchBoard?.contents}
-          </S.BodyContents>
+          <S.BodyTitle>{props.data?.fetchBoard?.title}</S.BodyTitle>
+          <S.BodyContents>{props.data?.fetchBoard?.contents}</S.BodyContents>
+          <S.BodyButton onClick={props.onClickMoveToList}>
+            목록으로
+          </S.BodyButton>
+          <S.BodyButton onClick={props.onClickMoveToEdit}>
+            수정하기
+          </S.BodyButton>
+          <S.BodyButton onClick={props.onClickDeleteBoard}>
+            삭제하기
+          </S.BodyButton>
         </S.Body>
         <S.Bottom>
-          <S.BottomButton onClick={props.onClickMoveToList}>
-            목록으로
-          </S.BottomButton>
-          <S.BottomButton onClick={props.onClickMoveToEdit}>
-            수정하기
-          </S.BottomButton>
-          <S.BottomButton onClick={props.onClickDeleteBoard}>
-            삭제하기
-          </S.BottomButton>
+          <S.BottomCommentWriter placeholder="작성자"></S.BottomCommentWriter>
         </S.Bottom>
       </S.Wrapper>
     </S.Page>

@@ -1,32 +1,33 @@
 import * as S from "./BoardWrite.styles";
+import { IBoardWriteUIProps } from "./BoardWrite.types";
 
-export default function BoardWriteUI(props) {
+export default function BoardWriteUI(props: IBoardWriteUIProps) {
   return (
     <S.Wrapper>
       <S.Title>{props.isEdit ? "게시판수정" : "게시판등록"}</S.Title>
       <S.WrapperProfile>
         <S.WrapperWriter>
-          <S.Label>작성자 </S.Label>
+          <S.Label>작성자</S.Label>
           <S.WriterContent
             type="text"
-            onChange={props.WriterInputCheck}
+            onChange={props.WriterInputCheck} // 컨테이너의 WriterInputCheck(event) 함수를 실행한다. 그러면 받는 입장에서 정의를 해줘야한다.
             placeholder="이름을 적어주세요."
             defaultValue={props.data?.fetchBoard.writer}
           />
           <S.ErrorMassage>{props.writerInputError}</S.ErrorMassage>
         </S.WrapperWriter>
         <S.WrapperPassword>
-          <S.Label>비밀번호 </S.Label>
+          <S.Label>비밀번호</S.Label>
           <S.PasswordContent
             type="password"
             onChange={props.PasswordInputCheck}
-            //password는 다른 방식으로 일치하는지 만들어줘야할듯
+            // password는 다른 방식으로 일치하는지 만들어줘야할듯
             placeholder="비밀번호를 입력해주세요."
           />
           <S.ErrorMassage>{props.passwordInputError}</S.ErrorMassage>
         </S.WrapperPassword>
       </S.WrapperProfile>
-      <S.Name>제목 </S.Name>
+      <S.Name>제목</S.Name>
       <S.WrapperName>
         <S.NameContent
           type="text"
@@ -36,7 +37,7 @@ export default function BoardWriteUI(props) {
         />
         <S.ErrorMassage>{props.postInputError}</S.ErrorMassage>
       </S.WrapperName>
-      <S.Content>내용 </S.Content>
+      <S.Content>내용</S.Content>
       <S.ContentInContent
         type="textarea"
         onChange={props.ContentInputCheck}

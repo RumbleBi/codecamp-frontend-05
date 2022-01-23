@@ -47,14 +47,8 @@ export const BodyContents = styled.div`
   padding-top: 40px;
   padding-bottom: 120px;
 `;
-export const Bottom = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 80px;
-  }
-`;
-export const BottomButton = styled.button`
+
+export const BodyButton = styled.button`
   width: 179px;
   height: 45px;
   background-color: white;
@@ -65,3 +59,13 @@ export const BottomButton = styled.button`
     background-color: #ffd400;
     border-color: #ffd400;
 `;
+
+export const Bottom = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 80px;
+  }
+`;
+
+export const BottomCommentWriter = styled.div``;

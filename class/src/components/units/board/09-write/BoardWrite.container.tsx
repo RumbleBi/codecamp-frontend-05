@@ -34,7 +34,7 @@ export default function BoardWrite(props) {
   const xxx = async () => {
     interface IMyVariables {
       number: number;
-      writer?: string; //항상 있는 것은 아니므로 ?를 붙여서 있으면 문자열로 지정하도록 한다.
+      writer?: string; // 항상 있는 것은 아니므로 ?를 붙여서 있으면 문자열로 지정하도록 한다.
       title?: string;
       content?: string;
     }

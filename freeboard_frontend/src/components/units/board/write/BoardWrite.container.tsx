@@ -1,17 +1,25 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import BoardWriteUI from "./BoardWrite.presenter";
 import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import { IBoardWriteProps } from "./BoardWrite.types";
+import {
+  IMutation,
+  IMutationCreateBoardArgs,
+} from "../../../../commons/types/generated/types";
 
-export default function BoardWrite(props) {
+export default function BoardWrite(props: IBoardWriteProps) {
   const router = useRouter();
-  const [createBoard] = useMutation(CREATE_BOARD);
+  const [createBoard] = useMutation<
+    Pick<IMutation, "createBoard">,
+    IMutationCreateBoardArgs
+  >(CREATE_BOARD); // import해줘야됨!!
   const [updateBoard] = useMutation(UPDATE_BOARD);
 
   const [isActive, setIsActive] = useState(false);
 
-  const [writerInput, setWriterInput] = useState("");
+  const [writerInput, setWriterInput] = useState<string>("");
   const [passwordInput, setPasswordInput] = useState("");
   const [postInput, setPostInput] = useState("");
   const [contentInput, setContentInput] = useState("");
@@ -21,7 +29,7 @@ export default function BoardWrite(props) {
   const [postInputError, setPostInputError] = useState("");
   const [contentInputError, setContentInputError] = useState("");
 
-  function WriterInputCheck(event) {
+  function WriterInputCheck(event: ChangeEvent<HTMLInputElement>) {
     setWriterInput(event.target.value);
     if (
       event.target.value &&
@@ -35,7 +43,7 @@ export default function BoardWrite(props) {
       setIsActive(false);
     }
   }
-  function PasswordInputCheck(event) {
+  function PasswordInputCheck(event: ChangeEvent<HTMLInputElement>) {
     setPasswordInput(event.target.value);
     if (
       event.target.value &&
@@ -49,7 +57,7 @@ export default function BoardWrite(props) {
       setIsActive(false);
     }
   }
-  function PostInputCheck(event) {
+  function PostInputCheck(event: ChangeEvent<HTMLInputElement>) {
     setPostInput(event.target.value);
     if (
       event.target.value &&
@@ -63,7 +71,7 @@ export default function BoardWrite(props) {
       setIsActive(false);
     }
   }
-  function ContentInputCheck(event) {
+  function ContentInputCheck(event: ChangeEvent<HTMLInputElement>) {
     setContentInput(event.target.value);
     if (
       event.target.value &&
@@ -117,6 +125,15 @@ export default function BoardWrite(props) {
   };
 
   const onClickUpdate = async () => {
+    if (!writerInput && !postInput && !contentInput) {
+      alert("작성자, 제목, 내용중에 입력을 해야합니다.");
+      return;
+    }
+    if (!passwordInput) {
+      alert("비밀번호를 입력해주세요.");
+      return;
+    } // early-exit 패턴 이 if문이 충족되지 않으면 아래의 코드는 작동하지 않는다.
+
     try {
       await updateBoard({
         variables: {
@@ -151,11 +168,10 @@ export default function BoardWrite(props) {
       contentInputError={contentInputError}
       onClickSubmit={onClickSubmit}
       onClickUpdate={onClickUpdate}
-      isActive={isActive}
-      data={props.data}
-      isEdit={props.isEdit}
+      isActive={isActive} // boards/new 에서 온 데이터!!
+      data={props.data} // boards/edit 페이지에서 온 데이터구나!!
+      isEdit={props.isEdit} // boards/new 에서 온 데이터!!
+      // props. 은 boards/new 에서 받아온 것들. 그냥 적힌애들은 여기서 선언된 함수들. 그것들을 프리젠터로 보낸다는 뜻이다.
     />
   );
 }
-
-//금요일 라우팅 [aaa] 여기에 여러 페이지가 되도록하는데 new폴더가 아니면 다른 입력값을 넣으면 [aaa]안의 js파일로 들어간다.

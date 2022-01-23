@@ -1,4 +1,6 @@
+// IProps 정의는 스타일 부분 바로 위에 적어두자. ex) submitButton 부분과 같이!!
 import styled from "@emotion/styled";
+import { IRegisterBtnProps } from "./BoardWrite.types";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -210,9 +212,17 @@ export const RegisterBtn = styled.button`
   border: none;
   font-size: 16px;
   font-weight: 500;
-  background-color: #ffd400;
+  background-color: ${(props: IRegisterBtnProps) =>
+    props.isActive === true ? "#FFD400" : "none"}
 
   :hover {
-    cursor: pointer;
+    cursor: ${(props: IRegisterBtnProps) =>
+      props.isActive === true ? "pointer" : "default"};
   }
+`;
+
+export const Error = styled.div`
+  padding-top: 10px;
+  font-size: 14px;
+  color: red;
 `;

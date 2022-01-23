@@ -3,7 +3,6 @@ import { useQuery, useMutation } from "@apollo/client";
 import BoardDetailUI from "./BoardDetail.presenter";
 import { FETCH_BOARD, DELETE_BOARD } from "./BoardDetail.queries";
 
-// 여기서 요청하고싶은 내용을 추가하면 왜 나머지 데이터들이 안나오지??
 export default function BoardDetail() {
   const router = useRouter();
   const [deleteBoard] = useMutation(DELETE_BOARD);
@@ -16,10 +15,8 @@ export default function BoardDetail() {
     router.push("/boards");
   };
 
-  //여기 수정
   const onClickMoveToEdit = () => {
     router.push(`/boards/${router.query.dynamic}/edit`);
-    console.log(data); //데이터는 찍히는듯??
   };
 
   const onClickDeleteBoard = async () => {
