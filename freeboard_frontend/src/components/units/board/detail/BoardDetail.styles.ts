@@ -68,4 +68,15 @@ export const Bottom = styled.div`
   }
 `;
 
+export const BottomWriteIcon = styled.img``;
+export const BottomCommentText = styled.div``;
 export const BottomCommentWriter = styled.div``;
+export const BottomCommentPassword = styled.div``;
+export const BottomCommentInput = styled.div``;
+export const BottomCommentSubmitBtn = styled.button``;
+export const BottomCommentShow = styled.div``;
+export const BottomCommentFaceIcon = styled.img``;
+export const BottomCommentRewriteIcon = styled.img``;
+export const BottomCommentDeleteIcon = styled.img``;
+export const BottomCommentDate = styled.div``;
+export const BottomCommentRate = styled.div``;

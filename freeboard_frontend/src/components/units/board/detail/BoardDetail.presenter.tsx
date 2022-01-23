@@ -31,7 +31,19 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
           </S.BodyButton>
         </S.Body>
         <S.Bottom>
+          <S.BottomWriteIcon></S.BottomWriteIcon>
+          <S.BottomCommentText></S.BottomCommentText>
           <S.BottomCommentWriter placeholder="작성자"></S.BottomCommentWriter>
+          <S.BottomCommentPassword placeholder="비밀번호"></S.BottomCommentPassword>
+          <S.BottomCommentInput placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 당사자에게 있습니다."></S.BottomCommentInput>
+          <S.BottomCommentSubmitBtn>등록하기</S.BottomCommentSubmitBtn>
+          <S.BottomCommentShow>
+            <S.BottomCommentFaceIcon></S.BottomCommentFaceIcon>
+            <S.BottomCommentRewriteIcon></S.BottomCommentRewriteIcon>
+            <S.BottomCommentDeleteIcon></S.BottomCommentDeleteIcon>
+            <S.BottomCommentDate></S.BottomCommentDate>
+            <S.BottomCommentRate></S.BottomCommentRate>
+          </S.BottomCommentShow>
         </S.Bottom>
       </S.Wrapper>
     </S.Page>
