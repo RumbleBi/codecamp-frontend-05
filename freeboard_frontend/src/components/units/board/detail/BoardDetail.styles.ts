@@ -68,26 +68,3 @@ export const BodyButton = styled.button`
     background-color: #ffd400;
     border-color: #ffd400;
 `;
-
-export const Bottom = styled.div`
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 80px;
-  background-color : red;
-  width: 100%;
-
-  }
-`;
-
-export const BottomWriteIcon = styled.img``;
-export const BottomCommentText = styled.div``;
-export const BottomCommentWriter = styled.input``;
-export const BottomCommentPassword = styled.input``;
-export const BottomCommentInput = styled.input``;
-export const BottomCommentSubmitBtn = styled.button``;
-export const BottomCommentShow = styled.div``;
-export const BottomCommentFaceIcon = styled.img``;
-export const BottomCommentRewriteIcon = styled.img``;
-export const BottomCommentDeleteIcon = styled.img``;
-export const BottomCommentDate = styled.div``;
-export const BottomCommentRate = styled.div``;

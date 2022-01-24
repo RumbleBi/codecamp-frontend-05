@@ -1,26 +1,24 @@
-import { ChangeEvent } from "react";
+import { MouseEvent } from "react";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { FETCH_BOARDS } from "./BoardList.queries";
-import { IBoardListProps } from "./BoardList.types";
 import BoardListUI from "./BoardList.presenter";
 import {
   IQuery,
   IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
 
-export default function BoardList(props: IBoardListProps) {
+export default function BoardList() {
   const router = useRouter();
   const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
     FETCH_BOARDS
   );
-
-  function onClickMoveBoardWrite(event: ChangeEvent<HTMLInputElement>) {
+  const onClickMoveBoardWrite = (event: MouseEvent<HTMLButtonElement>) => {
     router.push("/boards/new");
-  }
-  function onClickMoveBoardDetail(event: ChangeEvent<HTMLInputElement>) {
+  };
+  const onClickMoveBoardDetail = (event: MouseEvent<HTMLDivElement>) => {
     router.push(`/boards/${event.target.id}`);
-  }
+  };
 
   return (
     <BoardListUI
@@ -30,3 +28,4 @@ export default function BoardList(props: IBoardListProps) {
     />
   );
 }
+// 오류가 좀 있다 왜 문제냐고 ㅡㅡ

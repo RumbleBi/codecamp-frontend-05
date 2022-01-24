@@ -27,7 +27,7 @@ export default function BoardDetail() {
       alert(`삭제가 되었습니다.`);
       router.push("/boards/");
     } catch (error) {
-      alert(error.message);
+      alert("통신에러"); // alert(error.message); 개체가 알 수 없는 형식입니다.. 뭐임??
     }
   };
 

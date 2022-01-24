@@ -1,11 +1,11 @@
-import { ChangeEvent } from "react";
+import { MouseEvent } from "react";
 
 export interface IBoardListProps {}
 
 export interface IBoardListUIProps {
   data?: any;
   el?: any;
-  index: any;
-  onClickMoveBoardDetail: (event: ChangeEvent<HTMLInputElement>) => void;
-  onClickMoveBoardWrite: (event: ChangeEvent<HTMLInputElement>) => void;
+  index: number;
+  onClickMoveBoardDetail: (event: MouseEvent<HTMLDivElement>) => void;
+  onClickMoveBoardWrite: (event: MouseEvent<HTMLButtonElement>) => void;
 }
