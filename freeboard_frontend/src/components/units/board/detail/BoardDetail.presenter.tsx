@@ -20,6 +20,8 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
         <S.Body>
           <S.BodyTitle>{props.data?.fetchBoard?.title}</S.BodyTitle>
           <S.BodyContents>{props.data?.fetchBoard?.contents}</S.BodyContents>
+        </S.Body>
+        <S.BodyButtonWrapper>
           <S.BodyButton onClick={props.onClickMoveToList}>
             목록으로
           </S.BodyButton>
@@ -29,13 +31,22 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
           <S.BodyButton onClick={props.onClickDeleteBoard}>
             삭제하기
           </S.BodyButton>
-        </S.Body>
+        </S.BodyButtonWrapper>
         <S.Bottom>
           <S.BottomWriteIcon></S.BottomWriteIcon>
           <S.BottomCommentText></S.BottomCommentText>
-          <S.BottomCommentWriter placeholder="작성자"></S.BottomCommentWriter>
-          <S.BottomCommentPassword placeholder="비밀번호"></S.BottomCommentPassword>
-          <S.BottomCommentInput placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 당사자에게 있습니다."></S.BottomCommentInput>
+          <S.BottomCommentWriter
+            type="text"
+            placeholder="작성자"
+          ></S.BottomCommentWriter>
+          <S.BottomCommentPassword
+            type="password"
+            placeholder="비밀번호"
+          ></S.BottomCommentPassword>
+          <S.BottomCommentInput
+            type="textarea"
+            placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 당사자에게 있습니다."
+          ></S.BottomCommentInput>
           <S.BottomCommentSubmitBtn>등록하기</S.BottomCommentSubmitBtn>
           <S.BottomCommentShow>
             <S.BottomCommentFaceIcon></S.BottomCommentFaceIcon>
