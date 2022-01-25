@@ -13,6 +13,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             onChange={props.WriterInputCheck} // 컨테이너의 WriterInputCheck(event) 함수를 실행한다. 그러면 받는 입장에서 정의를 해줘야한다.
             placeholder="이름을 적어주세요."
             defaultValue={props.data?.fetchBoard.writer}
+            // readOnly={!!props.data?.fetchBoard.writer} !! 이중타입연산자 boolean타입으로 만들때 쓴다
           />
           <S.ErrorMassage>{props.writerInputError}</S.ErrorMassage>
         </S.WrapperWriter>
