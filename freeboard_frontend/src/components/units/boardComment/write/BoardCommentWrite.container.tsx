@@ -39,18 +39,18 @@ export default function BoardCommentWrite() {
             contents: Contents,
             rating: 0,
           },
-          boardId: String(router.query.dynamic),
+          boardId: String(router.query.boardId),
         },
         refetchQueries: [
           {
             query: FETCH_BOARD_COMMENTS,
-            variables: { boardId: String(router.query.dynamic) },
+            variables: { boardId: String(router.query.boardId) },
           },
         ],
       });
       setWriter("");
     } catch (error) {
-      alert("통신오류");
+      alert(error);
     }
   };
 

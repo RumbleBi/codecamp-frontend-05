@@ -19,7 +19,7 @@ export default function BoardCommentList() {
     Pick<IQuery, "fetchBoardComments">,
     IQueryFetchBoardCommentsArgs
   >(FETCH_BOARD_COMMENTS, {
-    variables: { boardId: String(router.query.dynamic) },
+    variables: { boardId: String(router.query.boardId) },
   });
 
   const [deleteBoardComment] = useMutation<
@@ -39,7 +39,7 @@ export default function BoardCommentList() {
         refetchQueries: [
           {
             query: FETCH_BOARD_COMMENTS,
-            variables: { boardId: router.query.dynamic },
+            variables: { boardId: router.query.boardId },
           },
         ],
       });

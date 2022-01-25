@@ -22,7 +22,8 @@ export default function BoardListUI(props: IBoardListUIProps) {
         </S.ListWrapperBody>
       ))}
       <S.BoardCreate onClick={props.onClickMoveBoardWrite}>
-        게시물등록하기
+        <S.WriteIcon src="/images/board/list/write_icon.png" />
+        <span>게시물등록하기</span>
       </S.BoardCreate>
     </S.Wrapper>
   );

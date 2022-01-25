@@ -40,7 +40,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
       </S.WrapperName>
       <S.Content>내용</S.Content>
       <S.ContentInContent
-        type="textarea"
         onChange={props.ContentInputCheck}
         placeholder="내용을 입력해 주세요."
         defaultValue={props.data?.fetchBoard.contents}
@@ -54,7 +53,11 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
       <S.AddressDetail1 type="text" />
       <S.AddressDetail2 type="text" />
       <S.Youtube>유튜브</S.Youtube>
-      <S.YoutubeLink type="text" placeholder="링크를 복사해주세요." />
+      <S.YoutubeUrl
+        placeholder="링크를 넣어주세요."
+        onChange={props.onChangeYoutubeUrl}
+        defaultValue={props.data?.fetchBoard.youtubeUrl}
+      />
       <S.Picture>사진 첨부</S.Picture>
       <S.WrapperPicture>
         <S.PictureDetail>+ Upload</S.PictureDetail>

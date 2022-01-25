@@ -152,9 +152,11 @@ export const Youtube = styled.div`
   font-size: 16px;
 `;
 
-export const YoutubeLink = styled.input`
-  width: 100%;
-  height: 40px;
+export const YoutubeUrl = styled.input`
+  width: 996px;
+  height: 52px;
+  padding-left: 16px;
+  border: 1px solid #bdbdbd;
 `;
 
 export const Picture = styled.div`

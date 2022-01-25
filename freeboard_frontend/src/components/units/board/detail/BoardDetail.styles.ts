@@ -1,3 +1,4 @@
+import ReactPlayer from "react-player";
 import styled from "@emotion/styled";
 
 export const Page = styled.div`
@@ -31,6 +32,9 @@ export const HeaderForm = styled.div`
   display: flex;
   flex-direction: row;
 `;
+
+export const HeaderAvatarIcon = styled.img``;
+
 export const HeaderFormWriter = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,6 +47,9 @@ export const Body = styled.div`
   background-color: blue;
 `;
 
+export const HeaderLocationIcon = styled.img``;
+export const HeaderLinkIcon = styled.img``;
+
 export const BodyTitle = styled.div`
   font-size: 40px;
   padding-top: 80px;
@@ -51,6 +58,15 @@ export const BodyContents = styled.div`
   padding-top: 40px;
   padding-bottom: 120px;
 `;
+
+export const BodyYoutube = styled(ReactPlayer)`
+  margin: auto;
+`;
+
+export const BodyLikeIcon = styled.img``;
+export const BodyLikeCount = styled.div``;
+export const BodyDislikeIcon = styled.img``;
+export const BodyDislikeCount = styled.div``;
 
 export const BodyButtonWrapper = styled.div`
   flex-direction: row;
@@ -68,3 +84,5 @@ export const BodyButton = styled.button`
     background-color: #ffd400;
     border-color: #ffd400;
 `;
+
+export const Bottom = styled.div``;

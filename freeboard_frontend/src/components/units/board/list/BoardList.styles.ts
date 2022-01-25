@@ -39,16 +39,23 @@ export const ListIndex = styled.div`
 `;
 
 export const BoardCreate = styled.button`
-  margin: 200px 0px 0px 1100px;
+  margin: 200px 0px 0px 1050px;
   width: 171px;
-  height: 52px;
+  height: 55px;
   font-size: 16px;
   background-color: white;
-  padding-left: 40px;
   border-radius: 10px;
   border-color: #f2f2f2;
   cursor: pointer;
   :hover {
-    background-color: #f5f2fc;
+    background-color: #ffd400;
   }
 `;
+
+// Icons
+export const WriteIcon = styled.img`
+  padding-right: 13px;
+`;
+
+// export const SearchIcon = styled.img``;
+// export const CalendarIcon = styled.img``;

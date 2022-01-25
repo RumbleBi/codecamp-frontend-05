@@ -28,4 +28,3 @@ export default function BoardList() {
     />
   );
 }
-// 오류가 좀 있다 왜 문제냐고 ㅡㅡ

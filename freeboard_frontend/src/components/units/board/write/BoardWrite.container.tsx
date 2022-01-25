@@ -19,6 +19,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
   const [isActive, setIsActive] = useState(false);
 
+  const [youtubeUrl, setYoutubeUrl] = useState("");
   const [writerInput, setWriterInput] = useState<string>("");
   const [passwordInput, setPasswordInput] = useState("");
   const [postInput, setPostInput] = useState("");
@@ -29,7 +30,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [postInputError, setPostInputError] = useState("");
   const [contentInputError, setContentInputError] = useState("");
 
-  function WriterInputCheck(event: ChangeEvent<HTMLInputElement>) {
+  const WriterInputCheck = (event: ChangeEvent<HTMLInputElement>) => {
     setWriterInput(event.target.value);
     if (
       event.target.value &&
@@ -42,8 +43,8 @@ export default function BoardWrite(props: IBoardWriteProps) {
     } else {
       setIsActive(false);
     }
-  }
-  function PasswordInputCheck(event: ChangeEvent<HTMLInputElement>) {
+  };
+  const PasswordInputCheck = (event: ChangeEvent<HTMLInputElement>) => {
     setPasswordInput(event.target.value);
     if (
       event.target.value &&
@@ -56,8 +57,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
     } else {
       setIsActive(false);
     }
-  }
-  function PostInputCheck(event: ChangeEvent<HTMLInputElement>) {
+  };
+
+  const PostInputCheck = (event: ChangeEvent<HTMLInputElement>) => {
     setPostInput(event.target.value);
     if (
       event.target.value &&
@@ -70,8 +72,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
     } else {
       setIsActive(false);
     }
-  }
-  function ContentInputCheck(event: ChangeEvent<HTMLInputElement>) {
+  };
+
+  const ContentInputCheck = (event: ChangeEvent<HTMLInputElement>) => {
     setContentInput(event.target.value);
     if (
       event.target.value &&
@@ -84,7 +87,11 @@ export default function BoardWrite(props: IBoardWriteProps) {
     } else {
       setIsActive(false);
     }
-  }
+  };
+
+  const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
+    setYoutubeUrl(event.target.value);
+  };
 
   const onClickSubmit = async () => {
     if (writerInput === "") {
@@ -114,12 +121,14 @@ export default function BoardWrite(props: IBoardWriteProps) {
               password: passwordInput,
               title: postInput,
               contents: contentInput,
+              youtubeUrl: youtubeUrl,
             },
           },
         });
         router.push(`/boards/${result.data.createBoard._id}`);
       } catch (error) {
-        alert(error.message);
+        alert("통신에러");
+        console.log(error);
       }
     }
   };
@@ -137,21 +146,21 @@ export default function BoardWrite(props: IBoardWriteProps) {
     try {
       await updateBoard({
         variables: {
-          boardId: router.query.dynamic,
+          boardId: router.query.boardId,
           password: passwordInput,
           updateBoardInput: {
             title: postInput,
             contents: contentInput,
+            youtubeUrl: youtubeUrl,
           },
         },
       });
       alert("수정이 완료되었습니다.");
-      router.push(`/boards/${router.query.dynamic}`);
+      router.push(`/boards/${router.query.boardId}`);
     } catch (error) {
-      alert(error.message);
+      alert(error);
     }
   };
-  // onchange 안쪽 부분의 함수가 바인딩한다는 뜻, 이러한 것을 이벤트 핸들러함수 라고함
   // if("") === false
   // if("djdks") === true 문자열의 유무에 따라 참거짓 만들기 가능
   // focus 로 빈 문자열 발생시 문제되는 부분으로 포커싱하도록 구현할 예정.
@@ -171,6 +180,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       isActive={isActive} // boards/new 에서 온 데이터!!
       data={props.data} // boards/edit 페이지에서 온 데이터구나!!
       isEdit={props.isEdit} // boards/new 에서 온 데이터!!
+      onChangeYoutubeUrl={onChangeYoutubeUrl}
       // props. 은 boards/new 에서 받아온 것들. 그냥 적힌애들은 여기서 선언된 함수들. 그것들을 프리젠터로 보낸다는 뜻이다.
     />
   );

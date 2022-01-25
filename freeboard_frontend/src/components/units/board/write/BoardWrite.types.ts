@@ -16,7 +16,7 @@ export interface IBoardWriteUIProps {
   passwordInputError: string;
   PostInputCheck: (event: ChangeEvent<HTMLInputElement>) => void;
   postInputError: string;
-  ContentInputCheck: (event: ChangeEvent<HTMLInputElement>) => void;
+  ContentInputCheck: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   contentInputError: string;
   onClickSubmit: () => void;
   onClickUpdate: () => void;
