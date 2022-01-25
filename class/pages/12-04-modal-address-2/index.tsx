@@ -27,7 +27,7 @@ export default function ModalCustomPage() {
   };
 
   return (
-    // 2번 rerendering이 일어난다. && 연산자를 사용해서
+    // 2번 rerendering이 일어난다. && 연산자를 사용해서!
     <>
       <Button type="primary" onClick={showModal}>
         우편번호검색
