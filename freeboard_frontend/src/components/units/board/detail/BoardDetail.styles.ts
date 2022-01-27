@@ -33,6 +33,7 @@ export const Header = styled.div`
 export const HeaderForm = styled.div`
   display: flex;
 `;
+// 상단 아이콘들 정리할 시간
 export const HeaderInfo = styled.div``;
 export const HeaderAvatarIcon = styled.img``;
 export const HeaderFormWriter = styled.div``;
