@@ -101,6 +101,7 @@ export const ContentInContent = styled.textarea`
   padding-top: 1vh;
   padding-left: 1vw;
   border: 1px solid #bdbdbd;
+  resize: none;
 `;
 
 export const Address = styled.div`

@@ -6,17 +6,17 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
     <S.Wrapper>
       <S.Header>
         <S.HeaderForm>
-          <S.HeaderAvatarIcon src="/images/avatar_icon40X40.png" />
           <S.HeaderInfo>
+            <S.HeaderAvatarIcon src="/images/avatar_icon40X40.png" />
             <S.HeaderFormWriter>
               {props.data?.fetchBoard?.writer}
             </S.HeaderFormWriter>
             <S.HeaderFormCreateAt>
               {getDate(props.data?.fetchBoard.createAt)}
             </S.HeaderFormCreateAt>
+            <S.HeaderLocationIcon src="/images/board/detail/location_icon.png" />
+            <S.HeaderLinkIcon src="/images/board/detail/link_icon.png" />
           </S.HeaderInfo>
-          <S.HeaderLocationIcon src="/images/board/detail/location_icon.png" />
-          <S.HeaderLinkIcon src="/images/board/detail/link_icon.png" />
         </S.HeaderForm>
       </S.Header>
       <S.Body>
@@ -24,8 +24,8 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
         <S.BodyContents>{props.data?.fetchBoard?.contents}</S.BodyContents>
         <S.BodyYoutube
           url={props.data?.fetchBoard.youtubeUrl}
-          width="20vw"
-          height="15vh"
+          width="600px"
+          height="350px"
         />
         <S.BodyLikeIcon
           onClick={props.onClickLikeBoard}

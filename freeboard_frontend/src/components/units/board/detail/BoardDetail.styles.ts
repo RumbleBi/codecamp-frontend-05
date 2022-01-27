@@ -27,19 +27,24 @@ export const Wrapper = styled.div`
 `;
 export const Header = styled.div`
   border-bottom: 1px solid #bdbdbd;
-  padding-bottom: 3vh;
-  width: 100%;
+  padding-bottom: 1vh;
+  width: 85vw;
 `;
-export const HeaderForm = styled.div`
+export const HeaderForm = styled.div``;
+export const HeaderInfo = styled.div`
   display: flex;
+  padding-top: 2vh;
 `;
-// 상단 아이콘들 정리할 시간
-export const HeaderInfo = styled.div``;
 export const HeaderAvatarIcon = styled.img``;
-export const HeaderFormWriter = styled.div``;
-export const HeaderFormCreateAt = styled.div``;
 export const HeaderLocationIcon = styled.img``;
 export const HeaderLinkIcon = styled.img``;
+
+export const HeaderFormWriter = styled.div`
+  font-size: 24px;
+`;
+export const HeaderFormCreateAt = styled.div`
+  font-size: 24px;
+`;
 
 export const Body = styled.div`
   width: 100%;
@@ -53,7 +58,7 @@ export const BodyTitle = styled.div`
   padding-right: 3vw;
 `;
 export const BodyContents = styled.div`
-  height: 60vh;
+  height: 30vh;
   margin-top: 3vh;
   padding-top: 2vh;
   padding-left: 3vw;
@@ -61,7 +66,7 @@ export const BodyContents = styled.div`
   font-size: 18px;
 `;
 
-export const BodyYoutube = styled(ReactPlayer)``;
+export const BodyYoutube = styled(ReactPlayer)``; // 유튜브이슈
 
 export const BodyLikeIcon = styled.img`
   margin-bottom: 2vh;
