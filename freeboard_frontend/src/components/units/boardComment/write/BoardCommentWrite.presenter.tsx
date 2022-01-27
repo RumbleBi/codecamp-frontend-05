@@ -3,15 +3,15 @@ import { IBoardCommentWriteUIProps } from "./BoardCommentWrite.types";
 export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
   return (
     <S.Wrapper>
-      <S.PencilIcon src="" />
+      <S.PencilIcon src="/images/boardComment/write/pencil.png" />
       <S.TEXT>댓글</S.TEXT>
       <S.InputWrapper>
-        <S.InputWriterPassword
+        <S.InputWriterAndPassword
           placeholder="작성자"
           onChange={props.onChangeWriter}
           value={props.Writer || ""}
         />
-        <S.InputWriterPassword
+        <S.InputWriterAndPassword
           type="password"
           placeholder="비밀번호"
           onChange={props.onChangePassword}

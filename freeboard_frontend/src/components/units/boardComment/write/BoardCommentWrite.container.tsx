@@ -50,7 +50,7 @@ export default function BoardCommentWrite() {
       });
       setWriter("");
     } catch (error) {
-      alert(error);
+      if (error instanceof Error) alert(error.message);
     }
   };
 

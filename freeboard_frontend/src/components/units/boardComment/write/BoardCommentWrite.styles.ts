@@ -1,48 +1,69 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1200px;
-  margin: 0px 100px;
+  width: 90vw;
+  height: 80vh;
 `;
 
-export const PencilIcon = styled.img``;
+export const PencilIcon = styled.img`
+  margin-right: 1vw;
+  margin-bottom: 1vh;
+`;
 
-export const TEXT = styled.span``;
+export const TEXT = styled.span`
+  display: inline-block;
+  font-size: 18px;
+  margin-bottom: 2vh;
+`;
 
 export const InputWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
 `;
 
-export const InputWriterPassword = styled.input`
-  width: 180px;
-  height: 52px;
-  border: 1px solid gray;
+export const InputWriterAndPassword = styled.input`
+  font-size: 18px;
+  width: 10vw;
+  height: 4vh;
+  border: 1px solid black;
+  padding-left: 1vw;
+  margin-right: 1vw;
 `;
 
 export const ContentsWrapper = styled.div`
+  margin-top: 1vh;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid black;
 `;
 
 export const Contents = styled.textarea`
-  width: 100%;
-  min-height: 100px;
+  font-size: 16px;
+  width: 89vw;
+  min-height: 15vh;
   border: none;
-  border-bottom: 1px solid gray;
+  padding-top: 1vh;
+  padding-left: 1vh;
+  resize: none;
 `;
 
 export const ContentsInfo = styled.div`
-  width: 100%;
-  height: 50px;
+  margin-top: 1vh;
+  margin-left: 1vw;
   color: gray;
 `;
 
 export const ContentsBtn = styled.button`
-  width: 100px;
-  height: 50px;
-  background-color: black;
-  cursor: pointer;
+  font-size: 16px;
+  width: 6vw;
+  height: 5vh;
+  margin-left: 82vw;
+  margin-bottom: 1vh;
+  background-color: #bdbdbd;
+  :hover {
+    cursor: pointer;
+    background-color: #ffd400;
+  }
 `;

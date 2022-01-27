@@ -5,9 +5,9 @@ import BoardCommentList from "../../../src/components/units/boardComment/list/Bo
 export default function BoardDetailPage() {
   return (
     <>
-      <BoardDetail />;
-      <BoardCommentWrite />;
-      <BoardCommentList />;
+      <BoardDetail />
+      <BoardCommentWrite />
+      <BoardCommentList />
     </>
   );
 }

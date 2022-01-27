@@ -5,7 +5,7 @@ import { ChangeEvent } from "react";
 export default function ModalCustomPage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [, setPassword] = useState("");
-  const showModal = () => {
+  const test = () => {
     setIsModalVisible(true);
   };
 
@@ -23,8 +23,8 @@ export default function ModalCustomPage() {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
+      <Button type="primary" onClick={test}>
+        test
       </Button>
       <Modal
         title="Basic Modal"

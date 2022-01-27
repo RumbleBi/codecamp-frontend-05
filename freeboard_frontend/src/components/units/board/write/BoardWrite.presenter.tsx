@@ -28,8 +28,8 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <S.ErrorMassage>{props.passwordInputError}</S.ErrorMassage>
         </S.WrapperPassword>
       </S.WrapperProfile>
-      <S.Name>제목</S.Name>
       <S.WrapperName>
+        <S.Name>제목</S.Name>
         <S.NameContent
           type="text"
           onChange={props.PostInputCheck}
