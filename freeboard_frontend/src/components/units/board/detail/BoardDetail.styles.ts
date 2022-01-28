@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 90vw;
-  height: 140vh;
+  height: 200vh;
   margin-top: 5%;
   margin-bottom: 5%;
   border: 1px solid black;
@@ -30,19 +30,22 @@ export const Header = styled.div`
   padding-bottom: 1vh;
   width: 85vw;
 `;
-export const HeaderForm = styled.div``;
-export const HeaderInfo = styled.div`
-  display: flex;
-  padding-top: 2vh;
+export const HeaderForm = styled.span`
+  background-color: blue;
+  flex-
 `;
-export const HeaderAvatarIcon = styled.img``;
-export const HeaderLocationIcon = styled.img``;
+export const HeaderAvatarIcon = styled.img`
+  margin-left: 10vw;
+`;
+export const HeaderLocationIcon = styled.img`
+  margin-left: 50vw;
+`;
 export const HeaderLinkIcon = styled.img``;
 
-export const HeaderFormWriter = styled.div`
+export const HeaderFormWriter = styled.span`
   font-size: 24px;
 `;
-export const HeaderFormCreateAt = styled.div`
+export const HeaderFormCreateAt = styled.span`
   font-size: 24px;
 `;
 
@@ -66,19 +69,32 @@ export const BodyContents = styled.div`
   font-size: 18px;
 `;
 
+export const YoutubeWrapper = styled.div`
+  margin-top: 65vh;
+`;
 export const BodyYoutube = styled(ReactPlayer)``; // 유튜브이슈
 
+export const BodyReactWrapper = styled.div`
+  margin-top: 10vh;
+`;
 export const BodyLikeIcon = styled.img`
   margin-bottom: 2vh;
   margin-left: 41.5vw;
+  :hover {
+    cursor: pointer;
+  }
 `;
 export const BodyDislikeIcon = styled.img`
   margin-bottom: 2vh;
   margin-left: 3vw;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const BodyWrapperCount = styled.div`
   display: flex;
+  margin-top: 1vh;
 `;
 
 export const BodyLikeCount = styled.span`
@@ -95,6 +111,7 @@ export const BodyButtonWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10vh;
 `;
 export const BodyButton = styled.button`
   width: 14vw;
@@ -102,9 +119,10 @@ export const BodyButton = styled.button`
   background-color: white;
   border: 1px solid black;
   cursor: pointer;
-  margin: 0px 4vw;
+  margin: 0vh 4vw;
   font-size: 20px;
   :hover {
     border: 1px solid black;
     background-color: #ffd400;
+    cursor: pointer;
 `;

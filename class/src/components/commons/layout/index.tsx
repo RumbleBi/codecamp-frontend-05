@@ -14,7 +14,9 @@ const BodyWrapper = styled.div`
   display: flex;
 `;
 
-const LayoutBody = styled.div``;
+const LayoutBody = styled.div`
+  height: 100vh;
+`;
 
 const HIDDEN_HEADERS = [
   "/12-06-modal-address-refactoring",

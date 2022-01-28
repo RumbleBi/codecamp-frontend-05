@@ -45,3 +45,17 @@
 //     }
 //     if (a === b) return a;
 // }
+
+// 정수 제곱근 판별
+
+// function solution(n) {
+//     let x = 0;
+//     for ( x = 0; x <= n; x++) {
+//         if (x * x === n) {
+//             return (x + 1) * (x + 1);
+//         }
+//     }
+//     if (x*x !== n) return -1
+// }
+
+// MAP으로

@@ -6,35 +6,41 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
     <S.Wrapper>
       <S.Header>
         <S.HeaderForm>
-          <S.HeaderInfo>
-            <S.HeaderAvatarIcon src="/images/avatar_icon40X40.png" />
-            <S.HeaderFormWriter>
-              {props.data?.fetchBoard?.writer}
-            </S.HeaderFormWriter>
-            <S.HeaderFormCreateAt>
-              {getDate(props.data?.fetchBoard.createAt)}
-            </S.HeaderFormCreateAt>
-            <S.HeaderLocationIcon src="/images/board/detail/location_icon.png" />
-            <S.HeaderLinkIcon src="/images/board/detail/link_icon.png" />
-          </S.HeaderInfo>
+          <S.HeaderAvatarIcon src="/images/avatar_icon40X40.png" />
+
+          <S.HeaderFormWriter>
+            {props.data?.fetchBoard?.writer}
+          </S.HeaderFormWriter>
+          <S.HeaderFormCreateAt>
+            {getDate(props.data?.fetchBoard.createAt)}
+          </S.HeaderFormCreateAt>
+          <S.HeaderLocationIcon src="/images/board/detail/location_icon.png" />
+          <S.HeaderLinkIcon src="/images/board/detail/link_icon.png" />
         </S.HeaderForm>
       </S.Header>
       <S.Body>
         <S.BodyTitle>{props.data?.fetchBoard?.title}</S.BodyTitle>
         <S.BodyContents>{props.data?.fetchBoard?.contents}</S.BodyContents>
-        <S.BodyYoutube
-          url={props.data?.fetchBoard.youtubeUrl}
-          width="600px"
-          height="350px"
-        />
-        <S.BodyLikeIcon
-          onClick={props.onClickLikeBoard}
-          src="/images/board/detail/like_icon.png"
-        />
-        <S.BodyDislikeIcon
-          onClick={props.onClickDislikeBoard}
-          src="/images/board/detail/dislike_icon.png"
-        />
+        <S.YoutubeWrapper>
+          <S.BodyYoutube
+            url={props.data?.fetchBoard.youtubeUrl}
+            width="480px"
+            height="300px"
+            controls={true}
+            light={false}
+          />
+        </S.YoutubeWrapper>
+        <S.BodyReactWrapper>
+          <S.BodyLikeIcon
+            onClick={props.onClickLikeBoard}
+            src="/images/board/detail/like_icon.png"
+          />
+          <S.BodyDislikeIcon
+            onClick={props.onClickDislikeBoard}
+            src="/images/board/detail/dislike_icon.png"
+          />
+        </S.BodyReactWrapper>
+
         <S.BodyWrapperCount>
           <S.BodyDislikeCount>
             {props.data?.fetchBoard?.likeCount}

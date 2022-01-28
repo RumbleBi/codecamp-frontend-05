@@ -6,15 +6,15 @@ import "slick-carousel/slick/slick-theme.css";
 const Wrapper = styled.div`
   padding-left: 500px;
   padding-right: 500px;
-  height: 500px;
+  height: 200px;
   width: 1500px;
   background-color: skyblue;
   font-family: "myFont";
 `;
 
 const ImgBox = styled.img`
-  height: 350px;
-  width: 350px;
+  height: 100px;
+  width: 100px;
 `;
 
 const DivImage = styled.div`
