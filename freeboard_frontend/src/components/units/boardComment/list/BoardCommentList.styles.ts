@@ -17,3 +17,10 @@ export const CommentCreatedAt = styled.div``;
 export const CommentPencilIcon = styled.img``;
 
 export const CommentDeleteIcon = styled.img``;
+
+export const CommentListWrapper = styled.div`
+  height: 20vh;
+  overflow: auto;
+  width: 40vw;
+`;
+export const CommentListInfo = styled.span``;

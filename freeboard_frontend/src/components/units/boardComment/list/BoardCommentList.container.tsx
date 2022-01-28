@@ -47,5 +47,39 @@ export default function BoardCommentList() {
       alert("통신오류");
     }
   };
-  return <BoardCommentListUI data={data} onClickDelete={onClickDelete} />;
+
+  const { data: dataList, fetchMore } = useQuery(FETCH_BOARD_COMMENTS, {
+    variables: { page: 1 },
+  });
+
+  const onLoadMore = () => {
+    if (!dataList) return;
+    fetchMore({
+      variables: {
+        page: Math.ceil(dataList?.fetchBoardComments.length / 10) + 1,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.fetchBoardComments) {
+          return {
+            fetchBoardComments: [...prev.fetchBoardComments],
+          };
+        }
+        return {
+          fetchBoardComments: [
+            ...prev.fetchBoardComments,
+            ...fetchMoreResult.fetchBoardComments,
+          ],
+        };
+      },
+    });
+  };
+
+  return (
+    <BoardCommentListUI
+      data={data}
+      onClickDelete={onClickDelete}
+      dataList={dataList}
+      onLoadMore={onLoadMore}
+    />
+  );
 }

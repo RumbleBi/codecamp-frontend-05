@@ -1,5 +1,6 @@
 import * as S from "./BoardCommentList.styles";
 import { IBoardCommentListUIProps } from "./BoardCommentList.types";
+import InfiniteScroll from "react-infinite-scroller";
 
 export default function BoardCommentListUI(props: IBoardCommentListUIProps) {
   return (
@@ -21,6 +22,22 @@ export default function BoardCommentListUI(props: IBoardCommentListUIProps) {
           </S.WrapperComment>
         </S.Wrapper>
       ))}
+      <S.CommentListWrapper>
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={props.onLoadMore}
+          hasMore={true}
+          useWindow={false}
+        >
+          {props.dataList?.fetchBoardComments?.map((el) => (
+            <div key={el._id}>
+              <span>
+                제목: {el.title} 내용: {el.writer}
+              </span>
+            </div>
+          ))}
+        </InfiniteScroll>
+      </S.CommentListWrapper>
     </div>
   );
 }
