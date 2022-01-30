@@ -1,23 +1,45 @@
 import { ChangeEvent } from "react";
+import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IBoardWriteProps {
   isEdit: boolean; // container
   isActive: boolean;
-  data?: any; // 일단 10강에서 any로 설정하게 함.
+  data?: Pick<IQuery, "fetchBoard">;
 }
 
+export interface IUpdateBoardInput {
+  post?: string;
+  content?: string;
+  youtubeUrl?: string;
+  boardAddress?: {
+    zipcode?: string;
+    address?: string;
+    addressDetail?: string;
+  };
+}
 export interface IBoardWriteUIProps {
   isEdit: boolean; // presenter
   isActive: boolean;
-  data?: any;
-  WriterInputCheck: (event: ChangeEvent<HTMLInputElement>) => void;
-  writerInputError: string;
-  PasswordInputCheck: (event: ChangeEvent<HTMLInputElement>) => void;
-  passwordInputError: string;
-  PostInputCheck: (event: ChangeEvent<HTMLInputElement>) => void;
-  postInputError: string;
-  ContentInputCheck: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  contentInputError: string;
+  data?: Pick<IQuery, "fetchBoard">;
+  isOpen: boolean;
+  zipcode: string;
+  address: string;
+  addressDetail: string;
+
+  writerError: string;
+  passwordError: string;
+  postError: string;
+  contentError: string;
+
+  onChangeWriter: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangePost: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeContent: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  onChangeYoutubeUrl: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
+
+  onClickAddressSearch: () => void;
+  onSuccessAddressSearch: (data: any) => void;
   onClickSubmit: () => void;
   onClickUpdate: () => void;
 }

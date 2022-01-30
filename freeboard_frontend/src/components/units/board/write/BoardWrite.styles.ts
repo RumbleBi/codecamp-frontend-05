@@ -116,13 +116,13 @@ export const WrapperAddress = styled.div`
   margin-left: 7vw;
 `;
 
-export const AddressNumber = styled.input`
+export const Zipcode = styled.input`
   width: 5vw;
   height: 7vh;
   padding-left: 1vw;
 `;
 
-export const AddressSearch = styled.button`
+export const AddressSearchBtn = styled.button`
   width: 7vw;
   height: 7vh;
   margin-left: 2vw;
