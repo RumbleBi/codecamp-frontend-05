@@ -4,7 +4,7 @@ export default function LetCount() {
   function zzz() {
     count++;
     document.getElementById("qqq").innerText = count;
-    console.log("현재카운트" + count);
+    // console.log("현재카운트" + count);
   }
 
   return (
