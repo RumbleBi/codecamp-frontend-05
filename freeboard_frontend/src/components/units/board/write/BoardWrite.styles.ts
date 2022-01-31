@@ -226,15 +226,8 @@ export const RegisterBtn = styled.button`
   font-size: 24px;
   background-color: ${(props: IRegisterBtnProps) =>
     props.isActive === true ? "#FFD400" : "none"}
-
   :hover {
     cursor: ${(props: IRegisterBtnProps) =>
       props.isActive === true ? "pointer" : "default"};
   }
-`;
-
-export const Error = styled.div`
-  padding-top: 10px;
-  font-size: 14px;
-  color: red;
 `;

@@ -1,16 +1,21 @@
 import styled from "@emotion/styled";
+import { Rate } from "antd";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  width: 1200px;
+  height: 600px;
+  background-color: black;
+`;
 
 export const WrapperComment = styled.div``;
 
 export const Comment = styled.input``;
 
+export const WriterWrapper = styled.div``;
+
 export const CommentWriter = styled.div``;
 
 export const CommentAvatarIcon = styled.img``;
-
-export const CommentStar = styled.div``; // 임시 별박기 div맞는지 확인
 
 export const CommentCreatedAt = styled.div``;
 
@@ -24,3 +29,10 @@ export const CommentListWrapper = styled.div`
   width: 40vw;
 `;
 export const CommentListInfo = styled.span``;
+
+// ----------------------------------
+export const PasswordInput = styled.input``;
+
+export const CommentOptionWrapper = styled.div``;
+
+export const CommentStar = styled(Rate)``;

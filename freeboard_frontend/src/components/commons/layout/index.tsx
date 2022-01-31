@@ -1,33 +1,26 @@
 import styled from "@emotion/styled";
-import { ReactChild } from "react";
-import LayoutHeader from "../layout/header/index";
-import LayoutBanner from "./banner/index";
-import LayoutNavigation from "./navigation/index";
-import LayoutFooter from "./footer/index";
-import LayoutSidebar from "./sidebar/index";
-import { useRouter } from "next/router";
-interface IProps {
+import { Fragment, ReactChild } from "react";
+import LayoutHeader from "./header/LayoutHeader.container";
+import LayoutBanner from "./banner/LayoutBanner.container";
+import LayoutNavigation from "./navigation/LayoutNavigation.container";
+import LayoutFooter from "./footer/LayoutFooter.container";
+
+const LayoutBody = styled.div``;
+
+interface ILayoutProps {
   children: ReactChild;
 }
-const BodyWrapper = styled.div`
-  display: flex;
-`;
-const LayoutBody = styled.div``;
-export default function Layout(props: IProps) {
-  const router = useRouter();
-  console.log(router);
+
+export default function Layout(props: ILayoutProps) {
   // const HIDDEN_HEADERS = [];
   // const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath); // console.log 찍은 곳에서 asPath확인
   return (
-    <div>
+    <Fragment>
       <LayoutHeader />
       <LayoutBanner />
       <LayoutNavigation />
-      <BodyWrapper>
-        <LayoutSidebar />
-        <LayoutBody>{props.children}</LayoutBody>
-      </BodyWrapper>
+      <LayoutBody>{props.children}</LayoutBody>
       <LayoutFooter />
-    </div>
+    </Fragment>
   );
 }

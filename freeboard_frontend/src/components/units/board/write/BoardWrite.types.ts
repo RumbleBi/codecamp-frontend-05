@@ -2,8 +2,7 @@ import { ChangeEvent } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IBoardWriteProps {
-  isEdit: boolean; // container
-  isActive: boolean;
+  isEdit: boolean;
   data?: Pick<IQuery, "fetchBoard">;
 }
 

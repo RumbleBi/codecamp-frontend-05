@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-
+import { Rate } from "antd";
 export const Wrapper = styled.div`
   width: 90vw;
   height: 80vh;
@@ -15,6 +15,8 @@ export const TEXT = styled.span`
   font-size: 18px;
   margin-bottom: 2vh;
 `;
+
+export const Star = styled(Rate)``;
 
 export const InputWrapper = styled.div`
   display: flex;

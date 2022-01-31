@@ -1,7 +1,7 @@
-export interface IBoardDetailProps {}
+import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IBoardDetailUIProps {
-  data?: any;
+  data?: Pick<IQuery, "fetchBoard">;
   onClickMoveToList: () => void;
   onClickMoveToEdit: () => void;
   onClickDeleteBoard: () => void;

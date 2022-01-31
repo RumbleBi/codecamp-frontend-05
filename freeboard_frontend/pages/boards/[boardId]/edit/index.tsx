@@ -30,5 +30,5 @@ export default function BoardDetailPage() {
       variables: { boardId: String(router.query.boardId) },
     }
   );
-  return <BoardWrite isEdit={true} data={data} isActive={false} />;
+  return <BoardWrite isEdit={true} data={data} />;
 }

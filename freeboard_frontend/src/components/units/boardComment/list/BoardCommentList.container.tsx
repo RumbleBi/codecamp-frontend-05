@@ -11,10 +11,16 @@ import {
   IQuery,
   IQueryFetchBoardCommentsArgs,
 } from "../../../../commons/types/generated/types";
-// import { IBoardCommentListProps } from "./BoardCommentList.types";
+import { ChangeEvent, MouseEvent, useState } from "react";
+import { Modal } from "antd";
 
 export default function BoardCommentList() {
   const router = useRouter();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [password, setPassword] = useState("");
+  const [selectedId, setSelectedId] = useState("");
+
   const { data } = useQuery<
     Pick<IQuery, "fetchBoardComments">,
     IQueryFetchBoardCommentsArgs
@@ -27,14 +33,20 @@ export default function BoardCommentList() {
     IMutationDeleteBoardCommentArgs
   >(DELETE_BOARD_COMMENT);
 
-  const onClickDelete = async (event: any) => {
-    // 나중에 event: any 고치기
-    const Password = prompt("비밀번호를 입력하세요.");
+  const onClickDeleteModal = (event: MouseEvent<HTMLImageElement>) => {
+    setIsOpen(true);
+    setSelectedId(event.target.id);
+  };
+
+  const onChangeDeletePassword = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+  const onClickDelete = async () => {
     try {
       await deleteBoardComment({
         variables: {
-          password: Password,
-          boardCommentId: event.target.id,
+          password: password,
+          boardCommentId: selectedId,
         },
         refetchQueries: [
           {
@@ -43,13 +55,15 @@ export default function BoardCommentList() {
           },
         ],
       });
+      setIsOpen(false);
     } catch (error) {
-      alert("통신오류");
+      if (error instanceof Error)
+        Modal.error({ content: "BoardCommentList.container" });
     }
   };
 
   const { data: dataList, fetchMore } = useQuery(FETCH_BOARD_COMMENTS, {
-    variables: { page: 1 },
+    variables: { boardId: String(router.query.boardId), page: 1 },
   });
 
   const onLoadMore = () => {
@@ -77,9 +91,12 @@ export default function BoardCommentList() {
   return (
     <BoardCommentListUI
       data={data}
-      onClickDelete={onClickDelete}
       dataList={dataList}
+      isOpen={isOpen}
+      onClickDelete={onClickDelete}
       onLoadMore={onLoadMore}
+      onClickDeleteModal={onClickDeleteModal}
+      onChangeDeletePassword={onChangeDeletePassword}
     />
   );
 }

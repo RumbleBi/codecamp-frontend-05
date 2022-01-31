@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useQuery, useMutation } from "@apollo/client";
 import BoardDetailUI from "./BoardDetail.presenter";
+import { Modal } from "antd";
 import {
   FETCH_BOARD,
   DELETE_BOARD,
@@ -18,6 +19,7 @@ import {
 
 export default function BoardDetail() {
   const router = useRouter();
+
   const [deleteBoard] = useMutation<
     Pick<IMutation, "deleteBoard">,
     IMutationDeleteBoardArgs
@@ -67,10 +69,10 @@ export default function BoardDetail() {
       await deleteBoard({
         variables: { boardId: String(router.query.boardId) },
       });
-      alert(`삭제가 되었습니다.`);
+      Modal.success({ content: "삭제가 완료되었습니다." });
       router.push("/boards/");
     } catch (error) {
-      alert("통신에러"); // alert(error.message); 개체가 알 수 없는 형식입니다.. 뭐임??
+      Modal.error({ content: "통신에 문제가 있습니다." });
     }
   };
 

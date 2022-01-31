@@ -25,7 +25,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("");
-  const [writer, setWriter] = useState<string>("");
+  const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
   const [post, setPost] = useState("");
   const [content, setContent] = useState("");
@@ -37,6 +37,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
+    if (event.target.value !== "") {
+      setWriterError("");
+    }
     if (event.target.value && writer && password && post && content) {
       setIsActive(true);
     } else {
@@ -45,6 +48,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
   };
   const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
+    if (event.target.value !== "") {
+      setPasswordError("");
+    }
     if (event.target.value && writer && password && post && content) {
       setIsActive(true);
     } else {
@@ -54,6 +60,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
   const onChangePost = (event: ChangeEvent<HTMLInputElement>) => {
     setPost(event.target.value);
+    if (event.target.value !== "") {
+      setPasswordError("");
+    }
     if (event.target.value && writer && password && post && content) {
       setIsActive(true);
     } else {
@@ -63,6 +72,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
   const onChangeContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value);
+    if (event.target.value !== "") {
+      setContentError("");
+    }
     if (event.target.value && writer && password && post && content) {
       setIsActive(true);
     } else {
@@ -126,14 +138,14 @@ export default function BoardWrite(props: IBoardWriteProps) {
         });
         router.push(`/boards/${result.data.createBoard._id}`);
       } catch (error) {
-        Modal.error({ content: "통신오류." });
+        Modal.error({ content: "통신오류!!!" });
       }
     }
   };
 
   const onClickUpdate = async () => {
-    if (!writer && !post && !content) {
-      Modal.error({ content: "작성자, 제목, 내용중에 입력을 해야합니다." });
+    if (!post && !content) {
+      Modal.error({ content: "제목, 내용중에 입력을 해야합니다." });
       return;
     }
     if (!password) {
@@ -169,11 +181,11 @@ export default function BoardWrite(props: IBoardWriteProps) {
   return (
     <BoardWriteUI
       isOpen={isOpen}
-      isActive={isActive} // boards/new 에서 온 데이터
+      isActive={isActive}
       address={address}
       addressDetail={addressDetail}
       zipcode={zipcode}
-      data={props.data} // boards/edit 페이지에서 온 데이터
+      data={props.data} // boards/edit 에서 온 데이터
       isEdit={props.isEdit} // boards/new 에서 온 데이터
       onChangeWriter={onChangeWriter}
       onChangePassword={onChangePassword}

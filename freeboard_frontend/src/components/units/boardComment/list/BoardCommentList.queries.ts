@@ -9,8 +9,6 @@ export const FETCH_BOARD_COMMENTS = gql`
       rating
       user
       createdAt
-      updatedAt
-      deletedAt
     }
   }
 `;

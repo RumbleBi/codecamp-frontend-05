@@ -8,12 +8,16 @@ import {
 import { CREATE_BOARD_COMMENT } from "./BoardCommentWrite.queries";
 import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
 import BoardCommentWriteUI from "./BoardCommentWrite.presenter";
+import { Modal } from "antd";
 
 export default function BoardCommentWrite() {
   const router = useRouter();
-  const [Writer, setWriter] = useState("");
-  const [Password, setPassword] = useState("");
-  const [Contents, setContents] = useState("");
+
+  const [writer, setWriter] = useState("");
+  const [password, setPassword] = useState("");
+  const [content, setContent] = useState("");
+  const [star, setStar] = useState(0);
+
   const [createBoardComment] = useMutation<
     Pick<IMutation, "createBoardComment">,
     IMutationCreateBoardCommentArgs
@@ -25,8 +29,12 @@ export default function BoardCommentWrite() {
   const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
-  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setContents(event.target.value);
+  const onChangeContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(event.target.value);
+  };
+
+  const onChangeStar = (value: number) => {
+    setStar(value);
   };
 
   const onClickCommentWrite = async () => {
@@ -34,10 +42,10 @@ export default function BoardCommentWrite() {
       await createBoardComment({
         variables: {
           createBoardCommentInput: {
-            writer: Writer,
-            password: Password,
-            contents: Contents,
-            rating: 0,
+            writer: writer,
+            password: password,
+            contents: content,
+            rating: star,
           },
           boardId: String(router.query.boardId),
         },
@@ -49,19 +57,22 @@ export default function BoardCommentWrite() {
         ],
       });
       setWriter("");
+      // setPassword("");
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      if (error instanceof Error)
+        Modal.error({ content: "통신오류입니다(BoardCommentWrite.container)" });
     }
   };
 
   return (
     <BoardCommentWriteUI
+      content={content}
+      writer={writer}
       onChangeWriter={onChangeWriter}
       onChangePassword={onChangePassword}
-      onChangeContents={onChangeContents}
+      onChangeContent={onChangeContent}
       onClickCommentWrite={onClickCommentWrite}
-      Contents={Contents}
-      Writer={Writer}
+      onChangeStar={onChangeStar}
     />
   );
 }

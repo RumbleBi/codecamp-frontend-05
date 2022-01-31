@@ -10,13 +10,6 @@ export const CREATE_BOARD_COMMENT = gql`
       boardId: $boardId
     ) {
       _id
-      writer
-      contents
-      rating
-      user
-      createdAt
-      updatedAt
-      deletedAt
     }
   }
 `;

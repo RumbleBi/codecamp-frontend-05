@@ -38,6 +38,8 @@ export const ListIndex = styled.div`
   border-bottom: 1px solid gray;
 `;
 
+export const ListWrapperBottom = styled.div``;
+
 export const BoardCreate = styled.button`
   margin: 200px 0px 0px 1050px;
   width: 171px;
