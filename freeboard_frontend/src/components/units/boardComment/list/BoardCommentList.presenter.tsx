@@ -18,7 +18,7 @@ export default function BoardCommentListUI(props: IBoardCommentListUIProps) {
         </Modal>
       )}
       {props.data?.fetchBoardComments.map((el) => (
-        <S.Wrapper key={el?._id}>
+        <S.Wrapper key={el?._id} id={el?.writer}>
           <S.WrapperComment>
             <S.CommentAvatarIcon src="/images/avatar_icon40X40.png" />
             <S.WriterWrapper>

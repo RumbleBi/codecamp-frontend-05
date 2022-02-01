@@ -22,7 +22,7 @@ const FETCH_BOARD = gql`
   }
 `;
 
-export default function BoardDetailPage() {
+export default function BoardEditPage() {
   const router = useRouter();
   const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
     FETCH_BOARD,
