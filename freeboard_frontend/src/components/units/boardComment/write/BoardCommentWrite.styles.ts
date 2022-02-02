@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Rate } from "antd";
 export const Wrapper = styled.div`
   width: 90vw;
-  height: 80vh;
+  height: 10vh;
 `;
 
 export const PencilIcon = styled.img`

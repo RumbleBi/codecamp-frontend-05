@@ -23,10 +23,12 @@ export default function BoardListUI(props: IBoardListUIProps) {
         </S.ListWrapperBody>
       ))}
       <S.ListWrapperBottom>
-        <Paginations01 refetch={props.refetch} count={props.count} />
+        <S.Pagination01Wrapper>
+          <Paginations01 refetch={props.refetch} count={props.count} />
+        </S.Pagination01Wrapper>
         <S.BoardCreate onClick={props.onClickMoveBoardWrite}>
           <S.WriteIcon src="/images/board/list/write_icon.png" />
-          <span>게시물등록하기</span>
+          게시물등록하기
         </S.BoardCreate>
       </S.ListWrapperBottom>
     </S.Wrapper>

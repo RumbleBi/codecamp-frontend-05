@@ -58,7 +58,7 @@ export default function BoardCommentWrite() {
       });
       Modal.success({ content: "코멘트를 달았습니다." });
     } catch (error) {
-      if (error instanceof Error)
+      if (error /* instanceof Error */)
         Modal.error({ content: "통신오류입니다(BoardCommentWrite.container)" });
     }
   };
