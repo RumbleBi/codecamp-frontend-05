@@ -22,13 +22,15 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
         <S.BodyTitle>{props.data?.fetchBoard?.title}</S.BodyTitle>
         <S.BodyContents>{props.data?.fetchBoard?.contents}</S.BodyContents>
         <S.YoutubeWrapper>
-          <S.BodyYoutube
-            url={props.data?.fetchBoard?.youtubeUrl}
-            width="480px"
-            height="300px"
-            controls={true}
-            light={false}
-          />
+          {props.data?.fetchBoard.youtubeUrl && (
+            <S.BodyYoutube
+              url={props.data?.fetchBoard?.youtubeUrl}
+              width="480px"
+              height="300px"
+              controls={true}
+              light={false}
+            />
+          )}
         </S.YoutubeWrapper>
         <S.BodyReactWrapper>
           <S.BodyLikeIcon

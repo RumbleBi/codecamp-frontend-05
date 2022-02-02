@@ -17,7 +17,7 @@ export default function BoardCommentWrite() {
   const [password, setPassword] = useState("");
   const [content, setContent] = useState("");
   const [star, setStar] = useState(0);
-
+  // Pick 은 뽑는거, Omit은 제외하고 나머지들 부르기
   const [createBoardComment] = useMutation<
     Pick<IMutation, "createBoardComment">,
     IMutationCreateBoardCommentArgs
@@ -56,8 +56,7 @@ export default function BoardCommentWrite() {
           },
         ],
       });
-      setWriter("");
-      // setPassword("");
+      Modal.success({ content: "코멘트를 달았습니다." });
     } catch (error) {
       if (error instanceof Error)
         Modal.error({ content: "통신오류입니다(BoardCommentWrite.container)" });
@@ -66,8 +65,8 @@ export default function BoardCommentWrite() {
 
   return (
     <BoardCommentWriteUI
-      content={content}
       writer={writer}
+      content={content}
       onChangeWriter={onChangeWriter}
       onChangePassword={onChangePassword}
       onChangeContent={onChangeContent}

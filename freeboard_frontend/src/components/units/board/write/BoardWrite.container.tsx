@@ -133,9 +133,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
               contents: content,
               youtubeUrl: youtubeUrl,
               boardAddress: {
-                zipcode: zipcode,
-                address: address,
-                addressDetail: addressDetail,
+                zipcode,
+                address,
+                addressDetail,
               },
             },
           },

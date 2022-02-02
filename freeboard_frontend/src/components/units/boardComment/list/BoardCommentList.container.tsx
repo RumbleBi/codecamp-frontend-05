@@ -41,6 +41,7 @@ export default function BoardCommentList() {
   const onChangeDeletePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
+
   const onClickDelete = async () => {
     try {
       await deleteBoardComment({
@@ -62,15 +63,15 @@ export default function BoardCommentList() {
     }
   };
 
-  const { data: dataList, fetchMore } = useQuery(FETCH_BOARD_COMMENTS, {
-    variables: { boardId: String(router.query.boardId), page: 1 },
-  });
+  // const { data: dataList fetchMore } = useQuery(FETCH_BOARD_COMMENTS, {
+  //   variables: { boardId: String(router.query.boardId), page: 1 },
+  // });
 
-  const onLoadMore = () => {
+  /* const onLoadMore = () => {
     if (!dataList) return;
     fetchMore({
       variables: {
-        page: Math.ceil(dataList?.fetchBoardComments.length / 10) + 1,
+        page: Math.ceil(dataList?.fetchBoardComments?.length / 10) + 1,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult.fetchBoardComments) {
@@ -86,15 +87,15 @@ export default function BoardCommentList() {
         };
       },
     });
-  };
+  }; */
+  // onLoadMore={onLoadMore}
+  // dataList={dataList}
 
   return (
     <BoardCommentListUI
       data={data}
-      dataList={dataList}
       isOpen={isOpen}
       onClickDelete={onClickDelete}
-      onLoadMore={onLoadMore}
       onClickDeleteModal={onClickDeleteModal}
       onChangeDeletePassword={onChangeDeletePassword}
     />
