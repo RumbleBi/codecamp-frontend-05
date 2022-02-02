@@ -102,15 +102,19 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const onClickSubmit = async () => {
     if (writer === "") {
       setWriterError("작성자를 입력해주세요.");
+      window.scrollTo(100, 500);
     }
     if (password.length > 16 || password.length < 8) {
       setPasswordError("비밀번호를 8~16자리 사이로 입력해주세요.");
+      window.scrollTo(100, 500);
     }
     if (post === "") {
       setPostError("제목을 입력해주세요.");
+      window.scrollTo(100, 500);
     }
     if (content === "") {
       setContentError("내용을 입력해 주세요.");
+      window.scrollTo(100, 500);
     }
     if (
       writer !== "" &&
