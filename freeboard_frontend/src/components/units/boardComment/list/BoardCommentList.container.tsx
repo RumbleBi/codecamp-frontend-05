@@ -21,7 +21,7 @@ export default function BoardCommentList() {
   const [password, setPassword] = useState("");
   const [selectedId, setSelectedId] = useState("");
 
-  const { data } = useQuery<
+  const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchBoardComments">,
     IQueryFetchBoardCommentsArgs
   >(FETCH_BOARD_COMMENTS, {
@@ -66,18 +66,14 @@ export default function BoardCommentList() {
     }
   };
 
-  // const { data: dataList fetchMore } = useQuery(FETCH_BOARD_COMMENTS, {
-  //   variables: { boardId: String(router.query.boardId), page: 1 },
-  // });
-
-  /* const onLoadMore = () => {
-    if (!dataList) return;
+  const onLoadMore = () => {
+    if (!data) return;
     fetchMore({
       variables: {
-        page: Math.ceil(dataList?.fetchBoardComments?.length / 10) + 1,
+        page: Math.ceil(data.fetchBoardComments?.length / 10) + 1,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.fetchBoardComments) {
+        if (!fetchMoreResult?.fetchBoardComments) {
           return {
             fetchBoardComments: [...prev.fetchBoardComments],
           };
@@ -90,12 +86,11 @@ export default function BoardCommentList() {
         };
       },
     });
-  }; */
-  // onLoadMore={onLoadMore}
-  // dataList={dataList}
+  };
 
   return (
     <BoardCommentListUI
+      onLoadMore={onLoadMore}
       data={data}
       isOpen={isOpen}
       onClickDelete={onClickDelete}

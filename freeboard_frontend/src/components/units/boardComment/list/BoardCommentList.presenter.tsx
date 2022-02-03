@@ -1,7 +1,7 @@
 import * as S from "./BoardCommentList.styles";
 import { IBoardCommentListUIProps } from "./BoardCommentList.types";
 import { Modal } from "antd";
-// import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroller";
 
 // id={el?.writer} S.Wrapper key 옆에 넣기
 
@@ -39,14 +39,14 @@ export default function BoardCommentListUI(props: IBoardCommentListUIProps) {
             />
           </S.CommentOptionWrapper>
           <S.CommentCreatedAt>{el?.createdAt}</S.CommentCreatedAt>
-          {/* <S.CommentListWrapper>
+          <S.CommentListWrapper>
             <InfiniteScroll
               pageStart={0}
               loadMore={props.onLoadMore}
               hasMore={true}
               useWindow={false}
             >
-              {props.dataList?.fetchBoardComments.map((el) => (
+              {props.data?.fetchBoardComments.map((el) => (
                 <div key={el._id}>
                   <span>
                     글쓴이: {el.writer} 댓글: {el.contents}
@@ -54,7 +54,7 @@ export default function BoardCommentListUI(props: IBoardCommentListUIProps) {
                 </div>
               ))}
             </InfiniteScroll>
-          </S.CommentListWrapper> */}
+          </S.CommentListWrapper>
         </S.Wrapper>
       ))}
     </>
