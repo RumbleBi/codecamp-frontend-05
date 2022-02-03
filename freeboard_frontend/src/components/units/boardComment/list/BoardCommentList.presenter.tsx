@@ -8,6 +8,9 @@ import { Modal } from "antd";
 export default function BoardCommentListUI(props: IBoardCommentListUIProps) {
   return (
     <>
+      {/* 모달 부분은 1개이지만, 아래 map에서 뿌려주는 코드는 10개가 있는 것이다. 좋지않음. */}
+      1번째 댓글이랑 2번째 댓글을 삭제할 때, 새롭게 모달이 꺼졌다 켜졌다 하면서
+      state의 변수가 바뀐다.
       {props.isOpen && (
         <Modal visible={true} onOk={props.onClickDelete}>
           <div>비밀번호입력: </div>

@@ -35,7 +35,9 @@ export default function BoardCommentList() {
 
   const onClickDeleteModal = (event: MouseEvent<HTMLImageElement>) => {
     setIsOpen(true);
-    setSelectedId(event.target.id);
+    // 타입을 찾지 못하는 경우 instanceof 로 속해있음을 알려준다.
+    if (event.target instanceof Element) setSelectedId(event.target.id);
+    // id를 저장해주는 것 댓글 삭제이므로 페이지 삭제가 아니니까 새로 id를 만들어준다.
   };
 
   const onChangeDeletePassword = (event: ChangeEvent<HTMLInputElement>) => {
@@ -59,6 +61,7 @@ export default function BoardCommentList() {
       setIsOpen(false);
     } catch (error) {
       if (error instanceof Error)
+        // 타입을 찾지 못하는 경우 instanceof 로 속해있음을 알려준다.
         Modal.error({ content: "BoardCommentList.container" });
     }
   };
