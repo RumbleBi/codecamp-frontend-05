@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function MyComponent() {
   const [count, setCount] = useState(0);
+  const [clicked, setClicked] = useState(false);
   const inputRef = useRef(null);
   const router = useRouter();
 
@@ -15,17 +16,18 @@ export default function MyComponent() {
     console.log("컴포넌트가 변경되었습니다~");
   }, []);
 
-  useEffect(() => {
-    alert("컴포넌트가 제거됩니다~");
-  }, []);
-
   const onClickButton = () => {
     setCount((prev) => prev + 1);
   };
 
   const onClickMove = () => {
+    setClicked(true);
     router.push("/");
   };
+
+  useEffect(() => {
+    alert("컴포넌트가 제거됩니다~");
+  }, [clicked]);
 
   console.log("마운트 시작");
   return (
