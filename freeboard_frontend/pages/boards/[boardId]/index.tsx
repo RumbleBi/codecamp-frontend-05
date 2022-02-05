@@ -2,15 +2,16 @@ import BoardDetail from "../../../src/components/units/board/detail/BoardDetail.
 import BoardCommentWrite from "../../../src/components/units/boardComment/write/BoardCommentWrite.container";
 import BoardCommentList from "../../../src/components/units/boardComment/list/BoardCommentList.container";
 import { useRouter } from "next/router";
+import { Fragment } from "react";
 
 export default function BoardDetailPage() {
   const router = useRouter();
   console.log(router);
   return (
-    <>
+    <Fragment>
       <BoardDetail />
       <BoardCommentWrite />
       <BoardCommentList />
-    </>
+    </Fragment>
   );
 }

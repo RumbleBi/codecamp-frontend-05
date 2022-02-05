@@ -4,13 +4,20 @@ import { ChangeEvent, useState } from "react";
 import {
   IMutation,
   IMutationCreateBoardCommentArgs,
+  IMutationUpdateBoardCommentArgs,
 } from "../../../../commons/types/generated/types";
-import { CREATE_BOARD_COMMENT } from "./BoardCommentWrite.queries";
+import {
+  CREATE_BOARD_COMMENT,
+  UPDATE_BOARD_COMMENT,
+} from "./BoardCommentWrite.queries";
 import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
 import BoardCommentWriteUI from "./BoardCommentWrite.presenter";
 import { Modal } from "antd";
-
-export default function BoardCommentWrite() {
+import {
+  IBoardCommentWriteProps,
+  IUpdateBoardCommentInput,
+} from "./BoardCommentWrite.types";
+export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
   const router = useRouter();
 
   const [writer, setWriter] = useState("");
@@ -18,10 +25,6 @@ export default function BoardCommentWrite() {
   const [content, setContent] = useState("");
   const [star, setStar] = useState(0);
   // Pick 은 뽑는거, Omit은 제외하고 나머지들 부르기
-  const [createBoardComment] = useMutation<
-    Pick<IMutation, "createBoardComment">,
-    IMutationCreateBoardCommentArgs
-  >(CREATE_BOARD_COMMENT);
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
@@ -36,6 +39,11 @@ export default function BoardCommentWrite() {
   const onChangeStar = (value: number) => {
     setStar(value);
   };
+
+  const [createBoardComment] = useMutation<
+    Pick<IMutation, "createBoardComment">,
+    IMutationCreateBoardCommentArgs
+  >(CREATE_BOARD_COMMENT);
 
   const onClickCommentWrite = async () => {
     try {
@@ -62,16 +70,58 @@ export default function BoardCommentWrite() {
         Modal.error({ content: "통신오류입니다(BoardCommentWrite.container)" });
     }
   };
+  const [updateBoardComment] = useMutation<
+    Pick<IMutation, "updateBoardComment">,
+    IMutationUpdateBoardCommentArgs
+  >(UPDATE_BOARD_COMMENT);
+
+  const onClickCommentUpdate = async () => {
+    if (!content) {
+      Modal.error({ content: "내용이 수정되어야 합니다." });
+      return;
+    }
+    if (!password) {
+      Modal.error({ content: "비밀번호가 틀립니다." });
+      return;
+    }
+
+    try {
+      const updateBoardCommentInput: IUpdateBoardCommentInput = {};
+      if (content) updateBoardCommentInput.contents = content;
+      if (star !== props.el?.rating) updateBoardCommentInput.rating = star;
+
+      await updateBoardComment({
+        variables: {
+          updateBoardCommentInput,
+          password,
+          boardCommentId: props.el?._id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD_COMMENTS,
+            variables: { boardId: router.query.boardId },
+          },
+        ],
+      });
+      props.setIsEdit(false);
+
+      console.log(props);
+    } catch (error) {
+      Modal.error({ content: "통신오류입니다(BoardCommentUpdate)" });
+    }
+  };
 
   return (
     <BoardCommentWriteUI
-      writer={writer}
       content={content}
       onChangeWriter={onChangeWriter}
       onChangePassword={onChangePassword}
       onChangeContent={onChangeContent}
       onClickCommentWrite={onClickCommentWrite}
+      onClickCommentUpdate={onClickCommentUpdate}
       onChangeStar={onChangeStar}
+      isEdit={props.isEdit}
+      el={props.el}
     />
   );
 }
