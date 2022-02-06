@@ -1,14 +1,12 @@
 import styled from "@emotion/styled";
 import { Rate } from "antd";
 export const Wrapper = styled.div`
-  width: 90vw;
-  height: 10vh;
+  width: 80vw;
+  height: 40vh;
+  background-color: blue;
 `;
 
-export const PencilIcon = styled.img`
-  margin-right: 1vw;
-  margin-bottom: 1vh;
-`;
+export const PencilIcon = styled.img``;
 
 export const TEXT = styled.span`
   display: inline-block;
@@ -35,17 +33,13 @@ export const ContentsWrapper = styled.div`
   margin-top: 1vh;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
-  border-left: 1px solid gray;
-  border-right: 1px solid black;
 `;
 
 export const Contents = styled.textarea`
   font-size: 16px;
-  width: 89vw;
+  width: 80vw;
   min-height: 15vh;
-  border: none;
+  border: 1px solid gray;
   padding-top: 1vh;
   padding-left: 1vh;
   resize: none;
@@ -61,8 +55,9 @@ export const ContentsBtn = styled.button`
   font-size: 16px;
   width: 6vw;
   height: 5vh;
-  margin-left: 82vw;
+  margin-left: 73vw;
   margin-bottom: 1vh;
+  border: none;
   background-color: #bdbdbd;
   :hover {
     cursor: pointer;

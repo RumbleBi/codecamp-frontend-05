@@ -95,7 +95,11 @@ export default function BoardCommentListItemsUI(
         </S.CommentListWrapper>
       )}
       {isEdit && (
-        <BoardCommentWrite isEdit={true} setIsEdit={setIsEdit} el={props.el} />
+        <BoardCommentWrite
+          isEdit={isEdit}
+          setIsEdit={setIsEdit}
+          el={props.el}
+        />
       )}
     </Fragment>
   );

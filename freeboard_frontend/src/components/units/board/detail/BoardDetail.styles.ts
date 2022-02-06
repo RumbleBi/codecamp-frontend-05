@@ -1,23 +1,12 @@
 import ReactPlayer from "react-player";
 import styled from "@emotion/styled";
 
-export const Page = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 90vw;
-  height: 200vh;
-  margin-top: 5%;
-  margin-right: 3vw;
-  margin-bottom: 5%;
-  font-family: AppleFontKO;
-`;
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 90vw;
-  height: 200vh;
+  height: 170vh;
   margin-top: 5%;
   margin-bottom: 5%;
   border: 1px solid black;
