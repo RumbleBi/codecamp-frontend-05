@@ -1,13 +1,33 @@
 import { createConnection } from "typeorm";
 import { ApolloServer, gql } from "apollo-server";
-import { Board } from "./Board.postgres";
+import { Board, Product, CreateProduct } from "./Board.postgres";
 
 const typeDefs = gql`
+  
   type Board {
     number: Int
     writer: String
     title: String
     age: Int
+  }
+  type Products {
+    _id: ID
+    seller: String
+    name: String
+    detail: String
+    price: Int
+    createdAt: Date
+  }
+  type Product {
+    _id: ID
+    seller: String
+    name: String
+    detail: String
+    price: Int
+    createdAt: Date
+  }
+  type CreateProduct {
+
   }
   type Query {
     fetchBoards: [Board]
@@ -17,13 +37,31 @@ const typeDefs = gql`
     title: String
     age: Int
   }
+  input CreateProductInput {
+    name: String
+    detail: String
+    price: Int
+  }
   type Mutation {
     createBoard(createBoardInput: CreateBoardInput): String
     deleteBoard(number: Int!): String
+    createProduct(createProductInput: CreateProductInput): String
   }
 `;
 const resolvers = {
   Query: {
+    fetchProducts: async () => {
+      const result = await Product.find();
+      console.log(result);
+      return result;
+    },
+
+    fetchProduct: async () => {
+      const result = await Product.find();
+      console.log(result);
+      return result;
+    },
+
     fetchBoards: async () => {
       // DB와 연결
       // find() => 다찾아와줘
@@ -33,6 +71,11 @@ const resolvers = {
     },
   },
   Mutation: {
+    createProduct: async (_: any, args: any) => {
+      await CreateProduct.insert({
+        ...args.createProductInput,
+      });
+    },
     createBoard: async (_: any, args: any) => {
       // DB와 연결
       await Board.insert({
