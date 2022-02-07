@@ -9,7 +9,9 @@ export const Wrapper = styled.div`
   background-color: red;
 `;
 
-export const CommentAvatarIcon = styled.img``;
+export const CommentAvatarIcon = styled.img`
+padding-right
+`;
 
 export const WrapperComment = styled.div``;
 
