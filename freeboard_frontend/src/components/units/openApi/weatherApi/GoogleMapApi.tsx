@@ -48,13 +48,3 @@ function GoogleMapApi(props: any) {
 export default GoogleApiWrapper({
   apiKey: "AIzaSyAx67Fy71fEWAOSFNUjfmsimCkbs8ynyqQ",
 })(GoogleMapApi);
-
-// export default function GoogleApiWrapper() {
-//   return (
-//     <Fragment>
-//       <Wrapper>
-
-//       </Wrapper>
-//     </Fragment>
-//   )
-// }
