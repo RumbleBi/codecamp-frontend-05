@@ -4,20 +4,23 @@ import { IBoardDetailUIProps } from "./BoardDetail.types";
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
   return (
     <S.Wrapper>
-      <S.Header>
-        <S.HeaderForm>
+      <S.HeaderForm>
+        <S.AvatarWrapper>
           <S.HeaderAvatarIcon src="/images/avatar_icon40X40.png" />
-
-          <S.HeaderFormWriter>
-            {props.data?.fetchBoard?.writer}
-          </S.HeaderFormWriter>
-          <S.HeaderFormCreateAt>
-            {getDate(props.data?.fetchBoard.createdAt)}
-          </S.HeaderFormCreateAt>
-          <S.HeaderLocationIcon src="/images/board/detail/location_icon.png" />
+          <S.Info>
+            <S.HeaderFormWriter>
+              {props.data?.fetchBoard?.writer}
+            </S.HeaderFormWriter>
+            <S.HeaderFormCreateAt>
+              {getDate(props.data?.fetchBoard.createdAt)}
+            </S.HeaderFormCreateAt>
+          </S.Info>
+        </S.AvatarWrapper>
+        <S.IconWrapper>
           <S.HeaderLinkIcon src="/images/board/detail/link_icon.png" />
-        </S.HeaderForm>
-      </S.Header>
+          <S.HeaderLocationIcon src="/images/board/detail/location_icon.png" />
+        </S.IconWrapper>
+      </S.HeaderForm>
       <S.Body>
         <S.BodyTitle>{props.data?.fetchBoard?.title}</S.BodyTitle>
         <S.BodyContents>{props.data?.fetchBoard?.contents}</S.BodyContents>
@@ -32,6 +35,17 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             />
           )}
         </S.YoutubeWrapper>
+        <S.ImageWrapper>
+          <S.ImageItem
+            src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[0]}`}
+          />
+          <S.ImageItem
+            src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[1]}`}
+          />
+          <S.ImageItem
+            src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[2]}`}
+          />
+        </S.ImageWrapper>
         <S.BodyReactWrapper>
           <S.BodyLikeIcon
             onClick={props.onClickLikeBoard}
@@ -42,14 +56,13 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             src="/images/board/detail/dislike_icon.png"
           />
         </S.BodyReactWrapper>
-
         <S.BodyWrapperCount>
-          <S.BodyDislikeCount>
-            {props.data?.fetchBoard?.likeCount}
-          </S.BodyDislikeCount>
           <S.BodyLikeCount>
             {props.data?.fetchBoard?.dislikeCount}
           </S.BodyLikeCount>
+          <S.BodyDislikeCount>
+            {props.data?.fetchBoard?.likeCount}
+          </S.BodyDislikeCount>
         </S.BodyWrapperCount>
       </S.Body>
       <S.BodyButtonWrapper>

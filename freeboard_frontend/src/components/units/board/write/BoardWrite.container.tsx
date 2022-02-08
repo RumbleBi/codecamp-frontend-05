@@ -1,22 +1,33 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import BoardWriteUI from "./BoardWrite.presenter";
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 import { IBoardWriteProps, IUpdateBoardInput } from "./BoardWrite.types";
 import {
   IMutation,
   IMutationCreateBoardArgs,
+  IMutationUpdateBoardArgs,
+  IMutationUploadFileArgs,
 } from "../../../../commons/types/generated/types";
 import { Modal } from "antd";
+import { checkFileValidation } from "../../../../commons/libraries/utils";
 
 export default function BoardWrite(props: IBoardWriteProps) {
   const router = useRouter();
+  const fileRef = useRef<HTMLInputElement>(null);
   const [createBoard] = useMutation<
     Pick<IMutation, "createBoard">,
     IMutationCreateBoardArgs
   >(CREATE_BOARD);
-  const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [updateBoard] = useMutation<
+    Pick<IMutation, "updateBoard">,
+    IMutationUpdateBoardArgs
+  >(UPDATE_BOARD);
+  const [uploadFile] = useMutation<
+    Pick<IMutation, "uploadFile">,
+    IMutationUploadFileArgs
+  >(UPLOAD_FILE);
 
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +40,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [password, setPassword] = useState("");
   const [post, setPost] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState([]);
 
   const [writerError, setWriterError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -99,6 +111,29 @@ export default function BoardWrite(props: IBoardWriteProps) {
     setIsOpen(false);
   };
 
+  const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
+    const imageUrl = [];
+
+    for (let i = 0; i < event.target.files?.length; i++) {
+      const file = event.target.files?.[i];
+
+      const isVaild = checkFileValidation(file);
+
+      if (!isVaild) {
+        return;
+      }
+
+      try {
+        const result = await uploadFile({ variables: { file: file } });
+
+        imageUrl.push(result.data?.uploadFile?.url);
+      } catch (error) {
+        Modal.error({ content: "통신오류입니다. 나중에 다시 시도해 주세요." });
+      }
+    }
+    setImage([...image, ...imageUrl]);
+  };
+
   const onClickSubmit = async () => {
     if (writer === "") {
       setWriterError("작성자를 입력해주세요.");
@@ -132,6 +167,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
               title: post,
               contents: content,
               youtubeUrl: youtubeUrl,
+              images: image,
               boardAddress: {
                 zipcode,
                 address,
@@ -173,6 +209,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
         variables: {
           boardId: router.query.boardId,
           password: password,
+          images: image,
           updateBoardInput: UpdateBoardInput,
         },
       });
@@ -182,6 +219,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
       Modal.error({ content: "통신오류." });
     }
   };
+  const onClickImage = () => {
+    fileRef.current?.click();
+  };
   return (
     <BoardWriteUI
       isOpen={isOpen}
@@ -189,6 +229,8 @@ export default function BoardWrite(props: IBoardWriteProps) {
       address={address}
       addressDetail={addressDetail}
       zipcode={zipcode}
+      image={image}
+      fileRef={fileRef}
       data={props.data} // boards/edit 에서 온 데이터
       isEdit={props.isEdit} // boards/new 에서 온 데이터
       onChangeWriter={onChangeWriter}
@@ -196,11 +238,13 @@ export default function BoardWrite(props: IBoardWriteProps) {
       onChangePost={onChangePost}
       onChangeContent={onChangeContent}
       onChangeYoutubeUrl={onChangeYoutubeUrl}
-      onClickAddressSearch={onClickAddressSearch}
+      onChangeFile={onChangeFile}
       onChangeAddressDetail={onChangeAddressDetail}
       onSuccessAddressSearch={onSuccessAddressSearch}
+      onClickAddressSearch={onClickAddressSearch}
       onClickSubmit={onClickSubmit}
       onClickUpdate={onClickUpdate}
+      onClickImage={onClickImage}
       writerError={writerError}
       passwordError={passwordError}
       postError={postError}

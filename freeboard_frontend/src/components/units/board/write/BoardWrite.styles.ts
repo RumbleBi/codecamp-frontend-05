@@ -183,6 +183,7 @@ export const PictureDetail = styled.button`
   font-size: 18px;
   :hover {
     cursor: pointer;
+    background-color: #ffd400;
   }
 `;
 export const WrapperSetting = styled.div`

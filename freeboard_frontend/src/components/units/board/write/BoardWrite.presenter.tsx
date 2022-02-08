@@ -21,7 +21,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               type="text"
               onChange={props.onChangeWriter}
               placeholder="이름을 적어주세요."
-              defaultValue={props.data?.fetchBoard?.writer}
+              defaultValue={props.data?.fetchBoard?.writer || ""}
               readOnly={!!props.data?.fetchBoard?.writer}
             />
             <S.ErrorMassage>{props.writerError}</S.ErrorMassage>
@@ -85,13 +85,28 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         <S.YoutubeUrl
           placeholder="링크를 넣어주세요."
           onChange={props.onChangeYoutubeUrl}
-          defaultValue={props.data?.fetchBoard?.youtubeUrl}
+          defaultValue={props.data?.fetchBoard?.youtubeUrl || ""}
         />
         <S.Picture>사진 첨부</S.Picture>
         <S.WrapperPicture>
-          <S.PictureDetail>+ Upload</S.PictureDetail>
-          <S.PictureDetail>+ Upload</S.PictureDetail>
-          <S.PictureDetail>+ Upload</S.PictureDetail>
+          <input
+            style={{ display: "none" }}
+            ref={props?.fileRef}
+            type="file"
+            onChange={props?.onChangeFile}
+          />
+          <img src={`https://storage.googleapis.com/${props.image[0]}`} />
+          <S.PictureDetail onClick={props?.onClickImage}>
+            + Upload
+          </S.PictureDetail>
+          <img src={`https://storage.googleapis.com/${props.image[1]}`} />
+          <S.PictureDetail onClick={props?.onClickImage}>
+            + Upload
+          </S.PictureDetail>
+          <img src={`https://storage.googleapis.com/${props.image[2]}`} />
+          <S.PictureDetail onClick={props?.onClickImage}>
+            + Upload
+          </S.PictureDetail>
         </S.WrapperPicture>
         <S.MainSetting>메인 설정</S.MainSetting>
         <S.WrapperSetting>

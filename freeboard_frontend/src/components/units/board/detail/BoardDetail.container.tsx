@@ -75,7 +75,6 @@ export default function BoardDetail() {
       Modal.error({ content: "통신에 문제가 있습니다." });
     }
   };
-
   return (
     <BoardDetailUI
       data={data}
