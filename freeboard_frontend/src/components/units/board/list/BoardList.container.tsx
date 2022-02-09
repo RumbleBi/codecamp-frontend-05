@@ -12,7 +12,7 @@ import { useState } from "react";
 
 export default function BoardList() {
   const router = useRouter();
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState<string>();
   const [isMatched, setIsMatched] = useState(false);
 
   const { data, refetch } = useQuery<
@@ -47,7 +47,7 @@ export default function BoardList() {
     router.push("/boards/new");
   };
   const onClickMoveBoardDetail = (event) => {
-    router.push(`/boards/${event.target.id}`);
+    router.push(`/boards/${event.currentTarget.id}`);
   };
 
   return (

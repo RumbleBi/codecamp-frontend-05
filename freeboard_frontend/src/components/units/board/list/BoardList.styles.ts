@@ -1,49 +1,73 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1200px;
-  margin: 110px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+  margin: 0;
 `;
 
-export const SearchInput = styled.input``;
+export const SearchInput = styled.input`
+  margin-left: 48vw;
+  margin-bottom: 2vh;
+  padding-left: 1vw;
+  width: 20%;
+  height: 5vh;
+`;
 
 export const Word = styled.span`
+  width: 70%;
   color: ${(props) => (props.isMatched ? "#FFD400" : "black")};
 `;
 export const ListWrapperTop = styled.div`
   display: flex;
-  flex-direction: row;
+  width: 70%;
+  height: auto;
   border-top: 2px solid black;
+  background-color: #ffd400;
 `;
 
 export const ListDetail = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  height: 30px;
-  width: 90%;
+  width: 70%;
+  height: auto;
   border-bottom: 1px solid gray;
 `;
 
 export const ListWrapperBody = styled.div`
   display: flex;
-  flex-direction: row;
-  width: 1200px;
+  width: 70%;
+  height: auto;
 `;
 
 export const ListIndex = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  width: 90%;
-  height: 30px;
+  width: 70%;
+  height: 5vh;
   border-bottom: 1px solid gray;
+  :hover {
+    cursor: pointer;
+  }
+  background-color: ${(props) => (props.index % 2 === 0 ? "#FFD400" : "gray")};
+`;
+
+export const ListIndexNumber = styled.div`
+  align-items: center;
+  width: 70%;
+  height: 5vh;
+  border-bottom: 1px solid gray;
+  :hover {
+    cursor: pointer;
+  }
+  background-color: ${(props) => (props.index % 2 === 0 ? "#FFD400" : "gray")};
 `;
 
 export const ListWrapperBottom = styled.div`
+  width: 70%;
+  height: auto;
   background-color: red;
 `;
 
@@ -51,17 +75,20 @@ export const Pagination01Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-top: 3vh;
+  padding-top: 5vh;
 `;
 
 export const BoardCreate = styled.button`
-  margin: 200px 0px 0px 1050px;
-  width: 171px;
-  height: 55px;
+  width: 12vw;
+  height: 7vh;
   font-size: 16px;
+  font-weight: 500;
   background-color: white;
   border-radius: 10px;
+  justify-content: 
   border-color: #f2f2f2;
+  float: right;
+  margin-top: 5vh;
   cursor: pointer;
   :hover {
     background-color: #ffd400;
