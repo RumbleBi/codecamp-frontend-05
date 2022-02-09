@@ -7,9 +7,13 @@ import {
   IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
 } from "../../../../commons/types/generated/types";
+import _ from "lodash";
+import { useState } from "react";
 
 export default function BoardList() {
   const router = useRouter();
+  const [keyword, setKeyword] = useState("");
+  const [isMatched, setIsMatched] = useState(false);
 
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoards">,
@@ -21,6 +25,24 @@ export default function BoardList() {
     IQueryFetchBoardsCountArgs
   >(FETCH_BOARDS_COUNT);
 
+  const getDebounce = _.debounce((el) => {
+    refetch({ search: el, page: 1 });
+    setKeyword(el);
+  }, 200);
+
+  const onIsMatched = (event) => {
+    setIsMatched(true);
+  };
+
+  const onChangeSearch = (event) => {
+    getDebounce(event.target.value);
+  };
+
+  const onClickPage = (event) => {
+    if (event.target instanceof Element)
+      refetch({ search: keyword, page: Number(event.target.id) });
+  };
+
   const onClickMoveBoardWrite = () => {
     router.push("/boards/new");
   };
@@ -31,10 +53,15 @@ export default function BoardList() {
   return (
     <BoardListUI
       data={data}
+      keyword={keyword}
       onClickMoveBoardWrite={onClickMoveBoardWrite}
       onClickMoveBoardDetail={onClickMoveBoardDetail}
+      onClickPage={onClickPage}
       refetch={refetch}
       count={dataBoardsCount?.fetchBoardsCount}
+      onChangeSearch={onChangeSearch}
+      onIsMatched={onIsMatched}
+      isMatched={isMatched}
     />
   );
 }

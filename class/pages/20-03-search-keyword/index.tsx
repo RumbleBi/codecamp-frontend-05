@@ -86,3 +86,4 @@ export default function SearchPage() {
     </>
   );
 }
+// isMatched keyword 뒤에 ? true : false 필요없음 안해도 작동함ㅇㅇ

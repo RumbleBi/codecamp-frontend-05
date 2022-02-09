@@ -5,6 +5,11 @@ export const Wrapper = styled.div`
   margin: 110px;
 `;
 
+export const SearchInput = styled.input``;
+
+export const Word = styled.span`
+  color: ${(props) => (props.isMatched ? "#FFD400" : "black")};
+`;
 export const ListWrapperTop = styled.div`
   display: flex;
   flex-direction: row;
