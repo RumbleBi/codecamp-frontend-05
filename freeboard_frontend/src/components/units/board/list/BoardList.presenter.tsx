@@ -33,8 +33,10 @@ export default function BoardListUI(props: IBoardListUIProps) {
                 </S.Word>
               ))}
           </S.ListIndex>
-          <S.ListIndex>{el.writer}</S.ListIndex>
-          <S.ListIndex>{getDate(el.createdAt)}</S.ListIndex>
+          <S.ListIndexWriter index={index}>{el.writer}</S.ListIndexWriter>
+          <S.ListIndexDate index={index}>
+            {getDate(el.createdAt)}
+          </S.ListIndexDate>
         </S.ListWrapperBody>
       ))}
       <S.ListWrapperBottom>

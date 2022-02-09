@@ -2,7 +2,6 @@ import { css } from "@emotion/react";
 
 export const globalStyles = css`
   * {
-    margin: 0 auto;
     box-sizing: boarder-box;
   }
   @font-face {

@@ -39,6 +39,7 @@ export const ListDetail = styled.div`
 
 export const ListWrapperBody = styled.div`
   display: flex;
+  align-items: center;
   width: 70%;
   height: auto;
 `;
@@ -46,7 +47,7 @@ export const ListWrapperBody = styled.div`
 export const ListIndex = styled.div`
   align-items: center;
   width: 70%;
-  height: 5vh;
+  height: 7vh;
   border-bottom: 1px solid gray;
   :hover {
     cursor: pointer;
@@ -57,7 +58,7 @@ export const ListIndex = styled.div`
 export const ListIndexNumber = styled.div`
   align-items: center;
   width: 70%;
-  height: 5vh;
+  height: 7vh;
   border-bottom: 1px solid gray;
   :hover {
     cursor: pointer;
@@ -65,6 +66,27 @@ export const ListIndexNumber = styled.div`
   background-color: ${(props) => (props.index % 2 === 0 ? "#FFD400" : "gray")};
 `;
 
+export const ListIndexWriter = styled.div`
+  align-items: center;
+  width: 70%;
+  height: 7vh;
+  border-bottom: 1px solid gray;
+  :hover {
+    cursor: pointer;
+  }
+  background-color: ${(props) => (props.index % 2 === 0 ? "#FFD400" : "gray")};
+`;
+
+export const ListIndexDate = styled.div`
+  align-items: center;
+  width: 70%;
+  height: 7vh;
+  border-bottom: 1px solid gray;
+  :hover {
+    cursor: pointer;
+  }
+  background-color: ${(props) => (props.index % 2 === 0 ? "#FFD400" : "gray")};
+`;
 export const ListWrapperBottom = styled.div`
   width: 70%;
   height: auto;

@@ -30,7 +30,7 @@ export default function BoardList() {
     setKeyword(el);
   }, 200);
 
-  const onIsMatched = (event) => {
+  const onIsMatched = () => {
     setIsMatched(true);
   };
 
