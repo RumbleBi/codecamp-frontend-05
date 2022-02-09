@@ -59,3 +59,69 @@
 // }
 
 // MAP으로
+function solution(n, m) {
+  let answer = [];
+  let temp = [];
+  let temp2 = [];
+
+  if (m > n) {
+    if (m % n === 0) {
+      for (let i = 2; i <= n; i++) {
+        if (n % i === 0 && m % i === 0) {
+          temp.push(i);
+          n = n / i;
+          m = m / i;
+          i = 0;
+        }
+      }
+      answer[0] = temp.reduce(function add(sum, cur) {
+        return sum * cur;
+      }, 0);
+      answer[1] =
+        n *
+        m *
+        temp.reduce(function add(sum, cur) {
+          return sum * cur;
+        }, 0);
+    }
+
+    if (m % n !== 0) {
+      answer[0] = 1;
+      answer[1] = n * m;
+    }
+  }
+
+  if (n > m) {
+    if (n % m === 0) {
+      for (let i = 2; i <= m; i++) {
+        if (n % i === 0 && m % i === 0) {
+          temp2.push(i);
+          n = n / i;
+          m = m / i;
+          i = 0;
+        }
+      }
+      answer[0] = temp2.reduce(function add2(sum, cur) {
+        return sum * cur;
+      }, 0);
+      answer[1] =
+        n *
+        m *
+        temp2.reduce(function add2(sum, cur) {
+          return sum * cur;
+        }, 0);
+    }
+
+    if (n % m !== 0) {
+      answer[0] = 1;
+      answer[1] = n * m;
+    }
+  }
+
+  if (m === n) {
+    answer[0] = m;
+    answer[1] = m;
+  }
+
+  return answer;
+}
