@@ -20,9 +20,6 @@ export default function GraphqlMutation() {
   const [qqq] = useMutation(CREATE_BOARD);
 
   const zzz = async () => {
-    //const result = await axios.get("https://koreanjson.com/posts/1")
-    // console.log(result.data.title);
-    // setAaa(result.data.title);
     const result = await qqq();
     console.log(result);
     console.log(result.data.createBoard.message);
