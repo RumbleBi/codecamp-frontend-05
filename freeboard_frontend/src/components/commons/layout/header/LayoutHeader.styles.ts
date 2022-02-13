@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 100vw;
   height: 15vh;
-  background-color: #2f2f2f;
   color: #ffd400;
   font-size: 42px;
   font-family: AppleFontKO;

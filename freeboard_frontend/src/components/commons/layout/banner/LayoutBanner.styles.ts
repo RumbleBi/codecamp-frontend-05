@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   height: 25vh;
   width: 100vw;
-  background-color: #ffd400;
 `;
 
 export const ImgBox = styled.img`
