@@ -25,6 +25,7 @@ const MapWrapper = styled.div`
 `;
 
 function GoogleMapApi(props: any) {
+  console.log(GoogleMapApi);
   return (
     <Wrapper>
       <WrapperText>과천 경마장 위치</WrapperText>

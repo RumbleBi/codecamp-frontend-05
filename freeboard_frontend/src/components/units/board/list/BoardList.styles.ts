@@ -49,7 +49,7 @@ export const ListIndex = styled.div`
   width: 70%;
   height: 7vh;
   border-bottom: 1px solid gray;
-  :hover {
+  mouse :hover {
     cursor: pointer;
   }
   background-color: ${(props) => (props.index % 2 === 0 ? "#FFD400" : "gray")};

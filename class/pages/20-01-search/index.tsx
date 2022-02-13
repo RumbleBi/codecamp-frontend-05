@@ -20,8 +20,9 @@ export default function SearchPage() {
   const [keyword, setKeyword] = useState("");
 
   const { data, refetch } = useQuery<
+    // refetch 하고싶으면 넣자구 28번line
     Pick<IQuery, "fetchBoards">,
-    IQueryFetchBoardsArgs
+    IQueryFetchBoardsArgs // variables 내용 추가하고싶으면 넣자!!
   >(FETCH_BOARDS);
 
   const onClickSearch = () => {

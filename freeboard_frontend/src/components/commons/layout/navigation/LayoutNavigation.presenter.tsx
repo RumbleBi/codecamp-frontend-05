@@ -8,7 +8,7 @@ interface ILayoutNavigationUIProps {
 const NAVIGATION_MENUS = [
   { name: "구글지도", page: "./boards/openapis" },
   { name: "자유게시판", page: "/boards" },
-  { name: "중고마켓", page: "/boards/fleamarket/login" },
+  { name: "중고마켓", page: "/fleamarket/login" },
   { name: "마이페이지", page: "/" },
 ];
 

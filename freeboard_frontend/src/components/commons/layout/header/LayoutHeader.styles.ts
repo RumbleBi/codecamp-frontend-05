@@ -4,9 +4,14 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 15vh;
-  color: #ffd400;
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 10vh;
+`;
+
+export const Title = styled.div`
+  height: auto;
+  color: #ffc0cb;
   font-size: 42px;
   font-family: AppleFontKO;
 `;

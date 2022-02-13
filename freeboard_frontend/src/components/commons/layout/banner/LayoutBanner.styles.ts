@@ -3,8 +3,10 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  height: 25vh;
-  width: 100vw;
+  height: auto;
+  width: 100%;
+  background-image: url("/images/background-image-cherry.jpeg/");
+  background-size: cover;
 `;
 
 export const ImgBox = styled.img`

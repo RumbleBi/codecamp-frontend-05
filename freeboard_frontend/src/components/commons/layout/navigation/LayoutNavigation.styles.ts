@@ -3,12 +3,12 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  height: 7vh;
-  width: 100vw;
-  background-color: #2f2f2f;
-  color: #ffd400;
+  height: 5vh;
+  width: 100%;
+  background-color: #f2f2f2;
+  color: #ffc0cb;
   font-size: 20px;
   font-family: AppleFontKO;
 `;
@@ -16,6 +16,5 @@ export const Wrapper = styled.div`
 export const MenuItems = styled.div`
   :hover {
     cursor: pointer;
-    color: black;
   }
 `;

@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Fragment } from "react";
-
 const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
