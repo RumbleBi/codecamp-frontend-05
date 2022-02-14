@@ -15,8 +15,13 @@ export const Wrapper = styled.div`
 `;
 
 export const Logo = styled.div`
+  width: 30vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #ffc0cb;
-  font-size: 42px;
+  font-size: 38px;
   background-color: #f2f2f2;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -57,7 +62,7 @@ export const HoldOnCheckBox = styled.span`
 `;
 
 export const PasswordForm = styled.div`
-  margin-bottom: 100px;
+  margin-bottom: 2vw;
 `;
 
 export const PasswordText = styled.div`
@@ -72,9 +77,32 @@ export const PasswordInput = styled.input`
   font-size: 15px;
 `;
 
+export const HelpForm = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 30vw;
+  margin-bottom: 4vh;
+`;
+
+export const HelpText = styled.div`
+  color: #ffc0cb;
+  font-size: 14px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 export const LoginMenu = styled.div``;
 
 export const LoginBtn = styled.button`
+  color: #ffc0cb;
+  background-color: #f2f2f2;
+  font-size: 32px;
   width: 30vw;
   height: 10vh;
+  border: none;
+  border-radius: 10px;
+  :hover {
+    cursor: pointer;
+  }
 `;

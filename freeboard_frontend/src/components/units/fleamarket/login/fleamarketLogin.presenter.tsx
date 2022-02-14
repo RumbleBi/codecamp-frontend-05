@@ -17,8 +17,11 @@ export default function FleaMarketLoginUI() {
           </S.HoldOnLogin>
           <S.PasswordForm>
             <S.PasswordText>비밀번호</S.PasswordText>
-            <S.PasswordInput placeholder="비밀번호" />
+            <S.PasswordInput placeholder="비밀번호" type="password" />
           </S.PasswordForm>
+          <S.HelpForm>
+            <S.HelpText>이메일 찾기 | 비밀번호 찾기 | 회원가입</S.HelpText>
+          </S.HelpForm>
           <S.LoginMenu>
             <S.LoginBtn>로그인</S.LoginBtn>
           </S.LoginMenu>
