@@ -43,6 +43,10 @@ export const EmailInput = styled.input`
   font-size: 15px;
 `;
 
+export const EmailErrorText = styled.div`
+  color: red;
+`;
+
 export const PasswordForm = styled.div`
   margin-bottom: 2vh;
 `;
@@ -71,6 +75,14 @@ export const PasswordInputCheck = styled.input`
   font-size: 15px;
 `;
 
+export const PasswordErrorText = styled.div`
+  color: red;
+`;
+
+export const PasswordCheckErrorText = styled.div`
+  color: red;
+`;
+
 export const NameForm = styled.div`
   margin-bottom: 2vw;
 `;
@@ -87,6 +99,9 @@ export const NameInput = styled.input`
   font-size: 15px;
 `;
 
+export const NameErrorText = styled.div`
+  color: red;
+`;
 export const SigninForm = styled.div``;
 
 export const SigninBtn = styled.button`

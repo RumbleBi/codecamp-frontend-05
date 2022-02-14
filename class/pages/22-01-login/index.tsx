@@ -41,8 +41,12 @@ export default function LoginPage() {
         },
       });
       console.log(result.data?.loginUser.accessToken);
-      if (setAccessToken)
-        setAccessToken(result.data?.loginUser.accessToken || ""); //토큰이 없을수도있으니까
+      if (setAccessToken) {
+        setAccessToken(result.data?.loginUser.accessToken || "");
+      } else {
+        alert("토큰없음!!");
+      }
+      //토큰이 없을수도있으니까
       router.push("/22-02-login-success");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
