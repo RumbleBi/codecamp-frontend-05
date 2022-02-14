@@ -18,7 +18,7 @@ export default function FleaMarketSigninUI(props) {
           <S.PasswordForm>
             <S.PasswordText>비밀번호입력</S.PasswordText>
             <S.PasswordInput
-              placeholder="8~16 자리이내로 특수문자, 대문자, 소문자를 하나 넣어주세요."
+              placeholder="8~16 자리이내로 특수문자, 대문자, 소문자를 하나 이상 넣어주세요."
               type="password"
               onChange={props.onChangePassword}
             />

@@ -10,6 +10,9 @@ export default function FleaMarketSignin() {
   const RegexPassword =
     /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
   // 숫자, 영문, 특수문자 각 1자리 이상이면서 8자에서 16자 사이 통과
+  const RegexPasswordCheck =
+    /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+  // isActive 활성화를 위해 설정
   const RegexName = /[ㄱ-힣]/;
   // 한글만
   const [createUser] = useMutation(CREATE_USER);
@@ -34,7 +37,12 @@ export default function FleaMarketSignin() {
     } else {
       setEmailError("");
     }
-    if (event.target.value && email && password && passwordCheck && name) {
+    if (
+      RegexEmail.test(event.target.value) &&
+      password &&
+      passwordCheck &&
+      name
+    ) {
       setIsActive(true);
     } else {
       setIsActive(false);
@@ -47,7 +55,12 @@ export default function FleaMarketSignin() {
     } else {
       setPasswordError("");
     }
-    if (event.target.value && email && password && passwordCheck && name) {
+    if (
+      RegexPassword.test(event.target.value) &&
+      email &&
+      passwordCheck &&
+      name
+    ) {
       setIsActive(true);
     } else {
       setIsActive(false);
@@ -60,7 +73,12 @@ export default function FleaMarketSignin() {
     } else {
       setPasswordCheckError("");
     }
-    if (event.target.value && email && password && passwordCheck && name) {
+    if (
+      RegexPasswordCheck.test(event.target.value) &&
+      email &&
+      password &&
+      name
+    ) {
       setIsActive(true);
     } else {
       setIsActive(false);
@@ -74,8 +92,12 @@ export default function FleaMarketSignin() {
     } else {
       setNameError("");
     }
-
-    if (event.target.value && email && password && passwordCheck && name) {
+    if (
+      RegexName.test(event.target.value) &&
+      email &&
+      password &&
+      passwordCheck
+    ) {
       setIsActive(true);
     } else {
       setIsActive(false);
@@ -83,6 +105,11 @@ export default function FleaMarketSignin() {
   };
 
   const onClickSubmit = async () => {
+    console.log(isActive);
+    if (!isActive) {
+      alert("양식에 오류가 있습니다. 확인해 주세요.");
+      return;
+    }
     try {
       const result = await createUser({
         variables: {
@@ -93,7 +120,7 @@ export default function FleaMarketSignin() {
       });
       console.log(result.data);
       alert("회원가입을 축하드립니다!");
-      // router.push("/fleamarket/login");
+      router.push("/fleamarket/login");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }

@@ -106,13 +106,13 @@ export const SigninForm = styled.div``;
 
 export const SigninBtn = styled.button`
   color: #ffc0cb;
-  background-color: #f2f2f2;
   font-size: 32px;
   width: 30vw;
   height: 10vh;
   border: none;
   border-radius: 10px;
   :hover {
-    cursor: pointer;
+    background-color: #dd0098;
+    cursor: ${(props) => (props.isActive === true ? "default" : "pointer")};
   }
 `;

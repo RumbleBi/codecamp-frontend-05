@@ -73,7 +73,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const onChangePost = (event: ChangeEvent<HTMLInputElement>) => {
     setPost(event.target.value);
     if (event.target.value !== "") {
-      setPasswordError("");
+      setPostError("");
     }
     if (event.target.value && writer && password && post && content) {
       setIsActive(true);
