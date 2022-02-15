@@ -13,7 +13,13 @@ import Layout from "../src/components/commons/layout";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { createUploadLink } from "apollo-upload-client";
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 
 interface IGlobalContext {
   accessToken?: String;
@@ -27,6 +33,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     accessToken,
     setAccessToken,
   };
+  useEffect(() => {
+    if (localStorage.getItem("accessToken")) {
+      setAccessToken(localStorage.getItem("accessToken") || "");
+    }
+  }, []);
   const uploadLink = createUploadLink({
     uri: "http://backend05.codebootcamp.co.kr/graphql",
     headers: { Authorization: `Bearer ${accessToken}` }, // HTTP HEADER에 작성해야 accessToken을 사용시 Mutation에서 생성을 할 수 있음.
