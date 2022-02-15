@@ -113,9 +113,11 @@ export default function FleaMarketSignin() {
     try {
       const result = await createUser({
         variables: {
-          email,
-          password,
-          name,
+          createUserInput: {
+            email,
+            password,
+            name,
+          },
         },
       });
       console.log(result.data);

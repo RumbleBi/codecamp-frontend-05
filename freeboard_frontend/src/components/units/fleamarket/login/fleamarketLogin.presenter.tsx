@@ -13,7 +13,7 @@ export default function FleaMarketLoginUI(props) {
           </S.EmailForm>
           <S.HoldOnLogin>
             <S.HoldOnText>로그인 유지하기</S.HoldOnText>
-            <S.HoldOnCheckBox>체크</S.HoldOnCheckBox>
+            <S.HoldOnCheckBox type="checkbox" />
           </S.HoldOnLogin>
           <S.PasswordForm>
             <S.PasswordText>비밀번호</S.PasswordText>

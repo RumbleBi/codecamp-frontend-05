@@ -54,8 +54,8 @@ export const HoldOnText = styled.span`
   font-size: 18px;
   margin-right: 1vw;
 `;
-// 안트디자인 적용해야함
-export const HoldOnCheckBox = styled.span`
+
+export const HoldOnCheckBox = styled.input`
   background-color: #ffc0cb;
   width: 20px;
   height: 20px;
