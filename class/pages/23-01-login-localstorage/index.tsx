@@ -50,7 +50,7 @@ export default function LoginPage() {
         alert("토큰없음!!");
       }
       //토큰이 없을수도있으니까
-      router.push("/22-02-login-success");
+      router.push("/22-03-login-localstorage-success");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }

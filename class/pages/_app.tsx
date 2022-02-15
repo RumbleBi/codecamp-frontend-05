@@ -15,7 +15,13 @@ import { globalStyles } from "../src/commons/styles/globalStyles";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { createUploadLink } from "apollo-upload-client";
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -36,6 +42,7 @@ interface IGlobalContext {
   accessToken?: string;
   setAccessToken?: Dispatch<SetStateAction<string>>;
 }
+
 export const GlobalContext = createContext<IGlobalContext>({});
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -44,6 +51,25 @@ function MyApp({ Component, pageProps }: AppProps) {
     accessToken: accessToken,
     setAccessToken: setAccessToken,
   };
+
+  // if (process.browser) {
+  //   if (localStorage.getItem("accessToken")) {
+  //     setAccessToken(localStorage.getItem("accessToken") || "");
+  //   }
+  // } 이방법으로도 가능
+
+  // if (typeof window !== "undefined") {
+  //   if (localStorage.getItem("accessToken")) {
+  //     setAccessToken(localStorage.getItem("accessToken") || "");
+  //   }
+  // } 이방법으로도 가능
+
+  useEffect(() => {
+    // 토큰 유지시켜주는 코드 이게 제일 낫다. 왜냐? 다른것들은 다시 렌더링되거든
+    if (localStorage.getItem("accessToken")) {
+      setAccessToken(localStorage.getItem("accessToken") || "");
+    }
+  }, []);
 
   const uploadLink = createUploadLink({
     uri: "http://backend05.codebootcamp.co.kr/graphql",
