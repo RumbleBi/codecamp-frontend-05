@@ -28,8 +28,11 @@ export default function FleaMarketLogin() {
       });
       console.log(result.data?.loginUser?.accessToken);
 
+      const accessToken = result.data?.loginUser.accessToken || "";
+
       if (setAccessToken) {
-        setAccessToken(result.data?.loginUser.accessToken || "");
+        setAccessToken(result.data?.loginUser.accessToken);
+        localStorage.setItem("accessToken", accessToken);
       }
       router.push("/fleamarket/main");
     } catch (error) {
