@@ -24,14 +24,19 @@ import {
 interface IGlobalContext {
   accessToken?: String;
   setAccessToken?: Dispatch<SetStateAction<string>>;
+  isEdit?: Boolean;
+  setIsEdit?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const GlobalContext = createContext<IGlobalContext>({});
 function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState("");
+  const [isEdit, setIsEdit] = useState(false);
   const value = {
     accessToken,
     setAccessToken,
+    isEdit,
+    setIsEdit,
   };
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {

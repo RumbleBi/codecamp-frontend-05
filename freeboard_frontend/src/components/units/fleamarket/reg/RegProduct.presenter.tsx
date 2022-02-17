@@ -3,9 +3,11 @@ import Input01 from "../../../commons/inputs/01";
 
 interface IProps {
   onClickSubmit: () => void;
+  onClickUpdate: () => void;
   register: any;
   handleSubmit: any;
   formState: any;
+  isEdit: boolean;
 }
 
 export default function FleamarketRegUI(props: IProps) {
@@ -29,7 +31,11 @@ export default function FleamarketRegUI(props: IProps) {
       {/* 상세주소
       <Input01 type="text" register={props.register("useditemAddress")} />
       <div>{props.formState.errors.useditemAddress.message}</div> */}
-      <Button01 isValid={props.formState?.isValid} name="등록하기" />
+      <Button01
+        isValid={props.formState?.isValid}
+        name={props.isEdit ? "수정하기" : "등록하기"}
+        onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
+      />
     </form>
   );
 }
