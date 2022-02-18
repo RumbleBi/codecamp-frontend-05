@@ -12,7 +12,13 @@ interface IProps {
 
 export default function FleamarketRegUI(props: IProps) {
   return (
-    <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+    <form
+      onSubmit={
+        props.isEdit
+          ? props.handleSubmit(props.onClickUpdate)
+          : props.handleSubmit(props.onClickSubmit)
+      }
+    >
       상품명
       <Input01 type="text" register={props.register("name")} />
       <div>{props.formState.errors.name?.message}</div>
@@ -34,7 +40,6 @@ export default function FleamarketRegUI(props: IProps) {
       <Button01
         isValid={props.formState?.isValid}
         name={props.isEdit ? "수정하기" : "등록하기"}
-        onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
       />
     </form>
   );

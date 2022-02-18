@@ -1,9 +1,13 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import {
+  IQuery,
+  IQueryFetchUseditemArgs,
+} from "../../../../commons/types/generated/types";
 import RegDetailUI from "./RegDetail.presenter";
-import { DELETE_USED_ITEM } from "./RegDetail.queries";
+import { DELETE_USED_ITEM, FETCH_USED_ITEM } from "./RegDetail.queries";
 
 export default function RegDetail() {
   const router = useRouter();
@@ -11,6 +15,13 @@ export default function RegDetail() {
     mode: "onChange",
   });
   const [deleteUseditem] = useMutation(DELETE_USED_ITEM);
+
+  const { data } = useQuery<
+    Pick<IQuery, "fetchUseditem">,
+    IQueryFetchUseditemArgs
+  >(FETCH_USED_ITEM, {
+    variables: { useditemId: String(router.query.useditemId) },
+  });
 
   const onClickMoveToMain = () => {
     router.push("/fleamarket/main");
@@ -31,6 +42,7 @@ export default function RegDetail() {
   };
   return (
     <RegDetailUI
+      data={data}
       register={register}
       handleSubmit={handleSubmit}
       formState={formState}

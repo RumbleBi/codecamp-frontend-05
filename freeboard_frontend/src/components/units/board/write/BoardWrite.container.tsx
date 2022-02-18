@@ -178,7 +178,8 @@ export default function BoardWrite(props: IBoardWriteProps) {
         });
         router.push(`/boards/${result.data.createBoard._id}`);
       } catch (error) {
-        Modal.error({ content: "통신오류!!!" });
+        alert(error.message);
+        // Modal.error({ content: "통신오류!!!" });
       }
     }
   };

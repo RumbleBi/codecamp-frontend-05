@@ -4,5 +4,4 @@ import FleamarketRge from "../../../src/components/units/fleamarket/reg/RegProdu
 function RegistrationProductPage() {
   return <FleamarketRge />;
 }
-
 export default withAuth(RegistrationProductPage);

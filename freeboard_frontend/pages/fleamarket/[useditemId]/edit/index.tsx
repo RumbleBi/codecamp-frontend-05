@@ -26,5 +26,5 @@ export default function RegEditPage() {
   >(FETCH_USED_ITEM, {
     variables: { useditemId: String(router.query.useditemId) },
   });
-  return <FleamarketReg data={data} />;
+  return <FleamarketReg data={data} isEdit={true} />;
 }

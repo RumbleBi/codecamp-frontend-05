@@ -6,8 +6,7 @@ import { CREATE_USED_ITEM, UPDATE_USED_ITEM } from "./RegProduct.queries";
 import { useMutation } from "@apollo/client";
 import { FormValues } from "./RegProduct.types";
 import { useRouter } from "next/router";
-import { useContext } from "react";
-import { GlobalContext } from "../../../../../pages/_app";
+import { useState } from "react";
 
 const schema = yup.object().shape({
   name: yup.string().required("상품명을 입력해 주세요."),
@@ -18,19 +17,17 @@ const schema = yup.object().shape({
   // useditemAddress: yup.string().required("주소를 입력해 주세요."),
 });
 
-export default function FleamarketReg() {
+export default function FleamarketReg(props) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
   const [updateUseditem] = useMutation(UPDATE_USED_ITEM);
   const router = useRouter();
-  const { isEdit, setIsEdit } = useContext(GlobalContext);
-
+  const [isEdit, setIsEdit] = useState(props.isEdit || true);
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
 
   const onClickSubmit = async (data: FormValues) => {
-    setIsEdit(false);
     const { name, remarks, contents, price } = data;
     try {
       const result = await createUseditem({
@@ -51,7 +48,7 @@ export default function FleamarketReg() {
   };
 
   const onClickUpdate = async (data) => {
-    setIsEdit(true);
+    console.log("aaa");
     const { name, remarks, contents, price } = data;
     try {
       await updateUseditem({
