@@ -21,7 +21,6 @@ export default function FleamarketReg(props) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
   const [updateUseditem] = useMutation(UPDATE_USED_ITEM);
   const router = useRouter();
-  const [isEdit, setIsEdit] = useState(props.isEdit || true);
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
@@ -74,7 +73,6 @@ export default function FleamarketReg(props) {
       handleSubmit={handleSubmit}
       formState={formState}
       onClickUpdate={onClickUpdate}
-      isEdit={isEdit}
     />
   );
 }

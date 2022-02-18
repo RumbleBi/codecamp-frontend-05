@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import Button01 from "../../../commons/buttons/01";
 import Input01 from "../../../commons/inputs/01";
 
@@ -15,8 +16,8 @@ export default function FleamarketRegUI(props: IProps) {
     <form
       onSubmit={
         props.isEdit
-          ? props.handleSubmit(props.onClickUpdate)
-          : props.handleSubmit(props.onClickSubmit)
+          ? props.handleSubmit(props.onClickSubmit)
+          : props.handleSubmit(props.onClickUpdate)
       }
     >
       상품명
@@ -39,7 +40,7 @@ export default function FleamarketRegUI(props: IProps) {
       <div>{props.formState.errors.useditemAddress.message}</div> */}
       <Button01
         isValid={props.formState?.isValid}
-        name={props.isEdit ? "수정하기" : "등록하기"}
+        name={props.isEdit ? "등록하기" : "수정하기"}
       />
     </form>
   );
