@@ -1,49 +1,40 @@
+import * as S from "./LayoutBanner.styles";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import * as S from "./LayoutBanner.styles";
 
 export default function LayoutBannerUI() {
   const settings = {
-    dots: true,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    pauseOnHover: false,
+    fade: true,
   };
+
   return (
     <S.Wrapper>
-      <div>
-        <S.DivSlider>
-          <Slider {...settings}>
-            <div>
-              <S.DivImage>
-                <S.ImgBox src="/images/banner/horse.png" />
-              </S.DivImage>
-            </div>
-            <div>
-              <S.DivImage>
-                <S.ImgBox src="/images/banner/horse2.png" />
-              </S.DivImage>
-            </div>
-            <div>
-              <S.DivImage>
-                <S.ImgBox src="/images/banner/horse3.png" />
-              </S.DivImage>
-            </div>
-            <div>
-              <S.DivImage>
-                <S.ImgBox src="/images/banner/horse4.png" />
-              </S.DivImage>
-            </div>
-            <div>
-              <S.DivImage>
-                <S.ImgBox src="/images/banner/horse5.png" />
-              </S.DivImage>
-            </div>
-          </Slider>
-        </S.DivSlider>
-      </div>
+      <Slider {...settings}>
+        <div>
+          <S.SliderItem src="/images/banner/Banner.jpg" />
+          <S.ImgBoxOne></S.ImgBoxOne>
+        </div>
+        <div>
+          <S.SliderItem src="/images/banner/Banner2.jpeg" />
+          <S.ImgBoxTwo></S.ImgBoxTwo>
+        </div>
+        <div>
+          <S.SliderItem src="/images/banner/Banner3.jpeg" />
+          <S.ImgBoxThree></S.ImgBoxThree>
+        </div>
+        <div>
+          <S.SliderItem src="/images/banner/Banner4.jpeg" />
+          <S.ImgBoxFour></S.ImgBoxFour>
+        </div>
+      </Slider>
     </S.Wrapper>
   );
 }

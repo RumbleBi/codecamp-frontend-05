@@ -10,8 +10,7 @@ interface ILayoutProps {
   children: ReactChild;
 }
 const BackGround = styled.div`
-  background-image: url("/images/background-kyoto.jpeg");
-  background-size: 50% 100%;
+  background-image: url("/images/background-sakura.jpeg");
   overflow: hidden;
 `;
 

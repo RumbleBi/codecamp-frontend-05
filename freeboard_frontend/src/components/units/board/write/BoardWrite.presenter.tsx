@@ -18,6 +18,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <S.WrapperWriter>
             <S.Label>작성자</S.Label>
             <S.WriterContent
+              ref={props.inputRef}
               type="text"
               onChange={props.onChangeWriter}
               placeholder="이름을 적어주세요."

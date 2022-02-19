@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import BoardWriteUI from "./BoardWrite.presenter";
@@ -15,7 +15,13 @@ import { checkFileValidation } from "../../../../commons/libraries/utils";
 
 export default function BoardWrite(props: IBoardWriteProps) {
   const router = useRouter();
+  // useRef로 포커싱 되도록 함
+  const inputRef = useRef<HTMLInputElement>();
   const fileRef = useRef<HTMLInputElement>(null);
+  // 렌더링 될 때, 작성자에 포커싱이 되도록 함
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
   const [createBoard] = useMutation<
     Pick<IMutation, "createBoard">,
     IMutationCreateBoardArgs
@@ -250,6 +256,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       passwordError={passwordError}
       postError={postError}
       contentError={contentError}
+      inputRef={inputRef}
     />
   );
 }

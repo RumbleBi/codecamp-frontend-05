@@ -2,13 +2,13 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   width: 100%;
   height: 22vh;
-  background-color: #f2f2f2;
+  background-color: #fdeff4;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  color: #ffc0cb;
+  color: #ff5c8d;
   font-family: AppleFontKO;
   font-family: AppleFontEN;
 `;

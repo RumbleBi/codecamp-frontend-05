@@ -14,7 +14,5 @@ export const Wrapper = styled.div`
 `;
 
 export const MenuItems = styled.div`
-  :hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;

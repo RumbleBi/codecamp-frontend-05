@@ -3,22 +3,27 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  height: auto;
+  height: 300px;
   width: 100%;
-  background-image: url("/images/background-image-cherry.jpeg/");
-  background-size: cover;
+  div {
+    height: 300px;
+    width: 100%;
+  }
 `;
 
-export const ImgBox = styled.img`
-  height: 20vh;
-  width: 20vw;
+export const SliderItem = styled.img`
+  width: 100%;
 `;
 
-export const DivSlider = styled.div`
-  width: 20vw;
+export const ImgBoxOne = styled.div`
+  background: url("/images/banner/Banner.jpg") 50% 50%;
 `;
-
-export const DivImage = styled.div`
-  display: flex;
-  justify-content: center;
+export const ImgBoxTwo = styled.div`
+  background: url("/images/banner/Banner2.jpeg");
+`;
+export const ImgBoxThree = styled.div`
+  background: url("/images/banner/Banner3.jpeg") 50% 50%;
+`;
+export const ImgBoxFour = styled.div`
+  background: url("/images/banner/Banner4.jpeg") 50% 50%;
 `;
