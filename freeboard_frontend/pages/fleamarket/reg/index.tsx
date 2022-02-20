@@ -4,11 +4,9 @@ import FleamarketRge from "../../../src/components/units/fleamarket/reg/RegProdu
 
 export const RegContext = createContext({});
 
-function RegistrationProductPage(props) {
-  const [isEdit, setIsEdit] = useState(props.isEdit || "");
+function RegProductPage() {
   const myValue = {
-    isEdit,
-    setIsEdit,
+    isEdit: false,
   };
   return (
     <RegContext.Provider value={myValue}>
@@ -16,4 +14,4 @@ function RegistrationProductPage(props) {
     </RegContext.Provider>
   );
 }
-export default withAuth(RegistrationProductPage);
+export default withAuth(RegProductPage);

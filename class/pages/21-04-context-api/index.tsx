@@ -9,7 +9,7 @@ export default function ContextAPIPage() {
 
   // 객체로 담아둬서 아래 value 값에 넣어서 한번에 넣을 수 있다!!
   return (
-    <ExampleContext.Provider value={{ isEdit: true }}>
+    <ExampleContext.Provider value={Values}>
       <BoardWriteContext />
     </ExampleContext.Provider>
   );

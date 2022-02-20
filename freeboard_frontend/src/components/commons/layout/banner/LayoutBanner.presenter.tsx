@@ -19,19 +19,15 @@ export default function LayoutBannerUI() {
     <S.Wrapper>
       <Slider {...settings}>
         <div>
-          <S.SliderItem src="/images/banner/Banner.jpg" />
           <S.ImgBoxOne></S.ImgBoxOne>
         </div>
         <div>
-          <S.SliderItem src="/images/banner/Banner2.jpeg" />
           <S.ImgBoxTwo></S.ImgBoxTwo>
         </div>
         <div>
-          <S.SliderItem src="/images/banner/Banner3.jpeg" />
           <S.ImgBoxThree></S.ImgBoxThree>
         </div>
         <div>
-          <S.SliderItem src="/images/banner/Banner4.jpeg" />
           <S.ImgBoxFour></S.ImgBoxFour>
         </div>
       </Slider>

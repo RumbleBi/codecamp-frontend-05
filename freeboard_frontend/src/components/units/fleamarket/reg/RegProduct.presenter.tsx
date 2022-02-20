@@ -1,8 +1,14 @@
-import { useContext } from "react";
 import Button01 from "../../../commons/buttons/01";
 import Input01 from "../../../commons/inputs/01";
+import * as S from "./RegProduct.styles";
+import { v4 as uuidv4 } from "uuid";
+import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
+import { useContext } from "react";
+import { RegContext } from "../../../../../pages/fleamarket/[useditemId]/edit";
+import { Modal } from "antd";
+import DaumPostcode from "react-daum-postcode";
 
-interface IProps {
+interface IFleamarketRegUIProps {
   onClickSubmit: () => void;
   onClickUpdate: () => void;
   register: any;
@@ -11,38 +17,101 @@ interface IProps {
   isEdit: boolean;
 }
 
-export default function FleamarketRegUI(props: IProps) {
+export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
+  const { isEdit } = useContext(RegContext);
   return (
-    <form
-      onSubmit={
-        props.isEdit
-          ? props.handleSubmit(props.onClickSubmit)
-          : props.handleSubmit(props.onClickUpdate)
-      }
-    >
-      상품명
-      <Input01 type="text" register={props.register("name")} />
-      <div>{props.formState.errors.name?.message}</div>
-      한줄요약
-      <Input01 type="text" register={props.register("remarks")} />
-      <div>{props.formState.errors.remarks?.message}</div>
-      상품설명
-      <Input01 type="text" register={props.register("contents")} />
-      <div>{props.formState.errors.contents?.message}</div>
-      판매가격
-      <Input01 type="text" register={props.register("price")} />
-      <div>{props.formState.errors.price?.message}</div>
-      {/* 태그
-      <Input01 type="text" register={props.register("tags")} />
-      <div>{props.formState.errors.tags?.message}</div> */}
-      {/* 상세주소
-      <Input01 type="text" register={props.register("useditemAddress")} />
-      <div>{props.formState.errors.useditemAddress.message}</div> */}
-      <Button01
-        isValid={props.formState?.isValid}
-        name={props.isEdit ? "등록하기" : "수정하기"}
-      />
-    </form>
+    <S.Position>
+      {props.isOpen && (
+        <Modal visible={true}>
+          <DaumPostcode onComplete={props.onCompleteAddressSearch} />
+        </Modal>
+      )}
+      <S.Wrapper>
+        <S.InputWrapper>
+          <S.FormContentWrapper>
+            <S.ContentTitle>상품명</S.ContentTitle>
+            <Input01 type="text" register={props.register("name")} />
+            <S.ErrorMessage>
+              {props.formState.errors.name?.message}
+            </S.ErrorMessage>
+            <S.ContentTitle>한줄요약</S.ContentTitle>
+            <Input01 type="text" register={props.register("remarks")} />
+            <S.ErrorMessage>
+              {props.formState.errors.remarks?.message}
+            </S.ErrorMessage>
+            <S.ContentTitle>상품설명</S.ContentTitle>
+            <Input01 type="text" register={props.register("contents")} />
+            <S.ErrorMessage>
+              {props.formState.errors.contents?.message}
+            </S.ErrorMessage>
+            <S.ContentTitle>판매가격</S.ContentTitle>
+            <Input01 type="text" register={props.register("price")} />
+            <S.ErrorMessage>
+              {props.formState.errors.price?.message}
+            </S.ErrorMessage>
+            <S.ContentTitle>태그입력</S.ContentTitle>
+            <Input01 type="text" register={props.register("tags")} />
+            <S.ErrorMessage>
+              {props.formState.errors.tags?.message}
+            </S.ErrorMessage>
+          </S.FormContentWrapper>
+        </S.InputWrapper>
+        <S.ContentWrapper>
+          <S.PostTitle>주소</S.PostTitle>
+          <S.PostWrapper>
+            <S.PostZipcode
+              placeholder="00000"
+              readOnly
+              value={
+                props.zipcode ||
+                props.data?.fetchUseditem?.useditemAddress?.zipcode ||
+                ""
+              }
+            />
+            <S.PostSearchBtn onClick={props.onClickAddressSearch}>
+              우편번호검색
+            </S.PostSearchBtn>
+            <S.PostInput
+              readOnly
+              value={
+                props.address ||
+                props.data?.fetchUseditem.useditemAddress?.address ||
+                ""
+              }
+            />
+            <S.PostInput
+              onChange={props.onChangeAddressDetail}
+              defaultValue={
+                props.data?.fetchUseditem.useditemAddress?.addressDetail || ""
+              }
+            />
+          </S.PostWrapper>
+          <S.ImageWrapper>
+            <S.ImageTitle>사진첨부</S.ImageTitle>
+            {props.fileUrls.map((el, index) => (
+              <Uploads01
+                key={uuidv4()}
+                index={index}
+                fileUrl={el}
+                onChangeFileUrls={props.onChangeFileUrls}
+              />
+            ))}
+          </S.ImageWrapper>
+        </S.ContentWrapper>
+        <S.ButtonWrapper
+          onSubmit={
+            isEdit
+              ? props.handleSubmit(props.onClickUpdate)
+              : props.handleSubmit(props.onClickSubmit)
+          }
+        >
+          <Button01
+            isValid={props.formState?.isValid}
+            name={isEdit ? "수정하기" : "등록하기"}
+          />
+        </S.ButtonWrapper>
+      </S.Wrapper>
+    </S.Position>
   );
 }
 //             name, remarks, contents, price, tags, useditemAddress, images

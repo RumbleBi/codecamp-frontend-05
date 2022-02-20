@@ -3,6 +3,6 @@ export interface FormValues {
   remarks: string;
   contents: string;
   price: number;
-  // tags: string;
-  // images: string;
+  tags: string;
+  images: string;
 }

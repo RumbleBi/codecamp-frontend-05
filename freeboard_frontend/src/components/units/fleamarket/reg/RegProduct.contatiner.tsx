@@ -2,32 +2,73 @@ import FleamarketRegUI from "./RegProduct.presenter";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { CREATE_USED_ITEM, UPDATE_USED_ITEM } from "./RegProduct.queries";
+import {
+  CREATE_USED_ITEM,
+  UPDATE_USED_ITEM,
+  UPLOAD_FILE,
+} from "./RegProduct.queries";
 import { useMutation } from "@apollo/client";
 import { FormValues } from "./RegProduct.types";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 
 const schema = yup.object().shape({
   name: yup.string().required("상품명을 입력해 주세요."),
   remarks: yup.string().required("한줄요약을 입력해 주세요."),
   contents: yup.string().required("상품설명을 입력해 주세요."),
-  price: yup.number().required("판매가격을 입력해 주세요."),
-  // tags: yup.string().required("최소 한 개의 태그를 설정해 주세요."),
+  price: yup.string().required("판매가격을 입력해 주세요."),
+  tags: yup.string().required("최소 한 개의 태그를 설정해 주세요."),
   // useditemAddress: yup.string().required("주소를 입력해 주세요."),
 });
 
 export default function FleamarketReg(props) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
   const [updateUseditem] = useMutation(UPDATE_USED_ITEM);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [fileUrls, setFileUrls] = useState(["", "", "", ""]);
+  const [zipcode, setZipcode] = useState("");
+  const [address, setAddress] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
+
+  // YUP 사용하여 Input 필수입력검증
   const router = useRouter();
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
-  // useEffect(() => {
-  // }, []);
 
+  console.log();
+  // 사진 업로드 데이터 변경시마다 FETCH
+  useEffect(() => {
+    if (props.data?.fetchUseditem.images?.length) {
+      setFileUrls([...props.data?.fetchUseditem.images]);
+    }
+  }, [props.data]);
+
+  const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
+    setAddressDetail(event.target.value);
+  };
+
+  const onClickAddressSearch = () => {
+    setIsOpen(true);
+  };
+
+  // Daum API 사용으로인해, 타입지정 찾아야됨
+  const onCompleteAddressSearch = (data: any) => {
+    setAddress(data.address);
+    setZipcode(data.zonecode);
+    setIsOpen(false);
+  };
+
+  // 업로드 사진 변경시 함수
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
+  };
+
+  // 등록버튼함수
   const onClickSubmit = async (data: FormValues) => {
     const { name, remarks, contents, price } = data;
     try {
@@ -37,7 +78,13 @@ export default function FleamarketReg(props) {
             name,
             remarks,
             contents,
-            price,
+            price: Number(price),
+            useditemAddress: {
+              zipcode,
+              address,
+              addressDetail,
+            },
+            images: fileUrls,
           },
         },
       });
@@ -48,8 +95,8 @@ export default function FleamarketReg(props) {
     }
   };
 
+  // 수정버튼함수
   const onClickUpdate = async (data) => {
-    console.log("aaa");
     const { name, remarks, contents, price } = data;
     try {
       await updateUseditem({
@@ -58,7 +105,13 @@ export default function FleamarketReg(props) {
             name,
             remarks,
             contents,
-            price,
+            price: Number(price),
+            useditemAddress: {
+              zipcode,
+              address,
+              addressDetail,
+            },
+            images: fileUrls,
           },
           useditemId: router.query.useditemId,
         },
@@ -75,6 +128,15 @@ export default function FleamarketReg(props) {
       handleSubmit={handleSubmit}
       formState={formState}
       onClickUpdate={onClickUpdate}
+      onChangeFileUrls={onChangeFileUrls}
+      onChangeAddressDetail={onChangeAddressDetail}
+      onClickAddressSearch={onClickAddressSearch}
+      onCompleteAddressSearch={onCompleteAddressSearch}
+      fileUrls={fileUrls}
+      isOpen={isOpen}
+      data={props.data}
+      zipcode={zipcode}
+      address={address}
     />
   );
 }
