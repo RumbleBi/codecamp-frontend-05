@@ -5,6 +5,7 @@ interface IProps {
   type: string;
   register: string;
   ref: RefObject<HTMLInputElement>;
+  defaultValue: string;
 }
 
 const MyInput = styled.input`

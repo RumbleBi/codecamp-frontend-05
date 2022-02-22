@@ -10,8 +10,8 @@ import {
 import { useMutation } from "@apollo/client";
 import { FormValues } from "./RegProduct.types";
 import { useRouter } from "next/router";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-
+import { ChangeEvent, useEffect, useState } from "react";
+import { withAuth } from "../../../commons/hocs/withAuth";
 const schema = yup.object().shape({
   name: yup.string().required("상품명을 입력해 주세요."),
   remarks: yup.string().required("한줄요약을 입력해 주세요."),
@@ -20,6 +20,7 @@ const schema = yup.object().shape({
   tags: yup.string().required("최소 한 개의 태그를 설정해 주세요."),
   // useditemAddress: yup.string().required("주소를 입력해 주세요."),
 });
+// 웹 에디터
 
 export default function FleamarketReg(props) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
@@ -33,12 +34,16 @@ export default function FleamarketReg(props) {
 
   // YUP 사용하여 Input 필수입력검증
   const router = useRouter();
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, formState, setValue, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
+  // 웹 에디터 추가
+  const handleChange = (value: string) => {
+    setValue("contents", value === "<p><br></p>" ? "" : value);
+    trigger("contents");
+  };
 
-  console.log();
   // 사진 업로드 데이터 변경시마다 FETCH
   useEffect(() => {
     if (props.data?.fetchUseditem.images?.length) {
@@ -88,13 +93,12 @@ export default function FleamarketReg(props) {
           },
         },
       });
+
       router.push(`/fleamarket/${result.data.createUseditem._id}`);
-      console.log(result.data);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
   };
-
   // 수정버튼함수
   const onClickUpdate = async (data) => {
     const { name, remarks, contents, price } = data;
@@ -137,6 +141,7 @@ export default function FleamarketReg(props) {
       data={props.data}
       zipcode={zipcode}
       address={address}
+      handleChange={handleChange}
     />
   );
 }

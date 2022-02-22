@@ -1,18 +1,63 @@
 import { useQuery } from "@apollo/client";
 import { withAuth } from "../../../../components/commons/hocs/withAuth";
-import { IQuery } from "../../../../commons/types/generated/types";
+import {
+  IQuery,
+  IQueryFetchUseditemsArgs,
+} from "../../../../commons/types/generated/types";
 import FleamarketMainUI from "./fleamarketMain.presenter";
-import { FETCH_USER_LOGGED_IN } from "./fleamarketMain.queries";
+import {
+  FETCH_USER_LOGGED_IN,
+  FETCH_USED_ITEMS,
+} from "./fleamarketMain.queries";
 import router from "next/router";
 
 export default function FleamarketMain() {
+  // 로그인시 ~~환영멘트용
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   console.log(data?.fetchUserLoggedIn.name);
 
+  // 게시글목록
+  const { data: dataItems, fetchMore } = useQuery<
+    Pick<IQuery, "fetchUseditems">,
+    IQueryFetchUseditemsArgs
+  >(FETCH_USED_ITEMS, {
+    variables: { page: 1, search: "" },
+  });
+
+  console.log(dataItems);
+  const onLoadMore = () => {
+    if (!dataItems) return;
+    fetchMore({
+      variables: {
+        page: Math.ceil(dataItems?.fetchUseditems?.length / 10) + 1,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult?.fetchUseditems) {
+          return { fetchUseditems: [...prev.fetchUseditems] };
+        }
+        return {
+          fetchUseditems: [
+            ...prev.fetchUseditems,
+            ...fetchMoreResult.fetchUseditems,
+          ],
+        };
+      },
+    });
+  };
+
+  // 게시글 등록하기
   const onClickReg = () => {
     router.push("/fleamarket/reg");
   };
-  return <FleamarketMainUI data={data} onClickReg={onClickReg} />;
+
+  return (
+    <FleamarketMainUI
+      data={data}
+      dataItems={dataItems}
+      onClickReg={onClickReg}
+      onLoadMore={onLoadMore}
+    />
+  );
 }
 // 일단 메인페이지 비로그인해도 로그인 가능하게 해놓음 바꿀수도있음.

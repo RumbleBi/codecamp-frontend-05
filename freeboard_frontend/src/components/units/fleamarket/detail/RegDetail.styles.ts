@@ -55,9 +55,16 @@ export const Price = styled.div`
   color: #ff5c8d;
 `;
 
-export const ImageWrapper = styled.div``;
+export const ImageWrapper = styled.div`
+  min-height: 20vh;
+  background-color: red;
+  min-width: 50vw;
+`;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+  max-width: 20%;
+  max-height: 20%;
+`;
 
 export const Zipcode = styled.div`
   color: #ff5c8d;

@@ -42,7 +42,9 @@ export default function PagenationPage() {
   const onLoadMore = () => {
     if (!data) return;
     fetchMore({
-      variables: { page: Math.ceil(data?.fetchBoards.length / 10) + 1 },
+      variables: {
+        page: Math.ceil(data?.fetchBoards.length / 10) + 1,
+      },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult.fetchBoards) {
           return {

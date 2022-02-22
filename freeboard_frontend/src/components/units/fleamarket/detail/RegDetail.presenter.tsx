@@ -1,5 +1,6 @@
 import Button01 from "../../../commons/buttons/01";
 import * as S from "./RegDetail.styles";
+import Dompurify from "dompurify";
 export default function RegDetailUI(props) {
   return (
     <S.Position>
@@ -12,7 +13,17 @@ export default function RegDetailUI(props) {
         </S.ProfileWrapper>
         <S.UseditemDetailWrapper>
           <S.Remarks>{props.data?.fetchUseditem?.remarks}</S.Remarks>
-          <S.Contents>{props.data?.fetchUseditem?.contents}</S.Contents>
+          {process.browser ? (
+            <S.Contents
+              dangerouslySetInnerHTML={{
+                __html: Dompurify.sanitize(
+                  String(props.data?.fetchUseditem?.contents)
+                ),
+              }}
+            ></S.Contents>
+          ) : (
+            <div />
+          )}
           <S.Price>{props.data?.fetchUseditem?.price}</S.Price>
           <S.ImageWrapper>
             {props.data?.fetchUseditem?.images

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { flexbox } from "@mui/system";
 
 export const Position = styled.div`
   display: flex;
@@ -37,7 +38,14 @@ export const ContentTitle = styled.div`
   color: #ff5c8d;
   font-size: 28px;
 `;
-
+export const ContentInput = styled.div`
+  width: 70%;
+  background-color: white;
+  border: none;
+  .ql-editor {
+    height: 350px;
+  }
+`;
 export const InputWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -50,9 +58,18 @@ export const ErrorMessage = styled.div`
   color: red;
 `;
 
-export const PostWrapper = styled.div``;
+export const PostWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
-export const PostTitle = styled.div``;
+export const PostTitle = styled.div`
+  color: #ff5c8d;
+  font-size: 28px;
+`;
 
 export const PostInput = styled.input`
   height: 8vh;
@@ -62,13 +79,40 @@ export const PostInput = styled.input`
   font-size: 18px;
   padding-left: 1vw;
 `;
+export const PostNumberWrapper = styled.div`
+  width: 70%;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+`;
 
-export const PostZipcode = styled.input``;
+export const PostZipcode = styled.input`
+  margin-right: 1vw;
+  text-align: center;
+`;
 
-export const PostSearchBtn = styled.button``;
+export const PostSearchBtn = styled.button`
+  color: #ff5c8d;
+  background-color: #ffc0d3;
+  border: 0;
+  cursor: pointer;
+  border-radius: 5px;
+`;
 
-export const ImageWrapper = styled.div``;
+export const ImageWrapper = styled.div`
+  margin-top: 3vh;
+  width: 70%;
+  height: 20vh;
+`;
 
 export const ImageTitle = styled.div`
+  display: flex;
+  justify-content: center;
   color: #ff5c8d;
+  font-size: 28px;
+  margin-bottom: 3vh;
+`;
+
+export const ImageInputs = styled.div`
+  display: flex;
+  justify-content: center;
 `;

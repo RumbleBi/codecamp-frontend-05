@@ -7,6 +7,9 @@ import { useContext } from "react";
 import { RegContext } from "../../../../../pages/fleamarket/[useditemId]/edit";
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
+// 웹 에디터 추가
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
 
 interface IFleamarketRegUIProps {
   onClickSubmit: () => void;
@@ -16,6 +19,8 @@ interface IFleamarketRegUIProps {
   formState: any;
   isEdit: boolean;
 }
+// 웹 에디터 추가
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
   const { isEdit } = useContext(RegContext);
@@ -40,7 +45,9 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
               {props.formState.errors.remarks?.message}
             </S.ErrorMessage>
             <S.ContentTitle>상품설명</S.ContentTitle>
-            <Input01 type="text" register={props.register("contents")} />
+            <S.ContentInput>
+              {process.browser && <ReactQuill onChange={props.handleChange} />}
+            </S.ContentInput>
             <S.ErrorMessage>
               {props.formState.errors.contents?.message}
             </S.ErrorMessage>
@@ -58,7 +65,7 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
         </S.InputWrapper>
         <S.ContentWrapper>
           <S.PostTitle>주소</S.PostTitle>
-          <S.PostWrapper>
+          <S.PostNumberWrapper>
             <S.PostZipcode
               placeholder="00000"
               readOnly
@@ -71,6 +78,8 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
             <S.PostSearchBtn onClick={props.onClickAddressSearch}>
               우편번호검색
             </S.PostSearchBtn>
+          </S.PostNumberWrapper>
+          <S.PostWrapper>
             <S.PostInput
               readOnly
               value={
@@ -88,14 +97,16 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
           </S.PostWrapper>
           <S.ImageWrapper>
             <S.ImageTitle>사진첨부</S.ImageTitle>
-            {props.fileUrls.map((el, index) => (
-              <Uploads01
-                key={uuidv4()}
-                index={index}
-                fileUrl={el}
-                onChangeFileUrls={props.onChangeFileUrls}
-              />
-            ))}
+            <S.ImageInputs>
+              {props.fileUrls.map((el, index) => (
+                <Uploads01
+                  key={uuidv4()}
+                  index={index}
+                  fileUrl={el}
+                  onChangeFileUrls={props.onChangeFileUrls}
+                />
+              ))}
+            </S.ImageInputs>
           </S.ImageWrapper>
         </S.ContentWrapper>
         <S.ButtonWrapper
