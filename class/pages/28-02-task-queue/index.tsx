@@ -11,7 +11,7 @@ export default function TaskQueuePage() {
       console.log("1초 뒤에 실행될 거에요!!");
     }, 1000);
     let sum = 0;
-    for (let i = 0; i <= 999999999; i++) {
+    for (let i = 0; i <= 99999999; i++) {
       sum += i;
     }
     console.log("끝!!");

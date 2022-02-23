@@ -1,25 +1,42 @@
 import styled from "@emotion/styled";
 
+export const RecentItems = styled.div`
+  width: 50%;
+  height: 10vh;
+  display: flex;
+  background-color: green;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
+
 export const TopWrapper = styled.div`
   margin-top: 3vh;
   margin-bottom: 3vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 `;
-export const WelcomeTitle = styled.span`
+export const WelcomeTitle = styled.div`
+  width: 10vw;
+  hegith: 10vh;
+  font-size: 24px;
+  background-color: #ffc0d3;
+  color: #ff5c8d;
+  border-radius: 10px;
+  cursor: pointer;
   font-size: 24px;
   margin-top: 3vh;
-  margin: 0 auto;
+
   background-color: #ffc0d3;
   color: #ff5c8d;
   padding-left: 1vw;
   border: 3px solid #ff5c8d;
-  border-radius: 10px 0px 0px 10px;
 `;
 
 export const Position = styled.div`
-  /* display: flex; */
   justify-content: center;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Wrapper = styled.div`
@@ -35,14 +52,14 @@ export const ListWrapper = styled.div`
   justify-contents: center;
   align-items: center;
   background-color: #ff5c8d;
-  width: 80%;
+  width: 98%;
   height: auto;
   padding-left: 2vw;
   border-radius: 10px;
 `;
 export const DataList = styled.div`
   height: 15vh;
-  width: 100%;
+  width: 98%;
   color: #ffc0d3;
   margin-top: 5vh;
   border-bottom: 1px solid #ffc0d3;
@@ -53,13 +70,18 @@ export const DataList = styled.div`
   align-items: center;
   background-color: #524a4e;
   border-radius: 10px;
+  padding: 0 1vw 0 1vw;
+  cursor: pointer;
 `;
 
 export const DataTitle = styled.span``;
 
-export const RecentItems = styled.div`
+export const RegButton = styled.button`
   width: 10vw;
-  height: 60vh;
-  background-color: green;
+  border: none;
+  font-size: 24px;
+  background-color: #ffc0d3;
+  color: #ff5c8d;
+  border-radius: 10px;
+  cursor: pointer;
 `;
-export const RegButton = styled.button``;

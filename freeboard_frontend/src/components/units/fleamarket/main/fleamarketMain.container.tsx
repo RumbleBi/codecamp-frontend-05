@@ -2,10 +2,12 @@ import { useQuery } from "@apollo/client";
 import { withAuth } from "../../../../components/commons/hocs/withAuth";
 import {
   IQuery,
+  IQueryFetchUseditemArgs,
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
 import FleamarketMainUI from "./fleamarketMain.presenter";
 import {
+  FETCH_USED_ITEM,
   FETCH_USER_LOGGED_IN,
   FETCH_USED_ITEMS,
 } from "./fleamarketMain.queries";
@@ -25,7 +27,6 @@ export default function FleamarketMain() {
     variables: { page: 1, search: "" },
   });
 
-  console.log(dataItems);
   const onLoadMore = () => {
     if (!dataItems) return;
     fetchMore({
@@ -50,6 +51,11 @@ export default function FleamarketMain() {
   const onClickReg = () => {
     router.push("/fleamarket/reg");
   };
+  // 게시글 상세페이지 이동
+
+  const onClickMoveToDetail = (id: string) => (event) => {
+    router.push(`/fleamarket/${id}`);
+  };
 
   return (
     <FleamarketMainUI
@@ -57,6 +63,7 @@ export default function FleamarketMain() {
       dataItems={dataItems}
       onClickReg={onClickReg}
       onLoadMore={onLoadMore}
+      onClickMoveToDetail={onClickMoveToDetail}
     />
   );
 }

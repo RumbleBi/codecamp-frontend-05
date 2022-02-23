@@ -6,7 +6,7 @@ import {
   IQueryFetchUseditemArgs,
 } from "../../../../src/commons/types/generated/types";
 import { withAuth } from "../../../../src/components/commons/hocs/withAuth";
-import FleamarketReg from "../../../../src/components/units/fleamarket/reg/RegProduct.contatiner";
+import FleamarketReg from "../../../../src/components/units/fleamarket/reg/RegProduct.container";
 const FETCH_USED_ITEM = gql`
   query fetchUseditem($useditemId: ID!) {
     fetchUseditem(useditemId: $useditemId) {

@@ -21,3 +21,22 @@ export const FETCH_USED_ITEMS = gql`
     }
   }
 `;
+
+export const FETCH_USED_ITEM = gql`
+  query fetchUseditem($useditemId: ID!) {
+    fetchUseditem(useditemId: $useditemId) {
+      _id
+      name
+      remarks
+      contents
+      price
+      useditemAddress {
+        zipcode
+        address
+        addressDetail
+      }
+      images
+      createdAt
+    }
+  }
+`;

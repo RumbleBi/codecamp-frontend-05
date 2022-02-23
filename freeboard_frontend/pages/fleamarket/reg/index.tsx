@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { withAuth } from "../../../src/components/commons/hocs/withAuth";
-import FleamarketRge from "../../../src/components/units/fleamarket/reg/RegProduct.contatiner";
+import FleamarketRge from "../../../src/components/units/fleamarket/reg/RegProduct.container";
 
 export const RegContext = createContext({});
 

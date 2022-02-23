@@ -5,6 +5,7 @@ export default function FleamarketMainUI(props) {
     <S.Position>
       <S.TopWrapper>
         <S.RegButton onClick={props.onClickReg}>게시물등록하기</S.RegButton>
+        <S.RecentItems>최근본상품</S.RecentItems>
         <S.WelcomeTitle>
           {props.data?.fetchUserLoggedIn.name}님 환영합니다!
         </S.WelcomeTitle>
@@ -17,7 +18,10 @@ export default function FleamarketMainUI(props) {
             hasMore={true}
           >
             {props.dataItems?.fetchUseditems.map((el) => (
-              <S.DataList key={el._id}>
+              <S.DataList
+                onClick={props.onClickMoveToDetail(el._id)}
+                key={el._id}
+              >
                 <S.DataTitle>판매자: {el.name}</S.DataTitle>
                 <S.DataTitle>한줄요약: {el.remarks}</S.DataTitle>
                 <S.DataTitle>내용: {el.contents}</S.DataTitle>
@@ -27,7 +31,6 @@ export default function FleamarketMainUI(props) {
               </S.DataList>
             ))}
           </InfiniteScroll>
-          <S.RecentItems>ddd</S.RecentItems>
         </S.ListWrapper>
       </S.Wrapper>
     </S.Position>
