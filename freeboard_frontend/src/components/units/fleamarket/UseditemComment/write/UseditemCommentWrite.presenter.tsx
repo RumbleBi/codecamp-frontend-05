@@ -1,4 +1,4 @@
-export default function BoardCommentWriteUI() {
+export default function UseditemCommentWriteUI() {
   return (
     <div>
       <div></div>
