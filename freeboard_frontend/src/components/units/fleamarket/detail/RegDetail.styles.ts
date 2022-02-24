@@ -78,6 +78,8 @@ export const AddressDetail = styled.div`
   color: #ff5c8d;
 `;
 
+export const KakaoMapWrapper = styled.div``;
+
 export const ButtonWrapper = styled.div`
   display: flex;
 `;

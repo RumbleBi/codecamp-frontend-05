@@ -42,7 +42,7 @@ export default function RegDetail() {
   };
   return (
     <RegDetailUI
-      data={data}
+      data={data && data}
       register={register}
       handleSubmit={handleSubmit}
       formState={formState}
