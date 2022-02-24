@@ -80,6 +80,7 @@ export default function UseditemCommentWrite(props) {
       if (error instanceof Error) alert(error.message);
     }
   };
+  console.log();
 
   return (
     <UseditemCommentWriteUI

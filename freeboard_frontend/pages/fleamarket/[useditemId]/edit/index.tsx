@@ -7,6 +7,7 @@ import {
 } from "../../../../src/commons/types/generated/types";
 import { withAuth } from "../../../../src/components/commons/hocs/withAuth";
 import FleamarketReg from "../../../../src/components/units/fleamarket/reg/RegProduct.container";
+import UseditemCommentWrite from "../../../../src/components/units/fleamarket/UseditemComment/write/UseditemCommentWrite.container";
 const FETCH_USED_ITEM = gql`
   query fetchUseditem($useditemId: ID!) {
     fetchUseditem(useditemId: $useditemId) {
@@ -42,6 +43,7 @@ function RegEditPage() {
   return (
     <RegContext.Provider value={myValue}>
       <FleamarketReg data={data} />
+      <UseditemCommentWrite />
     </RegContext.Provider>
   );
 }

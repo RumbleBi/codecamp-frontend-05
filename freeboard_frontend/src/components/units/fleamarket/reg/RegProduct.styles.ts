@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { flexbox } from "@mui/system";
 
 export const Position = styled.div`
   display: flex;

@@ -6,6 +6,7 @@ import {
   InMemoryCache,
   ApolloProvider,
   ApolloLink,
+  gql,
 } from "@apollo/client";
 import { Global } from "@emotion/react";
 import { AppProps } from "next/app";
@@ -23,6 +24,9 @@ import {
   useState,
 } from "react";
 import Head from "next/head";
+import { onError } from "@apollo/client/link/error";
+import { GraphQLClient } from "graphql-request";
+import { getAccessToken } from "../src/commons/libraries/getAccessToken";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -77,17 +81,49 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     // 토큰 유지시켜주는 코드 이게 제일 낫다. 왜냐? 다른것들은 다시 렌더링되거든
-    if (localStorage.getItem("accessToken")) {
-      setAccessToken(localStorage.getItem("accessToken") || "");
-    }
+    // if (localStorage.getItem("accessToken")) {
+    //   setAccessToken(localStorage.getItem("accessToken") || "");
+    // }
+
+    getAccessToken().then((newAccessToken) => {
+      setAccessToken(newAccessToken);
+    });
   }, []);
+  // 쿠키 토큰 유효성검증
+
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    // 1. error 캐치
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        // 2. 해당 error가 토큰 만료인지 체크(UNAUTHENTICATED)
+        if (err.extensions.code === "UNAUTHENTICATED") {
+          // 3. refreshToken 으로 accessToken을 재발급 받기
+          // playground에 restoreToken 있지만 mutation이 불가. 아래 client가 Apollo 모든설정을 컴포넌트에 뿌려주는걸 받아야 쓰기 때문
+          getAccessToken().then((newAccessToken) => {
+            // 4. 재발급받은 accessToken 저장하기
+            setAccessToken(newAccessToken);
+
+            // 5. 재발급받은 accessToken으로 방금 실패한 쿼리 재요청하기
+            operation.setContext({
+              Headers: {
+                ...operation.getContext().headers, // 전부 다 똑같이 복제하고 인증 토큰만 교체
+                authorization: `Bearer ${newAccessToken}`,
+              },
+            }); // 설정 변경, 실패한 쿼리의 데이터가 저장되어 있는것인데 accessToken만 바꿔치기
+            return forward(operation); // 변경된 오퍼레이션 재요청하기
+          });
+        }
+      }
+    }
+  });
 
   const uploadLink = createUploadLink({
-    uri: "http://backend05.codebootcamp.co.kr/graphql",
+    uri: "https://backend05.codebootcamp.co.kr/graphql",
     headers: { authorization: `Bearer ${accessToken}` },
+    credentials: "include", // 쿠키 등록코드
   });
   const client = new ApolloClient({
-    link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
+    link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
 

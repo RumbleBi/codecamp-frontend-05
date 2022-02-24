@@ -31,13 +31,18 @@ export default function FleamarketReg(props) {
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
-
+  // const [tags, setTags] = useState([]);
   // YUP 사용하여 Input 필수입력검증
   const router = useRouter();
   const { register, handleSubmit, formState, setValue, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
+  // 태그 입력값받기
+  // const onChangeTags = (event) => {
+  //   setTags(event.target.value);
+  // };
+
   // 웹 에디터 추가
   const handleChange = (value: string) => {
     setValue("contents", value === "<p><br></p>" ? "" : value);

@@ -24,6 +24,9 @@ export const UPDATE_USEDITEM_QUESTION = gql`
       useditemQuestionId: $useditemQuestionId
     ) {
       _id
+      useditem {
+        name
+      }
     }
   }
 `;

@@ -6,7 +6,7 @@ export const InputWrapper = styled.div``;
 
 export const Writer = styled.div``;
 
-export const InputContents = styled.input``;
+export const InputContents = styled.textarea``;
 
 export const ContentsWrapper = styled.div``;
 
