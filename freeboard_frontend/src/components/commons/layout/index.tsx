@@ -4,6 +4,8 @@ import LayoutHeader from "./header/LayoutHeader.container";
 import LayoutBanner from "./banner/LayoutBanner.container";
 import LayoutNavigation from "./navigation/LayoutNavigation.container";
 import LayoutFooter from "./footer/LayoutFooter.container";
+import { useRouter } from "next/router";
+import LayoutSidebar from "./sidebar";
 
 const LayoutBody = styled.div``;
 interface ILayoutProps {
@@ -12,6 +14,7 @@ interface ILayoutProps {
 const BackGround = styled.div`
   background-image: url("/images/background-sakura.jpeg");
   overflow: hidden;
+  width: 100%;
 `;
 
 const QuickMove = styled.div`
@@ -19,7 +22,7 @@ const QuickMove = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 80px;
+  height: 50px;
   position: fixed;
   bottom: 0;
   z-index: 100000;
@@ -38,11 +41,25 @@ const GoToTopBtn = styled.button`
 `;
 
 export default function Layout(props: ILayoutProps) {
+  const router = useRouter();
   const MoveToTop = () => {
     window.scrollTo(0, 0);
   };
   // const HIDDEN_HEADERS = [];
   // const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath); // console.log 찍은 곳에서 asPath확인
+  const HIDDEN_SIDEBAR = [
+    "/",
+    `/boards/${router.query.boardId}`,
+    `/boards/${router.query.boardId}/edit`,
+    "/boards/openapis",
+    "/",
+    "/fleamarket",
+    "/fleamarket/login",
+    "/fleamarket/reg",
+    "/fleamarket/signin",
+  ];
+  const isHiddenSidebar = HIDDEN_SIDEBAR.includes(router.asPath);
+
   return (
     <BackGround>
       <LayoutHeader />
@@ -52,6 +69,7 @@ export default function Layout(props: ILayoutProps) {
         <QuickMove>
           맨위로 올라가기<GoToTopBtn onClick={MoveToTop}>TOP</GoToTopBtn>
         </QuickMove>
+        {!isHiddenSidebar && <LayoutSidebar />}
         {props.children}
       </LayoutBody>
       <LayoutFooter />

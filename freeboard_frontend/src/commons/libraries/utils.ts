@@ -23,3 +23,18 @@ export const checkFileValidation = (files?: File) => {
   }
   return true;
 };
+
+export const getDate2 = (getDate2) => {
+  const aaa = new Date(getDate2);
+  const yyyy = aaa.getFullYear();
+  const mm = aaa.getMonth() + 1;
+  const dd = aaa.getDate();
+  return `${yyyy}-${String(mm).padStart(2, "0")}-${String(dd).padStart(
+    2,
+    "0"
+  )}`;
+};
+
+export const getPrice = (price) => {
+  return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};

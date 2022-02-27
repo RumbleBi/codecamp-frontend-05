@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import {
   IMutation,
   IMutationCreateUseditemQuestionArgs,
@@ -11,17 +11,19 @@ import UseditemCommentWriteUI from "./UseditemCommentWrite.presenter";
 import {
   CREATE_USEDITEM_QUESTION,
   UPDATE_USEDITEM_QUESTION,
+  FETCH_USEDITEM_QUESTION,
 } from "./UseditemCommentWrite.queries";
 
 import { FETCH_USEDITEM_QUESTIONS } from "../list/UseditemCommentList.queries";
 import { Modal } from "antd";
+import { RegContext } from "../../../../../../pages/fleamarket/[useditemId]/edit";
 
 export default function UseditemCommentWrite(props) {
   const router = useRouter();
-
+  const { isEdit } = useContext(RegContext);
   const [contents, setContents] = useState("");
 
-  const onChangeContents = (event) => {
+  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContents(event.target.value);
   };
 
@@ -41,8 +43,8 @@ export default function UseditemCommentWrite(props) {
         },
         refetchQueries: [
           {
-            query: FETCH_USEDITEM_QUESTIONS,
-            variables: { useditemId: String(router.query.useditemId) },
+            query: FETCH_USEDITEM_QUESTION,
+            variables: { useditemId: router.query.useditemId, page: 1 },
           },
         ],
       });
@@ -89,6 +91,7 @@ export default function UseditemCommentWrite(props) {
       onChangeContents={onChangeContents}
       contents={contents}
       el={props.el}
+      isEdit={isEdit}
     />
   );
 }

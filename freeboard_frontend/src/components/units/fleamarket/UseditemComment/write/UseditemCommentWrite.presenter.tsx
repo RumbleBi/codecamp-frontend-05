@@ -3,7 +3,6 @@ import { RegContext } from "../../../../../../pages/fleamarket/reg";
 import * as S from "./UseditemCommentWrite.styles";
 
 export default function UseditemCommentWriteUI(props) {
-  const { isEdit } = useContext(RegContext);
   return (
     <S.Wrapper>
       <S.InputWrapper>
@@ -18,10 +17,12 @@ export default function UseditemCommentWriteUI(props) {
       <S.ContentsWrapper>
         <S.ContentsBtn
           onClick={
-            isEdit ? props.onClickCommentUpdate : props.onClickCommentWrite
+            props.isEdit
+              ? props.onClickCommentUpdate
+              : props.onClickCommentWrite
           }
         >
-          {isEdit ? "수정하기" : "등록하기"}
+          {props.isEdit ? "수정하기" : "등록하기"}
         </S.ContentsBtn>
       </S.ContentsWrapper>
     </S.Wrapper>

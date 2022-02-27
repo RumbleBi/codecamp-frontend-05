@@ -12,20 +12,38 @@ import {
   FETCH_USED_ITEMS,
 } from "./fleamarketMain.queries";
 import router from "next/router";
+import { getDate2 } from "../../../../commons/libraries/utils";
+import { SettingsRemote } from "@mui/icons-material";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../../../../../pages/_app";
 
 export default function FleamarketMain() {
+  const { setItem } = useContext(GlobalContext);
+  const [keyword, setKeyword] = useState("");
+
   // 로그인시 ~~환영멘트용
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   console.log(data?.fetchUserLoggedIn.name);
 
   // 게시글목록
-  const { data: dataItems, fetchMore } = useQuery<
-    Pick<IQuery, "fetchUseditems">,
-    IQueryFetchUseditemsArgs
-  >(FETCH_USED_ITEMS, {
-    variables: { page: 1, search: "" },
-  });
+  const {
+    data: dataItems,
+    fetchMore,
+    refetch,
+  } = useQuery<Pick<IQuery, "fetchUseditems">, IQueryFetchUseditemsArgs>(
+    FETCH_USED_ITEMS,
+    {
+      variables: { page: 1, search: "" },
+    }
+  );
+
+  // 서치바 리패치 부분
+
+  // const { data: dataSearch, refetch } = useQuery(FETCH_USED_ITEMS);
+
+  // 최근본 상품 보이게하기
+  const todayDate = getDate2(new Date());
 
   const onLoadMore = () => {
     if (!dataItems) return;
@@ -53,10 +71,27 @@ export default function FleamarketMain() {
   };
   // 게시글 상세페이지 이동
 
-  const onClickMoveToDetail = (id: string) => (event) => {
-    router.push(`/fleamarket/${id}`);
+  const onClickMoveToDetail = (el) => () => {
+    const baskets = JSON.parse(localStorage.getItem(todayDate) || "[]");
+    const temp = baskets.filter((filterEl) => filterEl._id === el._id);
+    if (temp.length === 1) {
+      return;
+    }
+
+    const { __typename, ...plus } = el;
+    baskets.unshift(plus);
+    localStorage.setItem(todayDate, JSON.stringify(baskets));
+
+    setItem(baskets);
+
+    router.push(`/fleamarket/${el._id}`);
+    // router.push(`/fleamarket/${el}`);
   };
 
+  // 검색페이지
+  function onChangeKeyword(value: string) {
+    setKeyword(value);
+  }
   return (
     <FleamarketMainUI
       data={data}
@@ -64,6 +99,9 @@ export default function FleamarketMain() {
       onClickReg={onClickReg}
       onLoadMore={onLoadMore}
       onClickMoveToDetail={onClickMoveToDetail}
+      onChangeKeyword={onChangeKeyword}
+      keyword={keyword}
+      refetch={refetch}
     />
   );
 }

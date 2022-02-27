@@ -52,29 +52,41 @@ export const ListWrapper = styled.div`
   justify-contents: center;
   align-items: center;
   background-color: #ff5c8d;
-  width: 98%;
+  width: 100%;
   height: auto;
   padding-left: 2vw;
   border-radius: 10px;
 `;
 export const DataList = styled.div`
-  height: 15vh;
-  width: 98%;
+  height: 40vh;
+  width: 100%;
   color: #ffc0d3;
   margin-top: 5vh;
   border-bottom: 1px solid #ffc0d3;
   font-size: 16px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background-color: #524a4e;
   border-radius: 10px;
   padding: 0 1vw 0 1vw;
   cursor: pointer;
+  white-space: pre-wrap;
+  /* overflow: scroll; */
 `;
 
 export const DataTitle = styled.span``;
+
+export const ImageWrapper = styled.div`
+  width: 50px;
+  height: 50px;
+`;
+
+export const Image = styled.img`
+  width: 50px;
+  height: 50px;
+`;
 
 export const RegButton = styled.button`
   width: 10vw;

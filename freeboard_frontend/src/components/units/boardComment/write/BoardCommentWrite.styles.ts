@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   height: 40vh;
   background-color: blue;
 `;
-//
+
 export const PencilIcon = styled.img``;
 
 export const TEXT = styled.span`

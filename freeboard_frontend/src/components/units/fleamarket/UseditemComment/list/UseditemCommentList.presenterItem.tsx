@@ -16,6 +16,7 @@ export default function UseditemCommentListUIItem(props) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+
   const [deleteUseditemQuestion] = useMutation<
     Pick<IMutation, "deleteUseditemQuestion">,
     IMutationDeleteUseditemQuestionArgs
@@ -53,10 +54,10 @@ export default function UseditemCommentListUIItem(props) {
       {!isEdit && (
         <S.Wrapper>
           <S.QuestionWrapper>
-            <div>{props.el?.name}</div>
-            <div>{props.el?.contents}</div>
+            <S.Name>{props.el?.name}</S.Name>
+            <S.Contents>{props.el?.contents}</S.Contents>
           </S.QuestionWrapper>
-          <div onClick={onClickUpdate}>수정하기</div>
+          <S.ChangeButton onClick={onClickUpdate}>수정하기</S.ChangeButton>
         </S.Wrapper>
       )}
       {isEdit && (

@@ -5,21 +5,27 @@ import {
   IQueryFetchUseditemQuestionsArgs,
 } from "../../../../../commons/types/generated/types";
 import UseditemCommentListUI from "./UseditemCommentList.presenter";
-import { FETCH_USEDITEM_QUESTIONS } from "./UseditemCommentList.queries";
+import {
+  FETCH_USEDITEM_QUESTIONS,
+  FETCH_USEDITEM_QUESTION_ANSWERS,
+} from "./UseditemCommentList.queries";
 export default function UseditemCommentList() {
   const router = useRouter();
   const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchUseditemQuestions">,
     IQueryFetchUseditemQuestionsArgs
   >(FETCH_USEDITEM_QUESTIONS, {
-    variables: { useditemId: String(router.query.useditemId), page: 0 }, // 맞나?
+    variables: { useditemId: String(router.query.useditemId) }, // 맞나?
   });
+  const { data: answerData } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS);
 
   function onLoadMore() {
     if (!data) return;
 
     fetchMore({
-      variables: { page: 0 }, // 맞나?
+      variables: {
+        page: Math.ceil(data?.fetchUseditemQuestions.length / 10) + 1,
+      },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult?.fetchUseditemQuestions)
           return { fetchUseditemQuestions: [...prev.fetchUseditemQuestions] };
@@ -32,5 +38,11 @@ export default function UseditemCommentList() {
       },
     });
   }
-  return <UseditemCommentListUI data={data} onLoadMore={onLoadMore} />;
+  return (
+    <UseditemCommentListUI
+      data={data}
+      onLoadMore={onLoadMore}
+      answerData={answerData}
+    />
+  );
 }

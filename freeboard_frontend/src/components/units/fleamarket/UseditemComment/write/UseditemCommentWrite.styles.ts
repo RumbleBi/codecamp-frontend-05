@@ -1,12 +1,22 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 20vh;
+  background-color: blue;
+`;
 
-export const InputWrapper = styled.div``;
+export const InputWrapper = styled.div`
+  display: flex;
+`;
 
-export const Writer = styled.div``;
-
-export const InputContents = styled.textarea``;
+export const InputContents = styled.textarea`
+  width: 80%;
+  resize: none;
+`;
 
 export const ContentsWrapper = styled.div``;
 

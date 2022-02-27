@@ -27,11 +27,15 @@ interface IGlobalContext {
 }
 
 export const GlobalContext = createContext<IGlobalContext>({});
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState("");
+  const [item, setItem] = useState([]);
   const value = {
     accessToken,
     setAccessToken,
+    item,
+    setItem,
   };
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {

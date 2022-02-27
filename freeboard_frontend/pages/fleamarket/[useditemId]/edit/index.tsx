@@ -31,7 +31,7 @@ export const RegContext = createContext({});
 function RegEditPage() {
   const router = useRouter();
   const myValue = {
-    isEdit: true,
+    isEdit: false,
   };
 
   const { data } = useQuery<
