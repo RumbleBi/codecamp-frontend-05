@@ -91,7 +91,7 @@ export default function LayoutSidebar() {
                   </div>
                 </Items>
               ))
-              .filter((el, index) => {
+              .filter((el: any, index: any) => {
                 if (index <= 3) return el;
               })}
           </>
