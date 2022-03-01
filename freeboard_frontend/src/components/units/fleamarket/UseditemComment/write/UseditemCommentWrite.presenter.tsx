@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { RegContext } from "../../../../../../pages/fleamarket/reg";
 import * as S from "./UseditemCommentWrite.styles";
 
 export default function UseditemCommentWriteUI(props) {

@@ -5,21 +5,23 @@ import Searchbars01 from "../../../commons/searchbars/01/Searchbars01.container"
 export default function FleamarketMainUI(props) {
   return (
     <S.Position>
+      <S.ChargingBtn onClick={props.onClickMoveToPayment}>
+        포인트 충전하기
+      </S.ChargingBtn>
       <S.TopWrapper>
         <S.RegButton onClick={props.onClickReg}>게시물등록하기</S.RegButton>
+        <Searchbars01
+          refetch={props.refetch}
+          onChangeKeyword={props.onChangeKeyword}
+        />
 
-        <S.WelcomeTitle>
-          {props.data?.fetchUserLoggedIn.name}님 환영합니다!
+        <S.WelcomeTitle onClick={props.onClickMoveToMyPage}>
+          <div>{props.data?.fetchUserLoggedIn.name}님 환영합니다!</div>
+          <div>{props.data?.fetchUserLoggedIn.userPoint.amount} : 포인트</div>
         </S.WelcomeTitle>
       </S.TopWrapper>
       <S.Wrapper>
         <S.ListWrapper>
-          <Searchbars01
-            refetch={props.refetch}
-            refetchUseditemsCount={props.refetchUseditemsCount}
-            onChangeKeyword={props.onChangeKeyword}
-          />
-
           <InfiniteScroll
             pageStart={0}
             loadMore={props.onLoadMore}
@@ -31,7 +33,7 @@ export default function FleamarketMainUI(props) {
                   <S.DataTitle>판매자: {el.name}</S.DataTitle>
                   <S.DataTitle>한줄요약: {el.remarks}</S.DataTitle>
                 </div>
-                <div>
+                <div style={{ color: "#ffc0d3" }}>
                   {process.browser ? (
                     <S.DataTitle
                       dangerouslySetInnerHTML={{

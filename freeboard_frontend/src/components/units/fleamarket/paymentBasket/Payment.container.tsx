@@ -1,12 +1,22 @@
+import { useQuery } from "@apollo/client";
 import { useState } from "react";
-import Head from "next/head";
-import * as S from "./Payment.styles";
+import { IQuery } from "../../../../commons/types/generated/types";
+import PaymentBasketUI from "./Payment.presenter";
+import { FETCH_USER_LOGGED_IN } from "./Payment.queries";
 export default function PaymentBasket() {
   const [amount, setAmount] = useState(0);
+  const { data } =
+    useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
 
   const onChangeAmount = (event) => {
     setAmount(Number(event.target.value));
   };
+
+  const onClickAmount = (event) => {
+    setAmount(Number(event?.currentTarget.id));
+  };
+
+  console.log(data?.fetchUserLoggedIn.email);
   const onClickPayment = () => {
     const IMP = window.IMP; // 생략 가능
     IMP.init("imp70574995"); // Example: imp00000000
@@ -17,13 +27,13 @@ export default function PaymentBasket() {
         pg: "html5_inicis",
         pay_method: "card",
         // merchant_uid: "ORD20180131-0000011", // 상품ID 없애거나 중복되지않게 설정해놔야한다
-        name: "노르웨이 회전 의자",
+        name: "충전금액",
         amount: amount,
-        buyer_email: "gildong@gmail.com",
-        buyer_name: "홍길동",
-        buyer_tel: "010-4242-4242",
-        buyer_addr: "서울특별시 강남구 신사동",
-        buyer_postcode: "01181",
+        buyer_email: data?.fetchUserLoggedIn.email,
+        buyer_name: data?.fetchUserLoggedIn.name,
+        buyer_tel: "010-1111-1111",
+        buyer_addr: "길바닥",
+        buyer_postcode: "11111",
         // m_redirect_url: "", // 모바일의 경우 리다이렉트의 필요성이 있기 때문에 써줘야한다 웹훅노티피케이션
       },
       (rsp) => {
@@ -41,24 +51,12 @@ export default function PaymentBasket() {
     );
   };
   return (
-    <S.Position>
-      <Head>
-        <script
-          type="text/javascript"
-          src="https://code.jquery.com/jquery-1.12.4.min.js"
-        ></script>
-        <script
-          type="text/javascript"
-          src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
-        ></script>
-      </Head>
-      <S.Wrapper>
-        <S.SelectPaymentWrapper>
-          결제금액: <input onChange={onChangeAmount} type="text" />
-          <button onClick={onClickPayment}>결제하기</button>
-        </S.SelectPaymentWrapper>
-      </S.Wrapper>
-    </S.Position>
+    <PaymentBasketUI
+      onChangeAmount={onChangeAmount}
+      onClickPayment={onClickPayment}
+      onClickAmount={onClickAmount}
+      data={data}
+    />
   );
 }
 

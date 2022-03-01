@@ -4,7 +4,7 @@ import * as S from "./LayoutHeader.styles";
 export default function LayoutHeader() {
   const router = useRouter();
   const onClickTitle = () => {
-    router.push("/");
+    router.push("/boards/list");
   };
   return (
     <Fragment>

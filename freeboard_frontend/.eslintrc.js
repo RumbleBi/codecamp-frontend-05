@@ -19,5 +19,6 @@ module.exports = {
     "no-unused-vars": "off",
     "react/display-name": "off",
     "array-callback-return": "off",
+    "one-var": "off",
   },
 };

@@ -2,8 +2,9 @@ import RegDetail from "../../../src/components/units/fleamarket/detail/RegDetail
 import UseditemCommentWrite from "../../../src/components/units/fleamarket/UseditemComment/write/UseditemCommentWrite.container";
 import UseditemCommentList from "../../../src/components/units/fleamarket/UseditemComment/list/UseditemCommentList.container";
 import { Fragment } from "react";
+import { withAuth } from "../../../src/components/commons/hocs/withAuth";
 
-export default function RegDetailPage() {
+function RegDetailPage() {
   return (
     <Fragment>
       <RegDetail />
@@ -12,3 +13,5 @@ export default function RegDetailPage() {
     </Fragment>
   );
 }
+
+export default withAuth(RegDetailPage);

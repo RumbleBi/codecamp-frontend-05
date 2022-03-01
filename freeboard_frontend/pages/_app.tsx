@@ -20,6 +20,8 @@ import {
   useEffect,
   useState,
 } from "react";
+import { getAccessToken } from "../src/commons/libraries/getAccessToken";
+import { onError } from "@apollo/client/link/error";
 
 interface IGlobalContext {
   accessToken?: String;
@@ -38,18 +40,49 @@ function MyApp({ Component, pageProps }: AppProps) {
     setItem,
   };
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      setAccessToken(localStorage.getItem("accessToken") || "");
-    }
+    // if (localStorage.getItem("accessToken")) {
+    //   setAccessToken(localStorage.getItem("accessToken") || "");
+    // }
+    //
+    // document.cookie = `accessToken=${accessToken}`;
+    // const myCookie = document.cookie;
+    // console.log(myCookie);
+    getAccessToken().then((newAccessToken) => {
+      setAccessToken(newAccessToken);
+    });
   }, []);
+  // 쿠키 토큰 유효성 검증
+
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    // 1. error 캐치
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        if (err.extensions.code === "UNAUTHENTICATED") {
+          getAccessToken().then((newAccessToken) => {
+            setAccessToken(newAccessToken);
+            operation.setContext({
+              Headers: {
+                ...operation.getContext().headers,
+                authorization: `Bearer ${newAccessToken}`,
+              },
+            });
+            return forward(operation);
+          });
+        }
+      }
+    }
+  });
+
   const uploadLink = createUploadLink({
     uri: "http://backend05.codebootcamp.co.kr/graphql",
     headers: { Authorization: `Bearer ${accessToken}` }, // HTTP HEADER에 작성해야 accessToken을 사용시 Mutation에서 생성을 할 수 있음.
+    credentials: "include",
   });
 
   const client = new ApolloClient({
-    link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
+    link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
+    connectToDevTools: true,
   });
 
   return (

@@ -3,41 +3,42 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
   height: auto;
-  min-height: 20vh;
-  background-color: yellow;
-  border: 1px solid black;
+  min-height: 10vh;
+  background-color: #ff5c8d;
+  color: #524a4e;
 `;
 
-export const QuestionWrapper = styled.div`
-  width: 100%;
-  height: 10vh;
+export const Wrapper2 = styled(Wrapper)`
+  border-bottom: 1px solid #524a4e;
+  display: flex;
+  justify-content: space-between;
 `;
 
-export const Name = styled.div`
-  width: 100%;
-  height: 3vh;
-`;
+export const QuestionWrapper = styled.div``;
+
+export const Name = styled.div``;
 
 export const Contents = styled.div`
-  width: 100%;
-  hegiht: 1vh;
+  margin-left: 1vw;
 `;
 
 export const ChangeButton = styled.button`
   width: 100px;
   hegiht: 20px;
+  margin-right: 1vw;
 `;
 
 export const CommentWrapper = styled.div`
-  display: flex;
-  width: 70%;
+  width: 100%;
 `;
 
 export const CommentAnswerWrapper = styled.div`
-  width: 80%;
   height: auto;
-  min-height: 20vh;
-  border: 1px solid black;
+  min-height: 10vh;
+`;
+
+export const DeleteButton = styled.button`
+  width: 100px;
+  hegiht: 20px;
 `;

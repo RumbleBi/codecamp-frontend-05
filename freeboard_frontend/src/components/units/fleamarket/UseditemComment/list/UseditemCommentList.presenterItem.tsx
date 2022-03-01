@@ -42,23 +42,40 @@ export default function UseditemCommentListUIItem(props) {
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
+    setIsOpenDeleteModal(false);
   }
 
   function onClickOpenDeleteModal() {
     setIsOpenDeleteModal(true);
   }
+  function onClickCancelModal() {
+    setIsOpenDeleteModal(false);
+  }
 
   return (
     <>
-      {isOpenDeleteModal && <Modal visible={true} onOk={onClickDelete}></Modal>}
+      {isOpenDeleteModal && (
+        <Modal
+          visible={true}
+          onOk={onClickDelete}
+          onCancel={onClickCancelModal}
+        >
+          삭제하시겠습니까?
+        </Modal>
+      )}
       {!isEdit && (
-        <S.Wrapper>
+        <S.Wrapper2>
           <S.QuestionWrapper>
             <S.Name>{props.el?.name}</S.Name>
             <S.Contents>{props.el?.contents}</S.Contents>
           </S.QuestionWrapper>
-          <S.ChangeButton onClick={onClickUpdate}>수정하기</S.ChangeButton>
-        </S.Wrapper>
+          <div>
+            <S.ChangeButton onClick={onClickUpdate}>수정하기</S.ChangeButton>
+            <S.DeleteButton onClick={onClickOpenDeleteModal}>
+              삭제하기
+            </S.DeleteButton>
+          </div>
+        </S.Wrapper2>
       )}
       {isEdit && (
         <UseditemCommentWrite

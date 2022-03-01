@@ -1,13 +1,9 @@
-import {
-  FireFilledIcon,
-  Searchbar,
-  SearchbarInput,
-} from "./Searchbars01.styles";
+import { SearchIcon, Searchbar, SearchbarInput } from "./Searchbars01.styles";
 
 export default function Searchbars01UI(props) {
   return (
     <Searchbar>
-      <FireFilledIcon />
+      <SearchIcon />
       <SearchbarInput
         placeholder="검색어를 입력해 주세요."
         onChange={props.onChangeSearchbar}

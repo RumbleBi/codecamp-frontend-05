@@ -13,16 +13,15 @@ import {
   UPDATE_USEDITEM_QUESTION,
   FETCH_USEDITEM_QUESTION,
 } from "./UseditemCommentWrite.queries";
-
-import { FETCH_USEDITEM_QUESTIONS } from "../list/UseditemCommentList.queries";
 import { Modal } from "antd";
 import { RegContext } from "../../../../../../pages/fleamarket/[useditemId]/edit";
 
 export default function UseditemCommentWrite(props) {
   const router = useRouter();
-  const { isEdit } = useContext(RegContext);
+  const [isEdit, setIsEdit] = useState(false);
   const [contents, setContents] = useState("");
 
+  console.log(router.query.useditemId);
   const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContents(event.target.value);
   };
@@ -44,7 +43,7 @@ export default function UseditemCommentWrite(props) {
         refetchQueries: [
           {
             query: FETCH_USEDITEM_QUESTION,
-            variables: { useditemId: router.query.useditemId, page: 1 },
+            variables: { useditemId: String(router.query.useditemId), page: 1 },
           },
         ],
       });
@@ -73,11 +72,12 @@ export default function UseditemCommentWrite(props) {
         },
         refetchQueries: [
           {
-            query: FETCH_USEDITEM_QUESTIONS,
+            query: FETCH_USEDITEM_QUESTION,
             variables: { useditemId: router.query.useditemId },
           },
         ],
       });
+      setIsEdit(false);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }

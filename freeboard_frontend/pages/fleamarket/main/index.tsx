@@ -1,5 +1,8 @@
+import { withAuth } from "../../../src/components/commons/hocs/withAuth";
 import FleamarketMain from "../../../src/components/units/fleamarket/main/fleamarketMain.container";
 
-export default function FleamarketMainPage() {
+function FleamarketMainPage() {
   return <FleamarketMain />;
 }
+
+export default withAuth(FleamarketMainPage);

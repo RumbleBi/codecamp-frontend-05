@@ -7,7 +7,7 @@ import UseditemAnswerList from "../AnswerList/UseditemAnswerList";
 export default function UseditemCommentListUI(props) {
   if (!props.data) return <div />;
   return (
-    <S.Wrapper>
+    <S.Wrapper style={{ border: "none" }}>
       <S.CommentWrapper>
         <InfiniteScroll
           pageStart={0}

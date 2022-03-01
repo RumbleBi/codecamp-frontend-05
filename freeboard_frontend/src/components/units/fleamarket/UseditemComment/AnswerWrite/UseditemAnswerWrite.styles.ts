@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   height: auto;
 `;
 export const InputContents = styled.textarea`
-  width: 50%;
   min-height: 5vh;
   height: auto;
 `;

@@ -85,13 +85,20 @@ export default function FleamarketMain() {
     setItem(baskets);
 
     router.push(`/fleamarket/${el._id}`);
-    // router.push(`/fleamarket/${el}`);
   };
 
   // 검색페이지
   function onChangeKeyword(value: string) {
     setKeyword(value);
   }
+  // 마이페이지
+  const onClickMoveToMyPage = () => {
+    router.push("/fleamarket/basket");
+  };
+  // 충전페이지
+  const onClickMoveToPayment = () => {
+    router.push("/fleamarket/payment");
+  };
   return (
     <FleamarketMainUI
       data={data}
@@ -102,6 +109,8 @@ export default function FleamarketMain() {
       onChangeKeyword={onChangeKeyword}
       keyword={keyword}
       refetch={refetch}
+      onClickMoveToMyPage={onClickMoveToMyPage}
+      onClickMoveToPayment={onClickMoveToPayment}
     />
   );
 }

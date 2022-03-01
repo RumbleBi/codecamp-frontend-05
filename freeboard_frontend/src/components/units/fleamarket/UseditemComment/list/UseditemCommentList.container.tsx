@@ -15,7 +15,7 @@ export default function UseditemCommentList() {
     Pick<IQuery, "fetchUseditemQuestions">,
     IQueryFetchUseditemQuestionsArgs
   >(FETCH_USEDITEM_QUESTIONS, {
-    variables: { useditemId: String(router.query.useditemId) }, // 맞나?
+    variables: { useditemId: String(router.query.useditemId), page: 1 }, // 맞나?
   });
   const { data: answerData } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS);
 

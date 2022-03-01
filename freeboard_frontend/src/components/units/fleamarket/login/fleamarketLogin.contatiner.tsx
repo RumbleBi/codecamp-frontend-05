@@ -1,13 +1,20 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { MouseEvent, useContext, useState } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
+import {
+  IMutation,
+  IMutationLoginUserArgs,
+} from "../../../../commons/types/generated/types";
 import FleaMarketLoginUI from "./fleamarketLogin.presenter";
 import { LOGIN_USER } from "./fleamarketLogin.queries";
 
 export default function FleaMarketLogin() {
   const router = useRouter();
-  const [loginUser] = useMutation(LOGIN_USER);
+  const [loginUser] = useMutation<
+    Pick<IMutation, "loginUser">,
+    IMutationLoginUserArgs
+  >(LOGIN_USER);
   const { setAccessToken } = useContext(GlobalContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,8 +38,9 @@ export default function FleaMarketLogin() {
       const accessToken = result.data?.loginUser.accessToken || "";
 
       if (setAccessToken) {
-        setAccessToken(result.data?.loginUser.accessToken);
-        localStorage.setItem("accessToken", accessToken);
+        setAccessToken(result.data?.loginUser.accessToken || "");
+        // localStorage.setItem("accessToken", accessToken);
+        document.cookie = `accessToken=${accessToken}`;
       }
       router.push("/fleamarket/main");
     } catch (error) {
@@ -40,11 +48,16 @@ export default function FleaMarketLogin() {
       alert("아이디, 비밀번호가 틀립니다.");
     }
   };
+
+  const onClickMenu = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target instanceof Element) router.push(event.target.id);
+  };
   return (
     <FleaMarketLoginUI
       onChangeEmail={onChangeEmail}
       onChangePassword={onChangePassword}
       onClickBtn={onClickBtn}
+      onClickMenu={onClickMenu}
     />
   );
 }

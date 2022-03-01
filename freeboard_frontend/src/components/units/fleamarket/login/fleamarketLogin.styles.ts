@@ -82,14 +82,19 @@ export const HelpForm = styled.div`
   justify-content: center;
   width: 30vw;
   margin-bottom: 4vh;
+  & div {
+    cursor: pointer;
+  }
 `;
 
 export const HelpText = styled.div`
+  display: flex;
   color: #ffc0cb;
-  font-size: 14px;
+  font-size: 18px;
   :hover {
     cursor: pointer;
   }
+  margin: 0 30px;
 `;
 
 export const LoginMenu = styled.div``;

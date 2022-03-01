@@ -1,5 +1,15 @@
-import { Fragment } from "react";
+import { Fragment, MouseEvent } from "react";
 import * as S from "./fleamarketLogin.styles";
+
+interface INavigationProps {
+  onClickMenu: (event: MouseEvent<HTMLDivElement>) => void;
+}
+
+const NAVIGATION_FLEAMARKET = [
+  { name: "이메일찾기", page: "/fleamarket/login" },
+  { name: "비밀번호찾기", page: "/fleamarket/login" },
+  { name: "회원가입", page: "/fleamarket/signin" },
+];
 
 export default function FleaMarketLoginUI(props) {
   return (
@@ -24,7 +34,13 @@ export default function FleaMarketLoginUI(props) {
             />
           </S.PasswordForm>
           <S.HelpForm>
-            <S.HelpText>이메일 찾기 | 비밀번호 찾기 | 회원가입</S.HelpText>
+            {NAVIGATION_FLEAMARKET.map((el) => (
+              <div key={el.page}>
+                <S.HelpText id={el.page} onClick={props.onClickMenu}>
+                  {el.name}
+                </S.HelpText>
+              </div>
+            ))}
           </S.HelpForm>
           <S.LoginMenu>
             <S.LoginBtn onClick={props.onClickBtn}>로그인</S.LoginBtn>

@@ -15,22 +15,32 @@ export const TopWrapper = styled.div`
   margin-bottom: 3vh;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 `;
 export const WelcomeTitle = styled.div`
-  width: 10vw;
+  width: 15vw;
   hegith: 10vh;
-  font-size: 24px;
+  font-size: 20px;
   background-color: #ffc0d3;
   color: #ff5c8d;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 24px;
-  margin-top: 3vh;
+  font-size: 18px;
+  padding-left: 1vw;
+  border: 2px solid #ff5c8d;
+`;
 
+export const RegButton = styled.button`
+  width: 15vw;
+  hegith: 10vh;
+  font-size: 18px;
   background-color: #ffc0d3;
   color: #ff5c8d;
-  padding-left: 1vw;
-  border: 3px solid #ff5c8d;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #ffc0d3;
+  color: #ff5c8d;
+  border: 2px solid #ff5c8d;
 `;
 
 export const Position = styled.div`
@@ -47,53 +57,56 @@ export const Wrapper = styled.div`
 `;
 
 export const ListWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-contents: center;
-  align-items: center;
   background-color: #ff5c8d;
-  width: 100%;
+  width: 90%;
   height: auto;
   padding-left: 2vw;
+  padding-right: 2vw;
   border-radius: 10px;
 `;
 export const DataList = styled.div`
-  height: 40vh;
+  border: 2px solid white;
+  min-height: 30vh;
   width: 100%;
-  color: #ffc0d3;
   margin-top: 5vh;
-  border-bottom: 1px solid #ffc0d3;
+  border-bottom: 1px solid ##524a4e;
   font-size: 16px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  background-color: #524a4e;
+  background-color: #ffc0d3;
   border-radius: 10px;
-  padding: 0 1vw 0 1vw;
+  padding: 0 2vw 0 2vw;
   cursor: pointer;
   white-space: pre-wrap;
   /* overflow: scroll; */
 `;
 
-export const DataTitle = styled.span``;
+export const DataTitle = styled.div`
+  color: #524a4e;
+`;
 
 export const ImageWrapper = styled.div`
-  width: 50px;
-  height: 50px;
+  display: flex;
+  flex-direction: row;
 `;
 
 export const Image = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
 `;
 
-export const RegButton = styled.button`
-  width: 10vw;
-  border: none;
-  font-size: 24px;
-  background-color: #ffc0d3;
-  color: #ff5c8d;
+export const ChargingBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  margin-top: 1vh;
+  margin-left: 85%;
   border-radius: 10px;
+  color: #ff5c8d;
+  background-color: #ffc0d3;
+  border: 2px solid #ff5c8d;
   cursor: pointer;
+  width: 150px;
+  height: 30px;
 `;

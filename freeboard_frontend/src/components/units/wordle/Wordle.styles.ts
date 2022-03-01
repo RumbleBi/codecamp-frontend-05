@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import isCorrect from "./index";
+
 export const HomeWrapper = styled.div`
   background-color: pink;
   display: flex;
@@ -14,6 +14,7 @@ export const WordInput1 = styled.input`
   height: 50px;
   font-size: 40px;
   text-align: center;
+  background-color: ${(props) => (props.isCorrect === true ? "green" : "red")};
 `;
 export const WordInput2 = styled.input`
   width: 50px;
@@ -38,7 +39,6 @@ export const WordInput5 = styled.input`
   height: 50px;
   font-size: 40px;
   text-align: center;
-  background-color: ${isCorrect === false ? "red" : ""};
 `;
 
 export const SubmitBtn = styled.button``;

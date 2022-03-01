@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 const Wrapper = styled.div`
   z-index: 2;
-  width: 150px;
+  width: 170px;
   padding: 20px 15px;
   position: fixed;
   right: 30px;
@@ -14,7 +14,8 @@ const Wrapper = styled.div`
   top: 50%;
   transform: translate(0, -50%);
   overflow: hidden;
-  background: white;
+  color: #ffc0d3;
+  background: #ff5c8d;
   border-radius: 20px;
   p {
     font-weight: 700;
@@ -22,6 +23,7 @@ const Wrapper = styled.div`
   > div:last-child {
     margin-bottom: 5px;
   }
+  border: 2px solid #ffc0d3;
 `;
 const ImgContainer = styled.div`
   width: 45px;
