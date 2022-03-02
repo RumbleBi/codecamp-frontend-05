@@ -42,3 +42,8 @@ export const DeleteButton = styled.button`
   width: 100px;
   hegiht: 20px;
 `;
+
+export const AnswerButton = styled.button`
+  width: 100px;
+  hegiht: 20px;
+`;

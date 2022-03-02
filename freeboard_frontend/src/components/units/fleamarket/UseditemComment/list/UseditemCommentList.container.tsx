@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
   IQuery,
@@ -6,6 +6,8 @@ import {
 } from "../../../../../commons/types/generated/types";
 import UseditemCommentListUI from "./UseditemCommentList.presenter";
 import {
+  DELETE_USEDITEM_QUESTION,
+  FETCH_USEDITEM_QUESTION,
   FETCH_USEDITEM_QUESTIONS,
   FETCH_USEDITEM_QUESTION_ANSWERS,
 } from "./UseditemCommentList.queries";
@@ -15,10 +17,29 @@ export default function UseditemCommentList() {
     Pick<IQuery, "fetchUseditemQuestions">,
     IQueryFetchUseditemQuestionsArgs
   >(FETCH_USEDITEM_QUESTIONS, {
-    variables: { useditemId: String(router.query.useditemId), page: 1 }, // 맞나?
+    variables: { useditemId: String(router.query.useditemId) }, // 맞나?
   });
-  const { data: answerData } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS);
 
+  // const { data: answerData } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS);
+
+  const [deleteUseditemQuestion] = useMutation(DELETE_USEDITEM_QUESTION);
+  const onClickDelete = async (event) => {
+    try {
+      await deleteUseditemQuestion({
+        variables: {
+          useditemQuestionId: event.target.id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_USEDITEM_QUESTION,
+            variables: { useditemId: router.query.useditemId, page: 1 },
+          },
+        ],
+      });
+    } catch (error) {
+      if (error instanceof Error) console.log(error.message);
+    }
+  };
   function onLoadMore() {
     if (!data) return;
 
@@ -42,7 +63,8 @@ export default function UseditemCommentList() {
     <UseditemCommentListUI
       data={data}
       onLoadMore={onLoadMore}
-      answerData={answerData}
+      onClickDelete={onClickDelete}
+      // answerData={answerData}
     />
   );
 }

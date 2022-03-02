@@ -1,4 +1,10 @@
 import { useMutation, gql, useQuery } from "@apollo/client";
+import {
+  IMutation,
+  IMutationLikeBoardArgs,
+  IQuery,
+  IQueryFetchBoardArgs,
+} from "../../src/commons/types/generated/types";
 const LIKE_BOARD = gql`
   mutation likeBoard($boardId: ID!) {
     likeBoard(boardId: $boardId)

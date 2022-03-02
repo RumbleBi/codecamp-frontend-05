@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client";
+import { useApolloClient, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { MouseEvent, useContext, useState } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
@@ -7,7 +7,7 @@ import {
   IMutationLoginUserArgs,
 } from "../../../../commons/types/generated/types";
 import FleaMarketLoginUI from "./fleamarketLogin.presenter";
-import { LOGIN_USER } from "./fleamarketLogin.queries";
+import { FETCH_USER_LOGGED_IN, LOGIN_USER } from "./fleamarketLogin.queries";
 
 export default function FleaMarketLogin() {
   const router = useRouter();
@@ -15,9 +15,10 @@ export default function FleaMarketLogin() {
     Pick<IMutation, "loginUser">,
     IMutationLoginUserArgs
   >(LOGIN_USER);
-  const { setAccessToken } = useContext(GlobalContext);
+  const { setAccessToken, setUserInfo } = useContext(GlobalContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const client = useApolloClient();
 
   const onChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -33,15 +34,25 @@ export default function FleaMarketLogin() {
           password,
         },
       });
-      console.log(result.data?.loginUser?.accessToken);
-
       const accessToken = result.data?.loginUser.accessToken || "";
 
       if (setAccessToken) {
-        setAccessToken(result.data?.loginUser.accessToken || "");
-        // localStorage.setItem("accessToken", accessToken);
+        setAccessToken(accessToken || "");
+        const resultUserInfo = await client.query({
+          query: FETCH_USER_LOGGED_IN,
+          context: {
+            headers: { authorization: `Bearer ${accessToken}` },
+          },
+        });
+
+        const userInfo = resultUserInfo.data.fetchUserLoggedIn;
+        if (setAccessToken) setAccessToken(accessToken);
+        if (setUserInfo) setUserInfo(userInfo);
+
         document.cookie = `accessToken=${accessToken}`;
+        document.cookie = `userInfo=${JSON.stringify(userInfo)}`;
       }
+
       router.push("/fleamarket/main");
     } catch (error) {
       if (error instanceof Error) console.log(error.message);

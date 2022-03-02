@@ -15,21 +15,20 @@ import {
 } from "./UseditemCommentWrite.queries";
 import { Modal } from "antd";
 import { RegContext } from "../../../../../../pages/fleamarket/[useditemId]/edit";
+import { FETCH_USEDITEM_QUESTIONS } from "../list/UseditemCommentList.queries";
 
 export default function UseditemCommentWrite(props) {
   const router = useRouter();
-  const [isEdit, setIsEdit] = useState(false);
   const [contents, setContents] = useState("");
-
-  console.log(router.query.useditemId);
-  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setContents(event.target.value);
-  };
 
   const [createUseditemQuestion] = useMutation<
     Pick<IMutation, "createUseditemQuestion">,
     IMutationCreateUseditemQuestionArgs
   >(CREATE_USEDITEM_QUESTION);
+
+  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setContents(event.target.value);
+  };
 
   const onClickCommentWrite = async () => {
     try {
@@ -42,8 +41,8 @@ export default function UseditemCommentWrite(props) {
         },
         refetchQueries: [
           {
-            query: FETCH_USEDITEM_QUESTION,
-            variables: { useditemId: String(router.query.useditemId), page: 1 },
+            query: FETCH_USEDITEM_QUESTIONS,
+            variables: { useditemId: String(router.query.useditemId) },
           },
         ],
       });
@@ -60,11 +59,13 @@ export default function UseditemCommentWrite(props) {
   const onClickCommnetUpdate = async () => {
     if (!contents) {
       Modal.error({ content: "내용이 수정되어야 합니다." });
+      return;
     }
 
     try {
       const updateUseditemQuestionInput: IUpdateUseditemQuestionInput = {};
       if (contents) updateUseditemQuestionInput.contents = contents;
+
       await updateUseditemQuestion({
         variables: {
           updateUseditemQuestionInput,
@@ -72,17 +73,16 @@ export default function UseditemCommentWrite(props) {
         },
         refetchQueries: [
           {
-            query: FETCH_USEDITEM_QUESTION,
+            query: FETCH_USEDITEM_QUESTIONS,
             variables: { useditemId: router.query.useditemId },
           },
         ],
       });
-      setIsEdit(false);
+      props.setIsEdit(false);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
   };
-  console.log();
 
   return (
     <UseditemCommentWriteUI
@@ -91,7 +91,7 @@ export default function UseditemCommentWrite(props) {
       onChangeContents={onChangeContents}
       contents={contents}
       el={props.el}
-      isEdit={isEdit}
+      isEdit={props.isEdit}
     />
   );
 }

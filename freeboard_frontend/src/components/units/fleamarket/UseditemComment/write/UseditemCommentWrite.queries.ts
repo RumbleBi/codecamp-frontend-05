@@ -10,6 +10,7 @@ export const CREATE_USEDITEM_QUESTION = gql`
       useditemId: $useditemId
     ) {
       _id
+      contents
     }
   }
 `;

@@ -23,19 +23,30 @@ import {
 import { getAccessToken } from "../src/commons/libraries/getAccessToken";
 import { onError } from "@apollo/client/link/error";
 
+interface IUserInfo {
+  name?: string;
+  email?: string;
+  picture?: string;
+}
+
 interface IGlobalContext {
   accessToken?: String;
   setAccessToken?: Dispatch<SetStateAction<string>>;
+  userInfo?: IUserInfo;
+  setUserInfo?: Dispatch<SetStateAction<IUserInfo>>;
 }
 
 export const GlobalContext = createContext<IGlobalContext>({});
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState("");
+  const [userInfo, setUserInfo] = useState({});
   const [item, setItem] = useState([]);
   const value = {
     accessToken,
     setAccessToken,
+    userInfo,
+    setUserInfo,
     item,
     setItem,
   };

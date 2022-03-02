@@ -36,12 +36,12 @@ export default function UseditemAnswerWrite(props) {
           createUseditemQuestionAnswerInput: {
             contents,
           },
-          useditemQuestionId: props.questionId,
+          useditemQuestionId: props.questionData._id,
         },
         refetchQueries: [
           {
             query: FETCH_USEDITEM_QUESTION_ANSWERS,
-            variables: { useditemQuestionId: props.questionId },
+            variables: { useditemQuestionId: props.questionData._id },
           },
         ],
       });
@@ -49,6 +49,27 @@ export default function UseditemAnswerWrite(props) {
       if (error instanceof Error) alert(error.message);
     }
   }
+  const onClickUpdate = async () => {
+    try {
+      await updateUseditemQuestionAnswer({
+        variables: {
+          updateUseditemQuestionAnswerInput: {
+            contents,
+          },
+          useditemQuestionAnswerId: props.el._id,
+        },
+        refetchQueries: [
+          // 리패치가 안되는중 대댓글
+          {
+            query: FETCH_USEDITEM_QUESTION_ANSWERS,
+            variables: { useditemQuestionId: props.el._id },
+          },
+        ],
+      });
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
+    }
+  };
 
   return (
     <div>
@@ -58,7 +79,11 @@ export default function UseditemAnswerWrite(props) {
           maxLength={100}
           onChange={onChangeContents}
         />
-        <S.AnswerCommentBtn onClick={onClickWrite}>등록하기</S.AnswerCommentBtn>
+        <S.AnswerCommentBtn
+          onClick={props.isEdit ? onClickUpdate : onClickWrite}
+        >
+          {props.isEdit ? "수정하기" : "등록하기"}
+        </S.AnswerCommentBtn>
       </S.Wrapper>
     </div>
   );

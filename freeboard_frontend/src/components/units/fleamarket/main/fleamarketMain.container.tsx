@@ -24,7 +24,6 @@ export default function FleamarketMain() {
   // 로그인시 ~~환영멘트용
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
-  console.log(data?.fetchUserLoggedIn.name);
 
   // 게시글목록
   const {

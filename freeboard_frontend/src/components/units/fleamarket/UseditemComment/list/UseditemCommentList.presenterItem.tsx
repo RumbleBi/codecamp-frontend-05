@@ -6,15 +6,19 @@ import {
   IMutation,
   IMutationDeleteUseditemQuestionArgs,
 } from "../../../../../commons/types/generated/types";
+import UseditemAnswerList from "../AnswerList/UseditemAnswerList.container";
+import UseditemAnswerWrite from "../AnswerWrite/UseditemAnswerWrite";
 import UseditemCommentWrite from "../write/UseditemCommentWrite.container";
 import {
   DELETE_USEDITEM_QUESTION,
   FETCH_USEDITEM_QUESTIONS,
 } from "./UseditemCommentList.queries";
 import * as S from "./UseditemCommentList.styles";
+
 export default function UseditemCommentListUIItem(props) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
+  const [isAnswerEdit, setIsAnswerEdit] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
   const [deleteUseditemQuestion] = useMutation<
@@ -25,6 +29,10 @@ export default function UseditemCommentListUIItem(props) {
   function onClickUpdate() {
     setIsEdit(true);
   }
+
+  const onClickAnswer = () => {
+    setIsAnswerEdit(true);
+  };
 
   async function onClickDelete() {
     try {
@@ -60,9 +68,10 @@ export default function UseditemCommentListUIItem(props) {
           onOk={onClickDelete}
           onCancel={onClickCancelModal}
         >
-          삭제하시겠습니까?
+          <div>삭제하시겠습니까?</div>
         </Modal>
       )}
+
       {!isEdit && (
         <S.Wrapper2>
           <S.QuestionWrapper>
@@ -74,13 +83,16 @@ export default function UseditemCommentListUIItem(props) {
             <S.DeleteButton onClick={onClickOpenDeleteModal}>
               삭제하기
             </S.DeleteButton>
+            <S.AnswerButton onClick={onClickAnswer}>답글달기</S.AnswerButton>
           </div>
         </S.Wrapper2>
       )}
+
+      {isAnswerEdit && <UseditemAnswerList data={props.el} />}
       {isEdit && (
         <UseditemCommentWrite
-          isEdit={true}
-          setIsEdit={setIsEdit}
+          isEdit={props.isEdit}
+          setIsEdit={props.setIsEdit}
           el={props.el}
         />
       )}
