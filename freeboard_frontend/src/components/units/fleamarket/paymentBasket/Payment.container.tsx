@@ -1,10 +1,25 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import { useState } from "react";
-import { IQuery } from "../../../../commons/types/generated/types";
+import {
+  IMutation,
+  IMutationCreatePointTransactionOfLoadingArgs,
+  IQuery,
+} from "../../../../commons/types/generated/types";
 import PaymentBasketUI from "./Payment.presenter";
-import { FETCH_USER_LOGGED_IN } from "./Payment.queries";
+import {
+  CREATE_POINT_TRANSACTION_OF_LOADING,
+  FETCH_USER_LOGGED_IN,
+} from "./Payment.queries";
 export default function PaymentBasket() {
+  const router = useRouter();
   const [amount, setAmount] = useState(0);
+
+  const [createPointTransactionOfLoading] = useMutation<
+    Pick<IMutation, "createPointTransactionOfLoading">,
+    IMutationCreatePointTransactionOfLoadingArgs
+  >(CREATE_POINT_TRANSACTION_OF_LOADING);
+
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
 
@@ -16,7 +31,6 @@ export default function PaymentBasket() {
     setAmount(Number(event?.currentTarget.id));
   };
 
-  console.log(data?.fetchUserLoggedIn.email);
   const onClickPayment = () => {
     const IMP = window.IMP; // 생략 가능
     IMP.init("imp70574995"); // Example: imp00000000
@@ -41,6 +55,19 @@ export default function PaymentBasket() {
         if (rsp.success) {
           // 성공
           console.log(rsp);
+
+          try {
+            const result = createPointTransactionOfLoading({
+              variables: {
+                impUid: rsp.imp_uid,
+              },
+            });
+            console.log(result);
+            alert("결제가 완료되었습니다! 마이페이지로 이동합니다.");
+            router.push("/fleamarket/basket");
+          } catch (error) {
+            if (error instanceof Error) alert(error.message);
+          }
           // 1. 백엔드에 결제관련 데이터 넘겨주기
           // 즉, 뮤테이션 실행하기
           // ex createPointTransactionsOfLoading

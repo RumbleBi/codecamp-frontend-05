@@ -1,6 +1,10 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState, ChangeEvent } from "react";
+import {
+  IMutation,
+  IMutationCreateUserArgs,
+} from "../../../../commons/types/generated/types";
 import FleaMarketSigninUI from "./fleamarketSignin.presenter";
 import { CREATE_USER } from "./fleamarketSignin.queries";
 export default function FleaMarketSignin() {
@@ -15,7 +19,11 @@ export default function FleaMarketSignin() {
   // isActive 활성화를 위해 설정
   const RegexName = /[ㄱ-힣]/;
   // 한글만
-  const [createUser] = useMutation(CREATE_USER);
+  const [createUser] = useMutation<
+    Pick<IMutation, "createUser">,
+    IMutationCreateUserArgs
+  >(CREATE_USER);
+
   const router = useRouter();
 
   const [isActive, setIsActive] = useState(false);
