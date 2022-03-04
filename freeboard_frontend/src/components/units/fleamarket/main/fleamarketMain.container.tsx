@@ -14,17 +14,17 @@ import {
 import router from "next/router";
 import { getDate2 } from "../../../../commons/libraries/utils";
 import { SettingsRemote } from "@mui/icons-material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
-
+import { useFetchUserInfo } from "../../../commons/hooks/useUserLoggedIn";
 export default function FleamarketMain() {
   const { setItem } = useContext(GlobalContext);
   const [keyword, setKeyword] = useState("");
 
   // 로그인시 ~~환영멘트용
-  const { data } =
-    useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
-
+  // const { data } =
+  //   useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
+  const { data } = useFetchUserInfo();
   // 게시글목록
   const {
     data: dataItems,
@@ -92,7 +92,7 @@ export default function FleamarketMain() {
   }
   // 마이페이지
   const onClickMoveToMyPage = () => {
-    router.push("/fleamarket/basket");
+    router.push("/fleamarket/mypage");
   };
   // 충전페이지
   const onClickMoveToPayment = () => {

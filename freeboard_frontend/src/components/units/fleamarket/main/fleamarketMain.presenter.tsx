@@ -3,6 +3,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import Dompurify from "dompurify";
 import Searchbars01 from "../../../commons/searchbars/01/Searchbars01.container";
 export default function FleamarketMainUI(props) {
+  console.log(props.data);
   return (
     <S.Position>
       <S.ChargingBtn onClick={props.onClickMoveToPayment}>
