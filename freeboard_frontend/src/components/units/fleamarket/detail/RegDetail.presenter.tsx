@@ -19,11 +19,14 @@ export default function RegDetailUI(props) {
     script.onload = () => {
       // 다운받은 스크립트가 온로드 되면 ~ 함수안을 실행해줘!
       window.kakao.maps.load(function () {
-        const mapContainer = document.getElementById("map"), // 지도를 표시할 div
-          mapOptions = {
-            center: new window.kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-            level: 3, // 지도 확대 레벨
-          };
+        const mapContainer = document.getElementById("map"); // 지도를 표시할 div
+        const mapOptions = {
+          center: new window.kakao.maps.LatLng(
+            props.data?.fetchUseditem.useditemAddress.lat,
+            props.data?.fetchUseditem.useditemAddress.lng
+          ), // 지도의 중심좌표 33.450701, 126.570667
+          level: 3, // 지도 확대 레벨
+        };
         // 지도를 생성합니다
         const map = new window.kakao.maps.Map(mapContainer, mapOptions);
         // 주소-좌표 변환 객체를 생성합니다
