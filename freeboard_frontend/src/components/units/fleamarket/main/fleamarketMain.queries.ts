@@ -45,3 +45,9 @@ export const FETCH_USED_ITEM = gql`
     }
   }
 `;
+
+export const LOGOUT_USER = gql`
+  mutation logoutUser {
+    logoutUser
+  }
+`;

@@ -8,7 +8,9 @@ const FETCH_USER_LOGGEDIN = gql`
       name
       picture
       userPoint {
+        _id
         amount
+        }
       }
     }
   }

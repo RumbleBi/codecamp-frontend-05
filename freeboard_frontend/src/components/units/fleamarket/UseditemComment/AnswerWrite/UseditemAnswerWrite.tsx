@@ -36,12 +36,12 @@ export default function UseditemAnswerWrite(props) {
           createUseditemQuestionAnswerInput: {
             contents,
           },
-          useditemQuestionId: props.questionData._id,
+          useditemQuestionId: props.questionData?._id,
         },
         refetchQueries: [
           {
             query: FETCH_USEDITEM_QUESTION_ANSWERS,
-            variables: { useditemQuestionId: props.questionData._id },
+            variables: { useditemQuestionId: props.questionData?._id },
           },
         ],
       });
@@ -56,13 +56,13 @@ export default function UseditemAnswerWrite(props) {
           updateUseditemQuestionAnswerInput: {
             contents,
           },
-          useditemQuestionAnswerId: props.el._id,
+          useditemQuestionAnswerId: props.el?._id, // props.el?._id
         },
         refetchQueries: [
           // 리패치가 안되는중 대댓글
           {
             query: FETCH_USEDITEM_QUESTION_ANSWERS,
-            variables: { useditemQuestionId: props.el._id },
+            variables: { useditemQuestionId: props.el?._id },
           },
         ],
       });

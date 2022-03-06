@@ -1,6 +1,7 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { withAuth } from "../../../../components/commons/hocs/withAuth";
 import {
+  IMutation,
   IQuery,
   IQueryFetchUseditemArgs,
   IQueryFetchUseditemsArgs,
@@ -10,16 +11,17 @@ import {
   FETCH_USED_ITEM,
   FETCH_USER_LOGGED_IN,
   FETCH_USED_ITEMS,
+  LOGOUT_USER,
 } from "./fleamarketMain.queries";
 import router from "next/router";
 import { getDate2 } from "../../../../commons/libraries/utils";
-import { SettingsRemote } from "@mui/icons-material";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
 import { useFetchUserInfo } from "../../../commons/hooks/useUserLoggedIn";
 export default function FleamarketMain() {
   const { setItem } = useContext(GlobalContext);
   const [keyword, setKeyword] = useState("");
+  const [logoutUser] = useMutation(LOGOUT_USER);
 
   // 로그인시 ~~환영멘트용
   // const { data } =
@@ -98,6 +100,13 @@ export default function FleamarketMain() {
   const onClickMoveToPayment = () => {
     router.push("/fleamarket/payment");
   };
+  // 로그아웃
+  const onClickLogout = () => {
+    alert("로그아웃되었습니다!");
+    // document.cookie = "accessToken=";
+    logoutUser();
+    router.push("/fleamarket/login");
+  };
   return (
     <FleamarketMainUI
       data={data}
@@ -110,6 +119,7 @@ export default function FleamarketMain() {
       refetch={refetch}
       onClickMoveToMyPage={onClickMoveToMyPage}
       onClickMoveToPayment={onClickMoveToPayment}
+      onClickLogout={onClickLogout}
     />
   );
 }

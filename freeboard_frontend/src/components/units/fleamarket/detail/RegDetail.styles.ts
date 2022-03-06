@@ -66,6 +66,21 @@ export const Image = styled.img`
   max-height: 20%;
 `;
 
+export const PickitemBtn = styled.button`
+  width: 60px;
+  height: 60px;
+  background-color: #ff5c8d;
+  border: none;
+  cursor: pointer;
+`;
+
+export const PickitemBtnCancel = styled.button`
+  width: 60px;
+  height: 60px;
+  background-color: #ff5c8d;
+  border: none;
+  cursor: pointer;
+`;
 export const Zipcode = styled.div`
   color: #ff5c8d;
 `;

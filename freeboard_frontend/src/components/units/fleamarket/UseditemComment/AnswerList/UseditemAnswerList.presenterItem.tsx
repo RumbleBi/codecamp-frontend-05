@@ -1,28 +1,54 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import {
   IMutation,
   IMutationDeleteUseditemQuestionAnswerArgs,
+  IMutationUpdateUseditemQuestionAnswerArgs,
 } from "../../../../../commons/types/generated/types";
 import {
   DELETE_USEDITEM_QUESTION_ANSWER,
   FETCH_USEDITEM_QUESTION_ANSWERS,
+  UPDATE_USEDITEM_QUESTION_ANSWER,
 } from "./UseditemAnswerList.queries";
 import { Modal } from "antd";
 import * as S from "./UseditemAnswerList.styles";
 import UseditemAnswerWrite from "../AnswerWrite/UseditemAnswerWrite";
+import { useRouter } from "next/router";
 
 export default function UseditemAnswerListItem(props) {
+  const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  const [updateUseditemQuestionAnswer] = useMutation<
+    Pick<IMutation, "updateUseditemQuestionAnswer">,
+    IMutationUpdateUseditemQuestionAnswerArgs
+  >(UPDATE_USEDITEM_QUESTION_ANSWER);
   const [deleteUseditemQuestionAnswer] = useMutation<
     Pick<IMutation, "deleteUseditemQuestionAnswer">,
     IMutationDeleteUseditemQuestionAnswerArgs
   >(DELETE_USEDITEM_QUESTION_ANSWER);
 
-  function onClickUpdate() {
+  const onClickUpdate = async () => {
     setIsEdit(true);
-  }
+    try {
+      await updateUseditemQuestionAnswer({
+        variables: {
+          useditemQuestionAnswerId: props.el?._id,
+          updateUseditemQuestionAnswerInput: {
+            contents: props.el?.contents,
+          },
+        },
+        refetchQueries: [
+          {
+            query: FETCH_USEDITEM_QUESTION_ANSWERS,
+            variables: { useditemQuestionId: props.el?._id },
+          },
+        ],
+      });
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
+    }
+  };
   async function onClickDelete() {
     try {
       await deleteUseditemQuestionAnswer({

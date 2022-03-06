@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import WordlePageUI from "./Wordle.presenter";
 
 export default function Wordle() {
@@ -12,22 +12,23 @@ export default function Wordle() {
   const [isCorrect2, setIsCorrect2] = useState(0);
   const [isCorrect3, setIsCorrect3] = useState(0);
   const [isCorrect4, setIsCorrect4] = useState(0);
+  const first = useRef(undefined);
 
   const inputAnswer = "abcde";
   const onChangeInput0 = (event: ChangeEvent<HTMLInputElement>) => {
-    setInput0(event.currentTarget.value);
+    setInput0(event.target.value);
   };
   const onChangeInput1 = (event: ChangeEvent<HTMLInputElement>) => {
-    setInput1(event.currentTarget.value);
+    setInput1(event.target.value);
   };
   const onChangeInput2 = (event: ChangeEvent<HTMLInputElement>) => {
-    setInput2(event.currentTarget.value);
+    setInput2(event.target.value);
   };
   const onChangeInput3 = (event: ChangeEvent<HTMLInputElement>) => {
-    setInput3(event.currentTarget.value);
+    setInput3(event.target.value);
   };
   const onChangeInput4 = (event: ChangeEvent<HTMLInputElement>) => {
-    setInput4(event.currentTarget.value);
+    setInput4(event.target.value);
   };
   // console.log(input0);
   // console.log(input1);
@@ -43,7 +44,6 @@ export default function Wordle() {
     } else {
       setIsCorrect0(3);
     }
-    console.log(inputAnswer.includes(input0));
 
     if (inputAnswer[1] === input1) {
       setIsCorrect1(1);
@@ -74,18 +74,12 @@ export default function Wordle() {
       setIsCorrect4(3);
     }
 
-    if (
-      isCorrect0 === 1 &&
-      isCorrect1 === 1 &&
-      isCorrect2 === 1 &&
-      isCorrect3 === 1 &&
-      isCorrect4 === 1
-    )
-      alert("정답입니다!!");
+    first.current.focus();
   };
 
   return (
     <WordlePageUI
+      first={first}
       onChangeInput0={onChangeInput0}
       onChangeInput1={onChangeInput1}
       onChangeInput2={onChangeInput2}

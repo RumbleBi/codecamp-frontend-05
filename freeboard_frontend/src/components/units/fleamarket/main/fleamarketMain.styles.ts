@@ -110,3 +110,17 @@ export const ChargingBtn = styled.button`
   width: 150px;
   height: 30px;
 `;
+
+export const LogoutBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  margin-top: 1vh;
+  margin-left: 85%;
+  border-radius: 10px;
+  color: #ff5c8d;
+  background-color: #ffc0d3;
+  border: 2px solid #ff5c8d;
+  cursor: pointer;
+  width: 150px;
+  height: 30px;
+`;

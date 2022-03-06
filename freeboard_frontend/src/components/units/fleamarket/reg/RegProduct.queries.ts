@@ -8,6 +8,12 @@ export const CREATE_USED_ITEM = gql`
       remarks
       contents
       price
+      buyer {
+        _id
+      }
+      seller {
+        
+      }
     }
   }
 `;

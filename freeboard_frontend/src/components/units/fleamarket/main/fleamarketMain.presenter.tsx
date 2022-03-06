@@ -3,19 +3,18 @@ import InfiniteScroll from "react-infinite-scroller";
 import Dompurify from "dompurify";
 import Searchbars01 from "../../../commons/searchbars/01/Searchbars01.container";
 export default function FleamarketMainUI(props) {
-  console.log(props.data);
   return (
     <S.Position>
       <S.ChargingBtn onClick={props.onClickMoveToPayment}>
         포인트 충전하기
       </S.ChargingBtn>
+      <S.LogoutBtn onClick={props.onClickLogout}>로그아웃하기</S.LogoutBtn>
       <S.TopWrapper>
         <S.RegButton onClick={props.onClickReg}>게시물등록하기</S.RegButton>
         <Searchbars01
           refetch={props.refetch}
           onChangeKeyword={props.onChangeKeyword}
         />
-
         <S.WelcomeTitle onClick={props.onClickMoveToMyPage}>
           <div>{props.data?.fetchUserLoggedIn.name}님 환영합니다!</div>
           <div>{props.data?.fetchUserLoggedIn.userPoint.amount} : 포인트</div>

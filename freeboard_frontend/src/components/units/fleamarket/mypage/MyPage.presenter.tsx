@@ -68,13 +68,18 @@ export default function MypageUI(props) {
           >
             {/* <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One"> */}
             {/* <Menu.ItemGroup key="g1" title="Item 1"> */}
-            <Menu.Item key="1">비밀번호 변경</Menu.Item>
+            <Menu.Item key="1" onClick={props.onClickChangePwPage}>
+              비밀번호 변경
+            </Menu.Item>
             <Menu.Item key="2">로그아웃</Menu.Item>
             {/* </Menu.ItemGroup> */}
             {/* <Menu.ItemGroup key="g2" title="Item 2"> */}
             <Menu.Item key="3">상품판매내역</Menu.Item>
             <Menu.Item key="4">상품구매내역</Menu.Item>
             <Menu.Item key="5">포인트 충전내역</Menu.Item>
+            <Menu.Item key="6" onClick={props.onClickMyPickPage}>
+              찜목록
+            </Menu.Item>
             {/* </Menu.ItemGroup> */}
             {/* </SubMenu> */}
           </Menu>

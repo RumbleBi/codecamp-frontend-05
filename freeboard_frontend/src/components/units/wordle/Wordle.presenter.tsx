@@ -4,6 +4,7 @@ export default function WordlePageUI(props: any) {
   return (
     <S.HomeWrapper>
       <S.WordInput0
+        ref={props.first}
         maxLength={1}
         onChange={props.onChangeInput0}
         isCorrect0={props.isCorrect0}

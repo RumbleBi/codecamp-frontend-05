@@ -101,6 +101,13 @@ export default function RegDetailUI(props) {
               ))}
           </S.ImageWrapper>
         </S.UseditemDetailWrapper>
+        {props.myPick === true ? (
+          <S.PickitemBtnCancel onClick={props.onClickMyPick}>
+            찜취소
+          </S.PickitemBtnCancel>
+        ) : (
+          <S.PickitemBtn onClick={props.onClickMyPick}>찜하기</S.PickitemBtn>
+        )}
         <S.Zipcode>
           {props.data?.fetchUseditem?.useditemAddress?.zipcode}
         </S.Zipcode>
@@ -121,9 +128,16 @@ export default function RegDetailUI(props) {
           <div id="map" style={aaa}></div>
         </S.KakaoMapWrapper>
         <S.ButtonWrapper>
-          <form onSubmit={props.handleSubmit(props.onClickMoveToMain)}>
-            <Button01 isValid={props.formState?.isValid} name={"목록으로"} />
-          </form>
+          {props.data?.fetchUserLoggedIn._id ===
+          props.data?.fetchUseditem._id ? (
+            <form onSubmit={props.handleSubmit(props.onClickMoveToMain)}>
+              <Button01 isValid={props.formState?.isValid} name={"목록으로"} />
+            </form>
+          ) : (
+            <form onSubmit={props.handleSubmit(props.onClickBuyUseditem)}>
+              <Button01 isValid={props.formState?.isValid} name={"구입하기"} />
+            </form>
+          )}
           <form onSubmit={props.handleSubmit(props.onClickMoveToEdit)}>
             <Button01 isValid={props.formState?.isValid} name={"수정하기"} />
           </form>
