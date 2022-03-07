@@ -1,17 +1,30 @@
 import styled from "@emotion/styled";
 
 export const HomeWrapper = styled.div`
-  background-color: pink;
   display: flex;
+  flex-direction: column;
+  background-color: #2f2f2f;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 50vh;
 `;
+export const Title = styled.div`
+  font-size: 42px;
+  margin-bottom: 5vh;
+  color: white;
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+`;
 
 export const WordInput0 = styled.input`
+  margin-right: 2vw;
   width: 50px;
   height: 50px;
+  border-radius: 10px;
+
   font-size: 40px;
   text-align: center;
   background-color: ${(props: any) => (props.isCorrect0 === 1 ? "green" : "")};
@@ -19,6 +32,8 @@ export const WordInput0 = styled.input`
   background-color: ${(props: any) => (props.isCorrect0 === 3 ? "red" : "")};
 `;
 export const WordInput1 = styled.input`
+  margin-right: 2vw;
+  border-radius: 10px;
   width: 50px;
   height: 50px;
   font-size: 40px;
@@ -28,6 +43,8 @@ export const WordInput1 = styled.input`
   background-color: ${(props: any) => (props.isCorrect1 === 3 ? "red" : "")};
 `;
 export const WordInput2 = styled.input`
+  margin-right: 2vw;
+  border-radius: 10px;
   width: 50px;
   height: 50px;
   font-size: 40px;
@@ -37,6 +54,8 @@ export const WordInput2 = styled.input`
   background-color: ${(props: any) => (props.isCorrect2 === 3 ? "red" : "")};
 `;
 export const WordInput3 = styled.input`
+  margin-right: 2vw;
+  border-radius: 10px;
   width: 50px;
   height: 50px;
   font-size: 40px;
@@ -46,6 +65,8 @@ export const WordInput3 = styled.input`
   background-color: ${(props: any) => (props.isCorrect3 === 3 ? "red" : "")};
 `;
 export const WordInput4 = styled.input`
+  margin-right: 2vw;
+  border-radius: 10px;
   width: 50px;
   height: 50px;
   font-size: 40px;
@@ -56,7 +77,12 @@ export const WordInput4 = styled.input`
 `;
 
 export const SubmitBtn = styled.button`
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
   width: 50px;
   height: 50px;
-  margin-left: 2vw;
+  :hover {
+    background-color: #ffd400;
+  }
 `;

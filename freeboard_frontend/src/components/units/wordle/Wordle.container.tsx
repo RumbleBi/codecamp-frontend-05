@@ -12,23 +12,36 @@ export default function Wordle() {
   const [isCorrect2, setIsCorrect2] = useState(0);
   const [isCorrect3, setIsCorrect3] = useState(0);
   const [isCorrect4, setIsCorrect4] = useState(0);
-  const first = useRef(undefined);
+  const first = useRef();
+  const second = useRef();
+  const third = useRef();
+  const forth = useRef();
+  const fifth = useRef();
+  const btn = useRef();
 
-  const inputAnswer = "abcde";
+  const inputAnswer = "JUNNY";
+
   const onChangeInput0 = (event: ChangeEvent<HTMLInputElement>) => {
     setInput0(event.target.value);
+    second.current.focus();
   };
   const onChangeInput1 = (event: ChangeEvent<HTMLInputElement>) => {
     setInput1(event.target.value);
+    third.current.focus();
   };
   const onChangeInput2 = (event: ChangeEvent<HTMLInputElement>) => {
     setInput2(event.target.value);
+    if (!event.keyCode === 8) {
+      forth.current.focus();
+    }
   };
   const onChangeInput3 = (event: ChangeEvent<HTMLInputElement>) => {
     setInput3(event.target.value);
+    fifth.current.focus();
   };
   const onChangeInput4 = (event: ChangeEvent<HTMLInputElement>) => {
     setInput4(event.target.value);
+    btn.current.focus();
   };
   // console.log(input0);
   // console.log(input1);
@@ -79,7 +92,6 @@ export default function Wordle() {
 
   return (
     <WordlePageUI
-      first={first}
       onChangeInput0={onChangeInput0}
       onChangeInput1={onChangeInput1}
       onChangeInput2={onChangeInput2}
@@ -96,6 +108,12 @@ export default function Wordle() {
       setIsCorrect2={setIsCorrect2}
       setIsCorrect3={setIsCorrect3}
       setIsCorrect4={setIsCorrect4}
+      first={first}
+      second={second}
+      third={third}
+      forth={forth}
+      fifth={fifth}
+      btn={btn}
     />
   );
 }
