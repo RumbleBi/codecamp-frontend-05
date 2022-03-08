@@ -1,6 +1,17 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { gql, request } from "graphql-request";
+
+const FETCH_BOARD = gql`
+  query fetchBoard($boardId: ID!) {
+    fetchBoard(boardId: $boardId) {
+      title
+      contents
+      images
+    }
+  }
+`;
+
 export default function BoardsDetailPage(props) {
   // (두번째 실행)
   const router = useRouter();
@@ -15,15 +26,6 @@ export default function BoardsDetailPage(props) {
     </div>
   );
 }
-const FETCH_BOARD = gql`
-  query fetchBoard($boardId: ID!) {
-    fetchBoard(boardId: $boardId) {
-      title
-      contents
-      images
-    }
-  }
-`;
 
 // 정해진 변수명임 변경불가, 이 페이지는 SSR할래!! (맨처음 실행) // context 는 서버에서 데이터를 받아오는 방식으로 query 의 data와 유사한방식으로 받아야한다.
 export const getServerSideProps = async (context) => {
