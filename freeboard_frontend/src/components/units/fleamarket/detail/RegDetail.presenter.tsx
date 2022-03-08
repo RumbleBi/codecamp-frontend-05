@@ -1,4 +1,4 @@
-import Button01 from "../../../commons/buttons/01";
+import Button02 from "../../../commons/buttons/02";
 import * as S from "./RegDetail.styles";
 import Dompurify from "dompurify";
 //
@@ -22,9 +22,9 @@ export default function RegDetailUI(props) {
         const mapContainer = document.getElementById("map"); // 지도를 표시할 div
         const mapOptions = {
           center: new window.kakao.maps.LatLng(
-            props.data?.fetchUseditem.useditemAddress.lat,
-            props.data?.fetchUseditem.useditemAddress.lng
-          ), // 지도의 중심좌표 33.450701, 126.570667
+            props.data?.fetchUseditem?.useditemAddress?.lat,
+            props.data?.fetchUseditem?.useditemAddress?.lng
+          ),
           level: 3, // 지도 확대 레벨
         };
         // 지도를 생성합니다
@@ -128,22 +128,14 @@ export default function RegDetailUI(props) {
           <div id="map" style={aaa}></div>
         </S.KakaoMapWrapper>
         <S.ButtonWrapper>
-          {props.data?.fetchUserLoggedIn._id ===
-          props.data?.fetchUseditem._id ? (
-            <form onSubmit={props.handleSubmit(props.onClickMoveToMain)}>
-              <Button01 isValid={props.formState?.isValid} name={"목록으로"} />
-            </form>
-          ) : (
-            <form onSubmit={props.handleSubmit(props.onClickBuyUseditem)}>
-              <Button01 isValid={props.formState?.isValid} name={"구입하기"} />
-            </form>
-          )}
-          <form onSubmit={props.handleSubmit(props.onClickMoveToEdit)}>
-            <Button01 isValid={props.formState?.isValid} name={"수정하기"} />
-          </form>
-          <form onSubmit={props.handleSubmit(props.onClickDeleteUseditem)}>
-            <Button01 isValid={props.formState?.isValid} name={"삭제하기"} />
-          </form>
+          {/* {props.data?.fetchUserLoggedIn._id ===
+          props.data?.fetchUseditem._id ? ( */}
+          <Button02 onClick={props.onClickMoveToMain} name={"목록으로"} />
+          {/* ) : ( */}
+          <Button02 onClick={props.onClickBuyUseditem} name={"구입하기"} />
+          {/* )} */}
+          <Button02 onClick={props.onClickMoveToEdit} name={"수정하기"} />
+          <Button02 onClick={props.onClickDeleteUseditem} name={"삭제하기"} />
         </S.ButtonWrapper>
       </S.Wrapper>
     </S.Position>

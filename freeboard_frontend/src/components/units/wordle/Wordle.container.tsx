@@ -18,36 +18,28 @@ export default function Wordle() {
   const forth = useRef();
   const fifth = useRef();
   const btn = useRef();
-
   const inputAnswer = "JUNNY";
 
-  const onChangeInput0 = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeInput0 = (event) => {
     setInput0(event.target.value);
     second.current.focus();
   };
-  const onChangeInput1 = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeInput1 = (event) => {
     setInput1(event.target.value);
     third.current.focus();
   };
-  const onChangeInput2 = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeInput2 = (event) => {
     setInput2(event.target.value);
-    if (!event.keyCode === 8) {
-      forth.current.focus();
-    }
+    forth.current.focus();
   };
-  const onChangeInput3 = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeInput3 = (event) => {
     setInput3(event.target.value);
     fifth.current.focus();
   };
-  const onChangeInput4 = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeInput4 = (event) => {
     setInput4(event.target.value);
     btn.current.focus();
   };
-  // console.log(input0);
-  // console.log(input1);
-  // console.log(input2);
-  // console.log(input3);
-  // console.log(input4);
 
   const onClickSubmit = () => {
     if (inputAnswer[0] === input0) {

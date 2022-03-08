@@ -9,7 +9,6 @@ export const FETCH_USER_LOGGED_IN = gql`
       userPoint {
         _id
         amount
-        user
       }
     }
   }
@@ -21,15 +20,7 @@ export const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
       _id
       impUid
       amount
-      balance
       status
-      statusDetail
-      useditem {
-        _id
-        name
-        price
-      }
-      createdAt
     }
   }
 `;

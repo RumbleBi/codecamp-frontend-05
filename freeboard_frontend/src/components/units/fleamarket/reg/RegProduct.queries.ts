@@ -8,11 +8,15 @@ export const CREATE_USED_ITEM = gql`
       remarks
       contents
       price
+      useditemAddress {
+        lat
+        lng
+        zipcode
+        address
+        addressDetail
+      }
       buyer {
         _id
-      }
-      seller {
-        
       }
     }
   }

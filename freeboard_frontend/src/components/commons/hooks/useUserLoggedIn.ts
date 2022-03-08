@@ -10,7 +10,6 @@ const FETCH_USER_LOGGEDIN = gql`
       userPoint {
         _id
         amount
-        }
       }
     }
   }

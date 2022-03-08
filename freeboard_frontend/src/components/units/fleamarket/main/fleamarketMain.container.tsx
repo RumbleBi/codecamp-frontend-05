@@ -74,17 +74,12 @@ export default function FleamarketMain() {
 
   const onClickMoveToDetail = (el) => () => {
     const baskets = JSON.parse(localStorage.getItem(todayDate) || "[]");
-    const temp = baskets.filter((filterEl) => filterEl._id === el._id);
-    if (temp.length === 1) {
-      return;
-    }
+    const temp = baskets.filter((filterEl) => filterEl._id !== el._id);
 
     const { __typename, ...plus } = el;
-    baskets.unshift(plus);
-    localStorage.setItem(todayDate, JSON.stringify(baskets));
-
-    setItem(baskets);
-
+    temp.unshift(plus);
+    localStorage.setItem(todayDate, JSON.stringify(temp));
+    setItem(temp);
     router.push(`/fleamarket/${el._id}`);
   };
 
@@ -101,7 +96,8 @@ export default function FleamarketMain() {
     router.push("/fleamarket/payment");
   };
   // 로그아웃
-  const onClickLogout = () => {
+  const onClickLogout = async () => {
+    await window.location.reload();
     alert("로그아웃되었습니다!");
     // document.cookie = "accessToken=";
     logoutUser();

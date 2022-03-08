@@ -20,6 +20,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const WordInput0 = styled.input`
+  border: none;
   margin-right: 2vw;
   width: 50px;
   height: 50px;
@@ -32,6 +33,7 @@ export const WordInput0 = styled.input`
   background-color: ${(props: any) => (props.isCorrect0 === 3 ? "red" : "")};
 `;
 export const WordInput1 = styled.input`
+  border: none;
   margin-right: 2vw;
   border-radius: 10px;
   width: 50px;
@@ -43,6 +45,7 @@ export const WordInput1 = styled.input`
   background-color: ${(props: any) => (props.isCorrect1 === 3 ? "red" : "")};
 `;
 export const WordInput2 = styled.input`
+  border: none;
   margin-right: 2vw;
   border-radius: 10px;
   width: 50px;
@@ -54,6 +57,7 @@ export const WordInput2 = styled.input`
   background-color: ${(props: any) => (props.isCorrect2 === 3 ? "red" : "")};
 `;
 export const WordInput3 = styled.input`
+  border: none;
   margin-right: 2vw;
   border-radius: 10px;
   width: 50px;
@@ -65,6 +69,7 @@ export const WordInput3 = styled.input`
   background-color: ${(props: any) => (props.isCorrect3 === 3 ? "red" : "")};
 `;
 export const WordInput4 = styled.input`
+  border: none;
   margin-right: 2vw;
   border-radius: 10px;
   width: 50px;

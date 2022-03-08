@@ -2,7 +2,6 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import {
   IQuery,
   IQueryFetchUseditemArgs,
@@ -19,9 +18,7 @@ import {
 export default function RegDetail() {
   const router = useRouter();
   const [myPick, setMyPick] = useState(false);
-  const { register, handleSubmit, formState } = useForm({
-    mode: "onChange",
-  });
+
   const [deleteUseditem] = useMutation(DELETE_USED_ITEM);
   const [toggleUseditemPick] = useMutation(TOGGLE_USEDITEM_PICK);
   const [createPointTransactionOfBuyingAndSelling] = useMutation(
@@ -70,6 +67,8 @@ export default function RegDetail() {
       await createPointTransactionOfBuyingAndSelling({
         variables: { useritemId: router.query.useditemId },
       });
+      alert("구매하셨습니다!");
+      router.push("/fleamarket/main");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -78,9 +77,6 @@ export default function RegDetail() {
     <RegDetailUI
       data={data && data}
       userData={userData}
-      register={register}
-      handleSubmit={handleSubmit}
-      formState={formState}
       onClickDeleteUseditem={onClickDeleteUseditem}
       onClickMoveToMain={onClickMoveToMain}
       onClickMoveToEdit={onClickMoveToEdit}

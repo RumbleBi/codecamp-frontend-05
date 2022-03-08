@@ -41,7 +41,7 @@ export default function UseditemAnswerListItem(props) {
         refetchQueries: [
           {
             query: FETCH_USEDITEM_QUESTION_ANSWERS,
-            variables: { useditemQuestionId: props.el?._id },
+            variables: { useditemQuestionId: props.useditemQuestionId }, // props.el?._id
           },
         ],
       });
