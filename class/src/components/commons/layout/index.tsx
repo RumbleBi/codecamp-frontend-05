@@ -31,14 +31,14 @@ export default function Layout(props: IProps) {
 
   return (
     <div>
-      {!isHiddenHeader && <LayoutHeader />}
-      <LayoutBanner />
-      <LayoutNavigation />
-      <BodyWrapper>
-        <LayoutSidebar />
-        <LayoutBody>{props.children}</LayoutBody>
-      </BodyWrapper>
-      <LayoutFooter />
+      {/* {!isHiddenHeader && <LayoutHeader />} */}
+      {/* <LayoutBanner /> */}
+      {/* <LayoutNavigation /> */}
+      {/* <BodyWrapper> */}
+      {/* <LayoutSidebar /> */}
+      <LayoutBody>{props.children}</LayoutBody>
+      {/* </BodyWrapper> */}
+      {/* <LayoutFooter /> */}
     </div>
   );
 }
