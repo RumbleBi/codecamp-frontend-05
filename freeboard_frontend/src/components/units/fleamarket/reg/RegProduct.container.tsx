@@ -11,6 +11,7 @@ import { useMutation } from '@apollo/client'
 import { FormValues } from './RegProduct.types'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useEffect, useState } from 'react'
+
 const schema = yup.object().shape({
   name: yup.string().required('상품명을 입력해 주세요.'),
   remarks: yup.string().required('한줄요약을 입력해 주세요.'),

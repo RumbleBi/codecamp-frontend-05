@@ -1,23 +1,32 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
-export const Wrapper = styled.div`
+export const Position = styled.div`
   display: flex;
   justify-content: center;
+`
+export const Wrapper = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #fdeff4;
-  width: 100%;
-  height: 10vh;
-`;
-
-export const Title = styled.div`
-  background-color: #ffc0d3;
-  border-radius: 10px;
-  padding: 5px 30px 5px 30px;
-  height: auto;
-  color: #ff5c8d;
-  font-size: 42px;
-  font-family: AppleFontKO;
-  :hover {
+  background-color: white;
+  width: 1200px;
+  height: 60px;
+  z-index: 10000;
+`
+export const Left = styled.div`
+  display: flex;
+  div {
+    margin: 20px;
+    font-size: 18px;
     cursor: pointer;
   }
-`;
+`
+export const Right = styled.div`
+  display: flex;
+  div {
+    margin: 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+`

@@ -1,16 +1,22 @@
-import { useRouter } from "next/router";
-import { Fragment } from "react";
-import * as S from "./LayoutHeader.styles";
+import { useRouter } from 'next/router'
+import LayoutHeaderUI from './LayoutHeader.presenter'
+
 export default function LayoutHeader() {
-  const router = useRouter();
+  const router = useRouter()
   const onClickTitle = () => {
-    router.push("/boards/list");
-  };
+    router.push('/')
+  }
+  const onClickFreeBoardList = () => {
+    router.push('/boards/')
+  }
+  const onClickLogin = () => {
+    router.push('/fleamarket/login')
+  }
   return (
-    <Fragment>
-      <S.Wrapper>
-        <S.Title onClick={onClickTitle}>일본여행사</S.Title>
-      </S.Wrapper>
-    </Fragment>
-  );
+    <LayoutHeaderUI
+      onClickFreeBoardList={onClickFreeBoardList}
+      onClickTitle={onClickTitle}
+      onClickLogin={onClickLogin}
+    />
+  )
 }
