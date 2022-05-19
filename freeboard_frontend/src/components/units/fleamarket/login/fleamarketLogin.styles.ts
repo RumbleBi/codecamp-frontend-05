@@ -1,113 +1,77 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
+import { IActiveBtnProps } from './fleamarketLogin.types'
 
-export const Background = styled.div`
+export const Position = styled.div`
   display: flex;
   justify-content: center;
-`;
+`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  width: 70%;
+  width: 1200px;
   height: 100vh;
-  background-color: #2f2f2f;
-`;
-
+  background-color: #e8f9fd;
+`
 export const Logo = styled.div`
-  width: 30vw;
-  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffc0cb;
-  font-size: 38px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  margin-bottom: 30px;
-`;
-
-export const EmailForm = styled.div`
-  margin-bottom: 2vh;
-`;
-
+  color: #79dae8;
+  font-size: 32px;
+  font-weight: bold;
+`
+export const EmailForm = styled.div``
 export const EmailText = styled.div`
-  color: #ffc0cb;
-  font-size: 24px;
-`;
+  color: #79dae8;
+  font-size: 20px;
+`
 
 export const EmailInput = styled.input`
-  width: 30vw;
-  height: 7vh;
-  padding-left: 1vw;
-  font-size: 15px;
-`;
-
-export const HoldOnLogin = styled.div`
-  margin-bottom: 30px;
-  width: 30vw;
-  height: auto;
-`;
-
-export const HoldOnText = styled.span`
-  color: #ffc0cb;
-  font-size: 18px;
-  margin-right: 1vw;
-`;
-
-export const HoldOnCheckBox = styled.input`
-  background-color: #ffc0cb;
-  width: 20px;
-  height: 20px;
-`;
-
-export const PasswordForm = styled.div`
-  margin-bottom: 2vw;
-`;
-
+  width: 400px;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid #0aa1dd;
+  background-color: #e8f9fd;
+`
+export const PasswordForm = styled.div``
 export const PasswordText = styled.div`
-  color: #ffc0cb;
-  font-size: 24px;
-`;
-
+  color: #79dae8;
+  font-size: 20px;
+`
 export const PasswordInput = styled.input`
-  width: 30vw;
-  height: 7vh;
-  padding-left: 1vw;
-  font-size: 15px;
-`;
-
+  width: 400px;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid #0aa1dd;
+  background-color: #e8f9fd;
+`
 export const HelpForm = styled.div`
   display: flex;
   justify-content: center;
-  width: 30vw;
-  margin-bottom: 4vh;
-  & div {
-    cursor: pointer;
-  }
-`;
-
+  width: 400px;
+`
 export const HelpText = styled.div`
   display: flex;
-  color: #ffc0cb;
-  font-size: 18px;
-  :hover {
-    cursor: pointer;
-  }
+  color: #79dae8;
+  font-size: 16px;
   margin: 0 30px;
-`;
-
-export const LoginMenu = styled.div``;
-
+  cursor: pointer;
+`
 export const LoginBtn = styled.button`
-  color: #ffc0cb;
-  background-color: #f2f2f2;
+  color: #f2f2f2;
   font-size: 32px;
-  width: 30vw;
-  height: 10vh;
+  width: 400px;
+  height: 70px;
   border: none;
   border-radius: 10px;
-  :hover {
-    cursor: pointer;
-  }
-`;
+  cursor: ${(props: IActiveBtnProps) =>
+    props.isActive === true ? 'pointer' : 'default'};
+  background-color: ${(props: IActiveBtnProps) =>
+    props.isActive === true ? '#2155cd' : 'gray'};
+`

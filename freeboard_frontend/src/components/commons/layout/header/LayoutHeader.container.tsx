@@ -12,11 +12,15 @@ export default function LayoutHeader() {
   const onClickLogin = () => {
     router.push('/fleamarket/login')
   }
+  const onClickFleamarketList = () => {
+    router.push('/fleamarket/main')
+  }
   return (
     <LayoutHeaderUI
       onClickFreeBoardList={onClickFreeBoardList}
       onClickTitle={onClickTitle}
       onClickLogin={onClickLogin}
+      onClickFleamarketList={onClickFleamarketList}
     />
   )
 }
