@@ -4,7 +4,7 @@ export default function FleaMarketSigninUI(props) {
   return (
     <S.Position>
       <S.Wrapper>
-        <S.Logo>회원가입양식</S.Logo>
+        <S.Logo>회원가입</S.Logo>
         <S.EmailForm>
           <S.EmailText>이메일입력</S.EmailText>
           <S.EmailInput
@@ -42,7 +42,9 @@ export default function FleaMarketSigninUI(props) {
           <S.NameErrorText>{props.nameError}</S.NameErrorText>
         </S.NameForm>
         <S.SigninForm>
-          <S.SigninBtn onClick={props.onClickSubmit}>가입하기</S.SigninBtn>
+          <S.SigninBtn isActive={props.isActive} onClick={props.onClickSubmit}>
+            가입하기
+          </S.SigninBtn>
         </S.SigninForm>
       </S.Wrapper>
     </S.Position>

@@ -27,7 +27,6 @@ export const EmailText = styled.div`
   color: #79dae8;
   font-size: 20px;
 `
-
 export const EmailInput = styled.input`
   width: 400px;
   height: 50px;

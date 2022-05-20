@@ -1,118 +1,105 @@
 import styled from '@emotion/styled'
+import { IActiveBtnProps } from './fleamarketSignin.types'
 
 export const Position = styled.div`
   display: flex;
   justify-content: center;
 `
 export const Wrapper = styled.div`
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  width: 70%;
+  width: 1200px;
   height: 100vh;
-  background-color: #2f2f2f;
+  background-color: #e8f9fd;
 `
-
 export const Logo = styled.div`
-  width: 30vw;
-  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffc0cb;
-  font-size: 38px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  margin-bottom: 30px;
+  color: #79dae8;
+  font-size: 32px;
+  font-weight: bold;
 `
-
-export const EmailForm = styled.div`
-  margin-bottom: 2vh;
-`
-
+export const EmailForm = styled.div``
 export const EmailText = styled.div`
-  color: #ffc0cb;
-  font-size: 24px;
+  color: #79dae8;
+  font-size: 20px;
 `
-
 export const EmailInput = styled.input`
-  width: 30vw;
-  height: 7vh;
-  padding-left: 1vw;
-  font-size: 15px;
+  width: 400px;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid #0aa1dd;
+  background-color: #e8f9fd;
 `
-
 export const EmailErrorText = styled.div`
   color: red;
 `
-
-export const PasswordForm = styled.div`
-  margin-bottom: 2vh;
-`
-
+export const PasswordForm = styled.div``
 export const PasswordText = styled.div`
-  color: #ffc0cb;
-  font-size: 24px;
+  color: #79dae8;
+  font-size: 20px;
 `
-
 export const PasswordInput = styled.input`
-  width: 30vw;
-  height: 7vh;
-  padding-left: 1vw;
-  font-size: 15px;
+  width: 400px;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid #0aa1dd;
+  background-color: #e8f9fd;
 `
-
 export const PasswordTextCheck = styled.div`
-  color: #ffc0cb;
-  font-size: 24px;
+  color: #79dae8;
+  font-size: 20px;
 `
-
 export const PasswordInputCheck = styled.input`
-  width: 30vw;
-  height: 7vh;
-  padding-left: 1vw;
-  font-size: 15px;
+  width: 400px;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid #0aa1dd;
+  background-color: #e8f9fd;
 `
-
 export const PasswordErrorText = styled.div`
   color: red;
 `
-
 export const PasswordCheckErrorText = styled.div`
   color: red;
 `
-
-export const NameForm = styled.div`
-  margin-bottom: 2vw;
-`
-
+export const NameForm = styled.div``
 export const NameText = styled.div`
-  color: #ffc0cb;
-  font-size: 24px;
+  color: #79dae8;
+  font-size: 20px;
 `
-
 export const NameInput = styled.input`
-  width: 30vw;
-  height: 7vh;
-  padding-left: 1vw;
-  font-size: 15px;
+  width: 400px;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid #0aa1dd;
+  background-color: #e8f9fd;
 `
-
 export const NameErrorText = styled.div`
   color: red;
 `
 export const SigninForm = styled.div``
-
 export const SigninBtn = styled.button`
-  color: #ffc0cb;
+  color: #f2f2f2;
   font-size: 32px;
-  width: 30vw;
-  height: 10vh;
+  width: 400px;
+  height: 70px;
   border: none;
   border-radius: 10px;
-  :hover {
-    background-color: #dd0098;
-    cursor: ${(props) => (props.isActive === true ? 'default' : 'pointer')};
-  }
+  cursor: ${(props: IActiveBtnProps) =>
+    props.isActive === true ? 'pointer' : 'default'};
+  background-color: ${(props: IActiveBtnProps) =>
+    props.isActive === true ? '#2155cd' : 'gray'};
 `
