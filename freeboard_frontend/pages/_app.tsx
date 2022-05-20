@@ -33,6 +33,7 @@ interface IGlobalContext {
   setAccessToken?: Dispatch<SetStateAction<string>>
   userInfo?: IUserInfo
   setUserInfo?: Dispatch<SetStateAction<IUserInfo>>
+  setItem?: String
 }
 
 export const GlobalContext = createContext<IGlobalContext>({})
@@ -77,7 +78,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   })
 
   const uploadLink = createUploadLink({
-    uri: 'https://backend05.codebootcamp.co.kr/graphql16',
+    uri: 'https://backend05.codebootcamp.co.kr/graphql',
     headers: { Authorization: `Bearer ${accessToken}` }, // HTTP HEADER에 작성해야 accessToken을 사용시 Mutation에서 생성을 할 수 있음.
     credentials: 'include',
   })

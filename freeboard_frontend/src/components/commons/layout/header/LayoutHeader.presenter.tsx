@@ -11,7 +11,18 @@ export default function LayoutHeaderUI(props) {
           <div>애니정보</div>
         </S.Left>
         <S.Right>
-          <div onClick={props.onClickLogin}>로그인/가입</div>
+          {props.data?.fetchUserLoggedIn ? (
+            <div>
+              <div>{props.data?.fetchUserLoggedIn.name} 님</div>
+              <div>
+                포인트: {props.data?.fetchUserLoggedIn.userPoint.amount}
+              </div>
+              <div onClick={props.onClickMoveToPayment}>포인트 충전하기</div>
+              <div onClick={props.onClickLogout}>로그아웃</div>
+            </div>
+          ) : (
+            <div onClick={props.onClickLogin}>로그인/가입</div>
+          )}
         </S.Right>
       </S.Wrapper>
     </S.Position>
