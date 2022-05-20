@@ -1,40 +1,33 @@
-import { SearchOutlined } from "@ant-design/icons";
-import styled from "@emotion/styled";
+import { SearchOutlined } from '@ant-design/icons'
+import styled from '@emotion/styled'
 
 export const Searchbar = styled.div`
-  width: 50%;
-  height: 10vh;
+  width: 500px;
+  height: 60px;
   border-radius: 15px;
-  background-color: #ffc0d3;
-  color: #ff5c8d;
+  background-color: #e8f9fd;
   padding: 0px 20px;
-  border: 1px solid 
+  border: 1px solid #79dae8;
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  
-  
-  
-`;
+`
 
 export const SearchIcon = styled(SearchOutlined)`
-  color: #ff5c8d;
+  color: #0aa1dd;
   font-size: 25px;
-  cursor: pointer;
-`;
+  cursor: default;
+`
 
 export const SearchbarInput = styled.input`
   ::placeholder {
-    color: #ff5c8d;
+    color: #79dae8;
     font-style: italic;
   }
-  color: #ff5c8d;
-  width: 80%;
-  height: 100%;
+  color: #0aa1dd;
   border: none;
   outline: none;
   background: none;
   font-size: 20px;
-  padding-left: 1vw;
-`;
+  padding-left: 15px;
+`

@@ -6,10 +6,16 @@ export default function FleamarketMainUI(props) {
   return (
     <S.Position>
       <S.Wrapper>
-        <Searchbars01
-          refetch={props.refetch}
-          onChangeKeyword={props.onChangeKeyword}
-        />
+        <S.SelectBtnsWrapper>
+          <S.CreateUseditemBtn onClick={props.onClickReg}>
+            판매하기
+          </S.CreateUseditemBtn>
+          <Searchbars01
+            refetch={props.refetch}
+            onChangeKeyword={props.onChangeKeyword}
+          />
+        </S.SelectBtnsWrapper>
+
         <S.ListWrapper>
           <InfiniteScroll
             pageStart={0}

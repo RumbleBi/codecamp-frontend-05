@@ -13,21 +13,53 @@ export const Wrapper = styled.div`
   width: 1200px;
   min-height: 1200px;
 `
-export const ListWrapper = styled.div`
+export const SelectBtnsWrapper = styled.div`
+  display: flex;
+  width: 1200px;
+  justify-content: space-between;
+  align-items: center;
+`
+export const CreateUseditemBtn = styled.div`
+  width: 200px;
+  height: 60px;
+  border-radius: 15px;
   background-color: #e8f9fd;
+  border: 1px solid #79dae8;
+  color: #0aa1dd;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  :hover {
+    color: #0aa1dd;
+    font-weight: bold;
+    border: 2px solid #79dae8;
+  }
+`
+export const ListWrapper = styled.div`
+  margin-top: 20px;
   width: 1200px;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  flex-wrap: wrap;
 `
 export const DataList = styled.div`
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #e8f9fd;
   padding-top: 20px;
   padding-left: 20px;
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid black;
   min-height: 200px;
+  cursor: pointer;
+  :hover {
+    border: 2px solid #2155cd;
+    border-radius: 10px;
+    font-weight: bold;
+  }
   /* flex-wrap: wrap;
   text-overflow: ellipsis;
   min-height: 300px;
@@ -49,11 +81,18 @@ export const DataInfo = styled.div`
   font-size: 20px;
 `
 export const DateContents = styled.div`
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
   display: flex;
-  margin-top: 20px;
+  font-size: 20px;
+  margin: 20px 0px;
+  background-color: #0aa1dd;
+  color: #2155cd;
 `
 export const ImageWrapper = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
 `
 export const Image = styled.img`
