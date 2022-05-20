@@ -63,7 +63,7 @@ export default function FleaMarketLogin() {
         // document.cookie = `accessToken=${accessToken}`;
         // document.cookie = `userInfo=${JSON.stringify(userInfo)}`;
       }
-
+      console.log('여기까지되냐?')
       router.push('/fleamarket/main')
     } catch (error) {
       if (error instanceof Error) console.log(error.message)
