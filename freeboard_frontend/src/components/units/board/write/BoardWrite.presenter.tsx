@@ -1,19 +1,27 @@
-import * as S from "./BoardWrite.styles";
-import { IBoardWriteUIProps } from "./BoardWrite.types";
-import { Modal } from "antd";
-import DaumPostcode from "react-daum-postcode";
-import { Fragment } from "react";
+import * as S from './BoardWrite.styles'
+import { IBoardWriteUIProps } from './BoardWrite.types'
+import { Modal } from 'antd'
+import DaumPostcode from 'react-daum-postcode'
+import { Fragment } from 'react'
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
   return (
     <Fragment>
       {props.isOpen && (
-        <Modal visible={true}>
+        <Modal
+          visible={true}
+          width={700}
+          closable={false}
+          cancelText={'취소'}
+          okText={'확인'}
+          onOk={props.onSuccessAddressSearch}
+          onCancel={props.onClickAddressCancel}
+        >
           <DaumPostcode onComplete={props.onSuccessAddressSearch} />
         </Modal>
       )}
       <S.Wrapper>
-        <S.Title>{props.isEdit ? "게시판수정" : "게시판등록"}</S.Title>
+        <S.Title>{props.isEdit ? '게시판수정' : '게시판등록'}</S.Title>
         <S.WrapperProfile>
           <S.WrapperWriter>
             <S.Label>작성자</S.Label>
@@ -22,7 +30,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               type="text"
               onChange={props.onChangeWriter}
               placeholder="이름을 적어주세요."
-              defaultValue={props.data?.fetchBoard?.writer || ""}
+              defaultValue={props.data?.fetchBoard?.writer || ''}
               readOnly={!!props.data?.fetchBoard?.writer}
             />
             <S.ErrorMassage>{props.writerError}</S.ErrorMassage>
@@ -63,7 +71,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             value={
               props.zipcode ||
               props.data?.fetchBoard?.boardAddress?.zipcode ||
-              ""
+              ''
             }
           />
           <S.AddressSearchBtn onClick={props.onClickAddressSearch}>
@@ -73,25 +81,25 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         <S.AddressDetail1
           readOnly
           value={
-            props.address || props.data?.fetchBoard?.boardAddress?.address || ""
+            props.address || props.data?.fetchBoard?.boardAddress?.address || ''
           }
         />
         <S.AddressDetail2
           onChange={props.onChangeAddressDetail}
           defaultValue={
-            props.data?.fetchBoard?.boardAddress?.addressDetail || ""
+            props.data?.fetchBoard?.boardAddress?.addressDetail || ''
           }
         />
         <S.Youtube>유튜브</S.Youtube>
         <S.YoutubeUrl
           placeholder="링크를 넣어주세요."
           onChange={props.onChangeYoutubeUrl}
-          defaultValue={props.data?.fetchBoard?.youtubeUrl || ""}
+          defaultValue={props.data?.fetchBoard?.youtubeUrl || ''}
         />
         <S.Picture>사진 첨부</S.Picture>
         <S.WrapperPicture>
           <input
-            style={{ display: "none" }}
+            style={{ display: 'none' }}
             ref={props?.fileRef}
             type="file"
             onChange={props?.onChangeFile}
@@ -120,9 +128,9 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
           isActive={props.isEdit ? true : props.isActive}
         >
-          {props.isEdit ? "수정하기" : "등록하기"}
+          {props.isEdit ? '수정하기' : '등록하기'}
         </S.RegisterBtn>
       </S.Wrapper>
     </Fragment>
-  );
+  )
 }

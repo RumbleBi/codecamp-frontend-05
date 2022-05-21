@@ -1,22 +1,23 @@
-import styled from "@emotion/styled";
-import { RefObject } from "react";
+import styled from '@emotion/styled'
+import { RefObject } from 'react'
 
 interface IProps {
-  type: string;
-  register: string;
-  ref: RefObject<HTMLInputElement>;
-  defaultValue: string;
+  type: string
+  register: string
+  // ref: RefObject<HTMLInputElement>
+  // defaultValue: string
 }
 
 const MyInput = styled.input`
-  height: 8vh;
-  margin-top: 1vh;
-  width: 70%;
-  color: #ffc0d3;
-  font-size: 18px;
-  padding-left: 1vw;
-`;
+  height: 50px;
+  width: 600px;
+  color: #79dae8;
+  font-size: 20px;
+  padding-left: 10px;
+  border: 1px solid #0aa1dd;
+  border-radius: 10px;
+`
 
 export default function Input01(props: IProps) {
-  return <MyInput type={props.type} {...props.register} />;
+  return <MyInput type={props.type} {...props.register} />
 }

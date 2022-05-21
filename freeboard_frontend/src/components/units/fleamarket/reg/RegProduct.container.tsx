@@ -63,6 +63,9 @@ export default function FleamarketReg(props) {
   const onClickAddressSearch = () => {
     setIsOpen(true)
   }
+  const onClickAddressCancel = () => {
+    setIsOpen(false)
+  }
 
   // Daum API 사용으로인해, 타입지정 찾아야됨
   const onCompleteAddressSearch = (data: any) => {
@@ -147,6 +150,7 @@ export default function FleamarketReg(props) {
       zipcode={zipcode}
       address={address}
       handleChange={handleChange}
+      onClickAddressCancel={onClickAddressCancel}
     />
   )
 }

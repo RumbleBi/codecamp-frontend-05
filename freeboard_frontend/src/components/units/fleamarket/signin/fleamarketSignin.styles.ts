@@ -92,7 +92,6 @@ export const NameErrorText = styled.div`
 `
 export const SigninForm = styled.div``
 export const SigninBtn = styled.button`
-  color: #f2f2f2;
   font-size: 32px;
   width: 400px;
   height: 70px;
@@ -102,4 +101,9 @@ export const SigninBtn = styled.button`
     props.isActive === true ? 'pointer' : 'default'};
   background-color: ${(props: IActiveBtnProps) =>
     props.isActive === true ? '#2155cd' : 'gray'};
+  color: ${(props: IActiveBtnProps) =>
+    props.isActive === true ? '#79dae8' : '#f2f2f2'};
+  :hover {
+    font-weight: bold;
+  }
 `
