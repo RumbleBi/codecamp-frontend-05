@@ -8,13 +8,14 @@ export default function RegDetailUI(props) {
       <S.Wrapper>
         <S.Title>상세페이지</S.Title>
         <S.ProfileWrapper>
-          <S.Name>{props.data?.fetchUseditem?.name}</S.Name>
+          <S.Name>상품명 : {props.data?.fetchUseditem?.name}</S.Name>
           <S.CreatedAt>
             {props.data?.fetchUseditem?.createdAt.slice(0, 10)}
           </S.CreatedAt>
         </S.ProfileWrapper>
         <S.UseditemDetailWrapper>
-          <S.Remarks>{props.data?.fetchUseditem?.remarks}</S.Remarks>
+          <S.Remarks>제목 : {props.data?.fetchUseditem?.remarks}</S.Remarks>
+          <S.Price>가격 : {props.data?.fetchUseditem?.price}</S.Price>
           {process.browser ? (
             <S.Contents
               dangerouslySetInnerHTML={{
@@ -26,7 +27,6 @@ export default function RegDetailUI(props) {
           ) : (
             <div />
           )}
-          <S.Price>{props.data?.fetchUseditem?.price}</S.Price>
           <S.ImageWrapper>
             {props.data?.fetchUseditem?.images
               ?.filter((el: string) => el)

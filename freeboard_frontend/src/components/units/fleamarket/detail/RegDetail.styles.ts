@@ -16,42 +16,51 @@ export const Wrapper = styled.div`
 `
 export const Title = styled.div``
 export const ProfileWrapper = styled.div`
-  width: 100%;
+  width: 1200px;
   display: flex;
-  flex-direction: column;
-  padding-left: 10px;
-  background-color: #fdeff4;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  margin-bottom: 20px;
 `
 
 export const Name = styled.div`
-  color: #ff5c8d;
-  font-size: 18px;
+  color: #0aa1dd;
+  font-size: 24px;
 `
 
 export const CreatedAt = styled.div`
-  color: #ff5c8d;
-  font-size: 14px;
+  color: #0aa1dd;
+  font-size: 20px;
 `
 
 export const UseditemDetailWrapper = styled.div`
-  width: 100%;
+  width: 1200px;
   min-height: 50vh;
-  height: auto;
   background-color: #fdeff4;
-  border-top: 1px solid black;
-  padding-left: 1vw;
+  border-top: 1px solid #2155cd;
+  padding-left: 20px;
 `
 
 export const Remarks = styled.div`
-  color: #ff5c8d;
+  margin-top: 20px;
+  color: #0aa1dd;
+  font-size: 24px;
 `
 
 export const Contents = styled.div`
-  color: #ff5c8d;
+  width: 1200px;
+  min-height: 300px;
+  color: #0aa1dd;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 10px;
 `
 
 export const Price = styled.div`
-  color: #ff5c8d;
+  color: #0aa1dd;
+  font-size: 24px;
 `
 
 export const ImageWrapper = styled.div`
