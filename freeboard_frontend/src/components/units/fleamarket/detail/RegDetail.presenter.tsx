@@ -16,6 +16,13 @@ export default function RegDetailUI(props) {
         <S.UseditemDetailWrapper>
           <S.Remarks>제목 : {props.data?.fetchUseditem?.remarks}</S.Remarks>
           <S.Price>가격 : {props.data?.fetchUseditem?.price}</S.Price>
+          <S.Address>
+            <S.AddressTitle>거래장소 : </S.AddressTitle>
+            <div>{props.data?.fetchUseditem?.useditemAddress?.address}</div>
+            <S.AddressDetail>
+              {props.data?.fetchUseditem?.useditemAddress?.addressDetail}
+            </S.AddressDetail>
+          </S.Address>
           {process.browser ? (
             <S.Contents
               dangerouslySetInnerHTML={{
@@ -26,6 +33,13 @@ export default function RegDetailUI(props) {
             ></S.Contents>
           ) : (
             <div />
+          )}
+          {props.myPick === true ? (
+            <S.PickitemBtnCancel onClick={props.onClickMyPick}>
+              찜취소
+            </S.PickitemBtnCancel>
+          ) : (
+            <S.PickitemBtn onClick={props.onClickMyPick}>찜하기</S.PickitemBtn>
           )}
           <S.ImageWrapper>
             {props.data?.fetchUseditem?.images
@@ -38,23 +52,6 @@ export default function RegDetailUI(props) {
               ))}
           </S.ImageWrapper>
         </S.UseditemDetailWrapper>
-        {props.myPick === true ? (
-          <S.PickitemBtnCancel onClick={props.onClickMyPick}>
-            찜취소
-          </S.PickitemBtnCancel>
-        ) : (
-          <S.PickitemBtn onClick={props.onClickMyPick}>찜하기</S.PickitemBtn>
-        )}
-        <S.Zipcode>
-          {props.data?.fetchUseditem?.useditemAddress?.zipcode}
-        </S.Zipcode>
-        <S.Address>
-          {props.data?.fetchUseditem?.useditemAddress?.address}
-        </S.Address>
-        <S.AddressDetail>
-          {props.data?.fetchUseditem?.useditemAddress?.addressDetail}
-        </S.AddressDetail>
-
         <S.ButtonWrapper>
           {/* {props.data?.fetchUserLoggedIn._id ===
           props.data?.fetchUseditem._id ? ( */}

@@ -41,7 +41,7 @@ export const CreatedAt = styled.div`
 `
 export const UseditemDetailWrapper = styled.div`
   width: 1200px;
-  min-height: 50vh;
+  min-height: 500px;
   background-color: #e8f9fd;
   border-top: 1px solid #2155cd;
 `
@@ -57,6 +57,23 @@ export const Price = styled.div`
   font-size: 24px;
   border-bottom: 1px solid #2155cd;
 `
+export const AddressTitle = styled.div`
+  color: #0aa1dd;
+  padding-left: 20px;
+  padding-right: 5px;
+`
+export const Address = styled.div`
+  display: flex;
+  color: #0aa1dd;
+  border-bottom: 1px solid #2155cd;
+  div {
+    font-size: 24px;
+  }
+`
+export const AddressDetail = styled.div`
+  font-size: 24px;
+  padding-left: 50px;
+`
 export const Contents = styled.div`
   width: 1200px;
   min-height: 300px;
@@ -66,20 +83,6 @@ export const Contents = styled.div`
   padding-left: 20px;
   padding-top: 10px;
 `
-export const ImageWrapper = styled.div`
-  width: 1200px;
-  display: flex;
-  justify-content: start;
-  height: 200px;
-  background-color: white;
-`
-
-export const Image = styled.img`
-  width: 200px;
-  height: 200px;
-  margin-right: 50px;
-`
-
 export const PickitemBtn = styled.button`
   width: 60px;
   height: 60px;
@@ -87,7 +90,6 @@ export const PickitemBtn = styled.button`
   border: none;
   cursor: pointer;
 `
-
 export const PickitemBtnCancel = styled.button`
   width: 60px;
   height: 60px;
@@ -95,18 +97,18 @@ export const PickitemBtnCancel = styled.button`
   border: none;
   cursor: pointer;
 `
-export const Zipcode = styled.div`
-  color: #ff5c8d;
+export const ImageWrapper = styled.div`
+  width: 1200px;
+  display: flex;
+  justify-content: start;
+  height: 200px;
+  background-color: white;
 `
-
-export const Address = styled.div`
-  color: #ff5c8d;
+export const Image = styled.img`
+  width: 200px;
+  height: 200px;
+  margin-right: 50px;
 `
-
-export const AddressDetail = styled.div`
-  color: #ff5c8d;
-`
-
 export const KakaoMapWrapper = styled.div``
 
 export const ButtonWrapper = styled.div`
