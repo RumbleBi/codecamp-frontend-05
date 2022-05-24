@@ -34,13 +34,17 @@ export default function RegDetailUI(props) {
           ) : (
             <div />
           )}
-          {props.myPick === true ? (
-            <S.PickitemBtnCancel onClick={props.onClickMyPick}>
-              찜취소
-            </S.PickitemBtnCancel>
-          ) : (
-            <S.PickitemBtn onClick={props.onClickMyPick}>찜하기</S.PickitemBtn>
-          )}
+          <S.PickitemWrapper>
+            {props.myPick === true ? (
+              <S.PickitemBtnCancel onClick={props.onClickMyPick}>
+                찜취소
+              </S.PickitemBtnCancel>
+            ) : (
+              <S.PickitemBtn onClick={props.onClickMyPick}>
+                찜하기
+              </S.PickitemBtn>
+            )}
+          </S.PickitemWrapper>
           <S.ImageWrapper>
             {props.data?.fetchUseditem?.images
               ?.filter((el: string) => el)

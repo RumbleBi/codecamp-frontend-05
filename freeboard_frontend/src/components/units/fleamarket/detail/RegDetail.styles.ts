@@ -6,6 +6,7 @@ export const Position = styled.div`
 `
 export const Wrapper = styled.div`
   margin-top: 150px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -41,7 +42,6 @@ export const CreatedAt = styled.div`
 `
 export const UseditemDetailWrapper = styled.div`
   width: 1200px;
-  min-height: 500px;
   background-color: #e8f9fd;
   border-top: 1px solid #2155cd;
 `
@@ -83,34 +83,71 @@ export const Contents = styled.div`
   padding-left: 20px;
   padding-top: 10px;
 `
+export const PickitemWrapper = styled.div`
+  border-top: 1px solid #2155cd;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 1200px;
+  background-color: #e8f9fd;
+  display: flex;
+  justify-content: center;
+`
 export const PickitemBtn = styled.button`
-  width: 60px;
-  height: 60px;
-  background-color: #ff5c8d;
-  border: none;
+  width: 100px;
+  height: 100px;
+  background-color: #ffd400;
+  :hover {
+    font-weight: bold;
+  }
   cursor: pointer;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
 `
 export const PickitemBtnCancel = styled.button`
-  width: 60px;
-  height: 60px;
-  background-color: #ff5c8d;
-  border: none;
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  :hover {
+    font-weight: bold;
+  }
   cursor: pointer;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
 `
 export const ImageWrapper = styled.div`
   width: 1200px;
   display: flex;
   justify-content: start;
-  height: 200px;
-  background-color: white;
+  margin-bottom: 50px;
 `
 export const Image = styled.img`
   width: 200px;
   height: 200px;
   margin-right: 50px;
 `
-export const KakaoMapWrapper = styled.div``
-
 export const ButtonWrapper = styled.div`
+  width: 1200px;
   display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
 `

@@ -1,22 +1,24 @@
-import styled from "@emotion/styled";
-import { ButtonHTMLAttributes } from "react";
+import styled from '@emotion/styled'
+import { ButtonHTMLAttributes } from 'react'
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: () => void;
-  name: string;
+  onClick: () => void
+  name: string
 }
 const MyButton = styled.button`
-  color: #524a4e;
-  background-color: #ffc0d3;
+  color: #79dae8;
+  background-color: #2155cd;
+  cursor: pointer;
   border: none;
-  width: 170px;
-  height: 70px;
-  font-size: 24px;
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
   border-radius: 10px;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
-`;
+  :hover {
+    font-weight: bold;
+  }
+`
 
 export default function Button02(props: IProps) {
-  return <MyButton onClick={props.onClick}>{props.name}</MyButton>;
+  return <MyButton onClick={props.onClick}>{props.name}</MyButton>
 }
