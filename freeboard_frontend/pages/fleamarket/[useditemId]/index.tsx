@@ -3,7 +3,7 @@ import UseditemCommentWrite from '../../../src/components/units/fleamarket/Usedi
 import UseditemCommentList from '../../../src/components/units/fleamarket/UseditemComment/list/UseditemCommentList.container'
 import { withAuth } from '../../../src/components/commons/hocs/withAuth'
 
-function RegDetailPage() {
+export default function RegDetailPage() {
   return (
     <>
       <RegDetail />
@@ -13,4 +13,4 @@ function RegDetailPage() {
   )
 }
 
-export default withAuth(RegDetailPage)
+// export default withAuth(RegDetailPage)
