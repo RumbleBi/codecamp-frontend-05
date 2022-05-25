@@ -24,23 +24,31 @@ export const Contents = styled.div`
   margin-left: 10px;
   font-size: 20px;
 `
+export const BtnWrapper = styled.div`
+  display: flex;
+  div {
+    margin-left: 10px;
+  }
+`
 export const ChangeButton = styled.button`
   width: 100px;
-  height: 25px;
-  margin-right: 1vw;
-`
-export const CommentWrapper = styled.div`
-  width: 100%;
-`
-export const CommentAnswerWrapper = styled.div`
-  height: auto;
-  min-height: 10vh;
+  height: 30px;
+  border: none;
 `
 export const DeleteButton = styled.button`
   width: 100px;
-  height: 20px;
+  height: 30px;
+  border: none;
 `
 export const AnswerButton = styled.button`
   width: 100px;
-  height: 20px;
+  height: 30px;
+  border: none;
+`
+export const CommentWrapper = styled.div`
+  width: 1200px;
+`
+export const CommentAnswerWrapper = styled.div`
+  min-height: 50px;
+  background-color: red;
 `

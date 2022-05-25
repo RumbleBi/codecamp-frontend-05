@@ -1,38 +1,38 @@
-import { useMutation } from "@apollo/client";
-import { Modal } from "antd";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useMutation } from '@apollo/client'
+import { Modal } from 'antd'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 import {
   IMutation,
   IMutationDeleteUseditemQuestionArgs,
-} from "../../../../../commons/types/generated/types";
-import UseditemAnswerList from "../AnswerList/UseditemAnswerList.container";
-import UseditemAnswerWrite from "../AnswerWrite/UseditemAnswerWrite";
-import UseditemCommentWrite from "../write/UseditemCommentWrite.container";
+} from '../../../../../commons/types/generated/types'
+import UseditemAnswerList from '../AnswerList/UseditemAnswerList.container'
+import UseditemAnswerWrite from '../AnswerWrite/UseditemAnswerWrite'
+import UseditemCommentWrite from '../write/UseditemCommentWrite.container'
 import {
   DELETE_USEDITEM_QUESTION,
   FETCH_USEDITEM_QUESTIONS,
-} from "./UseditemCommentList.queries";
-import * as S from "./UseditemCommentList.styles";
+} from './UseditemCommentList.queries'
+import * as S from './UseditemCommentList.styles'
 
 export default function UseditemCommentListUIItem(props) {
-  const router = useRouter();
-  const [isEdit, setIsEdit] = useState(false);
-  const [isAnswerEdit, setIsAnswerEdit] = useState(false);
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  const router = useRouter()
+  const [isEdit, setIsEdit] = useState(false)
+  const [isAnswerEdit, setIsAnswerEdit] = useState(false)
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
   const [deleteUseditemQuestion] = useMutation<
-    Pick<IMutation, "deleteUseditemQuestion">,
+    Pick<IMutation, 'deleteUseditemQuestion'>,
     IMutationDeleteUseditemQuestionArgs
-  >(DELETE_USEDITEM_QUESTION);
+  >(DELETE_USEDITEM_QUESTION)
 
   function onClickUpdate() {
-    setIsEdit(true);
+    setIsEdit(true)
   }
 
   const onClickAnswer = () => {
-    setIsAnswerEdit(true);
-  };
+    setIsAnswerEdit(true)
+  }
 
   async function onClickDelete() {
     try {
@@ -46,18 +46,18 @@ export default function UseditemCommentListUIItem(props) {
             variables: { useditemId: router.query.useditemId },
           },
         ],
-      });
+      })
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      if (error instanceof Error) alert(error.message)
     }
-    setIsOpenDeleteModal(false);
+    setIsOpenDeleteModal(false)
   }
 
   function onClickOpenDeleteModal() {
-    setIsOpenDeleteModal(true);
+    setIsOpenDeleteModal(true)
   }
   function onClickCancelModal() {
-    setIsOpenDeleteModal(false);
+    setIsOpenDeleteModal(false)
   }
 
   return (
@@ -78,13 +78,13 @@ export default function UseditemCommentListUIItem(props) {
             <S.Name>{props.el?.name}</S.Name>
             <S.Contents>{props.el?.contents}</S.Contents>
           </S.QuestionWrapper>
-          <div>
+          <S.BtnWrapper>
             <S.ChangeButton onClick={onClickUpdate}>수정하기</S.ChangeButton>
             <S.DeleteButton onClick={onClickOpenDeleteModal}>
               삭제하기
             </S.DeleteButton>
             <S.AnswerButton onClick={onClickAnswer}>답글보기</S.AnswerButton>
-          </div>
+          </S.BtnWrapper>
         </S.Wrapper2>
       )}
       {isEdit && (
@@ -96,5 +96,5 @@ export default function UseditemCommentListUIItem(props) {
       )}
       {isAnswerEdit && <UseditemAnswerList data={props.el} />}
     </>
-  );
+  )
 }
