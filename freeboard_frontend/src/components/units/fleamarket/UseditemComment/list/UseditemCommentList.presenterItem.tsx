@@ -79,22 +79,20 @@ export default function UseditemCommentListUIItem(props) {
             <S.Contents>{props.el?.contents}</S.Contents>
           </S.QuestionWrapper>
           <S.BtnWrapper>
-            <S.ChangeButton onClick={onClickUpdate}>수정하기</S.ChangeButton>
-            <S.DeleteButton onClick={onClickOpenDeleteModal}>
-              삭제하기
-            </S.DeleteButton>
-            <S.AnswerButton onClick={onClickAnswer}>답글보기</S.AnswerButton>
+            <div onClick={onClickUpdate}>수정하기</div>
+            <div onClick={onClickOpenDeleteModal}>삭제하기</div>
+            {/* <div onClick={onClickAnswer}>답글보기</div> */}
           </S.BtnWrapper>
         </S.Wrapper2>
       )}
-      {isEdit && (
+      {/* {isEdit && (
         <UseditemCommentWrite
           isEdit={props.isEdit}
           setIsEdit={props.setIsEdit}
           el={props.el}
         />
       )}
-      {isAnswerEdit && <UseditemAnswerList data={props.el} />}
+      {isAnswerEdit && <UseditemAnswerList data={props.el} />} */}
     </>
   )
 }
