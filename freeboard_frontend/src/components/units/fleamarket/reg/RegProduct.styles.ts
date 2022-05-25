@@ -5,7 +5,8 @@ export const Position = styled.div`
   justify-content: center;
 `
 export const Wrapper = styled.div`
-  margin-top: 60px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -13,6 +14,7 @@ export const Wrapper = styled.div`
   width: 1200px;
   border-radius: 10px;
   background-color: #e8f9fd;
+  box-shadow: 0px 0px 10px gray;
 `
 export const Logo = styled.div`
   margin: 50px 0px;

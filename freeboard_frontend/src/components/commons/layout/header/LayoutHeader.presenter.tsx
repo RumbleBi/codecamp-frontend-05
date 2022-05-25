@@ -5,7 +5,7 @@ export default function LayoutHeaderUI(props) {
     <S.Position>
       <S.Wrapper>
         <S.Left>
-          <div onClick={props.onClickTitle}>Ani Gallery</div>
+          <S.Logo onClick={props.onClickTitle}>Ani Gallery</S.Logo>
           <div onClick={props.onClickFreeBoardList}>자유게시판</div>
           <div onClick={props.onClickFleamarketList}>중고게시판</div>
           <div>애니정보</div>

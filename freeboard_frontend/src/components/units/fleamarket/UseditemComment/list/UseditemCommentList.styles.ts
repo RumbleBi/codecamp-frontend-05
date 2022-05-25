@@ -19,7 +19,7 @@ export const Wrapper2 = styled.div`
   border-bottom: 1px solid #2155cd;
 `
 export const QuestionWrapper = styled.div``
-export const Name = styled.span`
+export const Name = styled.div`
   margin-bottom: 10px;
   font-size: 20px;
   cursor: default;
@@ -30,7 +30,6 @@ export const Contents = styled.div`
 `
 export const BtnWrapper = styled.div`
   display: flex;
-
   div {
     display: flex;
     justify-content: center;
@@ -44,16 +43,13 @@ export const BtnWrapper = styled.div`
     border-radius: 10px;
     :hover {
       font-weight: bold;
+      cursor: pointer;
     }
   }
 `
-export const ChangeButton = styled.button``
-export const DeleteButton = styled.button``
-export const AnswerButton = styled.button``
 export const CommentWrapper = styled.div`
   width: 1200px;
 `
 export const CommentAnswerWrapper = styled.div`
   min-height: 50px;
-  background-color: red;
 `

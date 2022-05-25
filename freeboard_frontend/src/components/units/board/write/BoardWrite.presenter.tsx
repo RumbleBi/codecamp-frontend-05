@@ -6,7 +6,7 @@ import { Fragment } from 'react'
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
   return (
-    <Fragment>
+    <S.Position>
       {props.isOpen && (
         <Modal
           visible={true}
@@ -21,7 +21,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         </Modal>
       )}
       <S.Wrapper>
-        <S.Title>{props.isEdit ? '게시판수정' : '게시판등록'}</S.Title>
+        <S.Title>{props.isEdit ? '게시글수정' : '게시글등록'}</S.Title>
         <S.WrapperProfile>
           <S.WrapperWriter>
             <S.Label>작성자</S.Label>
@@ -131,6 +131,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           {props.isEdit ? '수정하기' : '등록하기'}
         </S.RegisterBtn>
       </S.Wrapper>
-    </Fragment>
+    </S.Position>
   )
 }

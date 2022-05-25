@@ -85,14 +85,14 @@ export default function UseditemCommentListUIItem(props) {
           </S.BtnWrapper>
         </S.Wrapper2>
       )}
-      {/* {isEdit && (
+      {isEdit && (
         <UseditemCommentWrite
           isEdit={props.isEdit}
           setIsEdit={props.setIsEdit}
           el={props.el}
         />
       )}
-      {isAnswerEdit && <UseditemAnswerList data={props.el} />} */}
+      {isAnswerEdit && <UseditemAnswerList data={props.el} />}
     </>
   )
 }

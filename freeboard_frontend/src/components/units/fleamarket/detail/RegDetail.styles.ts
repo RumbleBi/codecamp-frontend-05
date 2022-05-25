@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
   width: 1200px;
   border-radius: 10px;
   background-color: #e8f9fd;
+  box-shadow: 0px 0px 10px gray;
 `
 export const Title = styled.div`
   font-size: 36px;
