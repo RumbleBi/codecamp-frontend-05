@@ -10,11 +10,13 @@ const LOGOUT_USER = gql`
 `
 const FETCH_USER_LOGGED_IN = gql`
   query fetchUserLoggedIn {
-    _id
-    name
-    picture
-    userPoint {
-      amount
+    fetchUserLoggedIn {
+      _id
+      name
+      picture
+      userPoint {
+        amount
+      }
     }
   }
 `
@@ -45,7 +47,6 @@ export default function LayoutHeader() {
     alert('로그아웃 되었습니다.')
     router.push('/fleamarket/login')
   }
-  console.log(data)
   return (
     <LayoutHeaderUI
       data={data}
