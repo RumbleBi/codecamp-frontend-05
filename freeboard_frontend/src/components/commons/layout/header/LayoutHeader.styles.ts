@@ -26,7 +26,7 @@ export const Left = styled.div`
       font-weight: bold;
     }
     color: #2155cd;
-    margin-left: 20px;
+    padding-left: 20px;
     font-size: 18px;
     cursor: pointer;
   }
@@ -35,11 +35,29 @@ export const Right = styled.div`
   display: flex;
   color: #2155cd;
   div {
-    margin: 20px;
-    font-size: 18px;
-    cursor: pointer;
-    :hover {
-      font-weight: bold;
+    display: flex;
+    div {
+      margin: 20px;
+      font-size: 18px;
     }
+  }
+`
+export const PointInfo = styled.div`
+  :hover {
+    cursor: default;
+  }
+`
+export const UserName = styled.div`
+  :hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
+`
+export const LoginBtn = styled.div`
+  padding-right: 20px;
+  font-size: 18px;
+  :hover {
+    cursor: pointer;
+    font-weight: bold;
   }
 `
