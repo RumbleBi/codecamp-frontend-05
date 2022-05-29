@@ -22,7 +22,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
       <S.Wrapper>
         <S.Title>{props.isEdit ? '게시글수정' : '게시글등록'}</S.Title>
         <S.WrapperProfile>
-          <S.WrapperWriter>
+          <div>
             <S.Label>작성자</S.Label>
             <S.WriterContent
               ref={props.inputRef}
@@ -33,8 +33,8 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               readOnly={!!props.data?.fetchBoard?.writer}
             />
             <S.ErrorMassage>{props.writerError}</S.ErrorMassage>
-          </S.WrapperWriter>
-          <S.WrapperPassword>
+          </div>
+          <div>
             <S.Label>비밀번호</S.Label>
             <S.PasswordContent
               type="password"
@@ -43,25 +43,31 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               placeholder="비밀번호를 입력해주세요."
             />
             <S.ErrorMassage>{props.passwordError}</S.ErrorMassage>
-          </S.WrapperPassword>
+          </div>
         </S.WrapperProfile>
         <S.WrapperName>
-          <S.Name>제목</S.Name>
-          <S.NameContent
-            type="text"
-            onChange={props.onChangePost}
-            placeholder="제목을 적어주세요."
-            defaultValue={props.data?.fetchBoard?.title}
-          />
-          <S.ErrorMassage>{props.postError}</S.ErrorMassage>
+          <div>
+            <S.Name>제목</S.Name>
+            <S.NameContent
+              type="text"
+              onChange={props.onChangePost}
+              placeholder="제목을 적어주세요."
+              defaultValue={props.data?.fetchBoard?.title}
+            />
+            <S.ErrorMassage>{props.postError}</S.ErrorMassage>
+          </div>
         </S.WrapperName>
-        <S.Content>내용</S.Content>
-        <S.ContentInContent
-          onChange={props.onChangeContent}
-          placeholder="내용을 입력해 주세요."
-          defaultValue={props.data?.fetchBoard?.contents}
-        />
-        <S.ErrorMassage>{props.contentError}</S.ErrorMassage>
+        <S.WrapperContent>
+          <div>
+            <S.Content>내용</S.Content>
+            <S.ContentInput
+              onChange={props.onChangeContent}
+              placeholder="내용을 입력해 주세요."
+              defaultValue={props.data?.fetchBoard?.contents}
+            />
+            <S.ErrorMassage>{props.contentError}</S.ErrorMassage>
+          </div>
+        </S.WrapperContent>
         <S.Address>주소</S.Address>
         <S.WrapperAddress>
           <S.Zipcode

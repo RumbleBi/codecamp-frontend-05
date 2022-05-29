@@ -33,7 +33,6 @@ export const WrapperProfile = styled.div`
   justify-content: space-evenly;
   margin-bottom: 50px;
 `
-export const WrapperWriter = styled.div``
 export const Label = styled.div`
   color: #79dae8;
   display: flex;
@@ -42,8 +41,8 @@ export const Label = styled.div`
   padding-bottom: 10px;
 `
 export const WriterContent = styled.input`
-  font-size: 18px;
   width: 400px;
+  font-size: 18px;
   height: 50px;
   padding-left: 10px;
   border: none;
@@ -55,7 +54,6 @@ export const ErrorMassage = styled.div`
   padding-top: 5px;
   padding-left: 5px;
 `
-export const WrapperPassword = styled.div``
 export const PasswordContent = styled.input`
   font-size: 18px;
   width: 400px;
@@ -68,38 +66,47 @@ export const WrapperName = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin-bottom: 50px;
 `
 export const Name = styled.div`
+  display: flex;
   color: #79dae8;
   font-size: 20px;
   font-weight: bold;
 `
 export const NameContent = styled.input`
+  width: 930px;
   font-size: 18px;
-  width: 75vw;
-  height: 7vh;
-  padding-left: 1vw;
-  border: 1px solid #bdbdbd;
+  height: 50px;
+  padding-left: 10px;
+  border: none;
+  outline-color: #79dae8;
+`
+export const WrapperContent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
 `
 export const Content = styled.div`
-  color: #ffd400;
-  margin-top: 1vw;
-  margin-left: 7vw;
-  margin-bottom: 2vh;
-  font-size: 24px;
-`
-export const ContentInContent = styled.textarea`
-  font-size: 18px;
   display: flex;
-  width: 75vw;
-  height: 40vh;
-  margin-left: 7vw;
-  padding-top: 1vh;
-  padding-left: 1vw;
-  border: 1px solid #bdbdbd;
-  resize: none;
+  color: #79dae8;
+  font-size: 20px;
+  font-weight: bold;
+`
+export const ContentInput = styled.textarea`
+  display: flex;
+  font-size: 18px;
+  width: 930px;
+  min-height: 400px;
+  padding-top: 10px;
+  padding-left: 10px;
+  border: none;
+  outline-color: #79dae8;
 `
 export const Address = styled.div`
   font-size: 24px;
