@@ -70,12 +70,6 @@ export const WrapperName = styled.div`
   justify-content: center;
   margin-bottom: 50px;
 `
-export const Name = styled.div`
-  display: flex;
-  color: #79dae8;
-  font-size: 20px;
-  font-weight: bold;
-`
 export const NameContent = styled.input`
   width: 930px;
   font-size: 18px;
@@ -92,12 +86,6 @@ export const WrapperContent = styled.div`
   justify-content: center;
   margin-bottom: 50px;
 `
-export const Content = styled.div`
-  display: flex;
-  color: #79dae8;
-  font-size: 20px;
-  font-weight: bold;
-`
 export const ContentInput = styled.textarea`
   display: flex;
   font-size: 18px;
@@ -108,113 +96,98 @@ export const ContentInput = styled.textarea`
   border: none;
   outline-color: #79dae8;
 `
-export const Address = styled.div`
-  font-size: 24px;
-  color: #ffd400;
-  margin-top: 3vh;
-  margin-left: 7vw;
-`
 export const WrapperAddress = styled.div`
-  margin-top: 3vh;
-  margin-left: 7vw;
+  width: 930px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 50px;
 `
 export const Zipcode = styled.input`
-  width: 5vw;
-  height: 7vh;
-  padding-left: 1vw;
+  width: 100px;
+  height: 40px;
+  font-size: 18px;
+  outline: none;
+  margin-right: 30px;
 `
 export const AddressSearchBtn = styled.button`
-  width: 7vw;
-  height: 7vh;
-  margin-left: 2vw;
+  width: 100px;
+  height: 40px;
+  border: none;
   cursor: pointer;
+  background-color: #2155cd;
+  color: #79dae8;
+  :hover {
+    font-weight: bold;
+  }
 `
-export const AddressDetail1 = styled.input`
-  width: 75vw;
-  height: 7vh;
-  margin-top: 3vh;
-  margin-left: 7vw;
-`
-export const AddressDetail2 = styled.input`
-  width: 75vw;
-  height: 7vh;
-  margin-top: 3vh;
-  margin-left: 7vw;
-`
-export const Youtube = styled.div`
-  color: #ffd400;
-  width: 75vw;
-  height: 7vh;
-  margin-left: 7vw;
-  margin-top: 3vh;
-  font-size: 24px;
+export const AddressDetail = styled.input`
+  font-size: 18px;
+  width: 930px;
+  height: 50px;
+  padding-left: 10px;
+  border: none;
+  outline-color: #79dae8;
+  margin-bottom: 50px;
 `
 export const YoutubeUrl = styled.input`
-  width: 75vw;
-  height: 7vh;
-  margin-top: 1vh;
-  margin-left: 7vw;
+  width: 930px;
+  height: 50px;
   font-size: 18px;
-  padding-left: 1vw;
-  border: 1px solid #bdbdbd;
+  padding-left: 10px;
+  border: none;
+  margin-bottom: 50px;
 `
-export const Picture = styled.div`
-  color: #ffd400;
-  margin-top: 3vh;
-  margin-left: 7vw;
-  font-size: 24px;
+export const WrapperUploadBtn = styled.div`
+  margin-top: 50px;
+  width: 930px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 `
 export const WrapperPicture = styled.div`
-  margin-top: 3vh;
-  margin-left: 7vw;
+  width: 930px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 50px 0px;
+`
+export const PictureInput = styled.input`
+  display: none;
+`
+export const Image = styled.img`
+  width: 200px;
+  height: 200px;
 `
 export const PictureDetail = styled.button`
-  width: 7vw;
-  height: 7vh;
-  margin-right: 2vw;
-  font-size: 18px;
+  width: 200px;
+  height: 200px;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #79dae8;
+  background-color: #0aa1dd;
+  border: none;
   cursor: pointer;
   :hover {
-    background-color: #ffd400;
+    background-color: #2155cd;
   }
-`
-export const WrapperSetting = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 7vw;
-`
-export const MainSetting = styled.div`
-  color: #ffd400;
-  margin-top: 3vh;
-  margin-left: 7vw;
-  margin-bottom: 3vh;
-  font-size: 24px;
-`
-export const MainSettingSelect = styled.input`
-  margin-top: 1vh;
-  margin-right: 1vw;
-  :hover {
-    cursor: pointer;
-  }
-`
-export const MainSettingFont = styled.div`
-  color: #ffd400;
-  font-size: 22px;
-  padding-right: 1vw;
-  margin-bottom: 3vh;
 `
 export const RegisterBtn = styled.button`
+  margin: 50px 0px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 3vh;
-  width: 90vw;
-  height: 7vh;
+  font-weight: bold;
+  color: #79dae8;
+  width: 930px;
+  height: 50px;
   border: none;
-  font-size: 24px;
+  font-size: 20px;
+  border-radius: 0px 0px 10px 10px;
+  cursor: pointer;
   background-color: ${(props: IRegisterBtnProps) =>
-    props.isActive === true ? '#FFD400' : 'none'};
-  cursor: ${(props: IRegisterBtnProps) =>
-    props.isActive === true ? 'pointer' : 'default'};
+    props.isActive === true ? '#0AA1DD' : '#f2f2f2'};
 `

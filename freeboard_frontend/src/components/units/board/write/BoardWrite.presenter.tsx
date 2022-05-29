@@ -47,7 +47,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         </S.WrapperProfile>
         <S.WrapperName>
           <div>
-            <S.Name>제목</S.Name>
+            <S.Label>제목</S.Label>
             <S.NameContent
               type="text"
               onChange={props.onChangePost}
@@ -59,7 +59,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         </S.WrapperName>
         <S.WrapperContent>
           <div>
-            <S.Content>내용</S.Content>
+            <S.Label>내용</S.Label>
             <S.ContentInput
               onChange={props.onChangeContent}
               placeholder="내용을 입력해 주세요."
@@ -68,67 +68,78 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             <S.ErrorMassage>{props.contentError}</S.ErrorMassage>
           </div>
         </S.WrapperContent>
-        <S.Address>주소</S.Address>
         <S.WrapperAddress>
-          <S.Zipcode
-            placeholder="00000"
-            readOnly
-            value={
-              props.zipcode ||
-              props.data?.fetchBoard?.boardAddress?.zipcode ||
-              ''
-            }
-          />
-          <S.AddressSearchBtn onClick={props.onClickAddressSearch}>
-            우편번호 검색
-          </S.AddressSearchBtn>
+          <S.Label>주소</S.Label>
+          <div style={{ display: 'flex' }}>
+            <S.Zipcode
+              placeholder="00000"
+              readOnly
+              value={
+                props.zipcode ||
+                props.data?.fetchBoard?.boardAddress?.zipcode ||
+                ''
+              }
+            />
+            <S.AddressSearchBtn onClick={props.onClickAddressSearch}>
+              우편번호 검색
+            </S.AddressSearchBtn>
+          </div>
         </S.WrapperAddress>
-        <S.AddressDetail1
+        <S.AddressDetail
           readOnly
           value={
             props.address || props.data?.fetchBoard?.boardAddress?.address || ''
           }
         />
-        <S.AddressDetail2
+        <S.AddressDetail
           onChange={props.onChangeAddressDetail}
           defaultValue={
             props.data?.fetchBoard?.boardAddress?.addressDetail || ''
           }
         />
-        <S.Youtube>유튜브</S.Youtube>
-        <S.YoutubeUrl
-          placeholder="링크를 넣어주세요."
-          onChange={props.onChangeYoutubeUrl}
-          defaultValue={props.data?.fetchBoard?.youtubeUrl || ''}
-        />
-        <S.Picture>사진 첨부</S.Picture>
-        <S.WrapperPicture>
-          <input
-            style={{ display: 'none' }}
-            ref={props?.fileRef}
-            type="file"
-            onChange={props?.onChangeFile}
-          />
-          <img src={`https://storage.googleapis.com/${props.image[0]}`} />
-          <S.PictureDetail onClick={props?.onClickImage}>
-            + Upload
-          </S.PictureDetail>
-          <img src={`https://storage.googleapis.com/${props.image[1]}`} />
-          <S.PictureDetail onClick={props?.onClickImage}>
-            + Upload
-          </S.PictureDetail>
-          <img src={`https://storage.googleapis.com/${props.image[2]}`} />
-          <S.PictureDetail onClick={props?.onClickImage}>
-            + Upload
-          </S.PictureDetail>
-        </S.WrapperPicture>
-        <S.MainSetting>메인 설정</S.MainSetting>
-        <S.WrapperSetting>
-          <S.MainSettingSelect type="radio" name="select" />
-          <S.MainSettingFont>유튜브</S.MainSettingFont>
-          <S.MainSettingSelect type="radio" name="select" />
-          <S.MainSettingFont>사진</S.MainSettingFont>
-        </S.WrapperSetting>
+        <div>
+          <S.Label>유튜브</S.Label>
+          <div>
+            <S.YoutubeUrl
+              placeholder="링크를 넣어주세요."
+              onChange={props.onChangeYoutubeUrl}
+              defaultValue={props.data?.fetchBoard?.youtubeUrl || ''}
+            />
+          </div>
+        </div>
+        <div>
+          <S.Label>사진 첨부</S.Label>
+          <div>
+            <S.PictureInput
+              // style={{ display: 'none' }}
+              ref={props?.fileRef}
+              type="file"
+              onChange={props?.onChangeFile}
+            />
+            <S.WrapperUploadBtn>
+              <S.PictureDetail onClick={props?.onClickImage}>
+                Upload
+              </S.PictureDetail>
+              <S.PictureDetail onClick={props?.onClickImage}>
+                Upload
+              </S.PictureDetail>
+              <S.PictureDetail onClick={props?.onClickImage}>
+                Upload
+              </S.PictureDetail>
+            </S.WrapperUploadBtn>
+            <S.WrapperPicture>
+              <S.Image
+                src={`https://storage.googleapis.com/${props.image[0]}`}
+              />
+              <S.Image
+                src={`https://storage.googleapis.com/${props.image[1]}`}
+              />
+              <S.Image
+                src={`https://storage.googleapis.com/${props.image[2]}`}
+              />
+            </S.WrapperPicture>
+          </div>
+        </div>
         <S.RegisterBtn
           onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
           isActive={props.isEdit ? true : props.isActive}

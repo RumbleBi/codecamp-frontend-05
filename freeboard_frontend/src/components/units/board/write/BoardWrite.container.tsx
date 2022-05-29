@@ -12,7 +12,6 @@ import {
 } from '../../../../commons/types/generated/types'
 import { Modal } from 'antd'
 import { checkFileValidation } from '../../../../commons/libraries/utils'
-
 export default function BoardWrite(props: IBoardWriteProps) {
   const router = useRouter()
   // useRef로 포커싱 되도록 함
@@ -125,9 +124,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
     for (let i = 0; i < event.target.files?.length; i++) {
       const file = event.target.files?.[i]
-
       const isVaild = checkFileValidation(file)
-
       if (!isVaild) {
         return
       }
@@ -141,6 +138,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       }
     }
     setImage([...image, ...imageUrl])
+    console.log(image)
   }
 
   const onClickSubmit = async () => {
@@ -264,5 +262,3 @@ export default function BoardWrite(props: IBoardWriteProps) {
     />
   )
 }
-// focus 로 빈 문자열 발생시 문제되는 부분으로 포커싱하도록 구현할 예정.
-// 비밀번호 몇자리 이상 체크 구현..?
