@@ -2,7 +2,6 @@ import * as S from './BoardWrite.styles'
 import { IBoardWriteUIProps } from './BoardWrite.types'
 import { Modal } from 'antd'
 import DaumPostcode from 'react-daum-postcode'
-import { Fragment } from 'react'
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
   return (

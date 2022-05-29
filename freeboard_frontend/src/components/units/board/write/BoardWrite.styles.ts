@@ -28,47 +28,53 @@ export const Title = styled.div`
   font-weight: bold;
 `
 export const WrapperProfile = styled.div`
-  width: 90vw;
+  width: 100%;
   display: flex;
-  padding-top: 3vh;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
 `
 export const WrapperWriter = styled.div``
 export const Label = styled.div`
+  color: #79dae8;
   display: flex;
-  color: #ffd400;
-  padding-bottom: 1vh;
-  font-size: 24px;
-  font-family: AppleFontKO;
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 10px;
 `
 export const WriterContent = styled.input`
   font-size: 18px;
-  width: 30vw;
-  height: 7vh;
-  padding-left: 1vw;
-  border: 1px solid #bdbdbd;
+  width: 400px;
+  height: 50px;
+  padding-left: 10px;
+  border: none;
+  outline-color: #79dae8;
 `
 export const ErrorMassage = styled.div`
   color: red;
-  font-size: 16px;
+  font-size: 14px;
   padding-top: 5px;
   padding-left: 5px;
 `
 export const WrapperPassword = styled.div``
 export const PasswordContent = styled.input`
   font-size: 18px;
-  width: 30vw;
-  height: 7vh;
-  padding-left: 1vw;
-  border: 1px solid #bdbdbd;
+  width: 400px;
+  height: 50px;
+  padding-left: 10px;
+  border: none;
+  outline-color: #79dae8;
 `
 export const WrapperName = styled.div`
-  margin-left: 7vw;
-  padding-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 50px;
 `
 export const Name = styled.div`
-  color: #ffd400;
-  margin-top: 3vh;
-  font-size: 24px;
+  color: #79dae8;
+  font-size: 20px;
+  font-weight: bold;
 `
 export const NameContent = styled.input`
   font-size: 18px;
