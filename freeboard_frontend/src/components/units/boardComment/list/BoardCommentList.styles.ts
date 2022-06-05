@@ -1,44 +1,30 @@
-import styled from "@emotion/styled";
-import { Rate } from "antd";
-
+import styled from '@emotion/styled'
+import { Rate } from 'antd'
+export const Position = styled.div`
+  display: flex;
+  justify-content: center;
+`
 export const Wrapper = styled.div`
-  width: 80vw;
-  height: 25vh;
-  margin-bottom: 3vh;
-  border-bottom: 1px solid gray;
-  background-color: red;
-`;
-
-export const CommentAvatarIcon = styled.img`
-padding-right
-`;
-
-export const WrapperComment = styled.div``;
-
-export const Comment = styled.div``;
-
-export const WriterWrapper = styled.span`
-  /* display: flex;
-  flex-direction: row;
-  align-items: center; */
-`;
-
+  width: 1200px;
+  height: 200px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #2155cd;
+`
+export const WrapperComment = styled.div``
+export const CommentStar = styled(Rate)``
+export const Comment = styled.div``
 export const CommentWriter = styled.span`
-  /* font-size: 20px;
-  font-weight: bold; */
-`;
-export const CommentStar = styled(Rate)`
-  /* padding-left: 20px; */
-`;
-
+  font-size: 18px;
+  color: #2155cd;
+  font-weight: bold;
+`
 export const CommentCreatedAt = styled.div`
   /* color: red; */
-`;
+`
 
 export const CommentPencilIcon = styled.img`
-  padding-left: 75vw;
   cursor: pointer;
-`;
+`
 
 export const CommentDeleteIcon = styled.img`
   padding-left: 1.5vw;
@@ -46,16 +32,10 @@ export const CommentDeleteIcon = styled.img`
   :hover {
     image-color: #ffd400;
   }
-`;
-
-export const CommentListWrapper = styled.div`
-  /* height: 20vh;
-  overflow: auto;
-  width: 40vw; */
-`;
-export const CommentListInfo = styled.span``;
+`
+export const CommentListInfo = styled.span``
 
 // ----------------------------------
-export const PasswordInput = styled.input``;
+export const PasswordInput = styled.input``
 
-export const CommentOptionWrapper = styled.div``;
+export const CommentOptionWrapper = styled.div``

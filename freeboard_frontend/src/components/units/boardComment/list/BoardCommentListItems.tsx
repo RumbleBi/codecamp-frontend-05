@@ -1,39 +1,39 @@
-import { IBoardCommentListItemsUIProps } from "./BoardCommentList.types";
-import * as S from "./BoardCommentList.styles";
-import { useMutation } from "@apollo/client";
+import { IBoardCommentListItemsUIProps } from './BoardCommentList.types'
+import * as S from './BoardCommentList.styles'
+import { useMutation } from '@apollo/client'
 import {
   DELETE_BOARD_COMMENT,
   FETCH_BOARD_COMMENTS,
-} from "./BoardCommentList.queries";
+} from './BoardCommentList.queries'
 import {
   IMutation,
   IMutationDeleteBoardCommentArgs,
-} from "../../../../commons/types/generated/types";
-import BoardCommentWrite from "../write/BoardCommentWrite.container";
-import { ChangeEvent, useState, Fragment } from "react";
-import { Modal } from "antd";
-import { useRouter } from "next/router";
+} from '../../../../commons/types/generated/types'
+import BoardCommentWrite from '../write/BoardCommentWrite.container'
+import { ChangeEvent, useState } from 'react'
+import { Modal } from 'antd'
+import { useRouter } from 'next/router'
 
 export default function BoardCommentListItemsUI(
   props: IBoardCommentListItemsUIProps
 ) {
-  const router = useRouter();
-  const [isEdit, setIsEdit] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [password, setPassword] = useState("");
+  const router = useRouter()
+  const [isEdit, setIsEdit] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [password, setPassword] = useState('')
 
   const [deleteBoardComment] = useMutation<
-    Pick<IMutation, "deleteBoardComment">,
+    Pick<IMutation, 'deleteBoardComment'>,
     IMutationDeleteBoardCommentArgs
-  >(DELETE_BOARD_COMMENT);
+  >(DELETE_BOARD_COMMENT)
 
   const onClickDeleteModal = () => {
-    setIsOpen(true);
-  };
+    setIsOpen(true)
+  }
 
   const onChangeDeletePassword = (event: ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
+    setPassword(event.target.value)
+  }
 
   const onClickDelete = async () => {
     try {
@@ -48,20 +48,19 @@ export default function BoardCommentListItemsUI(
             variables: { boardId: router.query.boardId },
           },
         ],
-      });
-      setIsOpen(false);
+      })
+      setIsOpen(false)
     } catch (error) {
       if (error instanceof Error)
-        // 타입을 찾지 못하는 경우 instanceof 로 속해있음을 알려준다.
-        Modal.error({ content: "BoardCommentList.container" });
+        Modal.error({ content: 'BoardCommentList.container' })
     }
-  };
+  }
 
   const onClickUpdate = () => {
-    setIsEdit(true);
-  };
+    setIsEdit(true)
+  }
   return (
-    <Fragment>
+    <>
       {isOpen && (
         <Modal visible={true} onOk={onClickDelete}>
           <div>비밀번호입력: </div>
@@ -69,14 +68,13 @@ export default function BoardCommentListItemsUI(
         </Modal>
       )}
       {!isEdit && (
-        <S.CommentListWrapper>
+        <S.Position>
           <S.Wrapper key={props.el._id}>
             <S.WrapperComment>
-              <S.CommentAvatarIcon src="/images/avatar_icon40X40.png" />
-              <S.WriterWrapper>
+              <div>
                 <S.CommentWriter>{props.el?.writer}</S.CommentWriter>
                 <S.CommentStar value={props.el?.rating} disabled />
-              </S.WriterWrapper>
+              </div>
               <S.Comment>{props.el?.contents}</S.Comment>
             </S.WrapperComment>
             <S.CommentOptionWrapper>
@@ -92,7 +90,7 @@ export default function BoardCommentListItemsUI(
             </S.CommentOptionWrapper>
             <S.CommentCreatedAt>{props.el?.createdAt}</S.CommentCreatedAt>
           </S.Wrapper>
-        </S.CommentListWrapper>
+        </S.Position>
       )}
       {isEdit && (
         <BoardCommentWrite
@@ -101,6 +99,6 @@ export default function BoardCommentListItemsUI(
           el={props.el}
         />
       )}
-    </Fragment>
-  );
+    </>
+  )
 }
