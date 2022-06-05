@@ -1,66 +1,79 @@
-import styled from "@emotion/styled";
-import { Rate } from "antd";
-export const Wrapper = styled.div`
-  width: 80vw;
-  height: 40vh;
-  background-color: blue;
-`;
+import styled from '@emotion/styled'
+import { Rate } from 'antd'
 
-export const PencilIcon = styled.img``;
-
-export const TEXT = styled.span`
-  display: inline-block;
-  font-size: 18px;
-  margin-bottom: 2vh;
-`;
-
-export const Star = styled(Rate)``;
-
-export const InputWrapper = styled.div`
+export const Position = styled.div`
   display: flex;
-`;
-
-export const InputWriterAndPassword = styled.input`
-  font-size: 18px;
-  width: 10vw;
-  height: 4vh;
-  border: 1px solid black;
-  padding-left: 1vw;
-  margin-right: 1vw;
-`;
-
-export const ContentsWrapper = styled.div`
-  margin-top: 1vh;
+  justify-content: center;
+`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
+  justify-content: center;
+  width: 1200px;
+  height: 300px;
+  margin-bottom: 50px;
+`
+export const CommentTitleWrapper = styled.div`
+  display: flex;
+  width: 1200px;
+  height: 40px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #2155cd;
+  font-weight: bold;
+  img {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+  }
+`
+export const InputWrapper = styled.div`
+  display: flex;
+  width: 1200px;
+`
+export const InputInfo = styled.input`
+  font-size: 16px;
+  width: 150px;
+  height: 30px;
+  border: 1px solid #79dae8;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-right: 20px;
+  color: #2155cd;
+`
+export const Star = styled(Rate)``
+export const ContentsWrapper = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+`
 export const Contents = styled.textarea`
   font-size: 16px;
-  width: 80vw;
-  min-height: 15vh;
-  border: 1px solid gray;
-  padding-top: 1vh;
-  padding-left: 1vh;
+  width: 1200px;
+  height: 150px;
+  border: 1px solid #79dae8;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
   resize: none;
-`;
-
-export const ContentsInfo = styled.div`
-  margin-top: 1vh;
-  margin-left: 1vw;
-  color: gray;
-`;
-
+  color: #2155cd;
+`
+export const ContentsInfo = styled.span`
+  margin-top: 10px;
+  color: #2155cd;
+  font-size: 20px;
+`
 export const ContentsBtn = styled.button`
-  font-size: 16px;
-  width: 6vw;
-  height: 5vh;
-  margin-left: 73vw;
-  margin-bottom: 1vh;
+  margin-top: 10px;
+  font-size: 20px;
+  width: 100px;
+  border-radius: 10px;
+  height: 40px;
   border: none;
-  background-color: #bdbdbd;
+  cursor: pointer;
+  color: #0aa1dd;
+  background-color: #2155cd;
   :hover {
-    cursor: pointer;
-    background-color: #ffd400;
+    font-weight: bold;
   }
-`;
+`
