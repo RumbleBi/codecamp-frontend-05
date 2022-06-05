@@ -51,9 +51,10 @@ export const ListWrapperTop = styled.div`
   width: 1200px;
   height: 50px;
   font-size: 20px;
-  border-top: 2px solid black;
+  border-radius: 10px 10px 0px 0px;
   background-color: #2155cd;
   color: #e8f9fd;
+  cursor: default;
   div {
     display: flex;
     justify-content: center;
@@ -82,16 +83,18 @@ export const ListIndexNumber = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  color: #e8f9fd;
+  color: #2155cd;
   width: 10%;
   height: 50px;
   background-color: ${(props) =>
     props.index % 2 === 0 ? '#79DAE8' : '#0AA1DD'};
 `
 export const ListIndexTitle = styled.div`
-  font-size: 20px;
-  color: #e8f9fd;
+  display: flex;
+  padding-left: 100px;
   align-items: center;
+  font-size: 20px;
+  color: #2155cd;
   width: 65%;
   height: 50px;
   /* padding-left: 100px; */
@@ -100,7 +103,7 @@ export const ListIndexTitle = styled.div`
 `
 export const Word = styled.span`
   /* width: 1200px; */
-  color: ${(props) => (props.isMatched ? '#2155CD' : '#E8F9FD')};
+  color: ${(props) => (props.isMatched ? '#e8f9fd' : '#2155CD')};
 `
 export const ListIndexWriter = styled.div`
   display: flex;
@@ -109,7 +112,7 @@ export const ListIndexWriter = styled.div`
   width: 15%;
   height: 50px;
   font-size: 20px;
-  color: #e8f9fd;
+  color: #2155cd;
   background-color: ${(props) =>
     props.index % 2 === 0 ? '#79DAE8' : '#0AA1DD'};
 `
@@ -121,7 +124,7 @@ export const ListIndexDate = styled.div`
   width: 10%;
   height: 50px;
   font-size: 20px;
-  color: #e8f9fd;
+  color: #2155cd;
   background-color: ${(props) =>
     props.index % 2 === 0 ? '#79DAE8' : '#0AA1DD'};
 `
@@ -131,11 +134,7 @@ export const ListWrapperBottom = styled.div`
   align-items: center;
   width: 1200px;
   height: 100px;
-  background-color: #f2f2;
-`
-
-export const Pagination01Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  font-size: 20px;
+  background-color: #2155cd;
+  border-radius: 0px 0px 10px 10px;
 `

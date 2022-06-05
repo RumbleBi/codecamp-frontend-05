@@ -47,9 +47,7 @@ export default function BoardListUI(props: IBoardListUIProps) {
           </S.ListWrapperBody>
         ))}
         <S.ListWrapperBottom>
-          <S.Pagination01Wrapper>
-            <Paginations01 refetch={props.refetch} count={props.count} />
-          </S.Pagination01Wrapper>
+          <Paginations01 refetch={props.refetch} count={props.count} />
         </S.ListWrapperBottom>
       </S.Wrapper>
     </S.Position>
