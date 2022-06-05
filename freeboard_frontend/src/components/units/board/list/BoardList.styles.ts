@@ -46,11 +46,6 @@ export const SearchInput = styled.input`
   border: 1px solid #79dae8;
   border-radius: 10px;
 `
-
-export const Word = styled.span`
-  width: 70%;
-  color: ${(props) => (props.isMatched ? '#FFD400' : 'black')};
-`
 export const ListWrapperTop = styled.div`
   display: flex;
   width: 1200px;
@@ -59,71 +54,88 @@ export const ListWrapperTop = styled.div`
   border-top: 2px solid black;
   background-color: #2155cd;
   color: #e8f9fd;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `
-
-export const ListDetail = styled.div`
-  width: 1200px;
-  border-bottom: 1px solid gray;
+export const Index = styled.div`
+  width: 10%;
 `
-
+export const Title = styled.div`
+  width: 65%;
+`
+export const Writer = styled.div`
+  width: 15%;
+`
+export const Date = styled.div`
+  width: 10%;
+`
 export const ListWrapperBody = styled.div`
   display: flex;
-  align-items: center;
   width: 1200px;
+  cursor: pointer;
 `
-
-export const ListIndex = styled.div`
-  align-items: center;
-  width: 70%;
-  height: 7vh;
-  border-bottom: 1px solid gray;
-  mouse :hover {
-    cursor: pointer;
-  }
-  background-color: ${(props) => (props.index % 2 === 0 ? '#FFD400' : 'gray')};
-`
-
 export const ListIndexNumber = styled.div`
+  display: flex;
+  justify-content: center;
   align-items: center;
-  width: 70%;
-  height: 7vh;
-  border-bottom: 1px solid gray;
-  :hover {
-    cursor: pointer;
-  }
-  background-color: ${(props) => (props.index % 2 === 0 ? '#FFD400' : 'gray')};
+  font-size: 20px;
+  color: #e8f9fd;
+  width: 10%;
+  height: 50px;
+  background-color: ${(props) =>
+    props.index % 2 === 0 ? '#79DAE8' : '#0AA1DD'};
 `
-
-export const ListIndexWriter = styled.div`
+export const ListIndexTitle = styled.div`
+  font-size: 20px;
+  color: #e8f9fd;
   align-items: center;
-  width: 70%;
-  height: 7vh;
-  border-bottom: 1px solid gray;
-  :hover {
-    cursor: pointer;
-  }
-  background-color: ${(props) => (props.index % 2 === 0 ? '#FFD400' : 'gray')};
+  width: 65%;
+  height: 50px;
+  /* padding-left: 100px; */
+  background-color: ${(props) =>
+    props.index % 2 === 0 ? '#79DAE8' : '#0AA1DD'};
+`
+export const Word = styled.span`
+  /* width: 1200px; */
+  color: ${(props) => (props.isMatched ? '#2155CD' : '#E8F9FD')};
+`
+export const ListIndexWriter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 50px;
+  font-size: 20px;
+  color: #e8f9fd;
+  background-color: ${(props) =>
+    props.index % 2 === 0 ? '#79DAE8' : '#0AA1DD'};
 `
 
 export const ListIndexDate = styled.div`
+  display: flex;
+  justify-content: center;
   align-items: center;
-  width: 70%;
-  height: 7vh;
-  border-bottom: 1px solid gray;
-  :hover {
-    cursor: pointer;
-  }
-  background-color: ${(props) => (props.index % 2 === 0 ? '#FFD400' : 'gray')};
+  width: 10%;
+  height: 50px;
+  font-size: 20px;
+  color: #e8f9fd;
+  background-color: ${(props) =>
+    props.index % 2 === 0 ? '#79DAE8' : '#0AA1DD'};
 `
 export const ListWrapperBottom = styled.div`
-  width: 70%;
-  height: auto;
-  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+  height: 100px;
+  background-color: #f2f2;
 `
 
 export const Pagination01Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-top: 5vh;
 `

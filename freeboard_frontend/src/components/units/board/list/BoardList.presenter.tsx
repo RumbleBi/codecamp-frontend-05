@@ -18,15 +18,15 @@ export default function BoardListUI(props: IBoardListUIProps) {
           />
         </S.WrapperOpt>
         <S.ListWrapperTop>
-          <S.ListDetail>번호</S.ListDetail>
-          <S.ListDetail>제목</S.ListDetail>
-          <S.ListDetail>작성자</S.ListDetail>
-          <S.ListDetail>날짜</S.ListDetail>
+          <S.Index className="Title">글번호</S.Index>
+          <S.Title>제목</S.Title>
+          <S.Writer>작성자</S.Writer>
+          <S.Date>작성날짜</S.Date>
         </S.ListWrapperTop>
         {props.data?.fetchBoards.map((el, index) => (
           <S.ListWrapperBody key={el._id}>
             <S.ListIndexNumber index={index}>{index + 1}</S.ListIndexNumber>
-            <S.ListIndex
+            <S.ListIndexTitle
               index={index}
               id={el._id}
               onClick={props.onClickMoveBoardDetail}
@@ -39,7 +39,7 @@ export default function BoardListUI(props: IBoardListUIProps) {
                     {el}
                   </S.Word>
                 ))}
-            </S.ListIndex>
+            </S.ListIndexTitle>
             <S.ListIndexWriter index={index}>{el.writer}</S.ListIndexWriter>
             <S.ListIndexDate index={index}>
               {getDate(el.createdAt)}
