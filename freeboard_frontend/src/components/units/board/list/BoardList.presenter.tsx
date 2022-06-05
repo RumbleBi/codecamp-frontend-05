@@ -6,15 +6,17 @@ export default function BoardListUI(props: IBoardListUIProps) {
   return (
     <S.Position>
       <S.Wrapper>
-        <S.BoardCreate onClick={props.onClickMoveBoardWrite}>
-          <S.WriteIcon src="/images/board/list/write_icon.png" />
-          게시물등록하기
-        </S.BoardCreate>
-        <S.SearchInput
-          type="text"
-          placeholder="검색: 제목 기준"
-          onChange={props.onChangeSearch}
-        />
+        <S.WrapperOpt>
+          <S.BoardCreate onClick={props.onClickMoveBoardWrite}>
+            <S.WriteIcon src="/images/board/list/write_icon.png" />
+            게시물등록하기
+          </S.BoardCreate>
+          <S.SearchInput
+            type="text"
+            placeholder="검색: 제목 기준"
+            onChange={props.onChangeSearch}
+          />
+        </S.WrapperOpt>
         <S.ListWrapperTop>
           <S.ListDetail>번호</S.ListDetail>
           <S.ListDetail>제목</S.ListDetail>

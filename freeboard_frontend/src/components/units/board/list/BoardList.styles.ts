@@ -13,9 +13,10 @@ export const Wrapper = styled.div`
   align-items: center;
 `
 export const WrapperOpt = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
 `
 export const BoardCreate = styled.button`
   display: flex;
@@ -39,7 +40,8 @@ export const WriteIcon = styled.img`
 `
 export const SearchInput = styled.input`
   width: 250px;
-  height: 40px;
+  height: 50px;
+  font-size: 18px;
   padding-left: 10px;
   border: 1px solid #79dae8;
   border-radius: 10px;
@@ -51,23 +53,23 @@ export const Word = styled.span`
 `
 export const ListWrapperTop = styled.div`
   display: flex;
-  width: 70%;
-  height: auto;
+  width: 1200px;
+  height: 50px;
+  font-size: 20px;
   border-top: 2px solid black;
-  background-color: #ffd400;
+  background-color: #2155cd;
+  color: #e8f9fd;
 `
 
 export const ListDetail = styled.div`
-  width: 70%;
-  height: auto;
+  width: 1200px;
   border-bottom: 1px solid gray;
 `
 
 export const ListWrapperBody = styled.div`
   display: flex;
   align-items: center;
-  width: 70%;
-  height: auto;
+  width: 1200px;
 `
 
 export const ListIndex = styled.div`
