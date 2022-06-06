@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   width: 1200px;
   height: 300px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 `
 export const CommentTitleWrapper = styled.div`
   display: flex;

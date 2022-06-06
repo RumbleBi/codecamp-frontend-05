@@ -7,35 +7,29 @@ export const Position = styled.div`
 export const Wrapper = styled.div`
   width: 1200px;
   height: 200px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   border-bottom: 1px solid #2155cd;
 `
-export const WrapperComment = styled.div``
-export const CommentStar = styled(Rate)``
-export const Comment = styled.div``
 export const CommentWriter = styled.span`
   font-size: 18px;
   color: #2155cd;
   font-weight: bold;
+  margin-right: 20px;
 `
-export const CommentCreatedAt = styled.div`
-  /* color: red; */
+export const CommentStar = styled(Rate)``
+export const Comment = styled.div`
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #2155cd;
 `
-
-export const CommentPencilIcon = styled.img`
-  cursor: pointer;
+export const CommentOptionWrapper = styled.div`
+  display: flex;
+  width: 1200px;
+  height: 30px;
+  align-items: center;
+  justify-content: space-between;
 `
-
-export const CommentDeleteIcon = styled.img`
-  padding-left: 1.5vw;
-  cursor: pointer;
-  :hover {
-    image-color: #ffd400;
-  }
+export const CommentCreatedAt = styled.span`
+  color: #2155cd;
+  font-weight: bold;
 `
-export const CommentListInfo = styled.span``
-
-// ----------------------------------
-export const PasswordInput = styled.input``
-
-export const CommentOptionWrapper = styled.div``

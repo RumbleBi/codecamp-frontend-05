@@ -13,6 +13,7 @@ import BoardCommentWrite from '../write/BoardCommentWrite.container'
 import { ChangeEvent, useState } from 'react'
 import { Modal } from 'antd'
 import { useRouter } from 'next/router'
+import { getDate } from '../../../../commons/libraries/utils'
 
 export default function BoardCommentListItemsUI(
   props: IBoardCommentListItemsUIProps
@@ -70,25 +71,29 @@ export default function BoardCommentListItemsUI(
       {!isEdit && (
         <S.Position>
           <S.Wrapper key={props.el._id}>
-            <S.WrapperComment>
-              <div>
-                <S.CommentWriter>{props.el?.writer}</S.CommentWriter>
-                <S.CommentStar value={props.el?.rating} disabled />
-              </div>
-              <S.Comment>{props.el?.contents}</S.Comment>
-            </S.WrapperComment>
+            <div>
+              <S.CommentWriter>{props.el?.writer}</S.CommentWriter>
+              <S.CommentStar value={props.el?.rating} disabled />
+            </div>
+            <S.Comment>{props.el?.contents}</S.Comment>
             <S.CommentOptionWrapper>
-              <S.CommentPencilIcon
-                src="/images/boardComment/list/comment_pencil_icon.png"
-                onClick={onClickUpdate}
-              />
-              <S.CommentDeleteIcon
-                id={props.el._id}
-                src="/images/boardComment/list/comment_delete_icon.png"
-                onClick={onClickDeleteModal}
-              />
+              <S.CommentCreatedAt>
+                {getDate(props.el?.createdAt)}
+              </S.CommentCreatedAt>
+              <div>
+                <img
+                  style={{ cursor: 'pointer' }}
+                  src="/images/boardComment/list/comment_pencil_icon.png"
+                  onClick={onClickUpdate}
+                />
+                <img
+                  style={{ marginLeft: '20px', cursor: 'pointer' }}
+                  id={props.el._id}
+                  src="/images/boardComment/list/comment_delete_icon.png"
+                  onClick={onClickDeleteModal}
+                />
+              </div>
             </S.CommentOptionWrapper>
-            <S.CommentCreatedAt>{props.el?.createdAt}</S.CommentCreatedAt>
           </S.Wrapper>
         </S.Position>
       )}

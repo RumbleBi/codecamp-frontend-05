@@ -34,6 +34,7 @@ export const AvatarWrapper = styled.div`
 `
 export const HeaderAvatarIcon = styled.img`
   width: 50px;
+  border-radius: 50px;
   margin-left: 20px;
   margin-right: 20px;
 `

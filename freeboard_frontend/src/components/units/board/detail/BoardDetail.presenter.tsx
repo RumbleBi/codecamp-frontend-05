@@ -9,7 +9,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
       <S.Wrapper>
         <S.HeaderForm>
           <S.AvatarWrapper>
-            <S.HeaderAvatarIcon src="/images/avatar_icon40X40.png" />
+            <S.HeaderAvatarIcon src="/images/DefaultAvatar.png" />
             <S.Info>
               <div>작성자 : {props.data?.fetchBoard?.writer}</div>
               <div>작성날짜 : {getDate(props.data?.fetchBoard.createdAt)}</div>
@@ -27,10 +27,12 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             {props.data?.fetchBoard.youtubeUrl && (
               <S.BodyYoutube
                 url={props.data?.fetchBoard?.youtubeUrl}
-                width="300px"
-                height="300px"
+                width="640px"
+                height="360px"
                 controls={true}
                 light={false}
+                muted={true}
+                style={{ marginBottom: '50px' }}
               />
             )}
           </S.YoutubeWrapper>
