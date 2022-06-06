@@ -46,12 +46,6 @@ export const Info = styled.div`
   font-size: 20px;
   font-weight: bold;
 `
-export const IconWrapper = styled.div`
-  text-align: center;
-  img {
-    padding-right: 20px;
-  }
-`
 export const Body = styled.div`
   width: 1200px;
   color: #2155cd;
@@ -108,6 +102,7 @@ export const BodyCountWrapper = styled.div`
     margin-left: 20px;
     margin-right: 20px;
     font-size: 20px;
+    color: #0aa1dd;
   }
 `
 export const BodyButtonWrapper = styled.div`

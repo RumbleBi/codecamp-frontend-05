@@ -2,6 +2,7 @@ import * as S from './BoardDetail.styles'
 import { getDate } from '../../../../commons/libraries/utils'
 import { IBoardDetailUIProps } from './BoardDetail.types'
 import Button02 from '../../../commons/buttons/02'
+import { BsHandThumbsUpFill, BsHandThumbsDownFill } from 'react-icons/bs'
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
   return (
@@ -15,10 +16,6 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
               <div>작성날짜 : {getDate(props.data?.fetchBoard.createdAt)}</div>
             </S.Info>
           </S.AvatarWrapper>
-          <S.IconWrapper>
-            <img src="/images/board/detail/link_icon.png" />
-            <img src="/images/board/detail/location_icon.png" />
-          </S.IconWrapper>
         </S.HeaderForm>
         <S.Body>
           <S.BodyTitle>제목 : {props.data?.fetchBoard?.title}</S.BodyTitle>
@@ -49,13 +46,13 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
           </S.ImageWrapper>
         </S.Body>
         <S.BodyReactWrapper>
-          <img
+          <BsHandThumbsUpFill
             onClick={props.onClickLikeBoard}
-            src="/images/board/detail/like_icon.png"
+            style={{ fontSize: '28px', color: '#2155CD', marginRight: '20px' }}
           />
-          <img
+          <BsHandThumbsDownFill
             onClick={props.onClickDislikeBoard}
-            src="/images/board/detail/dislike_icon.png"
+            style={{ fontSize: '28px', color: '#2155CD' }}
           />
         </S.BodyReactWrapper>
         <S.BodyCountWrapper>

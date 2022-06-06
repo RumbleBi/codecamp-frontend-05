@@ -14,6 +14,7 @@ import { ChangeEvent, useState } from 'react'
 import { Modal } from 'antd'
 import { useRouter } from 'next/router'
 import { getDate } from '../../../../commons/libraries/utils'
+import { BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs'
 
 export default function BoardCommentListItemsUI(
   props: IBoardCommentListItemsUIProps
@@ -80,19 +81,13 @@ export default function BoardCommentListItemsUI(
               <S.CommentCreatedAt>
                 {getDate(props.el?.createdAt)}
               </S.CommentCreatedAt>
-              <div>
-                <img
-                  style={{ cursor: 'pointer' }}
-                  src="/images/boardComment/list/comment_pencil_icon.png"
+              <S.OptBtnWrapper>
+                <BsFillPencilFill
+                  style={{ marginRight: '20px' }}
                   onClick={onClickUpdate}
                 />
-                <img
-                  style={{ marginLeft: '20px', cursor: 'pointer' }}
-                  id={props.el._id}
-                  src="/images/boardComment/list/comment_delete_icon.png"
-                  onClick={onClickDeleteModal}
-                />
-              </div>
+                <BsFillTrashFill onClick={onClickDeleteModal} />
+              </S.OptBtnWrapper>
             </S.CommentOptionWrapper>
           </S.Wrapper>
         </S.Position>

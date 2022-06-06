@@ -15,17 +15,13 @@ export const Wrapper = styled.div`
 `
 export const CommentTitleWrapper = styled.div`
   display: flex;
+  align-items: center;
   width: 1200px;
   height: 40px;
   font-size: 20px;
   margin-bottom: 10px;
   color: #2155cd;
   font-weight: bold;
-  img {
-    width: 40px;
-    height: 40px;
-    margin-right: 20px;
-  }
 `
 export const InputWrapper = styled.div`
   display: flex;

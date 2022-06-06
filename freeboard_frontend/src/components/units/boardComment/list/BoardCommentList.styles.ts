@@ -33,3 +33,9 @@ export const CommentCreatedAt = styled.span`
   color: #2155cd;
   font-weight: bold;
 `
+export const OptBtnWrapper = styled.div`
+  display: flex;
+  font-size: 20px;
+  color: #2155cd;
+  cursor: pointer;
+`

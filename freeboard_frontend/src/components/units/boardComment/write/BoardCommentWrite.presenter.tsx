@@ -1,5 +1,6 @@
 import * as S from './BoardCommentWrite.styles'
 import { IBoardCommentWriteUIProps } from './BoardCommentWrite.types'
+import { BsFillChatRightTextFill } from 'react-icons/bs'
 
 export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
   return (
@@ -7,7 +8,9 @@ export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
       <S.Wrapper>
         {!props.isEdit && (
           <S.CommentTitleWrapper>
-            <img src="/images/boardComment/write/pencil.png" />
+            <BsFillChatRightTextFill
+              style={{ fontSize: '24px', marginRight: '10px' }}
+            />
             <span>댓글작성하기</span>
           </S.CommentTitleWrapper>
         )}
