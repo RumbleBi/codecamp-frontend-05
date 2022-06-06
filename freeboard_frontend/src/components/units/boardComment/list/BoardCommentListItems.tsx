@@ -56,7 +56,7 @@ export default function BoardCommentListItemsUI(
       setIsOpen(false)
     } catch (error) {
       if (error instanceof Error)
-        Modal.error({ content: 'BoardCommentList.container' })
+        Modal.error({ content: '비밀번호가 다릅니다.' })
     }
   }
 
