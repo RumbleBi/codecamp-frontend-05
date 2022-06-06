@@ -23,6 +23,7 @@ export default function BoardCommentListItemsUI(
   const [isEdit, setIsEdit] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [password, setPassword] = useState('')
+  const [cancel, setCancel] = useState(false)
 
   const [deleteBoardComment] = useMutation<
     Pick<IMutation, 'deleteBoardComment'>,
@@ -32,11 +33,12 @@ export default function BoardCommentListItemsUI(
   const onClickDeleteModal = () => {
     setIsOpen(true)
   }
-
+  const onClickCancel = () => {
+    setIsOpen(false)
+  }
   const onChangeDeletePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value)
   }
-
   const onClickDelete = async () => {
     try {
       await deleteBoardComment({
@@ -64,8 +66,22 @@ export default function BoardCommentListItemsUI(
   return (
     <>
       {isOpen && (
-        <Modal visible={true} onOk={onClickDelete}>
-          <div>비밀번호입력: </div>
+        <Modal
+          visible={true}
+          onOk={onClickDelete}
+          onCancel={onClickCancel}
+          cancelText={'취소'}
+          okText={'확인'}
+          closable={false}
+          bodyStyle={{
+            width: '500px',
+            height: '100px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <S.PasswordText>비밀번호</S.PasswordText>
           <S.PasswordInput type="password" onChange={onChangeDeletePassword} />
         </Modal>
       )}

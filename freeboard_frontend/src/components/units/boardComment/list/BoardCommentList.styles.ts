@@ -18,6 +18,9 @@ export const CommentWriter = styled.span`
 `
 export const CommentStar = styled(Rate)``
 export const Comment = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #2155cd;
@@ -38,4 +41,15 @@ export const OptBtnWrapper = styled.div`
   font-size: 20px;
   color: #2155cd;
   cursor: pointer;
+`
+// Modal
+export const PasswordText = styled.span`
+  color: #2155cd;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 20px;
+`
+export const PasswordInput = styled.input`
+  border-radius: 10px;
+  border: 1px solid #79dae8;
 `
