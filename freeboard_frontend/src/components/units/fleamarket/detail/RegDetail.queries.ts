@@ -1,10 +1,10 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
 
 export const DELETE_USED_ITEM = gql`
   mutation deleteUseditem($useditemId: ID!) {
     deleteUseditem(useditemId: $useditemId)
   }
-`;
+`
 
 export const FETCH_USED_ITEM = gql`
   query fetchUseditem($useditemId: ID!) {
@@ -18,21 +18,18 @@ export const FETCH_USED_ITEM = gql`
         zipcode
         address
         addressDetail
-        lat
-        lng
       }
       images
       createdAt
-      pickedCount
     }
   }
-`;
+`
 
 export const TOGGLE_USEDITEM_PICK = gql`
   mutation toggleUseditemPick($useditemId: ID!) {
     toggleUseditemPick(useditemId: $useditemId)
   }
-`;
+`
 
 export const CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING = gql`
   mutation createPointTransactionOfBuyingAndSelling($useritemId: ID!) {
@@ -41,4 +38,4 @@ export const CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING = gql`
       name
     }
   }
-`;
+`

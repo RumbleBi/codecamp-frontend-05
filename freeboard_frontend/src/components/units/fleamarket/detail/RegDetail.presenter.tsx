@@ -1,6 +1,7 @@
 import Button02 from '../../../commons/buttons/02'
 import * as S from './RegDetail.styles'
 import Dompurify from 'dompurify'
+import { BsHeart, BsHeartFill } from 'react-icons/bs'
 
 export default function RegDetailUI(props) {
   return (
@@ -36,13 +37,9 @@ export default function RegDetailUI(props) {
           )}
           <S.PickitemWrapper>
             {props.myPick === true ? (
-              <S.PickitemBtnCancel onClick={props.onClickMyPick}>
-                찜취소
-              </S.PickitemBtnCancel>
+              <BsHeartFill onClick={props.onClickMyPick} />
             ) : (
-              <S.PickitemBtn onClick={props.onClickMyPick}>
-                찜하기
-              </S.PickitemBtn>
+              <BsHeart onClick={props.onClickMyPick} />
             )}
           </S.PickitemWrapper>
           <S.ImageWrapper>

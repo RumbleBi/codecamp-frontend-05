@@ -8,8 +8,14 @@ const Wrapper = styled.div`
   font-family: 'AppleFontKO';
   width: 1200px;
 `
+const Title = styled.div`
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  font-size: 36px;
+  color: #2155cd;
+`
 const SliderWrapper = styled.div`
-  margin-top: 60px;
   div {
     width: 1200px;
     height: 650px;
@@ -45,7 +51,10 @@ export default function HomePage() {
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Wrapper>
-        <SliderWrapper>
+        <Title>
+          애니메이션에 대해 자유롭게 이야기하거나 굿즈들을 거래하는 Ani Gallery!
+        </Title>
+        <SliderWrapper style={{ marginTop: '50px' }}>
           <Slider {...settings}>
             <div>
               <SliderImg1></SliderImg1>

@@ -34,15 +34,14 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             )}
           </S.YoutubeWrapper>
           <S.ImageWrapper>
-            <S.ImageItem
-              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[0]}`}
-            />
-            <S.ImageItem
-              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[1]}`}
-            />
-            <S.ImageItem
-              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[2]}`}
-            />
+            {props.data?.fetchBoard?.images
+              ?.filter((el: string) => el)
+              .map((el: string) => (
+                <S.ImageItem
+                  key={el}
+                  src={`https://storage.googleapis.com/${el}`}
+                />
+              ))}
           </S.ImageWrapper>
         </S.Body>
         <S.BodyReactWrapper>

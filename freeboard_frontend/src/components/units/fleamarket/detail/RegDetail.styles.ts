@@ -92,48 +92,8 @@ export const PickitemWrapper = styled.div`
   background-color: #e8f9fd;
   display: flex;
   justify-content: center;
-`
-export const PickitemBtn = styled.button`
-  width: 100px;
-  height: 100px;
-  background-color: #ffd400;
-  :hover {
-    font-weight: bold;
-  }
-  cursor: pointer;
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
-`
-export const PickitemBtnCancel = styled.button`
-  width: 100px;
-  height: 100px;
-  background-color: gray;
-  :hover {
-    font-weight: bold;
-  }
-  cursor: pointer;
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
+  color: #2155cd;
+  font-size: 40px;
 `
 export const ImageWrapper = styled.div`
   width: 1200px;
