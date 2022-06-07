@@ -81,7 +81,7 @@ export default function LayoutSidebar() {
                     <img
                       src={`https://storage.googleapis.com/${el.images[0]}`}
                       onError={(e) => {
-                        e.currentTarget.src = '/images/avatar_icon20X20.png'
+                        e.currentTarget.src = '/images/DefaultViewed.png'
                       }}
                     />
                   </ImgContainer>

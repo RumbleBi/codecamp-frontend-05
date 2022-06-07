@@ -6,12 +6,12 @@ import {
   IQuery,
   IQueryFetchUseditemArgs,
 } from '../../../../commons/types/generated/types'
-import { useFetchUserInfo } from '../../../commons/hooks/useUserLoggedIn'
 import RegDetailUI from './RegDetail.presenter'
 import {
   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
   DELETE_USED_ITEM,
   FETCH_USED_ITEM,
+  FETCH_USER_LOGGED_IN,
   TOGGLE_USEDITEM_PICK,
 } from './RegDetail.queries'
 
@@ -24,8 +24,8 @@ export default function RegDetail() {
   const [createPointTransactionOfBuyingAndSelling] = useMutation(
     CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
   )
-  const { data: userData } = useFetchUserInfo()
-
+  const { data: userData } =
+    useQuery<Pick<IQuery, 'fetchUserLoggedIn'>>(FETCH_USER_LOGGED_IN)
   const { data } = useQuery<
     Pick<IQuery, 'fetchUseditem'>,
     IQueryFetchUseditemArgs
@@ -38,10 +38,21 @@ export default function RegDetail() {
       await toggleUseditemPick({
         variables: { useditemId: String(router.query.useditemId) },
       })
-      console.log(router.query.useditemId)
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }
+    alert('찜목록에 추가되었습니다!')
+  }
+  const onClickMyPickCancel = async () => {
+    try {
+      setMyPick((prev) => !prev)
+      await toggleUseditemPick({
+        variables: { useditemId: String(router.query.useditemId) },
+      })
+    } catch (error) {
+      if (error instanceof Error) alert(error.message)
+    }
+    alert('찜목록에서 빠졌습니다!')
   }
 
   const onClickMoveToMain = () => {
@@ -81,6 +92,7 @@ export default function RegDetail() {
       onClickMoveToMain={onClickMoveToMain}
       onClickMoveToEdit={onClickMoveToEdit}
       onClickMyPick={onClickMyPick}
+      onClickMyPickCancel={onClickMyPickCancel}
       myPick={myPick}
       onClickBuyUseditem={onClickBuyUseditem}
     />

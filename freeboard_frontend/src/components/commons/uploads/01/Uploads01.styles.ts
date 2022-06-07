@@ -7,6 +7,7 @@ export const UploadImage = styled.img`
   margin: 20px;
   border-radius: 10px;
   cursor: pointer;
+  object-fit: scale-down;
 `
 export const UploadButton = styled.button`
   width: 200px;

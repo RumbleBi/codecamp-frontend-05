@@ -25,10 +25,12 @@ export default function FleamarketMainUI(props) {
             {props.dataItems?.fetchUseditems.map((el) => (
               <S.DataList onClick={props.onClickMoveToDetail(el)} key={el._id}>
                 <div>
-                  <S.DataInfo>판매자: {el.name}</S.DataInfo>
-                  <S.DataInfo>한줄요약: {el.remarks}</S.DataInfo>
-                  <S.DataInfo>가격: {el.price}</S.DataInfo>
-                  <S.DataInfo>작성시간: {el.createdAt.slice(0, 10)}</S.DataInfo>
+                  <S.DataInfo>판매자 : {el.name}</S.DataInfo>
+                  <S.DataInfo>한줄요약 : {el.remarks}</S.DataInfo>
+                  <S.DataInfo>가격 : {el.price}</S.DataInfo>
+                  <S.DataInfo>
+                    작성시간 : {el.createdAt.slice(0, 10)}
+                  </S.DataInfo>
                   <S.ImageWrapper>
                     {el.images
                       ?.filter((el: string) => el)

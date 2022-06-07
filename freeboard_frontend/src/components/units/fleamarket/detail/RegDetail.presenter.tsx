@@ -4,6 +4,9 @@ import Dompurify from 'dompurify'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 
 export default function RegDetailUI(props) {
+  console.log(props.userData?.fetchUserLoggedIn._id)
+  console.log('-------------------')
+  console.log(props.data?.fetchUseditem.seller._id)
   return (
     <S.Position>
       <S.Wrapper>
@@ -37,9 +40,15 @@ export default function RegDetailUI(props) {
           )}
           <S.PickitemWrapper>
             {props.myPick === true ? (
-              <BsHeartFill onClick={props.onClickMyPick} />
+              <BsHeartFill
+                onClick={props.onClickMyPickCancel}
+                style={{ cursor: 'pointer' }}
+              />
             ) : (
-              <BsHeart onClick={props.onClickMyPick} />
+              <BsHeart
+                onClick={props.onClickMyPick}
+                style={{ cursor: 'pointer' }}
+              />
             )}
           </S.PickitemWrapper>
           <S.ImageWrapper>
@@ -53,16 +62,19 @@ export default function RegDetailUI(props) {
               ))}
           </S.ImageWrapper>
         </S.UseditemDetailWrapper>
-        <S.ButtonWrapper>
-          {/* {props.data?.fetchUserLoggedIn._id ===
-          props.data?.fetchUseditem._id ? ( */}
-          <Button02 onClick={props.onClickMoveToMain} name={'목록으로'} />
-          {/* ) : ( */}
-          <Button02 onClick={props.onClickBuyUseditem} name={'구입하기'} />
-          {/* )} */}
-          <Button02 onClick={props.onClickMoveToEdit} name={'수정하기'} />
-          <Button02 onClick={props.onClickDeleteUseditem} name={'삭제하기'} />
-        </S.ButtonWrapper>
+        {props.userData?.fetchUserLoggedIn._id ===
+        props.data?.fetchUseditem.seller._id ? (
+          <S.ButtonWrapper>
+            <Button02 onClick={props.onClickMoveToMain} name={'목록으로'} />
+            <Button02 onClick={props.onClickMoveToEdit} name={'수정하기'} />
+            <Button02 onClick={props.onClickDeleteUseditem} name={'삭제하기'} />
+          </S.ButtonWrapper>
+        ) : (
+          <S.ButtonWrapper>
+            <Button02 onClick={props.onClickMoveToMain} name={'목록으로'} />
+            <Button02 onClick={props.onClickBuyUseditem} name={'구입하기'} />
+          </S.ButtonWrapper>
+        )}
       </S.Wrapper>
     </S.Position>
   )

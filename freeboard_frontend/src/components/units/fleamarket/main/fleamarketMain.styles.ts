@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 1200px;
   min-height: 1200px;
+  margin-top: 100px;
 `
 export const SelectBtnsWrapper = styled.div`
   display: flex;
@@ -98,4 +99,5 @@ export const ImageWrapper = styled.div`
 export const Image = styled.img`
   width: 150px;
   height: 150px;
+  object-fit: scale-down;
 `

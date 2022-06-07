@@ -98,13 +98,14 @@ export const PickitemWrapper = styled.div`
 export const ImageWrapper = styled.div`
   width: 1200px;
   display: flex;
-  justify-content: start;
+  justify-content: space-evenly;
   margin-bottom: 50px;
 `
 export const Image = styled.img`
   width: 200px;
   height: 200px;
   margin-right: 50px;
+  object-fit: scale-down;
 `
 export const ButtonWrapper = styled.div`
   width: 1200px;
