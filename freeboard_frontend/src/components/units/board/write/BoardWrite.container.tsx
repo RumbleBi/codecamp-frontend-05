@@ -138,9 +138,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       }
     }
     setImage([...image, ...imageUrl])
-    console.log(image)
   }
-
   const onClickSubmit = async () => {
     if (writer === '') {
       setWriterError('작성자를 입력해주세요.')

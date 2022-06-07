@@ -2,7 +2,6 @@ import * as S from './BoardWrite.styles'
 import { IBoardWriteUIProps } from './BoardWrite.types'
 import { Modal } from 'antd'
 import DaumPostcode from 'react-daum-postcode'
-
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
   return (
     <S.Position>
@@ -108,7 +107,10 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           </div>
         </div>
         <div>
-          <S.Label>사진 첨부</S.Label>
+          <S.ImageInfoWrapper>
+            <S.Label>사진 첨부 (최대 3장까지 업로드 가능합니다)</S.Label>
+            <S.UploadBtn onClick={props?.onClickImage}>Upload</S.UploadBtn>
+          </S.ImageInfoWrapper>
           <div>
             <S.PictureInput
               // style={{ display: 'none' }}
@@ -116,17 +118,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               type="file"
               onChange={props?.onChangeFile}
             />
-            <S.WrapperUploadBtn>
-              <S.PictureDetail onClick={props?.onClickImage}>
-                Upload
-              </S.PictureDetail>
-              <S.PictureDetail onClick={props?.onClickImage}>
-                Upload
-              </S.PictureDetail>
-              <S.PictureDetail onClick={props?.onClickImage}>
-                Upload
-              </S.PictureDetail>
-            </S.WrapperUploadBtn>
             <S.WrapperPicture>
               <S.Image
                 src={`https://storage.googleapis.com/${props.image[0]}`}

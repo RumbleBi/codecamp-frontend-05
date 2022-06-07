@@ -24,6 +24,7 @@ export interface IBoardWriteUIProps {
   zipcode: string
   address: string
   addressDetail: string
+  image: [string]
 
   writerError: string
   passwordError: string

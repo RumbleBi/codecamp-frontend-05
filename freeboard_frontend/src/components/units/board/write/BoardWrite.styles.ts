@@ -138,13 +138,25 @@ export const YoutubeUrl = styled.input`
   border: none;
   margin-bottom: 50px;
 `
-export const WrapperUploadBtn = styled.div`
-  margin-top: 50px;
-  width: 930px;
-  min-height: 200px;
+export const ImageInfoWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+`
+export const UploadBtn = styled.button`
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #79dae8;
+  border-radius: 10px;
+  background-color: #0aa1dd;
+  border: none;
+  cursor: pointer;
+  :hover {
+    background-color: #2155cd;
+  }
 `
 export const WrapperPicture = styled.div`
   width: 930px;
@@ -160,20 +172,6 @@ export const PictureInput = styled.input`
 export const Image = styled.img`
   width: 200px;
   height: 200px;
-`
-export const PictureDetail = styled.button`
-  width: 200px;
-  height: 200px;
-  margin-right: 10px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #79dae8;
-  background-color: #0aa1dd;
-  border: none;
-  cursor: pointer;
-  :hover {
-    background-color: #2155cd;
-  }
 `
 export const RegisterBtn = styled.button`
   margin: 50px 0px;
