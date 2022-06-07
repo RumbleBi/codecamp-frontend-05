@@ -119,15 +119,27 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               onChange={props?.onChangeFile}
             />
             <S.WrapperPicture>
-              <S.Image
-                src={`https://storage.googleapis.com/${props.image[0]}`}
-              />
-              <S.Image
-                src={`https://storage.googleapis.com/${props.image[1]}`}
-              />
-              <S.Image
-                src={`https://storage.googleapis.com/${props.image[2]}`}
-              />
+              {props?.image[0] ? (
+                <S.Image
+                  src={`https://storage.googleapis.com/${props.image[0]}`}
+                />
+              ) : (
+                <div style={{ display: 'none' }}></div>
+              )}
+              {props?.image[1] ? (
+                <S.Image
+                  src={`https://storage.googleapis.com/${props.image[1]}`}
+                />
+              ) : (
+                <div style={{ display: 'none' }}></div>
+              )}
+              {props?.image[2] ? (
+                <S.Image
+                  src={`https://storage.googleapis.com/${props.image[2]}`}
+                />
+              ) : (
+                <div style={{ display: 'none' }}></div>
+              )}
             </S.WrapperPicture>
           </div>
         </div>

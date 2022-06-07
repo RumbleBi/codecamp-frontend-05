@@ -172,6 +172,7 @@ export const PictureInput = styled.input`
 export const Image = styled.img`
   width: 200px;
   height: 200px;
+  object-fit: scale-down;
 `
 export const RegisterBtn = styled.button`
   margin: 50px 0px;

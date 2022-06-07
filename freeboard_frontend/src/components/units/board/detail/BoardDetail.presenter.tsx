@@ -47,16 +47,25 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
         <S.BodyReactWrapper>
           <BsHandThumbsUpFill
             onClick={props.onClickLikeBoard}
-            style={{ fontSize: '28px', color: '#2155CD', marginRight: '20px' }}
+            style={{
+              fontSize: '28px',
+              color: '#2155CD',
+              marginRight: '20px',
+              cursor: 'pointer',
+            }}
           />
           <BsHandThumbsDownFill
             onClick={props.onClickDislikeBoard}
-            style={{ fontSize: '28px', color: '#2155CD' }}
+            style={{ fontSize: '28px', color: '#2155CD', cursor: 'pointer' }}
           />
         </S.BodyReactWrapper>
         <S.BodyCountWrapper>
-          <span>{props.data?.fetchBoard?.likeCount}</span>
-          <span>{props.data?.fetchBoard?.dislikeCount}</span>
+          <span style={{ cursor: 'default' }}>
+            {props.data?.fetchBoard?.likeCount}
+          </span>
+          <span style={{ cursor: 'default' }}>
+            {props.data?.fetchBoard?.dislikeCount}
+          </span>
         </S.BodyCountWrapper>
         <S.BodyButtonWrapper>
           <Button02 onClick={props.onClickMoveToList} name={'목록으로'} />

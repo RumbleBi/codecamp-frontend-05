@@ -80,6 +80,7 @@ export const ImageWrapper = styled.div`
 export const ImageItem = styled.img`
   width: 200px;
   height: 200px;
+  object-fit: scale-down;
 `
 export const BodyReactWrapper = styled.div`
   width: 1200px;
