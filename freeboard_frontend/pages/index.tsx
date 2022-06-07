@@ -3,10 +3,15 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
+const Position = styled.div`
+  display: flex;
+  justify-content: center;
+`
 const Wrapper = styled.div`
   font-family: 'AppleFontEN';
   font-family: 'AppleFontKO';
   width: 1200px;
+  margin-bottom: 100px;
 `
 const Title = styled.div`
   margin-top: 100px;
@@ -16,6 +21,7 @@ const Title = styled.div`
   color: #2155cd;
 `
 const SliderWrapper = styled.div`
+  margin-top: 50px;
   div {
     width: 1200px;
     height: 650px;
@@ -43,18 +49,19 @@ export default function HomePage() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
+    touchMove: true,
     autoplaySpeed: 1500,
     pauseOnHover: false,
-    fade: true,
-    dot: false,
+    dots: true,
   }
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <Position>
       <Wrapper>
         <Title>
           애니메이션에 대해 자유롭게 이야기하거나 굿즈들을 거래하는 Ani Gallery!
         </Title>
-        <SliderWrapper style={{ marginTop: '50px' }}>
+        <SliderWrapper>
           <Slider {...settings}>
             <div>
               <SliderImg1></SliderImg1>
@@ -68,6 +75,6 @@ export default function HomePage() {
           </Slider>
         </SliderWrapper>
       </Wrapper>
-    </div>
+    </Position>
   )
 }
