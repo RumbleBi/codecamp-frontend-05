@@ -12,7 +12,9 @@ export default function LayoutHeaderUI(props) {
         <S.Right>
           {props.data?.fetchUserLoggedIn ? (
             <div>
-              <S.UserName>{props.data?.fetchUserLoggedIn.name} 님</S.UserName>
+              <div onClick={props.onClickMyPage}>
+                {props.data?.fetchUserLoggedIn.name} 님
+              </div>
               <S.PointInfo>
                 포인트 : {props.data?.fetchUserLoggedIn.userPoint.amount}
               </S.PointInfo>

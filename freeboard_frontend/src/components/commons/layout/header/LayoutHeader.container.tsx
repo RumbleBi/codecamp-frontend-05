@@ -38,6 +38,9 @@ export default function LayoutHeader() {
   const onClickFleamarketList = () => {
     router.push('/fleamarket/main')
   }
+  const onClickMyPage = () => {
+    router.push('/fleamarket/mypage')
+  }
   const onClickMoveToPayment = () => {
     router.push('/fleamarket/payment')
   }
@@ -53,6 +56,7 @@ export default function LayoutHeader() {
       onClickFreeBoardList={onClickFreeBoardList}
       onClickTitle={onClickTitle}
       onClickLogin={onClickLogin}
+      onClickMyPage={onClickMyPage}
       onClickFleamarketList={onClickFleamarketList}
       onClickLogout={onClickLogout}
       onClickMoveToPayment={onClickMoveToPayment}

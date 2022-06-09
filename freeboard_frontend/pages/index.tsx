@@ -45,12 +45,12 @@ const SliderImg3 = styled.div`
 export default function HomePage() {
   const settings = {
     infinite: true,
-    speed: 2000,
+    speed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     touchMove: true,
-    autoplaySpeed: 1500,
+    autoplaySpeed: 2000,
     pauseOnHover: false,
     dots: true,
   }

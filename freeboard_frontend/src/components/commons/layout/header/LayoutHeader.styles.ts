@@ -39,25 +39,22 @@ export const Right = styled.div`
     div {
       margin: 20px;
       font-size: 18px;
+      cursor: pointer;
+      :hover {
+        font-weight: bold;
+      }
     }
   }
 `
 export const PointInfo = styled.div`
-  :hover {
-    cursor: default;
-  }
-`
-export const UserName = styled.div`
-  :hover {
-    cursor: pointer;
-    font-weight: bold;
-  }
+  cursor: default !important;
+  font-weight: normal !important;
 `
 export const LoginBtn = styled.div`
+  cursor: pointer;
   padding-right: 20px;
   font-size: 18px;
   :hover {
-    cursor: pointer;
     font-weight: bold;
   }
 `
