@@ -1,9 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
+import Uploads01 from '../../../commons/uploads/01/Uploads01.container'
 import * as S from './MyPage.styles'
 export default function MypageUI(props) {
-  const handleClick = (el) => {
-    console.log('click ', el)
-  }
   return (
     <S.Position>
       <S.Title>마이페이지</S.Title>
@@ -15,15 +13,25 @@ export default function MypageUI(props) {
           <div>찜목록</div>
         </S.MenuBar>
         <S.ViewWrapper>
-          <div>계정 : </div>
+          <div>아이디 : {props.dataUser?.fetchUserLoggedIn.email}</div>
           <div>
-            <span>이름 : </span>
-            <button>이름변경</button>
+            <span>이름 : {props.dataUser?.fetchUserLoggedIn.name}</span>
+            <input onChange={props.onChangeName} type="text" />
+            <button onClick={props.onClickChangeName}>이름변경</button>
           </div>
           <div>
-            <span>프로필사진변경 : </span>
-            <button>사진변경</button>
-            <img src="/images/avatar_icon40X40.png" />
+            <span>
+              프로필사진 :{' '}
+              {props.fileUrls?.map((el, index) => (
+                <Uploads01
+                  key={uuidv4()}
+                  index={index}
+                  fileUrl={el}
+                  onChangeFileUrls={props.onChangeFileUrls}
+                />
+              ))}
+            </span>
+            <button onClick={props.onClickChangePicture}>사진변경</button>
           </div>
         </S.ViewWrapper>
       </S.Wrapper>

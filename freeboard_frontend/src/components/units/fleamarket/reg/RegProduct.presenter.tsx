@@ -106,7 +106,7 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
           <S.ImageWrapper>
             <S.ImageTitle>사진첨부</S.ImageTitle>
             <S.ImageInputs>
-              {props.fileUrls.map((el, index) => (
+              {props.fileUrls?.map((el, index) => (
                 <Uploads01
                   key={uuidv4()}
                   index={index}

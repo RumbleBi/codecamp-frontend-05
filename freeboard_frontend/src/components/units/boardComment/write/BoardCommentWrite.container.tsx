@@ -35,11 +35,9 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
   const onChangeContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value)
   }
-
   const onChangeStar = (value: number) => {
     setStar(value)
   }
-
   const [createBoardComment] = useMutation<
     Pick<IMutation, 'createBoardComment'>,
     IMutationCreateBoardCommentArgs
@@ -104,8 +102,6 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
         ],
       })
       props.setIsEdit(false)
-
-      console.log(props)
     } catch (error) {
       Modal.error({ content: '서버 에러입니다 다시 시도해 주세요.' })
     }

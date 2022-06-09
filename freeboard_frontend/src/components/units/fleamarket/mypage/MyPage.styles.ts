@@ -58,8 +58,12 @@ export const ViewWrapper = styled.div`
   width: 1000px;
   height: 800px;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   background-color: #79dae8;
   border-radius: 0px 10px 10px 0px;
+  div {
+    margin-left: 100px;
+    margin-top: 100px;
+  }
 `

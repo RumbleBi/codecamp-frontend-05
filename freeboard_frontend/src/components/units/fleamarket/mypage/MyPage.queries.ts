@@ -15,3 +15,35 @@ export const FETCH_POINT_TRANSACTIONS = gql`
     }
   }
 `
+// 유저 정보
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      email
+      name
+      picture
+      createdAt
+      updatedAt
+      userPoint {
+        amount
+      }
+    }
+  }
+`
+// 유저 정보 업데이트
+export const UPDATE_USER = gql`
+  mutation updateUser($updateUserInput: UpdateUserInput!) {
+    updateUser(updateUserInput: $updateUserInput) {
+      name
+      picture
+    }
+  }
+`
+// 이미지 파일 업로드
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
+      url
+    }
+  }
+`
