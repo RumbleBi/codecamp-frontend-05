@@ -1,5 +1,5 @@
-import Head from "next/head";
-import * as S from "./Payment.styles";
+import Head from 'next/head'
+import * as S from './Payment.styles'
 
 export default function PaymentBasketUI(props) {
   return (
@@ -15,42 +15,33 @@ export default function PaymentBasketUI(props) {
         ></script>
       </Head>
       <S.Wrapper>
-        <div>
-          <h1>결제 페이지</h1>
-        </div>
-        <div>
-          <S.UserInfo>{props.data?.fetchUserLoggedIn.name}</S.UserInfo>
-          <S.UserInfo>{props.data?.fetchUserLoggedIn.email}</S.UserInfo>
-          <S.UserInfo>
-            {props.data?.fetchUserLoggedIn.userPoint.amount}
-          </S.UserInfo>
-        </div>
+        <S.Title>
+          <div>포인트 충전 페이지</div>
+        </S.Title>
         <S.SelectPaymentWrapper>
-          충전하기
-          <S.ChargingBtn id={"5000"} onClick={props.onClickAmount}>
-            5000
-          </S.ChargingBtn>
-          충전하기
-          <S.ChargingBtn id={"10000"} onClick={props.onClickAmount}>
-            10000
-          </S.ChargingBtn>
-          충전하기
-          <S.ChargingBtn id={"20000"} onClick={props.onClickAmount}>
-            20000
-          </S.ChargingBtn>
-          충전하기
-          <S.ChargingBtn id={"50000"} onClick={props.onClickAmount}>
-            50000
-          </S.ChargingBtn>
-          충전하기
-          <S.ChargingBtn id={"100"} onClick={props.onClickAmount}>
-            100
-          </S.ChargingBtn>
-          포인트 충전하기: <br />
+          <div>
+            <S.ChargingBtn id={'5000'} onClick={props.onClickAmount}>
+              5000원
+            </S.ChargingBtn>
+            <S.ChargingBtn id={'10000'} onClick={props.onClickAmount}>
+              10000원
+            </S.ChargingBtn>
+            <S.ChargingBtn id={'20000'} onClick={props.onClickAmount}>
+              20000원
+            </S.ChargingBtn>
+          </div>
+          <div>
+            <S.ChargingBtn id={'50000'} onClick={props.onClickAmount}>
+              50000원
+            </S.ChargingBtn>
+            <S.ChargingBtn id={'100'} onClick={props.onClickAmount}>
+              100원
+            </S.ChargingBtn>
+          </div>
           {/* <input onChange={props.onChangeAmount} type="text" /> */}
-          <button onClick={props.onClickPayment}>결제하기</button>
         </S.SelectPaymentWrapper>
+        <S.ChargeBtn onClick={props.onClickPayment}>충전하기</S.ChargeBtn>
       </S.Wrapper>
     </S.Position>
-  );
+  )
 }
