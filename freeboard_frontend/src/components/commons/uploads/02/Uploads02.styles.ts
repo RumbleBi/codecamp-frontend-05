@@ -5,7 +5,6 @@ export const UploadImage = styled.img`
   height: 100px;
   border-radius: 50px;
   cursor: pointer;
-  object-fit: scale-down;
 `
 export const UploadButton = styled.button`
   width: 100px;
@@ -16,8 +15,7 @@ export const UploadButton = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
 `
 export const UploadFileHidden = styled.input`
   display: none;

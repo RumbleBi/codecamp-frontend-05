@@ -7,27 +7,32 @@ export default function MypageUI(props) {
       <S.Title>마이페이지</S.Title>
       <S.Wrapper>
         <S.MenuBar>
-          <S.FirstMenu>포인트 충전 내역</S.FirstMenu>
-          <div>상품판매내역</div>
-          <div>상품구매내역</div>
-          <div>찜목록</div>
+          <S.FirstMenu onClick={props.onClickPointInfo}>포인트내역</S.FirstMenu>
+          <div onClick={props.onClickPWChange}>비밀번호변경</div>
+          <div onClick={props.onClickSelling}>상품판매내역</div>
+          <div onClick={props.onClickBuying}>상품구매내역</div>
+          <div onClick={props.onClickPickedList}>찜목록</div>
         </S.MenuBar>
         <S.ViewWrapper>
-          <div>아이디 : {props.dataUser?.fetchUserLoggedIn.email}</div>
-          <div>
+          <S.IdWrapper>
+            아이디 : {props.dataUser?.fetchUserLoggedIn.email}
+          </S.IdWrapper>
+          <S.NameWrapper>
             <span>이름 : {props.dataUser?.fetchUserLoggedIn.name}</span>
             <input onChange={props.onChangeName} type="text" />
             <button onClick={props.onClickChangeName}>이름변경</button>
-          </div>
-          <div>
+          </S.NameWrapper>
+          <S.PictureWrapper>
             <span>프로필사진변경 :</span>
             <Uploads02
               key={uuidv4()}
               fileUrl={props.fileUrl}
               onChangeFileUrl={props.onChangeFileUrl}
             />
-            <button onClick={props.onClickChangePicture}>사진변경</button>
-          </div>
+            <S.PictureChangeBtn onClick={props.onClickChangePicture}>
+              적용하기
+            </S.PictureChangeBtn>
+          </S.PictureWrapper>
         </S.ViewWrapper>
       </S.Wrapper>
     </S.Position>

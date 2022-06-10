@@ -67,3 +67,67 @@ export const ViewWrapper = styled.div`
     margin-top: 100px;
   }
 `
+export const PictureWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 500px;
+  height: 100px;
+  align-items: center;
+  span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2155cd;
+    margin-right: 50px;
+  }
+`
+export const IdWrapper = styled.div`
+  color: #2155cd;
+  font-size: 20px;
+  font-weight: bold;
+`
+export const NameWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  span {
+    width: 180px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2155cd;
+  }
+  input {
+    border: 1px solid #79dae8;
+    border-radius: 10px;
+    width: 200px;
+    height: 40px;
+    padding-left: 10px;
+    color: #2155cd;
+    margin-right: 50px;
+  }
+  button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    color: #79dae8;
+    background-color: #2155cd;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    :hover {
+      font-weight: bold;
+    }
+  }
+`
+export const PictureChangeBtn = styled.button`
+  width: 100px;
+  height: 50px;
+  border: none;
+  margin-left: 50px;
+  color: #79dae8;
+  background-color: #2155cd;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  :hover {
+    font-weight: bold;
+  }
+`

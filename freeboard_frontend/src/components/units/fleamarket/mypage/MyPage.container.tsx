@@ -10,7 +10,6 @@ import {
   FETCH_POINT_TRANSACTIONS,
   FETCH_USER_LOGGED_IN,
   UPDATE_USER,
-  UPLOAD_FILE,
 } from './MyPage.queries'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useState } from 'react'
@@ -18,6 +17,22 @@ export default function Mypage() {
   const [fileUrl, setFileUrl] = useState('')
   const [name, setName] = useState('')
   const router = useRouter()
+  // router
+  const onClickPointInfo = () => {
+    router.push('/fleamarket/mypage/onClickPointInfo')
+  }
+  const onClickPWChange = () => {
+    router.push('/fleamarket/mypage/changePw')
+  }
+  const onClickPickedList = () => {
+    router.push('/fleamarket/mypage/pickedList')
+  }
+  const onClickSelling = () => {
+    router.push('/fleamarket/mypage/selling')
+  }
+  const onClickBuying = () => {
+    router.push('/fleamarket/mypage/buying')
+  }
   // 유저 정보 업데이트
   const [updateUser] = useMutation<
     Pick<IMutation, 'updateUser'>,
@@ -50,6 +65,7 @@ export default function Mypage() {
           },
         ],
       })
+      alert('이름이 변경되었습니다.')
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }
@@ -79,7 +95,6 @@ export default function Mypage() {
       if (error instanceof Error) alert(error.message)
     }
   }
-  console.log(dataUser?.fetchUserLoggedIn.picture)
   return (
     <MypageUI
       name={name}
@@ -91,6 +106,11 @@ export default function Mypage() {
       onClickChangeName={onClickChangeName}
       onClickChangePicture={onClickChangePicture}
       onChangeFileUrl={onChangeFileUrl}
+      onClickPWChange={onClickPWChange}
+      onClickPickedList={onClickPickedList}
+      onClickSelling={onClickSelling}
+      onClickBuying={onClickBuying}
+      onClickPointInfo={onClickPointInfo}
     />
   )
 }
