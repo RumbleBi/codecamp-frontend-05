@@ -1,13 +1,7 @@
-import { useQuery } from '@apollo/client'
+import MypageSellingUI from './MypageSelling.presenter'
 import { useRouter } from 'next/router'
-import {
-  IQuery,
-  IQueryFetchUseditemsIPickedArgs,
-} from '../../../../commons/types/generated/types'
-import MypagePickedUI from './MypagePicked.presenter'
-import { FETCH_USEDITEMS_I_PICKED } from './MypagePicked.queries'
 
-export default function MypagePicked() {
+export default function MypageSelling() {
   const router = useRouter()
   // router
   const onClickPointInfo = () => {
@@ -25,18 +19,8 @@ export default function MypagePicked() {
   const onClickBuying = () => {
     router.push('/fleamarket/mypage/buying')
   }
-  const { data } = useQuery<
-    Pick<IQuery, 'fetchUseditemsIPicked'>,
-    IQueryFetchUseditemsIPickedArgs
-  >(FETCH_USEDITEMS_I_PICKED, {
-    variables: {
-      search: '',
-      page: 1,
-    },
-  })
   return (
-    <MypagePickedUI
-      data={data}
+    <MypageSellingUI
       onClickPWChange={onClickPWChange}
       onClickPickedList={onClickPickedList}
       onClickSelling={onClickSelling}

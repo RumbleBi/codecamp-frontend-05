@@ -1,12 +1,20 @@
-import * as S from "./MypagePicked.styles";
-import { v4 as uuidv4 } from "uuid";
+import * as S from './MypagePicked.styles'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function MypagePickedUI(props) {
   return (
     <S.Position>
+      <S.Title>내가찜한상품</S.Title>
       <S.Wrapper>
-        <S.BackBtn onClick={props.onClickBack}>뒤로가기</S.BackBtn>
-        <S.Title>찜목록</S.Title>
+        <S.MenuBar>
+          <S.FirstMenu onClick={props.onClickPointInfo}>포인트내역</S.FirstMenu>
+          <div onClick={props.onClickPWChange}>비밀번호변경</div>
+          <div onClick={props.onClickSelling}>상품판매내역</div>
+          <div onClick={props.onClickBuying}>상품구매내역</div>
+          <div onClick={props.onClickPickedList}>내가찜한상품</div>
+        </S.MenuBar>
+        <S.ViewWrapper></S.ViewWrapper>
+        {/*
         <S.PickedList>
           {props.data?.fetchUseditemsIPicked.map((el) => (
             <S.PickedElement key={el._id}>
@@ -26,8 +34,8 @@ export default function MypagePickedUI(props) {
               </div>
             </S.PickedElement>
           ))}
-        </S.PickedList>
+        </S.PickedList> */}
       </S.Wrapper>
     </S.Position>
-  );
+  )
 }

@@ -67,23 +67,3 @@ export const ViewWrapper = styled.div`
     margin-top: 100px;
   }
 `
-
-export const InputPassword = styled.input`
-  width: 400px;
-  height: 50px;
-`
-export const PasswordError = styled.div`
-  color: red;
-`
-
-export const InputPasswordCheck = styled.input`
-  width: 400px;
-  height: 50px;
-`
-
-export const ChangePassword = styled.button`
-  border: none;
-  cursor: pointer;
-  width: 200px;
-  height: 100px;
-`

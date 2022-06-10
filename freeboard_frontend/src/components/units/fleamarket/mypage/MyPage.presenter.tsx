@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import Uploads02 from '../../../commons/uploads/02/Uploads02.container'
-import * as S from './MyPage.styles'
+import * as S from './Mypage.styles'
 export default function MypageUI(props) {
   return (
     <S.Position>
@@ -11,7 +11,7 @@ export default function MypageUI(props) {
           <div onClick={props.onClickPWChange}>비밀번호변경</div>
           <div onClick={props.onClickSelling}>상품판매내역</div>
           <div onClick={props.onClickBuying}>상품구매내역</div>
-          <div onClick={props.onClickPickedList}>찜목록</div>
+          <div onClick={props.onClickPickedList}>내가찜한상품</div>
         </S.MenuBar>
         <S.ViewWrapper>
           <S.IdWrapper>

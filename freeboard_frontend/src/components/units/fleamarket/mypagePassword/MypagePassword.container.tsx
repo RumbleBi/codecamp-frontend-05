@@ -9,13 +9,28 @@ import MyPagePasswordUI from './MypagePassword.presenter'
 import { LOGOUT_USER, RESET_USER_PASSWORD } from './MypagePassword.queries'
 
 export default function MyPagePassword() {
-  const router = useRouter()
   const [isActive, setIsActive] = useState(false)
   const [newPassword, setNewPassword] = useState('')
   const [newPasswordCheck, setNewPasswordCheck] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [passwordErrorCheck, setPasswordErrorCheck] = useState('')
-
+  const router = useRouter()
+  // router
+  const onClickPointInfo = () => {
+    router.push('/fleamarket/mypage/onClickPointInfo')
+  }
+  const onClickPWChange = () => {
+    router.push('/fleamarket/mypage/changePassword')
+  }
+  const onClickPickedList = () => {
+    router.push('/fleamarket/mypage/pickedList')
+  }
+  const onClickSelling = () => {
+    router.push('/fleamarket/mypage/selling')
+  }
+  const onClickBuying = () => {
+    router.push('/fleamarket/mypage/buying')
+  }
   const RegexPassword =
     // 숫자, 영문, 특수문자 각 1자리 이상이면서 8자에서 16자 사이 통과
     /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/
@@ -68,6 +83,11 @@ export default function MyPagePassword() {
 
   return (
     <MyPagePasswordUI
+      onClickPWChange={onClickPWChange}
+      onClickPickedList={onClickPickedList}
+      onClickSelling={onClickSelling}
+      onClickBuying={onClickBuying}
+      onClickPointInfo={onClickPointInfo}
       onChangePasswordCheck={onChangePasswordCheck}
       onChangePassword={onChangePassword}
       onClickResetPassword={onClickResetPassword}

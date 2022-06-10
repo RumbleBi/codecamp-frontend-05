@@ -1,8 +1,8 @@
-import { withAuth } from "../../../../src/components/commons/hocs/withAuth";
-import MypagePicked from "../../../../src/components/units/fleamarket/mypagePicked/MypagePicked.container";
+import { withAuth } from '../../../../src/components/commons/hocs/withAuth'
+import MypagePicked from '../../../../src/components/units/fleamarket/mypagePicked/MypagePicked.container'
 
 function pickedListPage() {
-  return <MypagePicked />;
+  return <MypagePicked />
 }
 
-export default withAuth(pickedListPage);
+export default withAuth(pickedListPage)

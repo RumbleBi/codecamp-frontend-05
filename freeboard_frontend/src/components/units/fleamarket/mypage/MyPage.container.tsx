@@ -5,12 +5,12 @@ import {
   IQuery,
   IQueryFetchPointTransactionsArgs,
 } from '../../../../commons/types/generated/types'
-import MypageUI from './MyPage.presenter'
+import MypageUI from './Mypage.presenter'
 import {
   FETCH_POINT_TRANSACTIONS,
   FETCH_USER_LOGGED_IN,
   UPDATE_USER,
-} from './MyPage.queries'
+} from './Mypage.queries'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useState } from 'react'
 export default function Mypage() {
