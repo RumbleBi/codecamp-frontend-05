@@ -22,7 +22,7 @@ export default function Mypage() {
     router.push('/fleamarket/mypage/onClickPointInfo')
   }
   const onClickPWChange = () => {
-    router.push('/fleamarket/mypage/changePw')
+    router.push('/fleamarket/mypage/changePassword')
   }
   const onClickPickedList = () => {
     router.push('/fleamarket/mypage/pickedList')
@@ -41,6 +41,7 @@ export default function Mypage() {
   // 유저 정보
   const { data: dataUser } =
     useQuery<Pick<IQuery, 'fetchUserLoggedIn'>>(FETCH_USER_LOGGED_IN)
+
   // 포인트 내역 (충전, 적립, 사용)
   const { data, refetch } = useQuery<
     Pick<IQuery, 'fetchPointTransactions'>,
