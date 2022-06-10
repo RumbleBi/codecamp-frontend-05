@@ -5,11 +5,7 @@ interface INavigationProps {
   onClickMenu: (event: MouseEvent<HTMLDivElement>) => void
 }
 
-const NAVIGATION_FLEAMARKET = [
-  { name: '이메일찾기', page: '/fleamarket/login' },
-  { name: '비밀번호찾기', page: '/fleamarket/login' },
-  { name: '회원가입', page: '/fleamarket/signin' },
-]
+const NAVIGATION_FLEAMARKET = [{ name: '회원가입', page: '/fleamarket/signin' }]
 
 export default function FleaMarketLoginUI(props) {
   return (

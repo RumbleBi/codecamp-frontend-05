@@ -1,54 +1,54 @@
-import { useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
-import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./BoardList.queries";
-import BoardListUI from "./BoardList.presenter";
+import { useQuery } from '@apollo/client'
+import { useRouter } from 'next/router'
+import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from './BoardList.queries'
+import BoardListUI from './BoardList.presenter'
 import {
   IQuery,
   IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
-} from "../../../../commons/types/generated/types";
-import _ from "lodash";
-import { useState } from "react";
+} from '../../../../commons/types/generated/types'
+import _ from 'lodash'
+import { ChangeEvent, useState } from 'react'
 
 export default function BoardList() {
-  const router = useRouter();
-  const [keyword, setKeyword] = useState<string>();
-  const [isMatched, setIsMatched] = useState(false);
+  const router = useRouter()
+  const [keyword, setKeyword] = useState<string>()
+  const [isMatched, setIsMatched] = useState(false)
 
   const { data, refetch } = useQuery<
-    Pick<IQuery, "fetchBoards">,
+    Pick<IQuery, 'fetchBoards'>,
     IQueryFetchBoardsArgs
-  >(FETCH_BOARDS, { variables: { page: 1 } });
+  >(FETCH_BOARDS, { variables: { page: 1 } })
 
   const { data: dataBoardsCount } = useQuery<
-    Pick<IQuery, "fetchBoardsCount">,
+    Pick<IQuery, 'fetchBoardsCount'>,
     IQueryFetchBoardsCountArgs
-  >(FETCH_BOARDS_COUNT);
+  >(FETCH_BOARDS_COUNT)
 
   const getDebounce = _.debounce((el) => {
-    refetch({ search: el, page: 1 });
-    setKeyword(el);
-  }, 200);
+    refetch({ search: el, page: 1 })
+    setKeyword(el)
+  }, 200)
 
   const onIsMatched = () => {
-    setIsMatched(true);
-  };
+    setIsMatched(true)
+  }
 
-  const onChangeSearch = (event) => {
-    getDebounce(event.target.value);
-  };
+  const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    getDebounce(event.target.value)
+  }
 
-  const onClickPage = (event) => {
+  const onClickPage = (event: ChangeEvent<HTMLButtonElement>) => {
     if (event.target instanceof Element)
-      refetch({ search: keyword, page: Number(event.target.id) });
-  };
+      refetch({ search: keyword, page: Number(event.target.id) })
+  }
 
   const onClickMoveBoardWrite = () => {
-    router.push("/boards/new");
-  };
-  const onClickMoveBoardDetail = (event) => {
-    router.push(`/boards/${event.currentTarget.id}`);
-  };
+    router.push('/boards/new')
+  }
+  const onClickMoveBoardDetail = (event: any) => {
+    router.push(`/boards/${event.currentTarget.id}`)
+  }
 
   return (
     <BoardListUI
@@ -63,5 +63,5 @@ export default function BoardList() {
       onIsMatched={onIsMatched}
       isMatched={isMatched}
     />
-  );
+  )
 }

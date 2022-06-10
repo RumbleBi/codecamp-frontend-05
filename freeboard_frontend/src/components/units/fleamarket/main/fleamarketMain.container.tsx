@@ -22,10 +22,6 @@ export default function FleamarketMain() {
   const { setItem } = useContext(GlobalContext)
   const [keyword, setKeyword] = useState('')
   const [logoutUser] = useMutation(LOGOUT_USER)
-
-  // 로그인시 ~~환영멘트용
-  // const { data } =
-  //   useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const { data } = useFetchUserInfo()
   // 게시글목록
   const {
@@ -38,11 +34,6 @@ export default function FleamarketMain() {
       variables: { page: 1, search: '' },
     }
   )
-
-  // 서치바 리패치 부분
-
-  // const { data: dataSearch, refetch } = useQuery(FETCH_USED_ITEMS);
-
   // 최근본 상품 보이게하기
   const todayDate = getDate2(new Date())
 
