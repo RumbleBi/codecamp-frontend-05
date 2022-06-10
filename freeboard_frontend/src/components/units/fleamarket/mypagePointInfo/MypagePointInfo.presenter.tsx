@@ -3,7 +3,7 @@ import * as S from './MypagePointInfo.styles'
 export default function MypagePointInfoUI(props) {
   return (
     <S.Position>
-      <S.Title>비밀번호변경</S.Title>
+      <S.Title>포인트내역</S.Title>
       <S.Wrapper>
         <S.MenuBar>
           <S.FirstMenu onClick={props.onClickPointInfo}>포인트내역</S.FirstMenu>
@@ -12,7 +12,9 @@ export default function MypagePointInfoUI(props) {
           <div onClick={props.onClickBuying}>상품구매내역</div>
           <div onClick={props.onClickPickedList}>내가찜한상품</div>
         </S.MenuBar>
-        <S.ViewWrapper></S.ViewWrapper>
+        <S.ViewWrapper>
+          <div></div>
+        </S.ViewWrapper>
       </S.Wrapper>
     </S.Position>
   )

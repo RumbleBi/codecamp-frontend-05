@@ -5,7 +5,7 @@ export default function MypagePointInfo() {
   const router = useRouter()
   // router
   const onClickPointInfo = () => {
-    router.push('/fleamarket/mypage/onClickPointInfo')
+    router.push('/fleamarket/mypage/pointInfo')
   }
   const onClickPWChange = () => {
     router.push('/fleamarket/mypage/changePassword')

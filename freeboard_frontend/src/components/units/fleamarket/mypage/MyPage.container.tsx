@@ -6,11 +6,7 @@ import {
   IQueryFetchPointTransactionsArgs,
 } from '../../../../commons/types/generated/types'
 import MypageUI from './Mypage.presenter'
-import {
-  FETCH_POINT_TRANSACTIONS,
-  FETCH_USER_LOGGED_IN,
-  UPDATE_USER,
-} from './Mypage.queries'
+import { FETCH_USER_LOGGED_IN, UPDATE_USER } from './Mypage.queries'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useState } from 'react'
 export default function Mypage() {
@@ -19,7 +15,7 @@ export default function Mypage() {
   const router = useRouter()
   // router
   const onClickPointInfo = () => {
-    router.push('/fleamarket/mypage/onClickPointInfo')
+    router.push('/fleamarket/mypage/pointInfo')
   }
   const onClickPWChange = () => {
     router.push('/fleamarket/mypage/changePassword')
@@ -42,13 +38,6 @@ export default function Mypage() {
   const { data: dataUser } =
     useQuery<Pick<IQuery, 'fetchUserLoggedIn'>>(FETCH_USER_LOGGED_IN)
 
-  // 포인트 내역 (충전, 적립, 사용)
-  const { data, refetch } = useQuery<
-    Pick<IQuery, 'fetchPointTransactions'>,
-    IQueryFetchPointTransactionsArgs
-  >(FETCH_POINT_TRANSACTIONS, {
-    variables: { page: 1, search: '' },
-  })
   const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value)
   }
@@ -99,10 +88,8 @@ export default function Mypage() {
   return (
     <MypageUI
       name={name}
-      data={data}
       fileUrl={fileUrl}
       dataUser={dataUser}
-      refetch={refetch}
       onChangeName={onChangeName}
       onClickChangeName={onClickChangeName}
       onClickChangePicture={onClickChangePicture}
