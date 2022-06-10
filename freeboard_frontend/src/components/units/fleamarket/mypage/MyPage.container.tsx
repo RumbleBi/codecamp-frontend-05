@@ -15,11 +15,9 @@ import {
 import { useRouter } from 'next/router'
 import { ChangeEvent, useState } from 'react'
 export default function Mypage() {
-  const [fileUrls, setFileUrls] = useState([''])
+  const [fileUrl, setFileUrl] = useState('')
   const [name, setName] = useState('')
   const router = useRouter()
-  // 이미지파일 업로드
-  const [uploadFile] = useMutation(UPLOAD_FILE)
   // 유저 정보 업데이트
   const [updateUser] = useMutation<
     Pick<IMutation, 'updateUser'>,
@@ -57,38 +55,42 @@ export default function Mypage() {
     }
   }
   // 업로드 사진 변경시 함수
-  const onChangeFileUrls = (fileUrl: string, index: number) => {
-    const newFileUrls = [...fileUrls]
-    newFileUrls[index] = fileUrl
-    setFileUrls(newFileUrls)
+  const onChangeFileUrl = (fileUrl: string) => {
+    const newFileUrl = fileUrl
+    setFileUrl(newFileUrl)
   }
   // 이미지 등록 버튼
   const onClickChangePicture = async () => {
-    await updateUser({
-      variables: {
-        updateUserInput: {
-          picture: dataUser?.fetchUserLoggedIn.picture,
+    try {
+      await updateUser({
+        variables: {
+          updateUserInput: {
+            picture: fileUrl,
+          },
         },
-      },
-      refetchQueries: [
-        {
-          query: FETCH_USER_LOGGED_IN,
-        },
-      ],
-    })
+        refetchQueries: [
+          {
+            query: FETCH_USER_LOGGED_IN,
+          },
+        ],
+      })
+      alert('프로필사진이 변경되었습니다.')
+    } catch (error) {
+      if (error instanceof Error) alert(error.message)
+    }
   }
   console.log(dataUser?.fetchUserLoggedIn.picture)
   return (
     <MypageUI
       name={name}
       data={data}
-      fileUrls={fileUrls}
+      fileUrl={fileUrl}
       dataUser={dataUser}
       refetch={refetch}
       onChangeName={onChangeName}
       onClickChangeName={onClickChangeName}
       onClickChangePicture={onClickChangePicture}
-      onChangeFileUrls={onChangeFileUrls}
+      onChangeFileUrl={onChangeFileUrl}
     />
   )
 }

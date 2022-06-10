@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import Uploads01 from '../../../commons/uploads/01/Uploads01.container'
+import Uploads02 from '../../../commons/uploads/02/Uploads02.container'
 import * as S from './MyPage.styles'
 export default function MypageUI(props) {
   return (
@@ -20,17 +20,12 @@ export default function MypageUI(props) {
             <button onClick={props.onClickChangeName}>이름변경</button>
           </div>
           <div>
-            <span>
-              프로필사진 :{' '}
-              {props.fileUrls?.map((el, index) => (
-                <Uploads01
-                  key={uuidv4()}
-                  index={index}
-                  fileUrl={el}
-                  onChangeFileUrls={props.onChangeFileUrls}
-                />
-              ))}
-            </span>
+            <span>프로필사진변경 :</span>
+            <Uploads02
+              key={uuidv4()}
+              fileUrl={props.fileUrl}
+              onChangeFileUrl={props.onChangeFileUrl}
+            />
             <button onClick={props.onClickChangePicture}>사진변경</button>
           </div>
         </S.ViewWrapper>

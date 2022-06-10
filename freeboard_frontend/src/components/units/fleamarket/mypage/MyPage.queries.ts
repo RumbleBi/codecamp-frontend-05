@@ -39,11 +39,3 @@ export const UPDATE_USER = gql`
     }
   }
 `
-// 이미지 파일 업로드
-export const UPLOAD_FILE = gql`
-  mutation uploadFile($file: Upload!) {
-    uploadFile(file: $file) {
-      url
-    }
-  }
-`
