@@ -63,7 +63,31 @@ export const ViewWrapper = styled.div`
   background-color: #79dae8;
   border-radius: 0px 10px 10px 0px;
   div {
-    margin-left: 100px;
-    margin-top: 100px;
+    /* margin-left: 100px;
+    margin-top: 100px; */
   }
+`
+export const PointListWrapper = styled.div`
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  div {
+    margin-top: 20px;
+    color: #2155cd;
+    font-size: 24px;
+    font-weight: bold;
+    span {
+      margin-left: 50px;
+    }
+  }
+`
+export const PaginationsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
 `

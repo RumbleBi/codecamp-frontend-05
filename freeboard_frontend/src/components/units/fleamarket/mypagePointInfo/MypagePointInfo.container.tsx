@@ -1,36 +1,35 @@
 import MypagePointInfoUI from './MypagePointInfo.presenter'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
-import { FETCH_POINT_TRANSACTIONS } from './MypagePointInfo.queries'
+import {
+  FETCH_POINT_TRANSACTIONS_COUNT_OF_LOADING,
+  FETCH_POINT_TRANSACTIONS_OF_LOADING,
+} from './MypagePointInfo.queries'
 import {
   IQuery,
-  IQueryFetchPointTransactionsArgs,
+  IQueryFetchPointTransactionsOfLoadingArgs,
 } from '../../../../commons/types/generated/types'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent } from 'react'
 import _ from 'lodash'
 
 export default function MypagePointInfo() {
   const router = useRouter()
-  const [keyword, setKeyword] = useState<string>()
   const { data, refetch } = useQuery<
-    Pick<IQuery, 'fetchPointTransactions'>,
-    IQueryFetchPointTransactionsArgs
-  >(FETCH_POINT_TRANSACTIONS, {
+    Pick<IQuery, 'fetchPointTransactionsOfLoading'>,
+    IQueryFetchPointTransactionsOfLoadingArgs
+  >(FETCH_POINT_TRANSACTIONS_OF_LOADING, {
     variables: { search: '', page: 1 },
   })
-  // 검색기능
-  const getDebounce = _.debounce((el) => {
-    refetch({ search: el, page: 1 })
-    setKeyword(el)
-  }, 200)
-  const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    getDebounce(event.target.value)
-  }
+
   // 페이지네이션
   const onClickPage = (event: ChangeEvent<HTMLButtonElement>) => {
     if (event.target instanceof Element)
-      refetch({ search: keyword, page: Number(event.target.id) })
+      refetch({ page: Number(event.target.id) })
   }
+  // 페이지값 int
+  const { data: dataCount } = useQuery<
+    Pick<IQuery, 'fetchPointTransactionsCountOfLoading'>
+  >(FETCH_POINT_TRANSACTIONS_COUNT_OF_LOADING)
   // router
   const onClickPointInfo = () => {
     router.push('/fleamarket/mypage/pointInfo')
@@ -50,9 +49,8 @@ export default function MypagePointInfo() {
   return (
     <MypagePointInfoUI
       data={data}
-      keyword={keyword}
+      count={dataCount}
       refetch={refetch}
-      onChangeSearch={onChangeSearch}
       onClickPage={onClickPage}
       onClickPWChange={onClickPWChange}
       onClickPickedList={onClickPickedList}
