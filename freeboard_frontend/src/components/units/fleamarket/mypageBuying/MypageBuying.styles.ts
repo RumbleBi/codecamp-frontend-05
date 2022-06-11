@@ -65,19 +65,18 @@ export const ViewWrapper = styled.div`
 `
 export const PointListWrapper = styled.div`
   width: 100%;
-  height: 700px;
+  height: 60px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   div {
-    width: 1000px;
-    height: 50px;
+    border-bottom: 1px solid #2155cd;
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    height: 100%;
     color: #2155cd;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
   }
 `

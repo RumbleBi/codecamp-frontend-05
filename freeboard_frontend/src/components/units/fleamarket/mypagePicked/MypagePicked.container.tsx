@@ -1,14 +1,34 @@
 import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
+import { ChangeEvent } from 'react'
 import {
   IQuery,
   IQueryFetchUseditemsIPickedArgs,
 } from '../../../../commons/types/generated/types'
 import MypagePickedUI from './MypagePicked.presenter'
-import { FETCH_USEDITEMS_I_PICKED } from './MypagePicked.queries'
+import {
+  FETCH_USEDITEMS_COUNT_I_PICKED,
+  FETCH_USEDITEMS_I_PICKED,
+} from './MypagePicked.queries'
 
 export default function MypagePicked() {
   const router = useRouter()
+  const { data, refetch } = useQuery<
+    Pick<IQuery, 'fetchUseditemsIPicked'>,
+    IQueryFetchUseditemsIPickedArgs
+  >(FETCH_USEDITEMS_I_PICKED, {
+    variables: { search: '', page: 1 },
+  })
+  // 페이지 네이션
+  const onClickPage = (event: ChangeEvent<HTMLButtonElement>) => {
+    if (event.target instanceof Element)
+      refetch({ page: Number(event.target.id) })
+  }
+  // 페이지 int
+  const { data: dataCount } = useQuery<
+    Pick<IQuery, 'fetchUseditemsCountIPicked'>
+  >(FETCH_USEDITEMS_COUNT_I_PICKED)
+
   // router
   const onClickPointInfo = () => {
     router.push('/fleamarket/mypage/pointInfo')
@@ -25,18 +45,11 @@ export default function MypagePicked() {
   const onClickBuying = () => {
     router.push('/fleamarket/mypage/buying')
   }
-  const { data } = useQuery<
-    Pick<IQuery, 'fetchUseditemsIPicked'>,
-    IQueryFetchUseditemsIPickedArgs
-  >(FETCH_USEDITEMS_I_PICKED, {
-    variables: {
-      search: '',
-      page: 1,
-    },
-  })
   return (
     <MypagePickedUI
       data={data}
+      count={dataCount}
+      onClickPage={onClickPage}
       onClickPWChange={onClickPWChange}
       onClickPickedList={onClickPickedList}
       onClickSelling={onClickSelling}

@@ -62,25 +62,29 @@ export const ViewWrapper = styled.div`
   justify-content: flex-start;
   background-color: #79dae8;
   border-radius: 0px 10px 10px 0px;
+`
+export const PointListWrapper = styled.div`
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   div {
-    margin-left: 100px;
-    margin-top: 100px;
+    border-bottom: 1px solid #2155cd;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #2155cd;
+    font-size: 16px;
+    font-weight: bold;
   }
 `
-
-export const PickedList = styled.div``
-export const PickedElement = styled.div`
+export const PaginationsWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  margin: 20px;
-  border: 1px solid black;
-`
-
-export const Name = styled.div``
-export const Remarks = styled.div``
-export const Contents = styled.div``
-export const Price = styled.div``
-export const Image = styled.img`
-  width: 100px;
-  height: 100px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: #2155cd;
 `

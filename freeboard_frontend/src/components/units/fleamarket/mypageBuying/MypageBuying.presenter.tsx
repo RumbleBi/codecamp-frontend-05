@@ -15,26 +15,33 @@ export default function MypageBuyingUI(props) {
           <div onClick={props.onClickPickedList}>내가찜한상품</div>
         </S.MenuBar>
         <S.ViewWrapper>
-          <S.PointListWrapper>
+          <div style={{ height: '700px' }}>
             {props.data?.fetchPointTransactionsOfBuying.map(
               (el, index: number) => (
-                <div key={el._id}>
-                  <span style={{ width: '10%' }} index={index}>
+                <S.PointListWrapper key={el._id}>
+                  <div
+                    style={{ width: '40px', justifyContent: 'center' }}
+                    index={index}
+                  >
                     {index + 1}
-                  </span>
-                  <span style={{ width: '20%' }} index={index}>
-                    판매금액 : {el.amount}원
-                  </span>
-                  <span style={{ width: '20%' }} index={index}>
-                    판매상품 : {el.useditem.remarks}
-                  </span>
-                  <span style={{ width: '30%' }} index={index}>
-                    판매일자 : {getDate(el.createdAt)}
-                  </span>
-                </div>
+                  </div>
+                  <div style={{ width: '200px' }} index={index}>
+                    구매금액 : {el.amount}원
+                  </div>
+                  <div style={{ width: '600px' }} index={index}>
+                    게시글제목 : {el.useditem.remarks}
+                  </div>
+                  <div
+                    style={{ width: '160px', justifyContent: 'center' }}
+                    index={index}
+                  >
+                    구매일자 : {getDate(el.createdAt)}
+                  </div>
+                </S.PointListWrapper>
               )
             )}
-          </S.PointListWrapper>
+          </div>
+
           <S.PaginationsWrapper>
             <Paginations01 refetch={props.refetch} count={props.count} />
           </S.PaginationsWrapper>

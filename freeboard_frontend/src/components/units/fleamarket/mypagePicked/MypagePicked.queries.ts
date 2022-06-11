@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
 
 export const FETCH_USEDITEMS_I_PICKED = gql`
   query fetchUseditemsIPicked($search: String, $page: Int) {
@@ -8,9 +8,12 @@ export const FETCH_USEDITEMS_I_PICKED = gql`
       remarks
       contents
       price
-      tags
       images
-      pickedCount
     }
   }
-`;
+`
+export const FETCH_USEDITEMS_COUNT_I_PICKED = gql`
+  query fetchUseditemsCountIPicked {
+    fetchUseditemsCountIPicked
+  }
+`
