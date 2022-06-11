@@ -64,7 +64,7 @@ export default function MyPagePassword() {
       setIsActive(false)
     }
     if (!isActive) {
-      alert('비밀번호가 일치하지 않습니다 확인해주세요!')
+      alert(' 이전과 같은 비밀번호거나, 비밀번호가 일치하지 않습니다.')
       return
     }
     try {
@@ -74,8 +74,10 @@ export default function MyPagePassword() {
         },
       })
       alert('비밀번호가 변경되었습니다! 다시 로그인해 주세요!')
+
       logoutUser()
-      router.push('/fleamarket/login')
+      // router.push('/fleamarket/login')
+      window.location.replace('http://localhost:3000/fleamarket/login')
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }

@@ -75,15 +75,17 @@ export default function RegDetail() {
 
   const onClickBuyUseditem = async () => {
     try {
-      await createPointTransactionOfBuyingAndSelling({
+      const resultBuying = await createPointTransactionOfBuyingAndSelling({
         variables: { useritemId: router.query.useditemId },
       })
+      console.log(resultBuying)
       alert('구매하셨습니다!')
       router.push('/fleamarket/main')
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }
   }
+
   return (
     <RegDetailUI
       data={data && data}

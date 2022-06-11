@@ -2,11 +2,9 @@ import Button02 from '../../../commons/buttons/02'
 import * as S from './RegDetail.styles'
 import Dompurify from 'dompurify'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
+import { getDate } from '../../../../commons/libraries/utils'
 
 export default function RegDetailUI(props) {
-  console.log(props.userData?.fetchUserLoggedIn._id)
-  console.log('-------------------')
-  console.log(props.data?.fetchUseditem.seller._id)
   return (
     <S.Position>
       <S.Wrapper>
@@ -14,7 +12,7 @@ export default function RegDetailUI(props) {
         <S.ProfileWrapper>
           <S.Name>상품명 : {props.data?.fetchUseditem?.name}</S.Name>
           <S.CreatedAt>
-            {props.data?.fetchUseditem?.createdAt.slice(0, 10)}
+            {getDate(props.data?.fetchUseditem?.createdAt)}
           </S.CreatedAt>
         </S.ProfileWrapper>
         <S.UseditemDetailWrapper>

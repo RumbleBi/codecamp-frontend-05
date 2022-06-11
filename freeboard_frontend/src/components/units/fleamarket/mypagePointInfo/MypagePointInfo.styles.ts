@@ -69,7 +69,7 @@ export const ViewWrapper = styled.div`
 `
 export const PointListWrapper = styled.div`
   width: 100%;
-  height: 500px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

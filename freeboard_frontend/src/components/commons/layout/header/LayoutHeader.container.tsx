@@ -22,9 +22,9 @@ const FETCH_USER_LOGGED_IN = gql`
 `
 
 export default function LayoutHeader() {
-  const [logoutUser] = useMutation(LOGOUT_USER)
   const { data } =
     useQuery<Pick<IQuery, 'fetchUserLoggedIn'>>(FETCH_USER_LOGGED_IN)
+  const [logoutUser] = useMutation(LOGOUT_USER)
   const router = useRouter()
   const onClickTitle = () => {
     router.push('/')
@@ -45,10 +45,13 @@ export default function LayoutHeader() {
     router.push('/fleamarket/payment')
   }
   const onClickLogout = async () => {
-    await logoutUser()
-    window.location.reload()
-    alert('로그아웃 되었습니다.')
-    router.push('/fleamarket/login')
+    try {
+      await logoutUser()
+      alert('로그아웃 되었습니다.')
+      window.location.replace('http://localhost:3000/fleamarket/login')
+    } catch (error) {
+      if (error instanceof Error) alert(error.message)
+    }
   }
   return (
     <LayoutHeaderUI

@@ -2,11 +2,7 @@ import FleamarketRegUI from './RegProduct.presenter'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import {
-  CREATE_USED_ITEM,
-  UPDATE_USED_ITEM,
-  UPLOAD_FILE,
-} from './RegProduct.queries'
+import { CREATE_USED_ITEM, UPDATE_USED_ITEM } from './RegProduct.queries'
 import { useMutation } from '@apollo/client'
 import { FormValues } from './RegProduct.types'
 import { useRouter } from 'next/router'
@@ -101,7 +97,6 @@ export default function FleamarketReg(props) {
           },
         },
       })
-
       router.push(`/fleamarket/${result.data.createUseditem._id}`)
     } catch (error) {
       if (error instanceof Error) alert(error.message)

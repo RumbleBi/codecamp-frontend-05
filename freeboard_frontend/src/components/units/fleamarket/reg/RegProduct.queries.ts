@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
 
 export const CREATE_USED_ITEM = gql`
   mutation createUseditem($createUseditemInput: CreateUseditemInput!) {
@@ -8,19 +8,20 @@ export const CREATE_USED_ITEM = gql`
       remarks
       contents
       price
+      createdAt
+      soldAt
       useditemAddress {
-        lat
-        lng
         zipcode
         address
         addressDetail
       }
-      buyer {
+      seller {
         _id
+        name
       }
     }
   }
-`;
+`
 
 export const UPDATE_USED_ITEM = gql`
   mutation updateUseditem(
@@ -36,14 +37,15 @@ export const UPDATE_USED_ITEM = gql`
       remarks
       contents
       price
+      useditemAddress {
+        zipcode
+        address
+        addressDetail
+      }
+      seller {
+        _id
+        name
+      }
     }
   }
-`;
-
-export const UPLOAD_FILE = gql`
-  mutation uploadFile($file: Upload!) {
-    uploadFile(file: $file) {
-      url
-    }
-  }
-`;
+`

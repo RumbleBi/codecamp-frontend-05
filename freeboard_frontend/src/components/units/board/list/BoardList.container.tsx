@@ -33,23 +33,19 @@ export default function BoardList() {
   const onIsMatched = () => {
     setIsMatched(true)
   }
-
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     getDebounce(event.target.value)
   }
-
   const onClickPage = (event: ChangeEvent<HTMLButtonElement>) => {
     if (event.target instanceof Element)
       refetch({ search: keyword, page: Number(event.target.id) })
   }
-
   const onClickMoveBoardWrite = () => {
     router.push('/boards/new')
   }
   const onClickMoveBoardDetail = (event: any) => {
     router.push(`/boards/${event.currentTarget.id}`)
   }
-
   return (
     <BoardListUI
       data={data}

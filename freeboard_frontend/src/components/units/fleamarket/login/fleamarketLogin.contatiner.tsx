@@ -46,9 +46,6 @@ export default function FleaMarketLogin() {
         },
       })
       const accessToken = result.data?.loginUser.accessToken || ''
-      console.log('==========')
-      console.log(result)
-      console.log('==========')
       if (setAccessToken) {
         setAccessToken(accessToken || '')
         const resultUserInfo = await client.query({
@@ -65,10 +62,6 @@ export default function FleaMarketLogin() {
         // document.cookie = `accessToken=${accessToken}`;
         // document.cookie = `userInfo=${JSON.stringify(userInfo)}`;
       }
-      console.log('==========')
-      console.log('여기까지되냐?')
-      console.log(document.cookie)
-      console.log('==========')
       router.push('/fleamarket/main')
     } catch (error) {
       if (error instanceof Error) console.log(error.message)

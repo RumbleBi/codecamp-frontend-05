@@ -1,8 +1,34 @@
+import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
+import { ChangeEvent } from 'react'
+import {
+  IQuery,
+  IQueryFetchPointTransactionsOfBuyingArgs,
+} from '../../../../commons/types/generated/types'
 import MypageBuyingUI from './MyPageBuying.presenter'
+import {
+  FETCH_POINT_TRANSACTIONS_COUNT_OF_BUYING,
+  FETCH_POINT_TRANSACTIONS_OF_BUYING,
+} from './MypageBuying.queries'
 
 export default function MypageBuying() {
   const router = useRouter()
+  const { data, refetch } = useQuery<
+    Pick<IQuery, 'fetchPointTransactionsOfBuying'>,
+    IQueryFetchPointTransactionsOfBuyingArgs
+  >(FETCH_POINT_TRANSACTIONS_OF_BUYING, {
+    variables: { search: '', page: 1 },
+  })
+  // 페이지 네이션
+  const onClickPage = (event: ChangeEvent<HTMLButtonElement>) => {
+    if (event.target instanceof Element)
+      refetch({ page: Number(event.target.id) })
+  }
+  // 페이지 int
+  const { data: dataCount } = useQuery<
+    Pick<IQuery, 'fetchPointTransactionsCountOfSelling'>
+  >(FETCH_POINT_TRANSACTIONS_COUNT_OF_BUYING)
+
   // router
   const onClickPointInfo = () => {
     router.push('/fleamarket/mypage/pointInfo')
@@ -21,6 +47,10 @@ export default function MypageBuying() {
   }
   return (
     <MypageBuyingUI
+      data={data}
+      count={dataCount}
+      refetch={refetch}
+      onClickPage={onClickPage}
       onClickPWChange={onClickPWChange}
       onClickPickedList={onClickPickedList}
       onClickSelling={onClickSelling}

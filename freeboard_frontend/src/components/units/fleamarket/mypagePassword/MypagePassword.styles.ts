@@ -62,28 +62,46 @@ export const ViewWrapper = styled.div`
   justify-content: flex-start;
   background-color: #79dae8;
   border-radius: 0px 10px 10px 0px;
+`
+export const PasswordWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 500px;
   div {
-    margin-left: 100px;
-    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
   }
 `
-
+export const Text = styled.span`
+  font-size: 24px;
+  color: #2155cd;
+  font-weight: bold;
+  margin-right: 20px;
+`
 export const InputPassword = styled.input`
+  border: 1px solid #0aa1dd;
+  border-radius: 10px;
+  padding-left: 10px;
   width: 400px;
-  height: 50px;
+  height: 40px;
+  color: #2155cd;
 `
 export const PasswordError = styled.div`
   color: red;
 `
-
-export const InputPasswordCheck = styled.input`
-  width: 400px;
-  height: 50px;
-`
-
 export const ChangePassword = styled.button`
   border: none;
   cursor: pointer;
-  width: 200px;
-  height: 100px;
+  width: 150px;
+  height: 60px;
+  font-size: 20px;
+  color: #2155cd;
+  background-color: #e8f9fd;
+  border-radius: 10px;
+  :hover {
+    font-weight: bold;
+  }
 `
