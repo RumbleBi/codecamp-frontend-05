@@ -1,13 +1,13 @@
-import { useQuery, gql } from "@apollo/client";
-import { useRouter } from "next/router";
-import { createContext, useState } from "react";
+import { useQuery, gql } from '@apollo/client'
+import { useRouter } from 'next/router'
+import { createContext } from 'react'
 import {
   IQuery,
   IQueryFetchUseditemArgs,
-} from "../../../../src/commons/types/generated/types";
-import { withAuth } from "../../../../src/components/commons/hocs/withAuth";
-import FleamarketReg from "../../../../src/components/units/fleamarket/reg/RegProduct.container";
-import UseditemCommentWrite from "../../../../src/components/units/fleamarket/UseditemComment/write/UseditemCommentWrite.container";
+} from '../../../../src/commons/types/generated/types'
+import { withAuth } from '../../../../src/components/commons/hocs/withAuth'
+import FleamarketReg from '../../../../src/components/units/fleamarket/reg/RegProduct.container'
+import UseditemCommentWrite from '../../../../src/components/units/fleamarket/UseditemComment/write/UseditemCommentWrite.container'
 const FETCH_USED_ITEM = gql`
   query fetchUseditem($useditemId: ID!) {
     fetchUseditem(useditemId: $useditemId) {
@@ -25,26 +25,26 @@ const FETCH_USED_ITEM = gql`
       createdAt
     }
   }
-`;
-export const RegContext = createContext({});
+`
+export const RegContext = createContext({})
 
 function RegEditPage() {
-  const router = useRouter();
+  const router = useRouter()
   const myValue = {
     isEdit: false,
-  };
+  }
 
   const { data } = useQuery<
-    Pick<IQuery, "fetchUseditem">,
+    Pick<IQuery, 'fetchUseditem'>,
     IQueryFetchUseditemArgs
   >(FETCH_USED_ITEM, {
     variables: { useditemId: String(router.query.useditemId) },
-  });
+  })
   return (
     <RegContext.Provider value={myValue}>
       <FleamarketReg data={data} />
       <UseditemCommentWrite />
     </RegContext.Provider>
-  );
+  )
 }
-export default withAuth(RegEditPage);
+export default withAuth(RegEditPage)

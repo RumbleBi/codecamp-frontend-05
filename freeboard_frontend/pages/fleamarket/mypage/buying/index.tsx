@@ -1,5 +1,8 @@
-import MypageBuying from '../../../../src/components/units/fleamarket/mypageBuying/MyPageBuying.container'
+import MypageBuying from '../../../../src/components/units/fleamarket/mypageBuying/MypageBuying.container'
+import { withAuth } from '../../../../src/components/commons/hocs/withAuth'
 
-export default function BuyingPage() {
+function BuyingPage() {
   return <MypageBuying />
 }
+
+export default withAuth(BuyingPage)

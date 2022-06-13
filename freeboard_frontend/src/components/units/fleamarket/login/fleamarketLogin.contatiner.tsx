@@ -59,8 +59,8 @@ export default function FleaMarketLogin() {
         if (setAccessToken) setAccessToken(accessToken)
         if (setUserInfo) setUserInfo(userInfo)
 
-        // document.cookie = `accessToken=${accessToken}`;
-        // document.cookie = `userInfo=${JSON.stringify(userInfo)}`;
+        document.cookie = `accessToken=${accessToken}`
+        document.cookie = `userInfo=${JSON.stringify(userInfo)}`
       }
       router.push('/fleamarket/main')
     } catch (error) {
