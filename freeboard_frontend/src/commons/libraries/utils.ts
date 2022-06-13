@@ -1,6 +1,6 @@
 import { Modal } from 'antd'
 
-export const getDate = (getDate) => {
+export const getDate = (getDate: any) => {
   const change = new Date(getDate)
   const yyyy = change.getFullYear()
   const mm = change.getMonth() + 1
