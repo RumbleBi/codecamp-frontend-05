@@ -61,25 +61,17 @@ export const DataList = styled.div`
     border-radius: 10px;
     font-weight: bold;
   }
-  /* flex-wrap: wrap;
-  text-overflow: ellipsis;
-  min-height: 300px;
-  width: 400px;
-  background-color: #ffc0d3;
-  cursor: pointer; */
-  /* display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  height: 250px;
-  background-color: green;
-  margin: 20px 50px 20px 50px; */
 `
 export const DataInfo = styled.div`
   color: #79dae8;
   font-size: 20px;
+`
+export const Tag = styled.span`
+  font-size: 20px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  background-color: #2155cd;
+  margin: 0px 10px;
 `
 export const DateContents = styled.div`
   width: 100%;

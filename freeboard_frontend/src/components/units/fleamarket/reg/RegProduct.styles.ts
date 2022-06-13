@@ -54,6 +54,15 @@ export const ContentInput = styled.div`
     min-height: 200px;
   }
 `
+export const TagsInput = styled.input`
+  height: 50px;
+  width: 600px;
+  color: #79dae8;
+  font-size: 20px;
+  padding-left: 10px;
+  border: 1px solid #0aa1dd;
+  border-radius: 10px;
+`
 export const ContentWrapper = styled.div`
   display: flex;
   align-items: center;

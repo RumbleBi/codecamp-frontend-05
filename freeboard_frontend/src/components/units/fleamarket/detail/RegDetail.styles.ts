@@ -59,6 +59,19 @@ export const Price = styled.div`
   font-size: 24px;
   border-bottom: 1px solid #2155cd;
 `
+export const Tags = styled.div`
+  padding-left: 20px;
+  color: #0aa1dd;
+  font-size: 24px;
+  border-bottom: 1px solid #2155cd;
+  span {
+    font-size: 20px;
+    padding: 5px 15px;
+    border-radius: 10px;
+    background-color: #2155cd;
+    margin: 0px 10px;
+  }
+`
 export const AddressTitle = styled.div`
   color: #0aa1dd;
   padding-left: 20px;

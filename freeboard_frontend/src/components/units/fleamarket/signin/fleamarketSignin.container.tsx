@@ -96,7 +96,7 @@ export default function FleaMarketSignin() {
   const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value)
     if (!RegexName.test(event.target.value)) {
-      setNameError('이름이 올바르지 않습니다.')
+      setNameError('한글만 가능합니다.')
     } else {
       setNameError('')
     }
@@ -114,7 +114,7 @@ export default function FleaMarketSignin() {
 
   const onClickSubmit = async () => {
     if (!isActive) {
-      alert('양식에 오류가 있습니다. 확인해 주세요.')
+      alert('양식에 오류가 있습니다.')
       return
     }
     try {

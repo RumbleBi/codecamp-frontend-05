@@ -3,7 +3,7 @@ import Input01 from '../../../commons/inputs/01'
 import * as S from './RegProduct.styles'
 import { v4 as uuidv4 } from 'uuid'
 import Uploads01 from '../../../commons/uploads/01/Uploads01.container'
-import { useContext } from 'react'
+import { ChangeEvent, useContext } from 'react'
 import { RegContext } from '../../../../../pages/fleamarket/[useditemId]/edit'
 import { Modal } from 'antd'
 import DaumPostcode from 'react-daum-postcode'
@@ -15,6 +15,7 @@ interface IFleamarketRegUIProps {
   onClickUpdate: () => void
   onClickAddressCancel: () => void
   onCompleteAddressSearch: () => void
+  onChangeTags: any
   register: any
   handleSubmit: any
   formState: any
@@ -65,8 +66,12 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
           <S.ErrorMessage>
             {props.formState.errors.price?.message}
           </S.ErrorMessage>
-          <S.ContentInfo>태그입력</S.ContentInfo>
-          <Input01 type="text" register={props.register('tags')} />
+          <S.ContentInfo>태그입력 ( #으로 구분 ) </S.ContentInfo>
+          <S.TagsInput
+            type="text"
+            onChange={props.onChangeTags}
+            defaultValue={'#'}
+          />
           <S.ErrorMessage>
             {props.formState.errors.tags?.message}
           </S.ErrorMessage>
@@ -133,6 +138,3 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
     </S.Position>
   )
 }
-//             name, remarks, contents, price, tags, useditemAddress, images
-// input text 상품명, 한줄요약, 상품설명, 판매가격, 태그입력, 주소, 사진
-// button 등록하기

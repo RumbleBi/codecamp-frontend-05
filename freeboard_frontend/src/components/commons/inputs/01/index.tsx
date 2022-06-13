@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { RefObject } from 'react'
+import { ChangeEvent, RefObject } from 'react'
 
 interface IProps {
   type: string

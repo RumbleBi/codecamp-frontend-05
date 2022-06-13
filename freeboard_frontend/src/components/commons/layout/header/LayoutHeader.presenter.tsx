@@ -12,7 +12,7 @@ export default function LayoutHeaderUI(props) {
         <S.Right>
           {props.data?.fetchUserLoggedIn ? (
             <div>
-              {props.data?.fetchUserLoggedIn.picture.length ? (
+              {props.data?.fetchUserLoggedIn?.picture?.length ? (
                 <img
                   onClick={props.onClickMyPage}
                   src={`https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`}

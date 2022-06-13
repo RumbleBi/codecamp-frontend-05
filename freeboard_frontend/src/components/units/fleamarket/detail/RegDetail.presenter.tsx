@@ -3,7 +3,6 @@ import * as S from './RegDetail.styles'
 import Dompurify from 'dompurify'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 import { getDate } from '../../../../commons/libraries/utils'
-
 export default function RegDetailUI(props) {
   return (
     <S.Position>
@@ -18,6 +17,14 @@ export default function RegDetailUI(props) {
         <S.UseditemDetailWrapper>
           <S.Remarks>제목 : {props.data?.fetchUseditem?.remarks}</S.Remarks>
           <S.Price>가격 : {props.data?.fetchUseditem?.price}</S.Price>
+          <S.Tags>
+            태그 :
+            {props.data?.fetchUseditem?.tags.map(
+              (el: string, index: number) => (
+                <span key={index}>{el}</span>
+              )
+            )}
+          </S.Tags>
           <S.Address>
             <S.AddressTitle>거래장소 : </S.AddressTitle>
             <div>{props.data?.fetchUseditem?.useditemAddress?.address}</div>

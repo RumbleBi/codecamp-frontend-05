@@ -29,6 +29,14 @@ export default function FleamarketMainUI(props) {
                   <S.DataInfo>한줄요약 : {el.remarks}</S.DataInfo>
                   <S.DataInfo>가격 : {el.price}</S.DataInfo>
                   <S.DataInfo>
+                    태그 :
+                    {props.dataItems?.fetchUseditems?.tags?.map(
+                      (el: string, index: number) => (
+                        <S.Tag key={index}>{el}</S.Tag>
+                      )
+                    )}
+                  </S.DataInfo>
+                  <S.DataInfo>
                     작성시간 : {el.createdAt.slice(0, 10)}
                   </S.DataInfo>
                   <S.ImageWrapper>

@@ -1,27 +1,19 @@
-import { useMutation, useQuery } from '@apollo/client'
-import { withAuth } from '../../../../components/commons/hocs/withAuth'
+import { useQuery } from '@apollo/client'
+
 import {
-  IMutation,
   IQuery,
-  IQueryFetchUseditemArgs,
   IQueryFetchUseditemsArgs,
 } from '../../../../commons/types/generated/types'
 import FleamarketMainUI from './fleamarketMain.presenter'
-import {
-  FETCH_USED_ITEM,
-  FETCH_USER_LOGGED_IN,
-  FETCH_USED_ITEMS,
-  LOGOUT_USER,
-} from './fleamarketMain.queries'
+import { FETCH_USED_ITEMS } from './fleamarketMain.queries'
 import router from 'next/router'
 import { getDate2 } from '../../../../commons/libraries/utils'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { GlobalContext } from '../../../../../pages/_app'
 import { useFetchUserInfo } from '../../../commons/hooks/useUserLoggedIn'
 export default function FleamarketMain() {
   const { setItem } = useContext(GlobalContext)
   const [keyword, setKeyword] = useState('')
-  const [logoutUser] = useMutation(LOGOUT_USER)
   const { data } = useFetchUserInfo()
   // 게시글목록
   const {
@@ -56,44 +48,25 @@ export default function FleamarketMain() {
       },
     })
   }
-
   // 게시글 등록하기
   const onClickReg = () => {
     router.push('/fleamarket/reg')
   }
   // 게시글 상세페이지 이동
-
   const onClickMoveToDetail = (el) => () => {
     const baskets = JSON.parse(localStorage.getItem(todayDate) || '[]')
     const temp = baskets.filter((filterEl) => filterEl._id !== el._id)
-
     const { __typename, ...plus } = el
     temp.unshift(plus)
     localStorage.setItem(todayDate, JSON.stringify(temp))
     setItem(temp)
     router.push(`/fleamarket/${el._id}`)
   }
-
   // 검색페이지
   function onChangeKeyword(value: string) {
     setKeyword(value)
   }
-  // 마이페이지
-  const onClickMoveToMyPage = () => {
-    router.push('/fleamarket/mypage')
-  }
-  // 충전페이지
-  const onClickMoveToPayment = () => {
-    router.push('/fleamarket/payment')
-  }
-  // 로그아웃
-  const onClickLogout = async () => {
-    await logoutUser()
-    window.location.reload()
-    alert('로그아웃되었습니다!')
-    // document.cookie = "accessToken=";
-    router.push('/fleamarket/login')
-  }
+  console.log(dataItems)
   return (
     <FleamarketMainUI
       data={data}
@@ -104,9 +77,6 @@ export default function FleamarketMain() {
       onChangeKeyword={onChangeKeyword}
       keyword={keyword}
       refetch={refetch}
-      onClickMoveToMyPage={onClickMoveToMyPage}
-      onClickMoveToPayment={onClickMoveToPayment}
-      onClickLogout={onClickLogout}
     />
   )
 }

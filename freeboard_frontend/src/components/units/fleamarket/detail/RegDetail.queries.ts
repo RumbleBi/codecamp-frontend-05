@@ -22,6 +22,7 @@ export const FETCH_USED_ITEM = gql`
       price
       createdAt
       images
+      tags
       useditemAddress {
         zipcode
         address

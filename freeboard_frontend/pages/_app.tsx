@@ -32,7 +32,7 @@ interface IGlobalContext {
   setAccessToken?: Dispatch<SetStateAction<string>>
   userInfo?: IUserInfo
   setUserInfo?: Dispatch<SetStateAction<IUserInfo>>
-  setItem?: String
+  setItem?: String | any
 }
 export const GlobalContext = createContext<IGlobalContext>({})
 

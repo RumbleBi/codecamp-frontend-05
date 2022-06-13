@@ -18,9 +18,9 @@ export default function MypageUI(props) {
             아이디 : {props.dataUser?.fetchUserLoggedIn.email}
           </S.IdWrapper>
           <S.NameWrapper>
-            <span>이름 : {props.dataUser?.fetchUserLoggedIn.name}</span>
+            <span>닉네임 : {props.dataUser?.fetchUserLoggedIn.name}</span>
             <input onChange={props.onChangeName} type="text" />
-            <button onClick={props.onClickChangeName}>이름변경</button>
+            <button onClick={props.onClickChangeName}>닉네임변경</button>
           </S.NameWrapper>
           <S.PictureWrapper>
             <span>프로필사진변경 :</span>

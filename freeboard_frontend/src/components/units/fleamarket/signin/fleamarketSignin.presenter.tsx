@@ -33,10 +33,10 @@ export default function FleaMarketSigninUI(props) {
           </S.PasswordCheckErrorText>
         </S.PasswordForm>
         <S.NameForm>
-          <S.NameText>이름</S.NameText>
+          <S.NameText>닉네임</S.NameText>
           <S.NameInput
             type="text"
-            placeholder="실명으로 적어주세요."
+            placeholder="한글만 가능합니다."
             onChange={props.onChangeName}
           />
           <S.NameErrorText>{props.nameError}</S.NameErrorText>
