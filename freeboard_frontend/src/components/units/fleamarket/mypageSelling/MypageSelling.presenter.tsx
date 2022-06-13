@@ -16,7 +16,7 @@ export default function MypageSellingUI(props) {
         </S.MenuBar>
         <S.ViewWrapper>
           <div style={{ height: '700px' }}>
-            {props.data?.fetchPointTransactionsOfSelling.map(
+            {props.data?.fetchPointTransactionsOfSelling?.map(
               (el, index: number) => (
                 <S.PointListWrapper key={el._id}>
                   <div

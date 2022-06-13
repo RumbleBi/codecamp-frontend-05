@@ -27,9 +27,19 @@ export default function MypagePickedUI(props) {
                 <div style={{ width: '200px' }} index={index}>
                   상품이름 : {el.name}
                 </div>
-                <div style={{ width: '600px' }} index={index}>
+                <div style={{ width: '500px' }} index={index}>
                   판매제목 : {el.remarks}
                 </div>
+                {/* <div>
+                  {props.data?.fetchUseditemsIPicked.images[0].length !== '' ? (
+                    <img
+                      style={{ width: '40px', height: '40px' }}
+                      src={`https://storage.googleapis.com/${el.images[0]}`}
+                    />
+                  ) : (
+                    <img src="/images/noImg.png" />
+                  )}
+                </div> */}
                 <div>상품가격 : {el.price}</div>
               </S.PointListWrapper>
             ))}

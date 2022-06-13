@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
   background-color: #e8f9fd;
   box-shadow: 0px 0px 10px gray;
 `
+export const SellerImg = styled.img``
 export const Title = styled.div`
   font-size: 36px;
   font-weight: bold;

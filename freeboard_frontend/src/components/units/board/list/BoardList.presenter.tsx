@@ -2,13 +2,14 @@ import { getDate } from '../../../../commons/libraries/utils'
 import { IBoardListUIProps } from './BoardList.types'
 import * as S from './BoardList.styles'
 import Paginations01 from '../../../commons/layout/paginations/01/Paginations01.container'
+import { BsPencilFill } from 'react-icons/bs'
 export default function BoardListUI(props: IBoardListUIProps) {
   return (
     <S.Position>
       <S.Wrapper>
         <S.WrapperOpt>
           <S.BoardCreate onClick={props.onClickMoveBoardWrite}>
-            <S.WriteIcon src="/images/board/list/write_icon.png" />
+            <BsPencilFill style={{ fontSize: '20px', marginRight: '10px' }} />
             게시물등록하기
           </S.BoardCreate>
           <S.SearchInput

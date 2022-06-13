@@ -58,9 +58,12 @@ export const HelpForm = styled.div`
 export const HelpText = styled.div`
   display: flex;
   color: #79dae8;
-  font-size: 16px;
+  font-size: 24px;
   margin: 0 30px;
   cursor: pointer;
+  :hover {
+    font-weight: bold;
+  }
 `
 export const LoginBtn = styled.button`
   color: #f2f2f2;

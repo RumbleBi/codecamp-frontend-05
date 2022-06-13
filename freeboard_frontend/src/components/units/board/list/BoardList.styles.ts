@@ -35,9 +35,6 @@ export const BoardCreate = styled.button`
     font-weight: bold;
   }
 `
-export const WriteIcon = styled.img`
-  padding-right: 15px;
-`
 export const SearchInput = styled.input`
   width: 250px;
   height: 50px;

@@ -37,8 +37,8 @@ export default function PaymentBasketUI(props) {
             <S.ChargingBtn id={'100'} onClick={props.onClickAmount}>
               100원
             </S.ChargingBtn>
+            <S.ChargeAmount>금액 : {props.amount}</S.ChargeAmount>
           </div>
-          {/* <input onChange={props.onChangeAmount} type="text" /> */}
         </S.SelectPaymentWrapper>
         <S.ChargeBtn onClick={props.onClickPayment}>충전하기</S.ChargeBtn>
       </S.Wrapper>

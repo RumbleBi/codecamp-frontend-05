@@ -58,6 +58,19 @@ export const ChargingBtn = styled.button`
     color: #79dae8;
   }
 `
+export const ChargeAmount = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #2155cd;
+  border: none;
+`
 export const ChargeBtn = styled.button`
   width: 150px;
   height: 60px;
