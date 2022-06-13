@@ -1,6 +1,6 @@
 import * as S from './LayoutHeader.styles'
 
-export default function LayoutHeaderUI(props) {
+export default function LayoutHeaderUI(props: any) {
   return (
     <S.Position>
       <S.Wrapper>

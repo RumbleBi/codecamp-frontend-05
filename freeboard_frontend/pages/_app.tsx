@@ -33,6 +33,7 @@ interface IGlobalContext {
   userInfo?: IUserInfo
   setUserInfo?: Dispatch<SetStateAction<IUserInfo>>
   setItem?: String | any
+  item?: String
 }
 export const GlobalContext = createContext<IGlobalContext>({})
 
