@@ -24,7 +24,7 @@ export const checkFileValidation = (files?: File) => {
   return true
 }
 
-export const getDate2 = (getDate2) => {
+export const getDate2 = (getDate2: any) => {
   const change = new Date(getDate2)
   const yyyy = change.getFullYear()
   const mm = change.getMonth() + 1
@@ -32,6 +32,6 @@ export const getDate2 = (getDate2) => {
   return `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`
 }
 
-export const getPrice = (price) => {
+export const getPrice = (price: any) => {
   return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
