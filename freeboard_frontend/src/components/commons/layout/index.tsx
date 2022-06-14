@@ -13,15 +13,14 @@ export default function Layout(props: ILayoutProps) {
   const router = useRouter()
   const HIDDEN_SIDEBAR = [
     '/',
-    `/boards/${router.query.boardId}`,
-    `/boards/${router.query.boardId}/edit`,
-    '/boards',
-    '/boards/new',
-    '/fleamarket',
-    '/fleamarket/login',
-    '/fleamarket/reg',
-    '/fleamarket/signin',
-    '/fleamarket/payment',
+    `/boards/${router.query.boardId}/`,
+    `/boards/${router.query.boardId}/edit/`,
+    '/boards/',
+    '/boards/new/',
+    '/fleamarket/',
+    '/fleamarket/login/',
+    '/fleamarket/reg/',
+    '/fleamarket/signin/',
   ]
   const isHiddenSidebar = HIDDEN_SIDEBAR.includes(router.asPath)
   return (
