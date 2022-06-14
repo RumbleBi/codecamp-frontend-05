@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import Uploads02 from '../../../commons/uploads/02/Uploads02.container'
 import * as S from './Mypage.styles'
-export default function MypageUI(props: any) {
+export default function MypageUI(props) {
   return (
     <S.Position>
       <S.Title>마이페이지</S.Title>
