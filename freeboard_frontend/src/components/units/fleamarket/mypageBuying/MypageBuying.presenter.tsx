@@ -1,8 +1,8 @@
 import { getDate } from '../../../../commons/libraries/utils'
 import Paginations01 from '../../../commons/layout/paginations/01/Paginations01.container'
-import * as S from './MyPageBuying.styles'
+import * as S from './MypageBuying.styles'
 
-export default function MypageBuyingUI(props) {
+export default function MypageBuyingUI(props: any) {
   return (
     <S.Position>
       <S.Title>상품구매내역</S.Title>

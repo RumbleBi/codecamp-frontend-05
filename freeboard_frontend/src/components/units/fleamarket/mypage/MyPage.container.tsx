@@ -3,7 +3,6 @@ import {
   IMutation,
   IMutationUpdateUserArgs,
   IQuery,
-  IQueryFetchPointTransactionsArgs,
 } from '../../../../commons/types/generated/types'
 import MypageUI from './Mypage.presenter'
 import { FETCH_USER_LOGGED_IN, UPDATE_USER } from './Mypage.queries'

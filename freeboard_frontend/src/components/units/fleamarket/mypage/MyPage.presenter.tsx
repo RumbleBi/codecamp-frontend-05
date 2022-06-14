@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import Uploads02 from '../../../commons/uploads/02/Uploads02.container'
 import * as S from './Mypage.styles'
-export default function MypageUI(props) {
+export default function MypageUI(props: any) {
   return (
     <S.Position>
       <S.Title>마이페이지</S.Title>
@@ -38,25 +38,3 @@ export default function MypageUI(props) {
     </S.Position>
   )
 }
-
-// {props.data?.fetchPointTransactions.map((el, index) => (
-//   <div key={el._id}>
-//     <div>
-//       <Element>잔액: {el.balance}</Element>
-//     </div>
-//     <div>
-//       <Element>상품이름: {el.useditem.name}</Element>
-//       <Element>상품가격: {el.useditem.price}</Element>
-//       <div>
-//         {el.useditem.images
-//           ?.filter((el: string) => el)
-//           .map((el: string) => (
-//             <ElemtnetImg
-//               key={uuidv4()}
-//               src={`https://storage.googleapis.com/${el}`}
-//             />
-//           ))}
-//       </div>
-//     </div>
-//   </div>
-// ))}

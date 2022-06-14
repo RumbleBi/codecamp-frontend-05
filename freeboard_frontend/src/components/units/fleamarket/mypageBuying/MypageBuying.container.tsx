@@ -5,7 +5,7 @@ import {
   IQuery,
   IQueryFetchPointTransactionsOfBuyingArgs,
 } from '../../../../commons/types/generated/types'
-import MypageBuyingUI from './MyPageBuying.presenter'
+import MypageBuyingUI from './MypageBuying.presenter'
 import {
   FETCH_POINT_TRANSACTIONS_COUNT_OF_BUYING,
   FETCH_POINT_TRANSACTIONS_OF_BUYING,
