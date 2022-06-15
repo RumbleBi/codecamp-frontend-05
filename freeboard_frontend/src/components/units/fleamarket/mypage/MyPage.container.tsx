@@ -4,7 +4,7 @@ import {
   IMutationUpdateUserArgs,
   IQuery,
 } from '../../../../commons/types/generated/types'
-import MypageUI from './Mypage.presenter'
+import MypageUI from './MyPage.presenter'
 import { FETCH_USER_LOGGED_IN, UPDATE_USER } from './Mypage.queries'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useState } from 'react'

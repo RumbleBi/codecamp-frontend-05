@@ -85,7 +85,6 @@ export default function RegDetail() {
       if (error instanceof Error) alert(error.message)
     }
   }
-  console.log(data)
 
   return (
     <RegDetailUI

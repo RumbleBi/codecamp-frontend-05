@@ -1,28 +1,28 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
+import { useMutation, useQuery } from '@apollo/client'
+import { useRouter } from 'next/router'
 import {
   IQuery,
   IQueryFetchUseditemQuestionsArgs,
-} from "../../../../../commons/types/generated/types";
-import UseditemCommentListUI from "./UseditemCommentList.presenter";
+} from '../../../../../commons/types/generated/types'
+import UseditemCommentListUI from './UseditemCommentList.presenter'
 import {
   DELETE_USEDITEM_QUESTION,
   FETCH_USEDITEM_QUESTION,
   FETCH_USEDITEM_QUESTIONS,
   FETCH_USEDITEM_QUESTION_ANSWERS,
-} from "./UseditemCommentList.queries";
+} from './UseditemCommentList.queries'
 export default function UseditemCommentList() {
-  const router = useRouter();
+  const router = useRouter()
   const { data, fetchMore } = useQuery<
-    Pick<IQuery, "fetchUseditemQuestions">,
+    Pick<IQuery, 'fetchUseditemQuestions'>,
     IQueryFetchUseditemQuestionsArgs
   >(FETCH_USEDITEM_QUESTIONS, {
-    variables: { useditemId: String(router.query.useditemId) }, // 맞나?
-  });
+    variables: { useditemId: String(router.query.useditemId) },
+  })
 
   // const { data: answerData } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS);
 
-  const [deleteUseditemQuestion] = useMutation(DELETE_USEDITEM_QUESTION);
+  const [deleteUseditemQuestion] = useMutation(DELETE_USEDITEM_QUESTION)
   const onClickDelete = async (event) => {
     try {
       await deleteUseditemQuestion({
@@ -35,13 +35,13 @@ export default function UseditemCommentList() {
             variables: { useditemId: router.query.useditemId, page: 1 },
           },
         ],
-      });
+      })
     } catch (error) {
-      if (error instanceof Error) console.log(error.message);
+      if (error instanceof Error) console.log(error.message)
     }
-  };
+  }
   function onLoadMore() {
-    if (!data) return;
+    if (!data) return
 
     fetchMore({
       variables: {
@@ -49,15 +49,15 @@ export default function UseditemCommentList() {
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult?.fetchUseditemQuestions)
-          return { fetchUseditemQuestions: [...prev.fetchUseditemQuestions] };
+          return { fetchUseditemQuestions: [...prev.fetchUseditemQuestions] }
         return {
           fetchUseditemQuestions: [
             ...prev.fetchUseditemQuestions,
             ...fetchMoreResult.fetchUseditemQuestions,
           ],
-        };
+        }
       },
-    });
+    })
   }
   return (
     <UseditemCommentListUI
@@ -66,5 +66,5 @@ export default function UseditemCommentList() {
       onClickDelete={onClickDelete}
       // answerData={answerData}
     />
-  );
+  )
 }

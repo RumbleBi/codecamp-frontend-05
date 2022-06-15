@@ -16,7 +16,6 @@ import {
   IQuery,
   IQueryFetchBoardArgs,
 } from '../../../../commons/types/generated/types'
-import { useState } from 'react'
 
 export default function BoardDetail() {
   const router = useRouter()
