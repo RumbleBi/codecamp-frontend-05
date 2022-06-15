@@ -4,11 +4,11 @@ import {
   IMutationUpdateUserArgs,
   IQuery,
 } from '../../../../commons/types/generated/types'
-import MypageUI from './MyPage.presenter'
-import { FETCH_USER_LOGGED_IN, UPDATE_USER } from './Mypage.queries'
+import MypageMainUI from './MyPageMain.presenter'
+import { FETCH_USER_LOGGED_IN, UPDATE_USER } from './MypageMain.queries'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useState } from 'react'
-export default function Mypage() {
+export default function MypageMain() {
   const [fileUrl, setFileUrl] = useState('')
   const [name, setName] = useState('')
   const router = useRouter()
@@ -85,7 +85,7 @@ export default function Mypage() {
     }
   }
   return (
-    <MypageUI
+    <MypageMainUI
       name={name}
       fileUrl={fileUrl}
       dataUser={dataUser}
