@@ -96,40 +96,6 @@ export const ContentInput = styled.textarea`
   border: none;
   outline-color: #79dae8;
 `
-export const WrapperAddress = styled.div`
-  width: 930px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 50px;
-`
-export const Zipcode = styled.input`
-  width: 100px;
-  height: 40px;
-  font-size: 18px;
-  outline: none;
-  margin-right: 30px;
-`
-export const AddressSearchBtn = styled.button`
-  width: 100px;
-  height: 40px;
-  border: none;
-  cursor: pointer;
-  background-color: #2155cd;
-  color: #79dae8;
-  :hover {
-    font-weight: bold;
-  }
-`
-export const AddressDetail = styled.input`
-  font-size: 18px;
-  width: 930px;
-  height: 50px;
-  padding-left: 10px;
-  border: none;
-  outline-color: #79dae8;
-  margin-bottom: 50px;
-`
 export const YoutubeUrl = styled.input`
   width: 930px;
   height: 50px;

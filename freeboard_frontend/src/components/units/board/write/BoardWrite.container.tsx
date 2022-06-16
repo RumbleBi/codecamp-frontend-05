@@ -35,18 +35,12 @@ export default function BoardWrite(props: IBoardWriteProps) {
   >(UPLOAD_FILE)
 
   const [isActive, setIsActive] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
-
-  const [zipcode, setZipcode] = useState('')
-  const [address, setAddress] = useState('')
-  const [addressDetail, setAddressDetail] = useState('')
   const [youtubeUrl, setYoutubeUrl] = useState('')
   const [writer, setWriter] = useState('')
   const [password, setPassword] = useState('')
   const [post, setPost] = useState('')
   const [content, setContent] = useState('')
   const [image, setImage] = useState([])
-
   const [writerError, setWriterError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [postError, setPostError] = useState('')
@@ -74,7 +68,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
       setIsActive(false)
     }
   }
-
   const onChangePost = (event: ChangeEvent<HTMLInputElement>) => {
     setPost(event.target.value)
     if (event.target.value !== '') {
@@ -86,7 +79,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
       setIsActive(false)
     }
   }
-
   const onChangeContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value)
     if (event.target.value !== '') {
@@ -98,27 +90,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
       setIsActive(false)
     }
   }
-  const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
-    setAddressDetail(event.target.value)
-  }
-
   const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
     setYoutubeUrl(event.target.value)
   }
-
-  const onClickAddressSearch = () => {
-    setIsOpen(true)
-  }
-  const onClickAddressCancel = () => {
-    setIsOpen(false)
-  }
-
-  const onSuccessAddressSearch = (data: any) => {
-    setAddress(data.address)
-    setZipcode(data.zonecode)
-    setIsOpen(false)
-  }
-
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const imageUrl = []
 
@@ -173,22 +147,15 @@ export default function BoardWrite(props: IBoardWriteProps) {
               contents: content,
               youtubeUrl: youtubeUrl,
               images: image,
-              boardAddress: {
-                zipcode,
-                address,
-                addressDetail,
-              },
             },
           },
         })
         router.push(`/boards/${result.data.createBoard._id}`)
       } catch (error) {
-        alert(error.message)
-        // Modal.error({ content: "통신오류!!!" });
+        if (error instanceof Error) alert(error.message)
       }
     }
   }
-
   const onClickUpdate = async () => {
     if (!post && !content) {
       Modal.error({ content: '제목, 내용중에 입력을 해야합니다.' })
@@ -198,18 +165,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
       Modal.error({ content: '비밀번호를 입력해 주세요.' })
       return
     }
-
     const UpdateBoardInput: IUpdateBoardInput = {}
     if (post) UpdateBoardInput.post = post
     if (content) UpdateBoardInput.content = content
     if (youtubeUrl) UpdateBoardInput.youtubeUrl = youtubeUrl
-    if (zipcode || address || addressDetail) {
-      UpdateBoardInput.boardAddress = {}
-      if (zipcode) UpdateBoardInput.boardAddress.zipcode = zipcode
-      if (address) UpdateBoardInput.boardAddress.address = address
-      if (addressDetail)
-        UpdateBoardInput.boardAddress.addressDetail = addressDetail
-    }
     try {
       await updateBoard({
         variables: {
@@ -222,7 +181,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       Modal.success({ content: '수정이 완료되었습니다.' })
       router.push(`/boards/${router.query.boardId}`)
     } catch (error) {
-      Modal.error({ content: '통신오류.' })
+      if (error instanceof Error) alert(error.message)
     }
   }
   const onClickImage = () => {
@@ -230,11 +189,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   }
   return (
     <BoardWriteUI
-      isOpen={isOpen}
       isActive={isActive}
-      address={address}
-      addressDetail={addressDetail}
-      zipcode={zipcode}
       image={image}
       fileRef={fileRef}
       data={props.data} // boards/edit 에서 온 데이터
@@ -245,9 +200,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
       onChangeContent={onChangeContent}
       onChangeYoutubeUrl={onChangeYoutubeUrl}
       onChangeFile={onChangeFile}
-      onChangeAddressDetail={onChangeAddressDetail}
-      onSuccessAddressSearch={onSuccessAddressSearch}
-      onClickAddressSearch={onClickAddressSearch}
       onClickSubmit={onClickSubmit}
       onClickUpdate={onClickUpdate}
       onClickImage={onClickImage}
@@ -256,7 +208,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
       postError={postError}
       contentError={contentError}
       inputRef={inputRef}
-      onClickAddressCancel={onClickAddressCancel}
     />
   )
 }

@@ -67,35 +67,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             <S.ErrorMassage>{props.contentError}</S.ErrorMassage>
           </div>
         </S.WrapperContent>
-        <S.WrapperAddress>
-          <S.Label>주소</S.Label>
-          <div style={{ display: 'flex' }}>
-            <S.Zipcode
-              placeholder="00000"
-              readOnly
-              value={
-                props.zipcode ||
-                props.data?.fetchBoard?.boardAddress?.zipcode ||
-                ''
-              }
-            />
-            <S.AddressSearchBtn onClick={props.onClickAddressSearch}>
-              우편번호 검색
-            </S.AddressSearchBtn>
-          </div>
-        </S.WrapperAddress>
-        <S.AddressDetail
-          readOnly
-          value={
-            props.address || props.data?.fetchBoard?.boardAddress?.address || ''
-          }
-        />
-        <S.AddressDetail
-          onChange={props.onChangeAddressDetail}
-          defaultValue={
-            props.data?.fetchBoard?.boardAddress?.addressDetail || ''
-          }
-        />
         <div>
           <S.Label>유튜브</S.Label>
           <div>
