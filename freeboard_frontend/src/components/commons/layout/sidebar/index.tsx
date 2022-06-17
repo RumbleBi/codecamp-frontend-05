@@ -61,7 +61,7 @@ export default function LayoutSidebar() {
   }, [])
 
   const onClickDetail = (el) => () => {
-    router.push(`/product/${el._id}`)
+    router.push(`/fleamarket/${el._id}`)
   }
 
   return (

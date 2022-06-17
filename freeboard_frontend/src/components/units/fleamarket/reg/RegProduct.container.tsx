@@ -72,7 +72,16 @@ export default function FleamarketReg(props) {
   // 등록버튼함수
   const onClickSubmit = async (data: FormValues) => {
     const transTags = tags.split('#').splice(1)
-    const { name, remarks, contents, price } = data
+    const {
+      name,
+      remarks,
+      contents,
+      price,
+      zipcode,
+      address,
+      addressDetail,
+      fileUrls,
+    } = data
     try {
       const result = await createUseditem({
         variables: {
@@ -124,6 +133,7 @@ export default function FleamarketReg(props) {
       if (error instanceof Error) alert(error.message)
     }
   }
+  console.log(props.data)
   return (
     <FleamarketRegUI
       onChangeTags={onChangeTags}
@@ -146,6 +156,3 @@ export default function FleamarketReg(props) {
     />
   )
 }
-//            name, remarks, contents, price, tags, useditemAddress, images
-// input text 상품명, 한줄요약, 상품설명, 판매가격, 태그입력, 주소, 사진
-// button 등록하기

@@ -74,7 +74,7 @@ export const Tag = styled.span`
   margin: 0px 10px;
 `
 export const DateContents = styled.div`
-  width: 100%;
+  width: 1200px;
   padding: 10px;
   border-radius: 10px;
   display: flex;
