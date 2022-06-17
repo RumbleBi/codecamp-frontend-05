@@ -84,7 +84,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           </S.ImageInfoWrapper>
           <div>
             <S.PictureInput
-              // style={{ display: 'none' }}
               ref={props?.fileRef}
               type="file"
               onChange={props?.onChangeFile}

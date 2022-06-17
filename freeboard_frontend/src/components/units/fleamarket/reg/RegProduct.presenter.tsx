@@ -45,14 +45,14 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
             onChange={props.onChangeName}
             defaultValue={props.data?.fetchUseditem?.name || ''}
           />
-          <S.ErrorMessage></S.ErrorMessage>
+          <S.ErrorMessage>{props.nameError}</S.ErrorMessage>
           <S.ContentInfo>제목</S.ContentInfo>
           <S.Input
             type="text"
             onChange={props.onChangeRemarks}
             defaultValue={props.data?.fetchUseditem?.remarks || ''}
           />
-          <S.ErrorMessage></S.ErrorMessage>
+          <S.ErrorMessage>{props.remarksError}</S.ErrorMessage>
           <S.ContentInfo>내용</S.ContentInfo>
           <S.ContentInput>
             {process.browser && (
@@ -64,14 +64,14 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
               />
             )}
           </S.ContentInput>
-          <S.ErrorMessage></S.ErrorMessage>
+          <S.ErrorMessage>{props.contentsError}</S.ErrorMessage>
           <S.ContentInfo>판매가격</S.ContentInfo>
           <S.Input
             type="text"
             onChange={props.onChangePrice}
             defaultValue={props.data?.fetchUseditem?.price || ''}
           />
-          <S.ErrorMessage></S.ErrorMessage>
+          <S.ErrorMessage>{props.priceError}</S.ErrorMessage>
           <S.ContentInfo>태그입력 (#잇템#가성비#직거래) </S.ContentInfo>
           <S.TagsInput
             placeholder="#잇템#가성비#직거래"
@@ -79,7 +79,7 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
             onChange={props.onChangeTags}
             defaultValue={
               props.data?.fetchUseditem?.tags
-                ? '#' + props.data?.fetchUseditem?.tags.join('')
+                ? '#' + props.data?.fetchUseditem?.tags.join('#')
                 : ''
             }
           />
@@ -147,6 +147,7 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
         <S.ButtonWrapper>
           <S.SubmitBtn
             onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
+            isActive={props.isEdit ? props.isActive : props.isActive}
           >
             {props.isEdit ? '수정하기' : '등록하기'}
           </S.SubmitBtn>

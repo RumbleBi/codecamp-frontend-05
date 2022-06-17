@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useMutation } from '@apollo/client'
 import BoardWriteUI from './BoardWrite.presenter'
 import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from './BoardWrite.queries'
-import { IBoardWriteProps, IUpdateBoardInput } from './BoardWrite.types'
+import { IBoardWriteProps } from './BoardWrite.types'
 import {
   IMutation,
   IMutationCreateBoardArgs,
@@ -95,17 +95,14 @@ export default function BoardWrite(props: IBoardWriteProps) {
   }
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const imageUrl = []
-
     for (let i = 0; i < event.target.files?.length; i++) {
       const file = event.target.files?.[i]
       const isVaild = checkFileValidation(file)
       if (!isVaild) {
         return
       }
-
       try {
         const result = await uploadFile({ variables: { file: file } })
-
         imageUrl.push(result.data?.uploadFile?.url)
       } catch (error) {
         Modal.error({ content: '통신오류입니다. 나중에 다시 시도해 주세요.' })
@@ -141,11 +138,11 @@ export default function BoardWrite(props: IBoardWriteProps) {
         const result: any = await createBoard({
           variables: {
             createBoardInput: {
-              writer: writer,
-              password: password,
+              writer,
+              password,
               title: post,
               contents: content,
-              youtubeUrl: youtubeUrl,
+              youtubeUrl,
               images: image,
             },
           },
@@ -165,17 +162,17 @@ export default function BoardWrite(props: IBoardWriteProps) {
       Modal.error({ content: '비밀번호를 입력해 주세요.' })
       return
     }
-    const UpdateBoardInput: IUpdateBoardInput = {}
-    if (post) UpdateBoardInput.post = post
-    if (content) UpdateBoardInput.content = content
-    if (youtubeUrl) UpdateBoardInput.youtubeUrl = youtubeUrl
     try {
       await updateBoard({
         variables: {
           boardId: router.query.boardId,
-          password: password,
+          password,
           images: image,
-          updateBoardInput: UpdateBoardInput,
+          updateBoardInput: {
+            title: post,
+            contents: content,
+            youtubeUrl,
+          },
         },
       })
       Modal.success({ content: '수정이 완료되었습니다.' })

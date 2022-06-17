@@ -4,48 +4,77 @@ import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useEffect, useState } from 'react'
 
-// const schema = yup.object().shape({
-//   name: yup.string().required('상품명을 입력해 주세요.'),
-//   remarks: yup.string().required('제목을 입력해 주세요.'),
-//   // contents: yup.string().required('내용을 입력해 주세요.'),
-//   price: yup.string().required('판매가격을 입력해 주세요.'),
-// })
-// 웹 에디터
-
 export default function FleamarketReg(props) {
+  const router = useRouter()
+
   const [createUseditem] = useMutation(CREATE_USED_ITEM)
   const [updateUseditem] = useMutation(UPDATE_USED_ITEM)
+
+  const [isActive, setIsActive] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
   const [name, setName] = useState('')
   const [remarks, setRemarks] = useState('')
   const [contents, setContents] = useState('')
+  const [tags, setTags] = useState('')
   const [price, setPrice] = useState('')
-  const [isOpen, setIsOpen] = useState(false)
-  const [fileUrls, setFileUrls] = useState(['', '', '', ''])
   const [zipcode, setZipcode] = useState('')
   const [address, setAddress] = useState('')
   const [addressDetail, setAddressDetail] = useState('')
-  const [tags, setTags] = useState('')
-  // YUP 사용하여 Input 필수입력검증
-  const router = useRouter()
-  // const { register, handleSubmit, formState, setValue, trigger } = useForm({
-  //   mode: 'onChange',
-  //   resolver: yupResolver(schema),
-  // })
+  const [fileUrls, setFileUrls] = useState(['', '', '', ''])
+
+  const [nameError, setNameError] = useState('')
+  const [remarksError, setRemarksError] = useState('')
+  const [contentsError, setContentsError] = useState('')
+  const [priceError, setPriceError] = useState('')
+
   const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value)
+    if (event.target.value !== '') {
+      setNameError('')
+    }
+    if (event.target.value && name && remarks && contents && price) {
+      setIsActive(true)
+    } else {
+      setIsActive(false)
+    }
   }
   const onChangeRemarks = (event: ChangeEvent<HTMLInputElement>) => {
     setRemarks(event.target.value)
+    if (event.target.value !== '') {
+      setRemarksError('')
+    }
+    if (event.target.value && name && remarks && contents && price) {
+      setIsActive(true)
+    } else {
+      setIsActive(false)
+    }
   }
   const onChangePrice = (event: ChangeEvent<HTMLInputElement>) => {
     setPrice(event.target.value)
+    if (event.target.value !== '') {
+      setPriceError('')
+    }
+    if (event.target.value && name && remarks && contents && price) {
+      setIsActive(true)
+    } else {
+      setIsActive(false)
+    }
   }
   const onChangeTags = (event: ChangeEvent<HTMLInputElement>) => {
     setTags(event.target.value)
   }
-  // 웹 에디터 추가
-  const handleChange = (value) => {
+  // 웹 에디터
+  const handleChange = (value: string) => {
     setContents(value === '<p><br></p>' ? '' : value)
+    if (value !== '') {
+      setRemarksError('')
+    }
+    if (value && name && remarks && contents && price) {
+      setIsActive(true)
+    } else {
+      setIsActive(false)
+    }
   }
   // 사진 업로드 데이터 변경시마다 FETCH
   useEffect(() => {
@@ -76,6 +105,19 @@ export default function FleamarketReg(props) {
   }
   // 등록버튼함수
   const onClickSubmit = async () => {
+    if (name === '') {
+      setNameError('상품명을 입력해주세요.')
+      window.scrollTo(0, 0)
+    }
+    if (remarks === '') {
+      setRemarksError('제목을 입력해주세요.')
+    }
+    if (contents === '') {
+      setContentsError('내용을 입력해주세요.')
+    }
+    if (price === '') {
+      setPriceError('가격을 입력해주세요.')
+    }
     const transTags = tags.split('#').splice(1)
 
     try {
@@ -142,6 +184,7 @@ export default function FleamarketReg(props) {
       onChangeFileUrls={onChangeFileUrls}
       onChangeAddressDetail={onChangeAddressDetail}
       onClickAddressSearch={onClickAddressSearch}
+      onClickAddressCancel={onClickAddressCancel}
       onCompleteAddressSearch={onCompleteAddressSearch}
       fileUrls={fileUrls}
       isOpen={isOpen}
@@ -153,7 +196,11 @@ export default function FleamarketReg(props) {
       price={price}
       zipcode={zipcode}
       address={address}
-      onClickAddressCancel={onClickAddressCancel}
+      nameError={nameError}
+      remarksError={remarksError}
+      contentsError={contentsError}
+      priceError={priceError}
+      isActive={isActive}
     />
   )
 }

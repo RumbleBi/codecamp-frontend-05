@@ -150,11 +150,11 @@ export const SubmitBtn = styled.button`
   border-radius: 10px;
   margin-top: 50px;
   margin-bottom: 100px;
-  background-color: ${(props) => (props.isValid ? '#2155cd' : 'gray')};
-  font-weight: ${(props) => (props.isValid ? 'bold' : '')};
-  cursor: ${(props) => (props.isValid ? 'pointer' : '')};
-  color: ${(props) => (props.isValid ? '#79dae8' : '#f2f2f2')};
+  background-color: ${(props) =>
+    props.isActive === true ? '#2155cd' : 'gray'};
+  cursor: ${(props) => (props.isActive === true ? 'pointer' : '')};
+  color: ${(props) => (props.isActive === true ? '#79dae8' : '#f2f2f2')};
   :hover {
-    font-weight: bold;
+    font-weight: ${(props) => (props.isActive === true ? 'bold' : 'normal')};
   }
 `
