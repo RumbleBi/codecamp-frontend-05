@@ -11,7 +11,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 const schema = yup.object().shape({
   name: yup.string().required('상품명을 입력해 주세요.'),
   remarks: yup.string().required('제목을 입력해 주세요.'),
-  contents: yup.string().required('내용을 입력해 주세요.'),
+  // contents: yup.string().required('내용을 입력해 주세요.'),
   price: yup.string().required('판매가격을 입력해 주세요.'),
 })
 // 웹 에디터
@@ -19,7 +19,6 @@ const schema = yup.object().shape({
 export default function FleamarketReg(props) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM)
   const [updateUseditem] = useMutation(UPDATE_USED_ITEM)
-
   const [isOpen, setIsOpen] = useState(false)
   const [fileUrls, setFileUrls] = useState(['', '', '', ''])
   const [zipcode, setZipcode] = useState('')
@@ -35,7 +34,6 @@ export default function FleamarketReg(props) {
   // 태그 입력값받기
   const onChangeTags = (event: ChangeEvent<HTMLInputElement>) => {
     setTags(event.target.value)
-    console.log(tags)
   }
   // 웹 에디터 추가
   const handleChange = (value: string) => {
@@ -72,16 +70,7 @@ export default function FleamarketReg(props) {
   // 등록버튼함수
   const onClickSubmit = async (data: FormValues) => {
     const transTags = tags.split('#').splice(1)
-    const {
-      name,
-      remarks,
-      contents,
-      price,
-      zipcode,
-      address,
-      addressDetail,
-      fileUrls,
-    } = data
+    const { name, remarks, contents, price } = data
     try {
       const result = await createUseditem({
         variables: {
@@ -106,7 +95,7 @@ export default function FleamarketReg(props) {
     }
   }
   // 수정버튼함수
-  const onClickUpdate = async (data) => {
+  const onClickUpdate = async (data: FormValues) => {
     const transTags = tags.split('#').splice(1)
     const { name, remarks, contents, price } = data
     try {
@@ -133,7 +122,7 @@ export default function FleamarketReg(props) {
       if (error instanceof Error) alert(error.message)
     }
   }
-  console.log(props.data)
+
   return (
     <FleamarketRegUI
       onChangeTags={onChangeTags}
@@ -149,6 +138,7 @@ export default function FleamarketReg(props) {
       fileUrls={fileUrls}
       isOpen={isOpen}
       data={props.data}
+      isEdit={props.isEdit}
       zipcode={zipcode}
       address={address}
       handleChange={handleChange}

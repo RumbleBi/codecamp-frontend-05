@@ -3,10 +3,4 @@ export interface FormValues {
   remarks: string
   contents: string
   price: number
-  tags: string
-  images: string
-  zipcode: string
-  address: string
-  addressDetail: string
-  fileUrls: string
 }

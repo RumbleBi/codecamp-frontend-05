@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { ChangeEvent, RefObject } from 'react'
 interface IProps {
   type: string
-  register: string
+  register: {}
   // ref: RefObject<HTMLInputElement>
   // defaultValue: string
 }

@@ -26,8 +26,10 @@ const MyButton = styled.button`
 `
 export default function Button01(props: IProps) {
   return (
-    <MyButton type={props.type} isValid={props.isValid}>
-      {props.name}
-    </MyButton>
+    <form>
+      <MyButton type={props.type} isValid={props.isValid}>
+        {props.name}
+      </MyButton>
+    </form>
   )
 }

@@ -1,10 +1,7 @@
 import Button01 from '../../../commons/buttons/01'
-import Input01 from '../../../commons/inputs/01'
 import * as S from './RegProduct.styles'
 import { v4 as uuidv4 } from 'uuid'
 import Uploads01 from '../../../commons/uploads/01/Uploads01.container'
-import { ChangeEvent, useContext } from 'react'
-import { RegContext } from '../../../../../pages/fleamarket/[useditemId]/edit'
 import { Modal } from 'antd'
 import DaumPostcode from 'react-daum-postcode'
 // 웹 에디터 추가
@@ -25,7 +22,6 @@ interface IFleamarketRegUIProps {
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 
 export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
-  const { isEdit } = useContext(RegContext)
   return (
     <S.Position>
       {props.isOpen && (
@@ -42,35 +38,67 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
         </Modal>
       )}
       <S.Wrapper>
-        <S.Logo>중고상품 등록하기</S.Logo>
+        <S.Logo>
+          {props.isEdit ? '중고상품 수정하기' : '중고상품 등록하기'}
+        </S.Logo>
         <S.FormContentWrapper>
           <S.ContentInfo>상품명</S.ContentInfo>
-          <Input01 type="text" register={props.register('name')} />
+          <form>
+            <S.Input
+              type="text"
+              register={props.register('name')}
+              defaultValue={props.data?.fetchUseditem?.name || ''}
+            />
+          </form>
           <S.ErrorMessage>
             {props.formState.errors.name?.message}
           </S.ErrorMessage>
           <S.ContentInfo>제목</S.ContentInfo>
-          <Input01 type="text" register={props.register('remarks')} />
+          <form>
+            <S.Input
+              type="text"
+              register={props.register('remarks')}
+              defaultValue={props.data?.fetchUseditem?.remarks || ''}
+            />
+          </form>
           <S.ErrorMessage>
             {props.formState.errors.remarks?.message}
           </S.ErrorMessage>
           <S.ContentInfo>내용</S.ContentInfo>
-          <S.ContentInput>
-            {process.browser && <ReactQuill onChange={props.handleChange} />}
-          </S.ContentInput>
+          <from>
+            <S.ContentInput>
+              {process.browser && (
+                <ReactQuill
+                  defaultValue={props.data?.fetchUseditem?.contents || ''}
+                  onChange={props.handleChange}
+                />
+              )}
+            </S.ContentInput>
+          </from>
           <S.ErrorMessage>
             {props.formState.errors.contents?.message}
           </S.ErrorMessage>
           <S.ContentInfo>판매가격</S.ContentInfo>
-          <Input01 type="text" register={props.register('price')} />
+          <form>
+            <S.Input
+              type="text"
+              register={props.register('price')}
+              defaultValue={props.data?.fetchUseditem?.price || ''}
+            />
+          </form>
           <S.ErrorMessage>
             {props.formState.errors.price?.message}
           </S.ErrorMessage>
-          <S.ContentInfo>태그입력 ( #으로 구분 ) </S.ContentInfo>
+          <S.ContentInfo>태그입력 (#잇템#가성비#직거래) </S.ContentInfo>
           <S.TagsInput
+            placeholder="#잇템#가성비#직거래"
             type="text"
             onChange={props.onChangeTags}
-            defaultValue={'#'}
+            defaultValue={
+              props.data?.fetchUseditem?.tags
+                ? '#' + props.data?.fetchUseditem?.tags.join('')
+                : ''
+            }
           />
           <S.ErrorMessage>
             {props.formState.errors.tags?.message}
@@ -87,8 +115,16 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
                 props.data?.fetchUseditem?.useditemAddress?.zipcode ||
                 ''
               }
+              defaultValue={
+                props.zipcode ||
+                props.data?.fetchUseditem?.useditemAddress?.zipcode ||
+                ''
+              }
             />
-            <S.PostSearchBtn onClick={props.onClickAddressSearch}>
+            <S.PostSearchBtn
+              style={{ fontSize: '16px' }}
+              onClick={props.onClickAddressSearch}
+            >
               우편번호검색
             </S.PostSearchBtn>
           </S.PostNumberWrapper>
@@ -97,14 +133,19 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
               readOnly
               value={
                 props.address ||
-                props.data?.fetchUseditem.useditemAddress?.address ||
+                props.data?.fetchUseditem?.useditemAddress?.address ||
+                ''
+              }
+              defaultValue={
+                props.address ||
+                props.data?.fetchUseditem?.useditemAddress?.address ||
                 ''
               }
             />
             <S.PostInput
               onChange={props.onChangeAddressDetail}
               defaultValue={
-                props.data?.fetchUseditem.useditemAddress?.addressDetail || ''
+                props.data?.fetchUseditem?.useditemAddress?.addressDetail || ''
               }
             />
           </S.PostWrapper>
@@ -124,14 +165,14 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
         </S.ContentWrapper>
         <S.ButtonWrapper
           onSubmit={
-            isEdit
+            props.isEdit
               ? props.handleSubmit(props.onClickUpdate)
               : props.handleSubmit(props.onClickSubmit)
           }
         >
           <Button01
             isValid={props.formState?.isValid}
-            name={isEdit ? '수정하기' : '등록하기'}
+            name={props.isEdit ? '수정하기' : '등록하기'}
           />
         </S.ButtonWrapper>
       </S.Wrapper>

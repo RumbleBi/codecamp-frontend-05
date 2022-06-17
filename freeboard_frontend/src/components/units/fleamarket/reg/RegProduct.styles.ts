@@ -46,6 +46,15 @@ export const ErrorMessage = styled.div`
   font-weight: bold;
   justify-content: start;
 `
+export const Input = styled.input`
+  height: 50px;
+  width: 600px;
+  color: #79dae8;
+  font-size: 20px;
+  padding-left: 10px;
+  border: 1px solid #0aa1dd;
+  border-radius: 10px;
+`
 export const ContentInput = styled.div`
   width: 600px;
   background-color: white;
@@ -72,6 +81,7 @@ export const ContentWrapper = styled.div`
 `
 export const ButtonWrapper = styled.form`
   display: flex;
+  justify-content: center;
 `
 export const PostTitle = styled.div`
   margin: 10px 0px;
@@ -105,6 +115,7 @@ export const PostZipcode = styled.input`
   font-size: 16px;
   margin-right: 10px;
   text-align: center;
+  color: #79dae8;
 `
 export const PostSearchBtn = styled.button`
   width: 100px;
