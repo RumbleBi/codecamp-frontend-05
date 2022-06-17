@@ -1,6 +1,5 @@
 import { useQuery, gql } from '@apollo/client'
 import { useRouter } from 'next/router'
-
 import {
   IQuery,
   IQueryFetchUseditemArgs,

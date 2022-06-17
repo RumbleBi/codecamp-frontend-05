@@ -1,24 +1,24 @@
 import FleamarketRegUI from './RegProduct.presenter'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 import { CREATE_USED_ITEM, UPDATE_USED_ITEM } from './RegProduct.queries'
 import { useMutation } from '@apollo/client'
-import { FormValues } from './RegProduct.types'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useEffect, useState } from 'react'
 
-const schema = yup.object().shape({
-  name: yup.string().required('상품명을 입력해 주세요.'),
-  remarks: yup.string().required('제목을 입력해 주세요.'),
-  // contents: yup.string().required('내용을 입력해 주세요.'),
-  price: yup.string().required('판매가격을 입력해 주세요.'),
-})
+// const schema = yup.object().shape({
+//   name: yup.string().required('상품명을 입력해 주세요.'),
+//   remarks: yup.string().required('제목을 입력해 주세요.'),
+//   // contents: yup.string().required('내용을 입력해 주세요.'),
+//   price: yup.string().required('판매가격을 입력해 주세요.'),
+// })
 // 웹 에디터
 
 export default function FleamarketReg(props) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM)
   const [updateUseditem] = useMutation(UPDATE_USED_ITEM)
+  const [name, setName] = useState('')
+  const [remarks, setRemarks] = useState('')
+  const [contents, setContents] = useState('')
+  const [price, setPrice] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [fileUrls, setFileUrls] = useState(['', '', '', ''])
   const [zipcode, setZipcode] = useState('')
@@ -27,18 +27,25 @@ export default function FleamarketReg(props) {
   const [tags, setTags] = useState('')
   // YUP 사용하여 Input 필수입력검증
   const router = useRouter()
-  const { register, handleSubmit, formState, setValue, trigger } = useForm({
-    mode: 'onChange',
-    resolver: yupResolver(schema),
-  })
-  // 태그 입력값받기
+  // const { register, handleSubmit, formState, setValue, trigger } = useForm({
+  //   mode: 'onChange',
+  //   resolver: yupResolver(schema),
+  // })
+  const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value)
+  }
+  const onChangeRemarks = (event: ChangeEvent<HTMLInputElement>) => {
+    setRemarks(event.target.value)
+  }
+  const onChangePrice = (event: ChangeEvent<HTMLInputElement>) => {
+    setPrice(event.target.value)
+  }
   const onChangeTags = (event: ChangeEvent<HTMLInputElement>) => {
     setTags(event.target.value)
   }
   // 웹 에디터 추가
-  const handleChange = (value: string) => {
-    setValue('contents', value === '<p><br></p>' ? '' : value)
-    trigger('contents')
+  const handleChange = (value) => {
+    setContents(value === '<p><br></p>' ? '' : value)
   }
   // 사진 업로드 데이터 변경시마다 FETCH
   useEffect(() => {
@@ -68,9 +75,9 @@ export default function FleamarketReg(props) {
     setFileUrls(newFileUrls)
   }
   // 등록버튼함수
-  const onClickSubmit = async (data: FormValues) => {
+  const onClickSubmit = async () => {
     const transTags = tags.split('#').splice(1)
-    const { name, remarks, contents, price } = data
+
     try {
       const result = await createUseditem({
         variables: {
@@ -95,9 +102,9 @@ export default function FleamarketReg(props) {
     }
   }
   // 수정버튼함수
-  const onClickUpdate = async (data: FormValues) => {
+  const onClickUpdate = async () => {
     const transTags = tags.split('#').splice(1)
-    const { name, remarks, contents, price } = data
+
     try {
       await updateUseditem({
         variables: {
@@ -126,10 +133,11 @@ export default function FleamarketReg(props) {
   return (
     <FleamarketRegUI
       onChangeTags={onChangeTags}
+      onChangeName={onChangeName}
+      onChangeRemarks={onChangeRemarks}
+      handleChange={handleChange}
+      onChangePrice={onChangePrice}
       onClickSubmit={onClickSubmit}
-      register={register}
-      handleSubmit={handleSubmit}
-      formState={formState}
       onClickUpdate={onClickUpdate}
       onChangeFileUrls={onChangeFileUrls}
       onChangeAddressDetail={onChangeAddressDetail}
@@ -139,9 +147,12 @@ export default function FleamarketReg(props) {
       isOpen={isOpen}
       data={props.data}
       isEdit={props.isEdit}
+      name={name}
+      remarks={remarks}
+      contents={contents}
+      price={price}
       zipcode={zipcode}
       address={address}
-      handleChange={handleChange}
       onClickAddressCancel={onClickAddressCancel}
     />
   )

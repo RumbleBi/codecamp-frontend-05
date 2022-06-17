@@ -79,7 +79,7 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   width: 600px;
 `
-export const ButtonWrapper = styled.form`
+export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
 `
@@ -141,4 +141,20 @@ export const ImageInputs = styled.div`
   min-height: 200px;
   flex-wrap: wrap;
   justify-content: center;
+`
+export const SubmitBtn = styled.button`
+  width: 400px;
+  border: none;
+  height: 70px;
+  font-size: 32px;
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  background-color: ${(props) => (props.isValid ? '#2155cd' : 'gray')};
+  font-weight: ${(props) => (props.isValid ? 'bold' : '')};
+  cursor: ${(props) => (props.isValid ? 'pointer' : '')};
+  color: ${(props) => (props.isValid ? '#79dae8' : '#f2f2f2')};
+  :hover {
+    font-weight: bold;
+  }
 `
