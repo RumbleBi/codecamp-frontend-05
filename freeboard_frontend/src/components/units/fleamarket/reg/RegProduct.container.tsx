@@ -108,15 +108,22 @@ export default function FleamarketReg(props) {
     if (name === '') {
       setNameError('상품명을 입력해주세요.')
       window.scrollTo(0, 0)
+      return
     }
     if (remarks === '') {
       setRemarksError('제목을 입력해주세요.')
+      window.scrollTo(0, 0)
+      return
     }
     if (contents === '') {
       setContentsError('내용을 입력해주세요.')
+      window.scrollTo(0, 0)
+      return
     }
     if (price === '') {
       setPriceError('가격을 입력해주세요.')
+      window.scrollTo(0, 0)
+      return
     }
     const transTags = tags.split('#').splice(1)
 
@@ -143,25 +150,39 @@ export default function FleamarketReg(props) {
       if (error instanceof Error) alert(error.message)
     }
   }
+
   // 수정버튼함수
   const onClickUpdate = async () => {
     const transTags = tags.split('#').splice(1)
-
+    console.log(transTags)
     try {
       await updateUseditem({
         variables: {
           updateUseditemInput: {
-            name,
-            remarks,
-            contents,
-            tags: transTags,
-            price: Number(price),
+            name: name === '' ? props.data?.fetchUseditem?.name : name,
+            remarks:
+              remarks === '' ? props.data?.fetchUseditem?.remarks : remarks,
+            contents:
+              contents === '' ? props.data?.fetchUseditem?.contents : contents,
+            tags: transTags === [] ? props.data?.fetchUseditem.tags : transTags,
+            price:
+              price === '' ? props.data?.fetchUseditem?.price : Number(price),
             useditemAddress: {
-              zipcode,
-              address,
-              addressDetail,
+              zipcode:
+                zipcode === ''
+                  ? props.data?.fetchUseditem?.useditemAddress?.zipcode
+                  : zipcode,
+              address:
+                address === ''
+                  ? props.data?.fetchUseditem?.useditemAddress?.address
+                  : address,
+              addressDetail:
+                addressDetail === ''
+                  ? props.data?.fetchUseditem?.useditemAddress?.addressDetail
+                  : addressDetail,
             },
-            images: fileUrls,
+            images:
+              fileUrls === [] ? props.data?.fetchUseditem?.images : fileUrls,
           },
           useditemId: router.query.useditemId,
         },
@@ -171,7 +192,12 @@ export default function FleamarketReg(props) {
       if (error instanceof Error) alert(error.message)
     }
   }
-
+  // console.log('==========================')
+  // console.log(props.data?.fetchUseditem.tags)
+  // console.log(props.data?.fetchUseditem.images)
+  // console.log(props.data?.fetchUseditem.price)
+  // console.log(props.data?.fetchUseditem.contents)
+  // console.log('==========================')
   return (
     <FleamarketRegUI
       onChangeTags={onChangeTags}
