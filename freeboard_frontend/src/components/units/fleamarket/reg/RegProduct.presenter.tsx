@@ -3,9 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 import Uploads01 from '../../../commons/uploads/01/Uploads01.container'
 import { Modal } from 'antd'
 import DaumPostcode from 'react-daum-postcode'
-// 웹 에디터 추가
-import dynamic from 'next/dynamic'
-import 'react-quill/dist/quill.snow.css'
 import { ChangeEvent } from 'react'
 interface IFleamarketRegUIProps {
   onClickSubmit: () => void
@@ -15,8 +12,6 @@ interface IFleamarketRegUIProps {
   onChangeTags: (event: ChangeEvent<HTMLInputElement>) => void
   isEdit: boolean
 }
-// 웹 에디터 추가
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 
 export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
   return (
@@ -54,16 +49,11 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
           />
           <S.ErrorMessage>{props.remarksError}</S.ErrorMessage>
           <S.ContentInfo>내용</S.ContentInfo>
-          <S.ContentInput>
-            {process.browser && (
-              <ReactQuill
-                theme="snow"
-                value={props.contents}
-                onChange={props.handleChange}
-                defaultValue={props.data?.fetchUseditem?.contents || ''}
-              />
-            )}
-          </S.ContentInput>
+          <S.ContentInput
+            placeholder="내용을 입력해 주세요."
+            onChange={props.onChangeContents}
+            defaultValue={props.data?.fetchUseditem?.contents || ''}
+          />
           <S.ErrorMessage>{props.contentsError}</S.ErrorMessage>
           <S.ContentInfo>판매가격</S.ContentInfo>
           <S.Input
@@ -147,7 +137,6 @@ export default function FleamarketRegUI(props: IFleamarketRegUIProps) {
         <S.ButtonWrapper>
           <S.SubmitBtn
             onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
-            isActive={props.isEdit ? props.isActive : props.isActive}
           >
             {props.isEdit ? '수정하기' : '등록하기'}
           </S.SubmitBtn>

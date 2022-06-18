@@ -90,11 +90,10 @@ export const ContentInput = styled.textarea`
   display: flex;
   font-size: 18px;
   width: 930px;
-  min-height: 400px;
+  min-height: 300px;
   padding-top: 10px;
   padding-left: 10px;
   border: none;
-  outline-color: #79dae8;
 `
 export const YoutubeUrl = styled.input`
   width: 930px;

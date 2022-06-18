@@ -10,7 +10,6 @@ export default function FleamarketReg(props) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM)
   const [updateUseditem] = useMutation(UPDATE_USED_ITEM)
 
-  const [isActive, setIsActive] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
   const [name, setName] = useState('')
@@ -33,21 +32,11 @@ export default function FleamarketReg(props) {
     if (event.target.value !== '') {
       setNameError('')
     }
-    if (event.target.value && name && remarks && contents && price) {
-      setIsActive(true)
-    } else {
-      setIsActive(false)
-    }
   }
   const onChangeRemarks = (event: ChangeEvent<HTMLInputElement>) => {
     setRemarks(event.target.value)
     if (event.target.value !== '') {
       setRemarksError('')
-    }
-    if (event.target.value && name && remarks && contents && price) {
-      setIsActive(true)
-    } else {
-      setIsActive(false)
     }
   }
   const onChangePrice = (event: ChangeEvent<HTMLInputElement>) => {
@@ -55,25 +44,15 @@ export default function FleamarketReg(props) {
     if (event.target.value !== '') {
       setPriceError('')
     }
-    if (event.target.value && name && remarks && contents && price) {
-      setIsActive(true)
-    } else {
-      setIsActive(false)
-    }
   }
   const onChangeTags = (event: ChangeEvent<HTMLInputElement>) => {
     setTags(event.target.value)
   }
   // 웹 에디터
-  const handleChange = (value: string) => {
-    setContents(value === '<p><br></p>' ? '' : value)
-    if (value !== '') {
-      setRemarksError('')
-    }
-    if (value && name && remarks && contents && price) {
-      setIsActive(true)
-    } else {
-      setIsActive(false)
+  const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
+    setContents(event.target.value)
+    if (event.target.value !== '') {
+      setContentsError('')
     }
   }
   // 사진 업로드 데이터 변경시마다 FETCH
@@ -117,12 +96,12 @@ export default function FleamarketReg(props) {
     }
     if (contents === '') {
       setContentsError('내용을 입력해주세요.')
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 400)
       return
     }
     if (price === '') {
       setPriceError('가격을 입력해주세요.')
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 400)
       return
     }
     const transTags = tags.split('#').splice(1)
@@ -154,7 +133,6 @@ export default function FleamarketReg(props) {
   // 수정버튼함수
   const onClickUpdate = async () => {
     const transTags = tags.split('#').splice(1)
-    console.log(transTags)
     try {
       await updateUseditem({
         variables: {
@@ -164,7 +142,10 @@ export default function FleamarketReg(props) {
               remarks === '' ? props.data?.fetchUseditem?.remarks : remarks,
             contents:
               contents === '' ? props.data?.fetchUseditem?.contents : contents,
-            tags: transTags === [] ? props.data?.fetchUseditem.tags : transTags,
+            tags:
+              transTags.length === 0
+                ? props.data?.fetchUseditem?.tags
+                : transTags,
             price:
               price === '' ? props.data?.fetchUseditem?.price : Number(price),
             useditemAddress: {
@@ -192,18 +173,13 @@ export default function FleamarketReg(props) {
       if (error instanceof Error) alert(error.message)
     }
   }
-  // console.log('==========================')
-  // console.log(props.data?.fetchUseditem.tags)
-  // console.log(props.data?.fetchUseditem.images)
-  // console.log(props.data?.fetchUseditem.price)
-  // console.log(props.data?.fetchUseditem.contents)
-  // console.log('==========================')
+
   return (
     <FleamarketRegUI
       onChangeTags={onChangeTags}
       onChangeName={onChangeName}
       onChangeRemarks={onChangeRemarks}
-      handleChange={handleChange}
+      onChangeContents={onChangeContents}
       onChangePrice={onChangePrice}
       onClickSubmit={onClickSubmit}
       onClickUpdate={onClickUpdate}
@@ -226,7 +202,6 @@ export default function FleamarketReg(props) {
       remarksError={remarksError}
       contentsError={contentsError}
       priceError={priceError}
-      isActive={isActive}
     />
   )
 }

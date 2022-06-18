@@ -167,11 +167,15 @@ export default function BoardWrite(props: IBoardWriteProps) {
         variables: {
           boardId: router.query.boardId,
           password,
-          images: image,
+          images: image === [] ? props.data?.fetchBoard?.images : image,
           updateBoardInput: {
-            title: post,
-            contents: content,
-            youtubeUrl,
+            title: post === '' ? props.data?.fetchBoard?.title : post,
+            contents:
+              content === '' ? props.data?.fetchBoard?.contents : content,
+            youtubeUrl:
+              youtubeUrl === ''
+                ? props.data?.fetchBoard?.youtubeUrl
+                : youtubeUrl,
           },
         },
       })

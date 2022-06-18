@@ -32,17 +32,7 @@ export default function RegDetailUI(props) {
               {props.data?.fetchUseditem?.useditemAddress?.addressDetail}
             </S.AddressDetail>
           </S.Address>
-          {process.browser ? (
-            <S.Contents
-              dangerouslySetInnerHTML={{
-                __html: Dompurify.sanitize(
-                  String(props.data?.fetchUseditem?.contents)
-                ),
-              }}
-            ></S.Contents>
-          ) : (
-            <div />
-          )}
+          <S.Contents>{props.data?.fetchUseditem?.contents}</S.Contents>
           <S.PickitemWrapper>
             {props.myPick === true ? (
               <BsHeartFill

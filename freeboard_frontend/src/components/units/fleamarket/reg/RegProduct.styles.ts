@@ -25,7 +25,7 @@ export const Logo = styled.div`
   font-size: 32px;
   font-weight: bold;
 `
-export const FormContentWrapper = styled.form`
+export const FormContentWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -49,19 +49,22 @@ export const ErrorMessage = styled.div`
 export const Input = styled.input`
   height: 50px;
   width: 600px;
-  color: #79dae8;
   font-size: 20px;
   padding-left: 10px;
   border: 1px solid #0aa1dd;
   border-radius: 10px;
+  outline-color: #79dae8;
 `
-export const ContentInput = styled.div`
+export const ContentInput = styled.textarea`
   width: 600px;
   background-color: white;
   border: 1px solid #0aa1dd;
-  .ql-editor {
-    min-height: 200px;
-  }
+  min-height: 300px;
+  padding-top: 10px;
+  padding-left: 10px;
+  outline-color: #79dae8;
+  font-size: 18px;
+  resize: vertical;
 `
 export const TagsInput = styled.input`
   height: 50px;
@@ -71,6 +74,7 @@ export const TagsInput = styled.input`
   padding-left: 10px;
   border: 1px solid #0aa1dd;
   border-radius: 10px;
+  outline-color: #79dae8;
 `
 export const ContentWrapper = styled.div`
   display: flex;
@@ -105,9 +109,9 @@ export const PostInput = styled.input`
   height: 50px;
   margin-bottom: 10px;
   width: 600px;
-  color: #79dae8;
   font-size: 18px;
   padding-left: 10px;
+  outline-color: #79dae8;
 `
 export const PostZipcode = styled.input`
   width: 100px;
@@ -115,7 +119,7 @@ export const PostZipcode = styled.input`
   font-size: 16px;
   margin-right: 10px;
   text-align: center;
-  color: #79dae8;
+  outline-color: #79dae8;
 `
 export const PostSearchBtn = styled.button`
   width: 100px;
@@ -150,11 +154,10 @@ export const SubmitBtn = styled.button`
   border-radius: 10px;
   margin-top: 50px;
   margin-bottom: 100px;
-  background-color: ${(props) =>
-    props.isActive === true ? '#2155cd' : 'gray'};
-  cursor: ${(props) => (props.isActive === true ? 'pointer' : '')};
-  color: ${(props) => (props.isActive === true ? '#79dae8' : '#f2f2f2')};
+  background-color: #2155cd;
+  cursor: pointer;
+  color: #79dae8;
   :hover {
-    font-weight: ${(props) => (props.isActive === true ? 'bold' : 'normal')};
+    font-weight: bold;
   }
 `
