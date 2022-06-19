@@ -28,6 +28,12 @@ export const FETCH_USEDITEM_QUESTION_ANSWERS = gql`
     ) {
       _id
       contents
+      createdAt
+      user {
+        _id
+        name
+        picture
+      }
     }
   }
 `
