@@ -2,6 +2,7 @@ import { useMutation } from '@apollo/client'
 import { Modal } from 'antd'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { getDate } from '../../../../../commons/libraries/utils'
 import {
   IMutation,
   IMutationDeleteUseditemQuestionArgs,
@@ -71,13 +72,18 @@ export default function UseditemCommentListUIItem(props) {
           <div>삭제하시겠습니까?</div>
         </Modal>
       )}
-
       {!isEdit && (
         <S.Wrapper2>
-          <S.QuestionWrapper>
-            <S.Name>{props.el?.name}</S.Name>
-            <S.Contents>{props.el?.contents}</S.Contents>
-          </S.QuestionWrapper>
+          <div>
+            <S.UserWrapper>
+              <S.UserImage
+                src={`https://storage.googleapis.com/${props.el?.user.picture}`}
+              />
+              <S.Name>{props.el?.user.name}</S.Name>
+              <S.CreatedAt>{getDate(props.el?.createdAt)}</S.CreatedAt>
+            </S.UserWrapper>
+          </div>
+          <S.Contents>{props.el?.contents}</S.Contents>
           <S.BtnWrapper>
             <div onClick={onClickUpdate}>수정하기</div>
             <div onClick={onClickOpenDeleteModal}>삭제하기</div>
@@ -87,12 +93,12 @@ export default function UseditemCommentListUIItem(props) {
       )}
       {isEdit && (
         <UseditemCommentWrite
-          isEdit={props.isEdit}
-          setIsEdit={props.setIsEdit}
+          isEdit={isEdit}
+          setIsEdit={setIsEdit}
           el={props.el}
         />
       )}
-      {isAnswerEdit && <UseditemAnswerList data={props.el} />}
+      {/* {isAnswerEdit && <UseditemAnswerList data={props.el} />} */}
     </>
   )
 }

@@ -64,8 +64,7 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
       })
       Modal.success({ content: '댓글을 달았습니다.' })
     } catch (error) {
-      if (error /* instanceof Error */)
-        Modal.error({ content: '서버 에러입니다 다시 시도해 주세요.' })
+      if (error) Modal.error({ content: '서버 에러입니다 다시 시도해 주세요.' })
     }
   }
   const [updateBoardComment] = useMutation<

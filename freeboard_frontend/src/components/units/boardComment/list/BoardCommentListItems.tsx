@@ -23,7 +23,7 @@ export default function BoardCommentListItemsUI(
   const [isEdit, setIsEdit] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [password, setPassword] = useState('')
-  const [cancel, setCancel] = useState(false)
+  // const [cancel, setCancel] = useState(false)
 
   const [deleteBoardComment] = useMutation<
     Pick<IMutation, 'deleteBoardComment'>,

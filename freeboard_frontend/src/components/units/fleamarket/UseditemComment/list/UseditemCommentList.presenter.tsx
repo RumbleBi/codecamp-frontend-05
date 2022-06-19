@@ -16,13 +16,11 @@ export default function UseditemCommentListUI(props) {
             hasMore={true}
           >
             {props.data?.fetchUseditemQuestions.map((el) => (
-              <div key={el._id}>
-                <div>{el.user.name}</div>
-                <UseditemCommentListUIItem
-                  el={el}
-                  onClickDelete={props.onClickDelete}
-                />
-              </div>
+              <UseditemCommentListUIItem
+                key={el._id}
+                el={el}
+                onClickDelete={props.onClickDelete}
+              />
             ))}
           </InfiniteScroll>
         </S.CommentWrapper>

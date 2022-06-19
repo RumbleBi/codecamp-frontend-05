@@ -1,3 +1,4 @@
+import { getDate } from '../../../../../commons/libraries/utils'
 import * as S from './UseditemCommentWrite.styles'
 
 export default function UseditemCommentWriteUI(props) {
@@ -11,15 +12,20 @@ export default function UseditemCommentWriteUI(props) {
           maxLength={100}
         />
         <S.CommentInfoWrapper>
-          <S.CommentBtn
-            onClick={
-              props.isEdit
-                ? props.onClickCommentUpdate
-                : props.onClickCommentWrite
-            }
-          >
-            {props.isEdit ? '수정하기' : '등록하기'}
-          </S.CommentBtn>
+          <div style={{ display: 'flex' }}>
+            <S.CommentBtn
+              onClick={
+                props.isEdit
+                  ? props.onClickCommentUpdate
+                  : props.onClickCommentWrite
+              }
+            >
+              {props.isEdit ? '수정하기' : '등록하기'}
+            </S.CommentBtn>
+            <S.CommentBtn onClick={props.onClickCommentCancel}>
+              취소하기
+            </S.CommentBtn>
+          </div>
           <S.CommentLengths>{props.contents.length}/100</S.CommentLengths>
         </S.CommentInfoWrapper>
       </S.Wrapper>

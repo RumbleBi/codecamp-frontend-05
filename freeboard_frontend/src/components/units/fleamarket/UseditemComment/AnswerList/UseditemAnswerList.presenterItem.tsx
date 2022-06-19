@@ -1,35 +1,35 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useMutation, useQuery } from '@apollo/client'
+import { useState } from 'react'
 import {
   IMutation,
   IMutationDeleteUseditemQuestionAnswerArgs,
   IMutationUpdateUseditemQuestionAnswerArgs,
-} from "../../../../../commons/types/generated/types";
+} from '../../../../../commons/types/generated/types'
 import {
   DELETE_USEDITEM_QUESTION_ANSWER,
   FETCH_USEDITEM_QUESTION_ANSWERS,
   UPDATE_USEDITEM_QUESTION_ANSWER,
-} from "./UseditemAnswerList.queries";
-import { Modal } from "antd";
-import * as S from "./UseditemAnswerList.styles";
-import UseditemAnswerWrite from "../AnswerWrite/UseditemAnswerWrite";
-import { useRouter } from "next/router";
+} from './UseditemAnswerList.queries'
+import { Modal } from 'antd'
+import * as S from './UseditemAnswerList.styles'
+import UseditemAnswerWrite from '../AnswerWrite/UseditemAnswerWrite'
+import { useRouter } from 'next/router'
 
 export default function UseditemAnswerListItem(props) {
-  const router = useRouter();
-  const [isEdit, setIsEdit] = useState(false);
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  const router = useRouter()
+  const [isEdit, setIsEdit] = useState(false)
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   const [updateUseditemQuestionAnswer] = useMutation<
-    Pick<IMutation, "updateUseditemQuestionAnswer">,
+    Pick<IMutation, 'updateUseditemQuestionAnswer'>,
     IMutationUpdateUseditemQuestionAnswerArgs
-  >(UPDATE_USEDITEM_QUESTION_ANSWER);
+  >(UPDATE_USEDITEM_QUESTION_ANSWER)
   const [deleteUseditemQuestionAnswer] = useMutation<
-    Pick<IMutation, "deleteUseditemQuestionAnswer">,
+    Pick<IMutation, 'deleteUseditemQuestionAnswer'>,
     IMutationDeleteUseditemQuestionAnswerArgs
-  >(DELETE_USEDITEM_QUESTION_ANSWER);
+  >(DELETE_USEDITEM_QUESTION_ANSWER)
 
   const onClickUpdate = async () => {
-    setIsEdit(true);
+    setIsEdit(true)
     try {
       await updateUseditemQuestionAnswer({
         variables: {
@@ -44,11 +44,11 @@ export default function UseditemAnswerListItem(props) {
             variables: { useditemQuestionId: props.useditemQuestionId }, // props.el?._id
           },
         ],
-      });
+      })
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      if (error instanceof Error) alert(error.message)
     }
-  };
+  }
   async function onClickDelete() {
     try {
       await deleteUseditemQuestionAnswer({
@@ -63,19 +63,19 @@ export default function UseditemAnswerListItem(props) {
             },
           },
         ],
-      });
-      setIsOpenDeleteModal(false);
+      })
+      setIsOpenDeleteModal(false)
     } catch (error) {
-      if (error instanceof Error) alert(error.message);
+      if (error instanceof Error) alert(error.message)
     }
   }
 
   function onClickOpenDeleteModal() {
-    setIsOpenDeleteModal(true);
+    setIsOpenDeleteModal(true)
   }
 
   function onCancel() {
-    setIsOpenDeleteModal(false);
+    setIsOpenDeleteModal(false)
   }
 
   return (
@@ -103,5 +103,5 @@ export default function UseditemAnswerListItem(props) {
         />
       )}
     </div>
-  );
+  )
 }
