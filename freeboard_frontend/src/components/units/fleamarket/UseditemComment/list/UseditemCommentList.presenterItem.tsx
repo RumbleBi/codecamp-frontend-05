@@ -91,10 +91,7 @@ export default function UseditemCommentListUIItem(props) {
             <S.BtnWrapper>
               <div onClick={onClickUpdate}>수정하기</div>
               <div onClick={onClickOpenDeleteModal}>삭제하기</div>
-              {/* <div onClick={onClickAnswer}>답글보기</div> */}
             </S.BtnWrapper>
-            <UseditemAnswerWrite />
-            {/* <UseditemAnswerList answersData={answersData} /> */}
           </S.Wrapper2>
         </div>
       )}
@@ -105,7 +102,6 @@ export default function UseditemCommentListUIItem(props) {
           el={props.el}
         />
       )}
-      {/* {isAnswerEdit && <UseditemAnswerList data={props.el} />} */}
     </>
   )
 }
