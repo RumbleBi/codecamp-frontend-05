@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 export const Wrapper2 = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 300px;
+  min-height: 200px;
   justify-content: space-between;
   width: 1200px;
   margin-bottom: 30px;
