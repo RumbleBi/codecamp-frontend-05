@@ -20,8 +20,6 @@ export default function UseditemCommentList() {
     variables: { useditemId: String(router.query.useditemId) },
   })
 
-  // const { data: answerData } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS);
-
   const [deleteUseditemQuestion] = useMutation(DELETE_USEDITEM_QUESTION)
   const onClickDelete = async (event) => {
     try {
@@ -37,7 +35,7 @@ export default function UseditemCommentList() {
         ],
       })
     } catch (error) {
-      if (error instanceof Error) console.log(error.message)
+      if (error instanceof Error) alert(error.message)
     }
   }
   function onLoadMore() {
@@ -64,7 +62,6 @@ export default function UseditemCommentList() {
       data={data}
       onLoadMore={onLoadMore}
       onClickDelete={onClickDelete}
-      // answerData={answerData}
     />
   )
 }

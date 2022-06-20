@@ -25,6 +25,11 @@ export const UPDATE_USEDITEM_QUESTION = gql`
       useditemQuestionId: $useditemQuestionId
     ) {
       _id
+      contents
+      user {
+        name
+        picture
+      }
     }
   }
 `
@@ -34,6 +39,10 @@ export const FETCH_USEDITEM_QUESTION = gql`
     fetchUseditemQuestions(page: $page, useditemId: $useditemId) {
       _id
       contents
+      user {
+        name
+        picture
+      }
     }
   }
 `

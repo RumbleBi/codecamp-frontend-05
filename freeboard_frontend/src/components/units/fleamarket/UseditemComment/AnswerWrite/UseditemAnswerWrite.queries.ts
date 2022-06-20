@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
 
 export const CREATE_USEDITEM_QUESTION_ANSWER = gql`
   mutation createUseditemQuestionAnswer(
@@ -11,9 +11,13 @@ export const CREATE_USEDITEM_QUESTION_ANSWER = gql`
     ) {
       _id
       contents
+      user {
+        name
+        picture
+      }
     }
   }
-`;
+`
 
 export const FETCH_USEDITEM_QUESTION_ANSWERS = gql`
   query fetchUseditemQuestionAnswers($page: Int, $useditemQuestionId: ID!) {
@@ -23,9 +27,13 @@ export const FETCH_USEDITEM_QUESTION_ANSWERS = gql`
     ) {
       _id
       contents
+      user {
+        name
+        picture
+      }
     }
   }
-`;
+`
 
 export const UPDATE_USEDITEM_QUESTION_ANSWER = gql`
   mutation updateUseditemQuestionAnswer(
@@ -38,6 +46,10 @@ export const UPDATE_USEDITEM_QUESTION_ANSWER = gql`
     ) {
       _id
       contents
+      user {
+        name
+        picture
+      }
     }
   }
-`;
+`

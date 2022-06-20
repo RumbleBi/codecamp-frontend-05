@@ -23,8 +23,9 @@ export default function UseditemCommentListUIItem(props) {
   const [isAnswerEdit, setIsAnswerEdit] = useState(false)
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
-  const { data: answersData } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS)
-
+  const { data: answersData } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS, {
+    variables: { useditemQuestionId: props.el?._id, page: 1 },
+  })
   const [deleteUseditemQuestion] = useMutation<
     Pick<IMutation, 'deleteUseditemQuestion'>,
     IMutationDeleteUseditemQuestionArgs
@@ -34,8 +35,8 @@ export default function UseditemCommentListUIItem(props) {
     setIsEdit(true)
   }
 
-  const onClickAnswer = () => {
-    setIsAnswerEdit(true)
+  const onClickAnswerComment = () => {
+    setIsAnswerEdit((prev) => !prev)
   }
 
   async function onClickDelete() {
@@ -89,9 +90,16 @@ export default function UseditemCommentListUIItem(props) {
             </div>
             <S.Contents>{props.el?.contents}</S.Contents>
             <S.BtnWrapper>
+              <div onClick={onClickAnswerComment}>
+                {isAnswerEdit ? '대댓글취소' : '대댓글작성'}
+              </div>
               <div onClick={onClickUpdate}>수정하기</div>
               <div onClick={onClickOpenDeleteModal}>삭제하기</div>
             </S.BtnWrapper>
+            <UseditemAnswerList answersData={answersData} />
+            {isAnswerEdit && (
+              <UseditemAnswerWrite answersData={answersData} el={props.el} />
+            )}
           </S.Wrapper2>
         </div>
       )}

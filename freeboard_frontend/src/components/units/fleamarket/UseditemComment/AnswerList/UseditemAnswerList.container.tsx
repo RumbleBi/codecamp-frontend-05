@@ -1,31 +1,29 @@
 import { useQuery } from '@apollo/client'
-import InfiniteScroll from 'react-infinite-scroller'
 import {
   IQuery,
   IQueryFetchUseditemQuestionAnswersArgs,
-  IQueryFetchUseditemQuestionsArgs,
 } from '../../../../../commons/types/generated/types'
-import UseditemAnswerWrite from '../AnswerWrite/UseditemAnswerWrite'
 import { FETCH_USEDITEM_QUESTION_ANSWERS } from './UseditemAnswerList.queries'
-import UseditemAnswerListItem from './UseditemAnswerList.presenterItem'
-import { FETCH_USEDITEM_QUESTIONS } from '../list/UseditemCommentList.queries'
+import UseditemAnswerListUI from './UseditemAnswerList.presenter'
+import { useRouter } from 'next/router'
 
 export default function UseditemAnswerList(props) {
-  // 대댓글 보여주기
+  const router = useRouter()
+
   const { data, fetchMore } = useQuery<
     Pick<IQuery, 'fetchUseditemQuestionAnswers'>,
     IQueryFetchUseditemQuestionAnswersArgs
   >(FETCH_USEDITEM_QUESTION_ANSWERS, {
-    variables: { useditemQuestionId: props.data._id },
+    variables: {
+      useditemQuestionId: String(router.query.useditemQuestionId),
+      page: 1,
+    },
   })
 
-  // 댓글에 id값 가져오기
-  const { data: AnswerData } = useQuery<
-    Pick<IQuery, 'fetchUseditemQuestions'>,
-    IQueryFetchUseditemQuestionsArgs
-  >(FETCH_USEDITEM_QUESTIONS, {
-    // variables: { useditemId: },
-  })
+  console.log('==========')
+  console.log(props.answersData)
+  console.log(props.answersData?.fetchUseditemQuestionAnswers[0]._id)
+  console.log('==========')
 
   function onLoadMore() {
     if (!data) return
@@ -50,13 +48,10 @@ export default function UseditemAnswerList(props) {
     })
   }
   return (
-    <div>
-      <UseditemAnswerWrite questionData={props.data} />
-      <InfiniteScroll pageStart={0} loadMore={onLoadMore} hasMore={true}>
-        {data?.fetchUseditemQuestionAnswers.map((el) => (
-          <UseditemAnswerListItem key={el._id} el={el} />
-        ))}
-      </InfiniteScroll>
-    </div>
+    <UseditemAnswerListUI
+      onLoadMore={onLoadMore}
+      questionData={props.data}
+      answersData={props.answersData}
+    />
   )
 }

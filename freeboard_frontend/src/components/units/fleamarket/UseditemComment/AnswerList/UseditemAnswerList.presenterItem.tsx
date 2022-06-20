@@ -1,28 +1,26 @@
-import { useMutation, useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
+import { BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs'
 import { useState } from 'react'
 import {
   IMutation,
   IMutationDeleteUseditemQuestionAnswerArgs,
-  IMutationUpdateUseditemQuestionAnswerArgs,
 } from '../../../../../commons/types/generated/types'
 import {
   DELETE_USEDITEM_QUESTION_ANSWER,
   FETCH_USEDITEM_QUESTION_ANSWERS,
-  UPDATE_USEDITEM_QUESTION_ANSWER,
 } from './UseditemAnswerList.queries'
-import { Modal } from 'antd'
 import * as S from './UseditemAnswerList.styles'
 import UseditemAnswerWrite from '../AnswerWrite/UseditemAnswerWrite'
 import { useRouter } from 'next/router'
 
-export default function UseditemAnswerListItem(props) {
+export default function UseditemAnswerListItemUI(props) {
   const router = useRouter()
+  // 여기서 댓글 데이터를 가져온다?
   const [isEdit, setIsEdit] = useState(false)
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
-  const [updateUseditemQuestionAnswer] = useMutation<
-    Pick<IMutation, 'updateUseditemQuestionAnswer'>,
-    IMutationUpdateUseditemQuestionAnswerArgs
-  >(UPDATE_USEDITEM_QUESTION_ANSWER)
+  console.log('#######')
+  console.log(props.answersData)
+  console.log(props.el)
+  console.log('#######')
   const [deleteUseditemQuestionAnswer] = useMutation<
     Pick<IMutation, 'deleteUseditemQuestionAnswer'>,
     IMutationDeleteUseditemQuestionAnswerArgs
@@ -30,24 +28,6 @@ export default function UseditemAnswerListItem(props) {
 
   const onClickUpdate = async () => {
     setIsEdit(true)
-    try {
-      await updateUseditemQuestionAnswer({
-        variables: {
-          useditemQuestionAnswerId: props.el?._id,
-          updateUseditemQuestionAnswerInput: {
-            contents: props.el?.contents,
-          },
-        },
-        refetchQueries: [
-          {
-            query: FETCH_USEDITEM_QUESTION_ANSWERS,
-            variables: { useditemQuestionId: props.useditemQuestionId }, // props.el?._id
-          },
-        ],
-      })
-    } catch (error) {
-      if (error instanceof Error) alert(error.message)
-    }
   }
   async function onClickDelete() {
     try {
@@ -64,44 +44,54 @@ export default function UseditemAnswerListItem(props) {
           },
         ],
       })
-      setIsOpenDeleteModal(false)
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }
   }
 
-  function onClickOpenDeleteModal() {
-    setIsOpenDeleteModal(true)
-  }
-
-  function onCancel() {
-    setIsOpenDeleteModal(false)
-  }
-
   return (
-    <div>
-      {isOpenDeleteModal && (
-        <Modal visible={true} onCancel={onCancel} onOk={onClickDelete}>
-          삭제하시겠습니까?
-        </Modal>
-      )}
+    <S.Position>
       {!isEdit && (
         <S.Wrapper>
-          <S.Name>{props.el?.name}</S.Name>
-          <S.Contents>{props.el?.contents}</S.Contents>
-          <div>
-            <S.UpdateBtn onClick={onClickUpdate}>수정하기</S.UpdateBtn>
-            <S.DeleteBtn onClick={onClickOpenDeleteModal}>삭제하기</S.DeleteBtn>
-          </div>
+          <S.UserWrapper>
+            <S.Picture
+              src={`https://storage.googleapis.com/${props.el?.user.picture}`}
+            />
+            <S.Name>{props.el?.user?.name}</S.Name>
+          </S.UserWrapper>
+          <S.ContentsWrapper>
+            <S.Contents>{props.el?.contents}</S.Contents>
+            <div>
+              <BsFillPencilFill
+                style={{
+                  marginRight: '20px',
+                  fontSize: '18px',
+                  color: '#2155cd',
+                  cursor: 'pointer',
+                }}
+                onClick={onClickUpdate}
+              />
+              <BsFillTrashFill
+                style={{
+                  marginRight: '20px',
+                  fontSize: '18px',
+                  color: '#2155cd',
+                  cursor: 'pointer',
+                }}
+                onClick={onClickDelete}
+              />
+            </div>
+          </S.ContentsWrapper>
         </S.Wrapper>
       )}
       {isEdit && (
         <UseditemAnswerWrite
-          isEdit={true}
+          isEdit={isEdit}
           setIsEdit={setIsEdit}
           el={props.el}
+          answersData={props.answersData}
         />
       )}
-    </div>
+    </S.Position>
   )
 }

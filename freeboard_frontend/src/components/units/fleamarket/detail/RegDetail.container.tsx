@@ -85,9 +85,6 @@ export default function RegDetail() {
       if (error instanceof Error) alert(error.message)
     }
   }
-  console.log('detail')
-  console.log(data?.fetchUseditem?.contents)
-
   return (
     <RegDetailUI
       data={data && data}

@@ -45,9 +45,10 @@ export const CreatedAt = styled.span`
   font-size: 18px;
 `
 export const Contents = styled.div`
+  margin-top: 10px;
   display: flex;
   width: 1200px;
-  min-height: 100px;
+  height: 100px;
   font-size: 18px;
   background-color: red;
   color: #79dae8;
@@ -59,9 +60,9 @@ export const Contents = styled.div`
 export const BtnWrapper = styled.div`
   display: flex;
   width: 1200px;
+  align-items: center;
+  height: 50px;
   justify-content: flex-end;
-  margin-bottom: 10px;
-  /* margin-top: 10px; */
   div {
     display: flex;
     justify-content: center;
