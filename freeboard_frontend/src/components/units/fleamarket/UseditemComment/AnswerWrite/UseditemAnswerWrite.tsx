@@ -4,7 +4,6 @@ import {
   FETCH_USEDITEM_QUESTION_ANSWERS,
 } from './UseditemAnswerWrite.queries'
 import * as S from './UseditemAnswerWrite.styles'
-import { useRouter } from 'next/router'
 import { useMutation } from '@apollo/client'
 import {
   IMutation,
@@ -26,6 +25,9 @@ export default function UseditemAnswerWrite(props) {
   >(UPDATE_USEDITEM_QUESTION_ANSWER)
 
   const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setContents(event.target.value)
+  }
+  const onChangeRewriteContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContents(event.target.value)
   }
   async function onClickWrite() {
@@ -79,13 +81,21 @@ export default function UseditemAnswerWrite(props) {
   return (
     <S.Position>
       <S.Wrapper>
-        <S.InputContents
-          placeholder="100자 이내로 입력가능합니다."
-          maxLength={100}
-          onChange={onChangeContents}
-        />
+        {props.isEdit ? (
+          <S.InputContents
+            placeholder="100자 이내로 입력가능합니다."
+            maxLength={100}
+            onChange={onChangeRewriteContents}
+            defaultValue={props.el?.contents}
+          />
+        ) : (
+          <S.InputContents
+            placeholder="100자 이내로 입력가능합니다."
+            maxLength={100}
+            onChange={onChangeContents}
+          />
+        )}
         <S.Options>
-          <S.Counter>{contents.length}/100</S.Counter>
           <S.AnswerCommentBtn
             onClick={props.isEdit ? onClickUpdate : onClickWrite}
           >

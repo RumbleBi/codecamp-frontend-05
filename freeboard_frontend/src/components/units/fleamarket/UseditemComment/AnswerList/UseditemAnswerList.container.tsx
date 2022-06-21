@@ -5,11 +5,8 @@ import {
 } from '../../../../../commons/types/generated/types'
 import { FETCH_USEDITEM_QUESTION_ANSWERS } from './UseditemAnswerList.queries'
 import UseditemAnswerListUI from './UseditemAnswerList.presenter'
-import { useRouter } from 'next/router'
 
 export default function UseditemAnswerList(props) {
-  const router = useRouter()
-
   const { data, fetchMore } = useQuery<
     Pick<IQuery, 'fetchUseditemQuestionAnswers'>,
     IQueryFetchUseditemQuestionAnswersArgs
@@ -50,7 +47,6 @@ export default function UseditemAnswerList(props) {
       onLoadMore={onLoadMore}
       answersData={props.answersData}
       elId={props.elId}
-      data={data}
     />
   )
 }

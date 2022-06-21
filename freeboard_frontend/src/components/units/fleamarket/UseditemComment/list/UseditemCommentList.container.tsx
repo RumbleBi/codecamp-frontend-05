@@ -9,7 +9,6 @@ import {
   DELETE_USEDITEM_QUESTION,
   FETCH_USEDITEM_QUESTION,
   FETCH_USEDITEM_QUESTIONS,
-  FETCH_USEDITEM_QUESTION_ANSWERS,
 } from './UseditemCommentList.queries'
 export default function UseditemCommentList() {
   const router = useRouter()

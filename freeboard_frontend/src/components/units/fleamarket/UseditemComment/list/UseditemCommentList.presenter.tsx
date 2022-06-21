@@ -1,8 +1,6 @@
 import * as S from './UseditemCommentList.styles'
 import InfiniteScroll from 'react-infinite-scroller'
 import UseditemCommentListUIItem from './UseditemCommentList.presenterItem'
-import UseditemAnswerWrite from '../AnswerWrite/UseditemAnswerWrite'
-import UseditemAnswerList from '../AnswerList/UseditemAnswerList.container'
 
 export default function UseditemCommentListUI(props) {
   if (!props.data) return <div />

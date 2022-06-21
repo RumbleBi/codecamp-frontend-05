@@ -1,24 +1,23 @@
-import { useMutation, useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { ChangeEvent, useState } from 'react'
 import {
   IMutation,
   IMutationCreateUseditemQuestionArgs,
   IMutationUpdateUseditemQuestionArgs,
-  IQuery,
   IUpdateUseditemQuestionInput,
 } from '../../../../../commons/types/generated/types'
 import UseditemCommentWriteUI from './UseditemCommentWrite.presenter'
 import {
   CREATE_USEDITEM_QUESTION,
   UPDATE_USEDITEM_QUESTION,
-  FETCH_USEDITEM_QUESTION,
 } from './UseditemCommentWrite.queries'
 import { Modal } from 'antd'
 import { FETCH_USEDITEM_QUESTIONS } from '../list/UseditemCommentList.queries'
 
 export default function UseditemCommentWrite(props) {
   const router = useRouter()
+
   const [contents, setContents] = useState('')
 
   const [createUseditemQuestion] = useMutation<

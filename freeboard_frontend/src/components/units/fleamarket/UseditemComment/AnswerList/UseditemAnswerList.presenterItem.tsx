@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs'
 import { useState } from 'react'
 import {
@@ -11,11 +11,8 @@ import {
 } from './UseditemAnswerList.queries'
 import * as S from './UseditemAnswerList.styles'
 import UseditemAnswerWrite from '../AnswerWrite/UseditemAnswerWrite'
-import { useRouter } from 'next/router'
 
 export default function UseditemAnswerListItemUI(props) {
-  const router = useRouter()
-
   const [isEdit, setIsEdit] = useState(false)
   const [deleteUseditemQuestionAnswer] = useMutation<
     Pick<IMutation, 'deleteUseditemQuestionAnswer'>,
