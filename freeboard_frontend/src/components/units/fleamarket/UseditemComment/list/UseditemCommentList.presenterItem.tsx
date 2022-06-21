@@ -24,7 +24,7 @@ export default function UseditemCommentListUIItem(props) {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
 
   const { data: answersData } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS, {
-    variables: { useditemQuestionId: props.el?._id, page: 1 },
+    variables: { useditemQuestionId: props.el?._id },
   })
   const [deleteUseditemQuestion] = useMutation<
     Pick<IMutation, 'deleteUseditemQuestion'>,
@@ -96,9 +96,16 @@ export default function UseditemCommentListUIItem(props) {
               <div onClick={onClickUpdate}>수정하기</div>
               <div onClick={onClickOpenDeleteModal}>삭제하기</div>
             </S.BtnWrapper>
-            <UseditemAnswerList answersData={answersData} />
+            <UseditemAnswerList
+              answersData={answersData}
+              elId={props.el?._id}
+            />
             {isAnswerEdit && (
-              <UseditemAnswerWrite answersData={answersData} el={props.el} />
+              <UseditemAnswerWrite
+                answersData={answersData}
+                el={props.el}
+                elId={props.el?._id}
+              />
             )}
           </S.Wrapper2>
         </div>

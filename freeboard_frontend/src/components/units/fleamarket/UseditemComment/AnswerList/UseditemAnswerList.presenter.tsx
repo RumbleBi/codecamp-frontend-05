@@ -3,6 +3,7 @@ import UseditemAnswerListItemUI from './UseditemAnswerList.presenterItem'
 
 export default function UseditemAnswerListUI(props) {
   if (!props.answersData) return <div />
+
   return (
     <>
       <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>
@@ -11,6 +12,7 @@ export default function UseditemAnswerListUI(props) {
             key={el._id}
             el={el}
             answersData={props.answersData}
+            elId={props.elId}
           />
         ))}
       </InfiniteScroll>

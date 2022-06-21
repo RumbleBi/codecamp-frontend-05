@@ -1,4 +1,4 @@
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs'
 import { useState } from 'react'
 import {
@@ -15,12 +15,8 @@ import { useRouter } from 'next/router'
 
 export default function UseditemAnswerListItemUI(props) {
   const router = useRouter()
-  // 여기서 댓글 데이터를 가져온다?
+
   const [isEdit, setIsEdit] = useState(false)
-  console.log('#######')
-  console.log(props.answersData)
-  console.log(props.el)
-  console.log('#######')
   const [deleteUseditemQuestionAnswer] = useMutation<
     Pick<IMutation, 'deleteUseditemQuestionAnswer'>,
     IMutationDeleteUseditemQuestionAnswerArgs
@@ -39,11 +35,12 @@ export default function UseditemAnswerListItemUI(props) {
           {
             query: FETCH_USEDITEM_QUESTION_ANSWERS,
             variables: {
-              useditemQuestionAnswerId: props.el?._id,
+              useditemQuestionId: props.elId,
             },
           },
         ],
       })
+      alert('대댓글을 삭제하였습니다.')
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }
@@ -90,6 +87,7 @@ export default function UseditemAnswerListItemUI(props) {
           setIsEdit={setIsEdit}
           el={props.el}
           answersData={props.answersData}
+          elId={props.elId}
         />
       )}
     </S.Position>

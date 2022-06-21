@@ -15,21 +15,19 @@ export default function UseditemAnswerList(props) {
     IQueryFetchUseditemQuestionAnswersArgs
   >(FETCH_USEDITEM_QUESTION_ANSWERS, {
     variables: {
-      useditemQuestionId: String(router.query.useditemQuestionId),
+      useditemQuestionId: props.elId,
       page: 1,
     },
   })
 
-  console.log('==========')
-  console.log(props.answersData)
-  console.log(props.answersData?.fetchUseditemQuestionAnswers[0]._id)
-  console.log('==========')
-
   function onLoadMore() {
-    if (!data) return
+    if (!props.answersData) return
     fetchMore({
       variables: {
-        page: Math.ceil(data?.fetchUseditemQuestionAnswers.length / 10) + 1,
+        page:
+          Math.ceil(
+            props.answersData?.fetchUseditemQuestionAnswers.length / 10
+          ) + 1,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult?.fetchUseditemQuestionAnswers)
@@ -50,8 +48,9 @@ export default function UseditemAnswerList(props) {
   return (
     <UseditemAnswerListUI
       onLoadMore={onLoadMore}
-      questionData={props.data}
       answersData={props.answersData}
+      elId={props.elId}
+      data={data}
     />
   )
 }

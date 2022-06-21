@@ -14,8 +14,6 @@ import {
 import { ChangeEvent, useState } from 'react'
 
 export default function UseditemAnswerWrite(props) {
-  const router = useRouter()
-
   const [contents, setContents] = useState('')
 
   const [createUseditemQuestionAnswer] = useMutation<
@@ -43,7 +41,7 @@ export default function UseditemAnswerWrite(props) {
           {
             query: FETCH_USEDITEM_QUESTION_ANSWERS,
             variables: {
-              useditemQuestionId: router.query.useditemQuestionId,
+              useditemQuestionId: props.elId,
             },
           },
         ],
@@ -66,12 +64,13 @@ export default function UseditemAnswerWrite(props) {
           {
             query: FETCH_USEDITEM_QUESTION_ANSWERS,
             variables: {
-              useditemQuestionId: router.query.useditemQuestionId,
-            }, // props.el?._id
+              useditemQuestionId: props.elId,
+            },
           },
         ],
       })
-      alert('대댓글이 수정되었습니다.')
+      props.setIsEdit((prev: boolean) => !prev)
+      alert('대댓글을 수정하였습니다.')
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }
