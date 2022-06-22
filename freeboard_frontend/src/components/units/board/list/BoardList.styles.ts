@@ -42,6 +42,11 @@ export const SearchInput = styled.input`
   padding-left: 10px;
   border: 1px solid #79dae8;
   border-radius: 10px;
+  color: #79dae8;
+  ::placeholder {
+    color: #79dae8;
+    font-style: italic;
+  }
 `
 export const ListWrapperTop = styled.div`
   display: flex;
