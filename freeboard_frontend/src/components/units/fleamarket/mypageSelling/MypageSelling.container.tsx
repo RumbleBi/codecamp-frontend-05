@@ -9,7 +9,6 @@ import {
   IQuery,
   IQueryFetchPointTransactionsOfSellingArgs,
 } from '../../../../commons/types/generated/types'
-import { ChangeEvent } from 'react'
 
 export default function MypageSelling() {
   const router = useRouter()
@@ -19,11 +18,7 @@ export default function MypageSelling() {
   >(FETCH_POINT_TRANSACTIONS_OF_SELLING, {
     variables: { search: '', page: 1 },
   })
-  // 페이지 네이션
-  const onClickPage = (event: ChangeEvent<HTMLButtonElement>) => {
-    if (event.target instanceof Element)
-      refetch({ page: Number(event.target.id) })
-  }
+
   // 페이지 int
   const { data: dataCount } = useQuery<
     Pick<IQuery, 'fetchPointTransactionsCountOfSelling'>
@@ -48,9 +43,8 @@ export default function MypageSelling() {
   return (
     <MypageSellingUI
       data={data}
-      count={dataCount}
+      count={dataCount?.fetchPointTransactionsCountOfSelling}
       refetch={refetch}
-      onClickPage={onClickPage}
       onClickPWChange={onClickPWChange}
       onClickPickedList={onClickPickedList}
       onClickSelling={onClickSelling}

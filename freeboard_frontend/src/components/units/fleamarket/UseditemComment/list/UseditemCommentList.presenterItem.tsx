@@ -81,9 +81,14 @@ export default function UseditemCommentListUIItem(props) {
           <S.Wrapper2>
             <div>
               <S.UserWrapper>
-                <S.UserImage
-                  src={`https://storage.googleapis.com/${props.el?.user.picture}`}
-                />
+                {props.el?.user?.picture?.length ? (
+                  <S.UserImage
+                    src={`https://storage.googleapis.com/${props.el?.user.picture}`}
+                  />
+                ) : (
+                  <S.UserImage src="/images/DefaultAvatar.png" />
+                )}
+
                 <S.Name>{props.el?.user.name}</S.Name>
                 <S.CreatedAt>{getDate(props.el?.createdAt)}</S.CreatedAt>
               </S.UserWrapper>

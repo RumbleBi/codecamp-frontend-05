@@ -9,7 +9,6 @@ import {
   IQuery,
   IQueryFetchPointTransactionsOfLoadingArgs,
 } from '../../../../commons/types/generated/types'
-import { ChangeEvent } from 'react'
 import _ from 'lodash'
 
 export default function MypagePointInfo() {
@@ -21,11 +20,6 @@ export default function MypagePointInfo() {
     variables: { search: '', page: 1 },
   })
 
-  // 페이지네이션
-  const onClickPage = (event: ChangeEvent<HTMLButtonElement>) => {
-    if (event.target instanceof Element)
-      refetch({ page: Number(event.target.id) })
-  }
   // 페이지값 int
   const { data: dataCount } = useQuery<
     Pick<IQuery, 'fetchPointTransactionsCountOfLoading'>
@@ -49,9 +43,8 @@ export default function MypagePointInfo() {
   return (
     <MypagePointInfoUI
       data={data}
-      count={dataCount}
+      count={dataCount?.fetchPointTransactionsCountOfLoading}
       refetch={refetch}
-      onClickPage={onClickPage}
       onClickPWChange={onClickPWChange}
       onClickPickedList={onClickPickedList}
       onClickSelling={onClickSelling}

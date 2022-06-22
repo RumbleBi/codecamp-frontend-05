@@ -1,6 +1,5 @@
 import Button02 from '../../../commons/buttons/02'
 import * as S from './RegDetail.styles'
-import Dompurify from 'dompurify'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 import { getDate } from '../../../../commons/libraries/utils'
 export default function RegDetailUI(props) {
@@ -11,9 +10,13 @@ export default function RegDetailUI(props) {
         <S.SellerInfoWrapper>
           <S.SellerName>
             판매자 :
-            <S.SellerPicture
-              src={`https://storage.googleapis.com/${props.data?.fetchUseditem?.seller?.picture}`}
-            />
+            {props.data?.fetchUseditem?.seller?.picture?.length ? (
+              <S.SellerPicture
+                src={`https://storage.googleapis.com/${props.data?.fetchUseditem?.seller?.picture}`}
+              />
+            ) : (
+              <S.SellerPicture src="/images/DefaultAvatar.png" />
+            )}
             {props.data?.fetchUseditem?.seller?.name}
           </S.SellerName>
         </S.SellerInfoWrapper>

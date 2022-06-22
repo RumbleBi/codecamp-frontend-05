@@ -48,9 +48,14 @@ export default function UseditemAnswerListItemUI(props) {
       {!isEdit && (
         <S.Wrapper>
           <S.UserWrapper>
-            <S.Picture
-              src={`https://storage.googleapis.com/${props.el?.user.picture}`}
-            />
+            {props.el?.user?.picture?.length ? (
+              <S.Picture
+                src={`https://storage.googleapis.com/${props.el?.user.picture}`}
+              />
+            ) : (
+              <S.Picture src="/images/DefaultAvatar.png" />
+            )}
+
             <S.Name>{props.el?.user?.name}</S.Name>
           </S.UserWrapper>
           <S.ContentsWrapper>

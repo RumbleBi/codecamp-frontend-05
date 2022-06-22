@@ -1,6 +1,5 @@
 import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { ChangeEvent } from 'react'
 import {
   IQuery,
   IQueryFetchUseditemsIPickedArgs,
@@ -19,11 +18,7 @@ export default function MypagePicked() {
   >(FETCH_USEDITEMS_I_PICKED, {
     variables: { search: '', page: 1 },
   })
-  // 페이지 네이션
-  const onClickPage = (event: ChangeEvent<HTMLButtonElement>) => {
-    if (event.target instanceof Element)
-      refetch({ page: Number(event.target.id) })
-  }
+
   // 페이지 int
   const { data: dataCount } = useQuery<
     Pick<IQuery, 'fetchUseditemsCountIPicked'>
@@ -48,8 +43,8 @@ export default function MypagePicked() {
   return (
     <MypagePickedUI
       data={data}
-      count={dataCount}
-      onClickPage={onClickPage}
+      count={dataCount?.fetchUseditemsCountIPicked}
+      refetch={refetch}
       onClickPWChange={onClickPWChange}
       onClickPickedList={onClickPickedList}
       onClickSelling={onClickSelling}

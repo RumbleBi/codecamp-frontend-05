@@ -1,5 +1,4 @@
 import * as S from './MypagePicked.styles'
-import { v4 as uuidv4 } from 'uuid'
 import Paginations01 from '../../../commons/layout/paginations/01/Paginations01.container'
 
 export default function MypagePickedUI(props) {
