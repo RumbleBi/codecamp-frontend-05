@@ -1,6 +1,7 @@
 import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { useState, ChangeEvent } from 'react'
+
 import {
   IMutation,
   IMutationCreateUserArgs,
@@ -127,7 +128,6 @@ export default function FleaMarketSignin() {
           },
         },
       })
-      console.log(result.data)
       alert('회원가입을 축하드립니다!')
       router.push('/fleamarket/login')
     } catch (error) {

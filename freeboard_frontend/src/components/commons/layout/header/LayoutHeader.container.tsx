@@ -1,5 +1,7 @@
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import { GlobalContext } from '../../../../../pages/_app'
 import { IQuery } from '../../../../commons/types/generated/types'
 import LayoutHeaderUI from './LayoutHeader.presenter'
 
@@ -22,6 +24,7 @@ const FETCH_USER_LOGGED_IN = gql`
 `
 
 export default function LayoutHeader() {
+  const { isLoggedIn, setIsLoggedIn } = useContext(GlobalContext)
   const [logoutUser] = useMutation(LOGOUT_USER)
   const { data } =
     useQuery<Pick<IQuery, 'fetchUserLoggedIn'>>(FETCH_USER_LOGGED_IN)
@@ -47,16 +50,16 @@ export default function LayoutHeader() {
   const onClickLogout = async () => {
     try {
       await logoutUser()
+      setIsLoggedIn(false)
       alert('로그아웃 되었습니다.')
       router.push('/fleamarket/login')
-      // window.location.replace('https://localhost:3000/fleamarket/login')
-      // window.location.replace('https://king-nyaa.shop/fleamarket/login')
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }
   }
   return (
     <LayoutHeaderUI
+      isLoggedIn={isLoggedIn}
       data={data}
       onClickFreeBoardList={onClickFreeBoardList}
       onClickTitle={onClickTitle}

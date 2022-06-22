@@ -16,7 +16,9 @@ export default function FleaMarketLogin() {
     Pick<IMutation, 'loginUser'>,
     IMutationLoginUserArgs
   >(LOGIN_USER)
-  const { setAccessToken, setUserInfo } = useContext(GlobalContext)
+
+  const { setAccessToken, setUserInfo, isLoggedIn, setIsLoggedIn } =
+    useContext(GlobalContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const client = useApolloClient()
@@ -62,10 +64,10 @@ export default function FleaMarketLogin() {
         document.cookie = `accessToken=${accessToken}`
         document.cookie = `userInfo=${JSON.stringify(userInfo)}`
       }
+      setIsLoggedIn(true)
       router.push('/fleamarket/main')
     } catch (error) {
-      if (error instanceof Error) console.log(error.message)
-      alert('아이디, 비밀번호가 틀립니다.')
+      if (error instanceof Error) alert(error.message)
     }
   }
 

@@ -66,7 +66,6 @@ export default function FleamarketMain() {
   function onChangeKeyword(value: string) {
     setKeyword(value)
   }
-  console.log(dataItems)
   return (
     <FleamarketMainUI
       data={data}

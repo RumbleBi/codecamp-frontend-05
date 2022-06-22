@@ -50,7 +50,6 @@ export default function PaymentBasket() {
         // callback
         if (rsp.success) {
           // 성공
-          console.log(rsp)
           try {
             await createPointTransactionOfLoading({
               variables: {

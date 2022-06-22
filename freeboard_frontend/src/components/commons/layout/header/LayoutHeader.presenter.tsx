@@ -10,9 +10,9 @@ export default function LayoutHeaderUI(props: any) {
           <div onClick={props.onClickFleamarketList}>중고게시판</div>
         </S.Left>
         <S.Right>
-          {location.href !== 'https://king-nyaa.shop/fleamarket/login/' ? (
+          {props.isLoggedIn ? (
             <div>
-              {props.data?.fetchUserLoggedIn?.picture?.length ? (
+              {props.isLoggedIn ? (
                 <img
                   onClick={props.onClickMyPage}
                   src={`https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`}

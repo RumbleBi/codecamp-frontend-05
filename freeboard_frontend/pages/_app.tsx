@@ -34,6 +34,8 @@ interface IGlobalContext {
   setUserInfo?: Dispatch<SetStateAction<IUserInfo>>
   setItem?: String | any
   item?: String
+  isLoggedIn?: boolean
+  setIsLoggedIn?: any
 }
 export const GlobalContext = createContext<IGlobalContext>({})
 
@@ -41,6 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState('')
   const [userInfo, setUserInfo] = useState({})
   const [item, setItem] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const value = {
     accessToken,
     setAccessToken,
@@ -48,6 +51,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     setUserInfo,
     item,
     setItem,
+    isLoggedIn,
+    setIsLoggedIn,
   }
   useEffect(() => {
     getAccessToken().then((newAccessToken) => {
@@ -77,7 +82,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   })
 
   const uploadLink = createUploadLink({
-    uri: 'https://backend05.codebootcamp.co.kr/graphql16',
+    uri: 'https://backend05.codebootcamp.co.kr/graphql',
     headers: { Authorization: `Bearer ${accessToken}` }, // HTTP HEADER에 작성해야 accessToken을 사용시 Mutation에서 생성을 할 수 있음.
     credentials: 'include',
   })
