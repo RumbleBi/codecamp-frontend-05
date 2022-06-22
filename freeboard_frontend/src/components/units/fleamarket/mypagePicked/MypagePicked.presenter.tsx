@@ -30,16 +30,6 @@ export default function MypagePickedUI(props) {
                 <div style={{ width: '500px' }} index={index}>
                   판매제목 : {el.remarks}
                 </div>
-                {/* <div>
-                  {props.data?.fetchUseditemsIPicked.images[0].length !== '' ? (
-                    <img
-                      style={{ width: '40px', height: '40px' }}
-                      src={`https://storage.googleapis.com/${el.images[0]}`}
-                    />
-                  ) : (
-                    <img src="/images/noImg.png" />
-                  )}
-                </div> */}
                 <div>상품가격 : {el.price}</div>
               </S.PointListWrapper>
             ))}
@@ -48,27 +38,6 @@ export default function MypagePickedUI(props) {
             <Paginations01 refetch={props.refetch} count={props.count} />
           </S.PaginationsWrapper>
         </S.ViewWrapper>
-        {/*
-        <S.PickedList>
-          {props.data?.fetchUseditemsIPicked.map((el) => (
-            <S.PickedElement key={el._id}>
-              <S.Name>게시자: {el.name}</S.Name>
-              <S.Remarks>리마크: {el.remarks}</S.Remarks>
-              <S.Contents>내용: {el.contents}</S.Contents>
-              <S.Price>가격: {el.price}</S.Price>
-              <div>
-                {el.images
-                  ?.filter((el: string) => el)
-                  .map((el: string) => (
-                    <S.Image
-                      key={uuidv4()}
-                      src={`https://storage.googleapis.com/${el}`}
-                    />
-                  ))}
-              </div>
-            </S.PickedElement>
-          ))}
-        </S.PickedList> */}
       </S.Wrapper>
     </S.Position>
   )

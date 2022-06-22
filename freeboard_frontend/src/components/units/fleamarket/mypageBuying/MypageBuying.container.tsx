@@ -16,18 +16,16 @@ export default function MypageBuying() {
   const { data, refetch } = useQuery<
     Pick<IQuery, 'fetchPointTransactionsOfBuying'>,
     IQueryFetchPointTransactionsOfBuyingArgs
-  >(FETCH_POINT_TRANSACTIONS_OF_BUYING, {
-    variables: { search: '', page: 1 },
-  })
-  // 페이지 네이션
-  const onClickPage = (event: ChangeEvent<HTMLButtonElement>) => {
-    if (event.target instanceof Element)
-      refetch({ page: Number(event.target.id) })
-  }
+  >(FETCH_POINT_TRANSACTIONS_OF_BUYING, { variables: { page: 1 } })
   // 페이지 int
   const { data: dataCount } = useQuery<
     Pick<IQuery, 'fetchPointTransactionsCountOfSelling'>
   >(FETCH_POINT_TRANSACTIONS_COUNT_OF_BUYING)
+
+  const onClickPage = (event: ChangeEvent<HTMLButtonElement>) => {
+    if (event.target instanceof Element)
+      refetch({ page: Number(event.target.id) })
+  }
 
   // router
   const onClickPointInfo = () => {
@@ -48,7 +46,7 @@ export default function MypageBuying() {
   return (
     <MypageBuyingUI
       data={data}
-      count={dataCount}
+      count={dataCount?.fetchPointTransactionsCountOfSelling}
       refetch={refetch}
       onClickPage={onClickPage}
       onClickPWChange={onClickPWChange}

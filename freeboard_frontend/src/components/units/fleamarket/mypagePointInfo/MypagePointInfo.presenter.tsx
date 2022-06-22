@@ -21,7 +21,7 @@ export default function MypagePointInfoUI(props) {
                 <div key={el._id}>
                   <span index={index}>{index + 1}</span>
                   <span index={index}>충전금액 : {el.amount}원</span>
-                  <span index={index}>현재포인트 : {el.balance}원</span>
+                  <span index={index}>충전포인트 : {el.balance}원</span>
                   <span index={index}>충전일자 : {getDate(el.createdAt)}</span>
                 </div>
               )

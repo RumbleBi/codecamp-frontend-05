@@ -26,7 +26,7 @@ export default function MypageBuyingUI(props: any) {
                     {index + 1}
                   </div>
                   <div style={{ width: '200px' }} index={index}>
-                    구매금액 : {el.amount}원
+                    구매금액 : {el.amount}포인트
                   </div>
                   <div style={{ width: '600px' }} index={index}>
                     게시글제목 : {el.useditem.remarks}

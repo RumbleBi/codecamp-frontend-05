@@ -90,4 +90,5 @@ export const PaginationsWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 50px;
+  background-color: #2155cd;
 `

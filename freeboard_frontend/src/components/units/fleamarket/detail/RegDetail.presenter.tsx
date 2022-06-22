@@ -8,6 +8,15 @@ export default function RegDetailUI(props) {
     <S.Position>
       <S.Wrapper>
         <S.Title>상세페이지</S.Title>
+        <S.SellerInfoWrapper>
+          <S.SellerName>
+            판매자 :
+            <S.SellerPicture
+              src={`https://storage.googleapis.com/${props.data?.fetchUseditem?.seller?.picture}`}
+            />
+            {props.data?.fetchUseditem?.seller?.name}
+          </S.SellerName>
+        </S.SellerInfoWrapper>
         <S.ProfileWrapper>
           <S.Name>상품명 : {props.data?.fetchUseditem?.name}</S.Name>
           <S.CreatedAt>
@@ -16,7 +25,7 @@ export default function RegDetailUI(props) {
         </S.ProfileWrapper>
         <S.UseditemDetailWrapper>
           <S.Remarks>제목 : {props.data?.fetchUseditem?.remarks}</S.Remarks>
-          <S.Price>가격 : {props.data?.fetchUseditem?.price}</S.Price>
+          <S.Price>가격 : {props.data?.fetchUseditem?.price} 포인트</S.Price>
           <S.Tags>
             태그 :
             {props.data?.fetchUseditem?.tags.map(

@@ -122,13 +122,16 @@ export const PostZipcode = styled.input`
   outline-color: #79dae8;
 `
 export const PostSearchBtn = styled.button`
-  width: 100px;
+  width: 150px;
   height: 50px;
   color: #79dae8;
   background-color: #0aa1dd;
   border: 1px solid #79dae8;
   cursor: pointer;
   border-radius: 10px;
+  :hover {
+    font-weight: bold;
+  }
 `
 export const ImageWrapper = styled.div`
   width: 600px;

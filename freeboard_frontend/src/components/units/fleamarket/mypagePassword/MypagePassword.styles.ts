@@ -85,7 +85,7 @@ export const InputPassword = styled.input`
   border: 1px solid #0aa1dd;
   border-radius: 10px;
   padding-left: 10px;
-  width: 400px;
+  width: 600px;
   height: 40px;
   color: #2155cd;
 `

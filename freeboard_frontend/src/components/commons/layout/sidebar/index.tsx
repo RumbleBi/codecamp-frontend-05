@@ -32,6 +32,7 @@ const ImgContainer = styled.div`
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
+    background-color: white;
   }
 `
 const Items = styled.div`

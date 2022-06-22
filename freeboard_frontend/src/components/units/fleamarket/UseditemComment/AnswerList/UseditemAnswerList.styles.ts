@@ -35,6 +35,7 @@ export const Picture = styled.img`
   height: 50px;
   border-radius: 50px;
   margin-left: 10px;
+  background-color: white;
 `
 export const ContentsWrapper = styled.div`
   display: flex;

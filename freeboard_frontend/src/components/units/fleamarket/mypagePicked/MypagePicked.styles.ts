@@ -64,14 +64,14 @@ export const ViewWrapper = styled.div`
   border-radius: 0px 10px 10px 0px;
 `
 export const PointListWrapper = styled.div`
-  width: 100%;
+  width: 1000px;
   height: 60px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  border-bottom: 1px solid #2155cd;
   div {
-    border-bottom: 1px solid #2155cd;
     display: flex;
     align-items: center;
     height: 100%;

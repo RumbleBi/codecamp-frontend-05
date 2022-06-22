@@ -25,9 +25,9 @@ export default function FleamarketMainUI(props) {
             {props.dataItems?.fetchUseditems.map((el) => (
               <S.DataList onClick={props.onClickMoveToDetail(el)} key={el._id}>
                 <div>
-                  <S.DataInfo>판매자 : {el.name}</S.DataInfo>
-                  <S.DataInfo>한줄요약 : {el.remarks}</S.DataInfo>
-                  <S.DataInfo>가격 : {el.price}</S.DataInfo>
+                  <S.DataInfo>상품명 : {el.name}</S.DataInfo>
+                  <S.DataInfo>제목 : {el.remarks}</S.DataInfo>
+                  <S.DataInfo>가격 : {el.price} 포인트</S.DataInfo>
                   <S.DataInfo>
                     태그 :
                     {el.tags.map((el: string, index: number) => (

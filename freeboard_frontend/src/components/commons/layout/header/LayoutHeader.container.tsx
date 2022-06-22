@@ -49,7 +49,7 @@ export default function LayoutHeader() {
     try {
       await logoutUser()
       alert('로그아웃 되었습니다.')
-      window.location.replace('http://localhost:3000/fleamarket/login')
+      window.location.replace('https://king-nyaa.shop/fleamarket/login')
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }

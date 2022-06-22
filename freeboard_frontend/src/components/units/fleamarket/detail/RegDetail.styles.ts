@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   background-color: #e8f9fd;
   box-shadow: 0px 0px 10px gray;
 `
-export const SellerImg = styled.img``
+
 export const Title = styled.div`
   font-size: 36px;
   font-weight: bold;
@@ -24,6 +24,27 @@ export const Title = styled.div`
   margin-top: 50px;
   margin-bottom: 50px;
 `
+export const SellerInfoWrapper = styled.div`
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 20px;
+
+  border-top: 1px solid #2155cd;
+`
+export const SellerPicture = styled.img`
+  width: 40px;
+  height: 40px;
+  margin: 0px 5px;
+  border-radius: 50px;
+  background-color: white;
+`
+export const SellerName = styled.div`
+  color: #0aa1dd;
+  font-size: 24px;
+`
+
 export const ProfileWrapper = styled.div`
   width: 1200px;
   display: flex;

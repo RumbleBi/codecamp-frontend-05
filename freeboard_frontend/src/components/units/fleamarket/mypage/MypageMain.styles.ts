@@ -89,7 +89,7 @@ export const NameWrapper = styled.div`
   display: flex;
   align-items: center;
   span {
-    width: 180px;
+    width: 300px;
     font-size: 20px;
     font-weight: bold;
     color: #2155cd;
@@ -104,7 +104,7 @@ export const NameWrapper = styled.div`
     margin-right: 50px;
   }
   button {
-    width: 100px;
+    width: 150px;
     height: 40px;
     border: none;
     color: #79dae8;

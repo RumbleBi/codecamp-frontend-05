@@ -19,7 +19,12 @@ export default function MypageMainUI(props) {
           </S.IdWrapper>
           <S.NameWrapper>
             <span>닉네임 : {props.dataUser?.fetchUserLoggedIn.name}</span>
-            <input onChange={props.onChangeName} type="text" />
+            <input
+              onChange={props.onChangeName}
+              type="text"
+              maxLength={8}
+              placeholder="최대 8글자까지 입력가능합니다."
+            />
             <button onClick={props.onClickChangeName}>닉네임변경</button>
           </S.NameWrapper>
           <S.PictureWrapper>
