@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   })
 
   const uploadLink = createUploadLink({
-    uri: 'https://backend05.codebootcamp.co.kr/graphql',
+    uri: 'https://backend05.codebootcamp.co.kr/graphql16',
     headers: { Authorization: `Bearer ${accessToken}` }, // HTTP HEADER에 작성해야 accessToken을 사용시 Mutation에서 생성을 할 수 있음.
     credentials: 'include',
   })
