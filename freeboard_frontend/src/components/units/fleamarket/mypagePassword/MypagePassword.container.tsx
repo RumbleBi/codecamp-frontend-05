@@ -1,6 +1,7 @@
 import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
+import { GlobalContext } from '../../../../../pages/_app'
 import {
   IMutation,
   IMutationResetUserPasswordArgs,
@@ -9,7 +10,7 @@ import MyPagePasswordUI from './MypagePassword.presenter'
 import { LOGOUT_USER, RESET_USER_PASSWORD } from './MypagePassword.queries'
 
 export default function MyPagePassword() {
-  const [isActive, setIsActive] = useState(false)
+  const { setIsLoggedIn } = useContext(GlobalContext)
   const [newPassword, setNewPassword] = useState('')
   const [newPasswordCheck, setNewPasswordCheck] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -58,13 +59,8 @@ export default function MyPagePassword() {
   }
 
   const onClickResetPassword = async () => {
-    if (newPassword === newPasswordCheck) {
-      setIsActive(true)
-    } else {
-      setIsActive(false)
-    }
-    if (!isActive) {
-      alert(' 이전과 같은 비밀번호거나, 비밀번호가 일치하지 않습니다.')
+    if (newPassword !== newPasswordCheck) {
+      alert('변경할 비밀번호가 일치하지 않습니다.')
       return
     }
     try {
@@ -73,11 +69,15 @@ export default function MyPagePassword() {
           password: newPasswordCheck,
         },
       })
-      alert('비밀번호가 변경되었습니다! 다시 로그인해 주세요!')
+    } catch (error) {
+      if (error instanceof Error) alert(error.message)
+    }
+    try {
+      await logoutUser()
 
-      logoutUser()
-      // router.push('/fleamarket/login')
-      window.location.replace('http://localhost:3000/fleamarket/login')
+      setIsLoggedIn(false)
+      alert('비밀번호가 변경되었습니다! 다시 로그인해 주세요!')
+      router.push('/fleamarket/login')
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }
