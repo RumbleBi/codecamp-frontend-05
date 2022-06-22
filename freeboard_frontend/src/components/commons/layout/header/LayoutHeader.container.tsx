@@ -1,6 +1,5 @@
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import { IQuery } from '../../../../commons/types/generated/types'
 import LayoutHeaderUI from './LayoutHeader.presenter'
 
@@ -23,9 +22,9 @@ const FETCH_USER_LOGGED_IN = gql`
 `
 
 export default function LayoutHeader() {
+  const [logoutUser] = useMutation(LOGOUT_USER)
   const { data } =
     useQuery<Pick<IQuery, 'fetchUserLoggedIn'>>(FETCH_USER_LOGGED_IN)
-  const [logoutUser] = useMutation(LOGOUT_USER)
   const router = useRouter()
   const onClickTitle = () => {
     router.push('/')
@@ -49,7 +48,9 @@ export default function LayoutHeader() {
     try {
       await logoutUser()
       alert('로그아웃 되었습니다.')
-      window.location.replace('https://king-nyaa.shop/fleamarket/login')
+      router.push('/fleamarket/login')
+      // window.location.replace('https://localhost:3000/fleamarket/login')
+      // window.location.replace('https://king-nyaa.shop/fleamarket/login')
     } catch (error) {
       if (error instanceof Error) alert(error.message)
     }

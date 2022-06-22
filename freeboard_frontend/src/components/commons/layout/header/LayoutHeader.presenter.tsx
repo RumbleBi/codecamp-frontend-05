@@ -10,7 +10,7 @@ export default function LayoutHeaderUI(props: any) {
           <div onClick={props.onClickFleamarketList}>중고게시판</div>
         </S.Left>
         <S.Right>
-          {props.data?.fetchUserLoggedIn ? (
+          {location.href !== 'https://king-nyaa.shop/fleamarket/login/' ? (
             <div>
               {props.data?.fetchUserLoggedIn?.picture?.length ? (
                 <img
